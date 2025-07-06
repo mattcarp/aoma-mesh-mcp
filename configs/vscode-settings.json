@@ -1,0 +1,31 @@
+{
+  "mcp.servers": {
+    "aoma-mesh-server": {
+      "command": "node",
+      "args": [
+        "/Users/mcarpent/Documents/projects/mc-tk/mcp-server/dist/aoma-mesh-server.js"
+      ],
+      "env": {
+        "OPENAI_API_KEY": "${env:OPENAI_API_KEY}",
+        "AOMA_ASSISTANT_ID": "${env:AOMA_ASSISTANT_ID}",
+        "OPENAI_VECTOR_STORE_ID": "${env:OPENAI_VECTOR_STORE_ID}",
+        "NEXT_PUBLIC_SUPABASE_URL": "${env:NEXT_PUBLIC_SUPABASE_URL}",
+        "SUPABASE_SERVICE_ROLE_KEY": "${env:SUPABASE_SERVICE_ROLE_KEY}",
+        "NEXT_PUBLIC_SUPABASE_ANON_KEY": "${env:NEXT_PUBLIC_SUPABASE_ANON_KEY}",
+        "NODE_ENV": "production",
+        "LOG_LEVEL": "info"
+      },
+      "initializationOptions": {
+        "capabilities": {
+          "textDocument": true,
+          "workspace": true,
+          "experimental": true
+        }
+      }
+    }
+  },
+  "mcp.logging": {
+    "level": "info",
+    "file": ".vscode/mcp.log"
+  }
+}

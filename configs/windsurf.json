@@ -1,0 +1,41 @@
+{
+  "name": "AOMA Mesh MCP Server",
+  "description": "Sony Music AOMA Agent Mesh - Multi-Agent Development Assistant",
+  "version": "2.0.0",
+  "mcpSettings": {
+    "servers": [
+      {
+        "name": "aoma-mesh-server",
+        "command": "node",
+        "args": [
+          "./dist/aoma-mesh-server.js"
+        ],
+        "cwd": "/Users/mcarpent/Documents/projects/mc-tk/mcp-server",
+        "env": {
+          "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+          "AOMA_ASSISTANT_ID": "${AOMA_ASSISTANT_ID}",
+          "OPENAI_VECTOR_STORE_ID": "${OPENAI_VECTOR_STORE_ID}",
+          "NEXT_PUBLIC_SUPABASE_URL": "${NEXT_PUBLIC_SUPABASE_URL}",
+          "SUPABASE_SERVICE_ROLE_KEY": "${SUPABASE_SERVICE_ROLE_KEY}",
+          "NEXT_PUBLIC_SUPABASE_ANON_KEY": "${NEXT_PUBLIC_SUPABASE_ANON_KEY}",
+          "NODE_ENV": "production",
+          "LOG_LEVEL": "info"
+        },
+        "timeout": 30000,
+        "retries": 3
+      }
+    ]
+  },
+  "capabilities": [
+    "Sony Music AOMA Knowledge Base (1000+ documents)",
+    "Jira Ticket Semantic Search (6000+ tickets)",
+    "Development Context Analysis",
+    "Real-time Health Monitoring",
+    "Multi-environment Support"
+  ],
+  "requirements": {
+    "node": ">=18.0.0",
+    "openai": "OpenAI API key with GPT-4 access",
+    "supabase": "Supabase project with vector extension"
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "Node16",
+    "moduleResolution": "Node16",
+    "lib": ["ES2022"],
+    "outDir": "dist",
+    "rootDir": "src",
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "allowSyntheticDefaultImports": true,
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "resolveJsonModule": true,
+    "allowImportingTsExtensions": false,
+    "noEmit": false,
+    "isolatedModules": true,
+    "verbatimModuleSyntax": false
+  },
+  "include": [
+    "src/index.ts",
+    "src/aoma-mesh-server.ts",
+    "src/health-check.ts",
+    "src/streaming/**/*",
+    "src/utils/**/*",
+    "src/__tests__/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "**/*.test.ts",
+    "**/*.spec.ts",
+    "test-*.ts",
+    "comprehensive-*.ts",
+    "dogfood-*.ts",
+    "demo-*.ts",
+    "explore-*.ts",
+    "fix-*.ts",
+    "list-*.ts",
+    "quick-*.ts",
+    "simple-*.ts",
+    "check-*.ts",
+    "find-*.ts",
+    "src/agent-server.ts",
+    "src/enhanced-aoma-mesh-server.ts",
+    "src/betabase-test-agent.ts",
+    "src/visual-intelligence-agent.ts"
+  ],
+  "ts-node": {
+    "esm": true
+  }
+}

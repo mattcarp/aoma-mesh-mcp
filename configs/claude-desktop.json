@@ -1,0 +1,21 @@
+{
+  "mcpServers": {
+    "aoma-mesh-server": {
+      "command": "node",
+      "args": [
+        "/Users/mcarpent/Documents/projects/mc-tk/mcp-server/dist/aoma-mesh-server.js"
+      ],
+      "env": {
+        "OPENAI_API_KEY": "your-openai-api-key-here",
+        "AOMA_ASSISTANT_ID": "${AOMA_ASSISTANT_ID}",
+        "OPENAI_VECTOR_STORE_ID": "vs_3dqHL3Wcmt1WrUof0qS4UQqo",
+        "NEXT_PUBLIC_SUPABASE_URL": "https://kfxetwuuzljhybfgmpuc.supabase.co",
+        "SUPABASE_SERVICE_ROLE_KEY": "your-supabase-service-role-key-here",
+        "NEXT_PUBLIC_SUPABASE_ANON_KEY": "your-supabase-anon-key-here",
+        "NODE_ENV": "production",
+        "LOG_LEVEL": "info",
+        "MCP_SERVER_VERSION": "2.0.0"
+      }
+    }
+  }
+}

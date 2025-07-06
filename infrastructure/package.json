@@ -1,0 +1,29 @@
+{
+  "name": "aoma-mesh-mcp-infrastructure",
+  "version": "2.0.0-lambda",
+  "description": "AWS CDK Infrastructure for AOMA Mesh MCP Server Lambda deployment",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "test": "jest",
+    "cdk": "cdk",
+    "deploy": "npx cdk deploy --require-approval never",
+    "deploy:confirm": "npx cdk deploy",
+    "diff": "npx cdk diff",
+    "synth": "npx cdk synth",
+    "destroy": "npx cdk destroy"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.14",
+    "@types/node": "^20.17.10",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.2",
+    "typescript": "^5.3.3",
+    "tsx": "^4.7.0"
+  },
+  "dependencies": {
+    "aws-cdk-lib": "^2.167.0",
+    "constructs": "^10.3.0"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "mc-tk-agents": {
+      "command": "node",
+      "args": ["/Users/mcarpent/Documents/projects/mc-tk/mcp-server/dist/simple-index.js"],
+      "env": {
+        "OPENAI_API_KEY": "your-openai-api-key-here",
+        "NODE_ENV": "development"
+      }
+    }
+  }
+}

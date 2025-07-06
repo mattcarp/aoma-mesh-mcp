@@ -1,0 +1,154 @@
+# The manifest for the "orchestrator" service.
+# Read the full specification for the "Backend Service" type at:
+#  https://aws.github.io/copilot-cli/docs/manifest/backend-service/
+
+# Your service name will be used in naming your resources like log groups, ECS services, etc.
+name: orchestrator
+type: Backend Service
+
+# Distribute traffic to your service.
+http:
+  # Requests to this path will be forwarded to your service.
+  # To match all requests you can use the "/" path.
+  path: '/'
+  # You can specify a custom health check path. The default is "/".
+  healthcheck: '/health'
+
+# Configuration for your containers and service.
+image:
+  # Docker build arguments. For additional overrides: https://aws.github.io/copilot-cli/docs/manifest/backend-service/#image-build
+  build: './Dockerfile'
+
+# SOTA Performance Configuration
+# Increased resources for optimal MCP server performance
+cpu: 1024        # Doubled for better performance
+memory: 2048     # Doubled for vector operations and caching
+
+# See https://aws.github.io/copilot-cli/docs/manifest/backend-service/#platform
+platform: linux/x86_64
+
+# SOTA Scaling Configuration
+# Optimized for business intelligence workloads
+count:
+  min: 1         # Always keep 1 running (no cold starts)
+  max: 4         # Scale up for high demand
+  cooldown:
+    scale_in_cooldown: 300s   # Slower scale-in to avoid thrashing
+    scale_out_cooldown: 30s   # Fast scale-out for responsive service
+  target_cpu: 60             # Lower threshold for more responsive scaling
+  target_memory: 70          # Conservative memory target
+
+# SOTA Environment Configuration
+variables:
+  NODE_ENV: production
+  PORT: 3333                 # Correct MCP server port
+  HOST: 0.0.0.0
+  MCP_SERVER_VERSION: 2.0.0_SOTA
+  LOG_LEVEL: info
+  LOG_FORMAT: json
+  
+  # Performance Optimizations
+  NODE_OPTIONS: "--max-old-space-size=1536 --optimize-for-size"
+  UV_THREADPOOL_SIZE: 16
+  
+  # Health Check Optimizations
+  HEALTH_CHECK_TIMEOUT: 5000
+  HEALTH_CACHE_TTL: 5000
+  
+  # Security Headers
+  CORS_ENABLED: true
+  RATE_LIMIT_ENABLED: true
+  RATE_LIMIT_RPM: 100
+
+# All secrets from AWS Systems Manager Parameter Store
+# Fixed format based on AWS Copilot documentation
+secrets:
+  OPENAI_API_KEY: /mcp-server/openai-api-key
+  AOMA_ASSISTANT_ID: /mcp-server/aoma-assistant-id
+  OPENAI_VECTOR_STORE_ID: /mcp-server/openai-vector-store-id
+  NEXT_PUBLIC_SUPABASE_URL: /mcp-server/supabase-url
+  SUPABASE_SERVICE_ROLE_KEY: /mcp-server/supabase-service-role-key
+  LANGCHAIN_API_KEY: /mcp-server/langchain-api-key
+
+# AWS Task Role Configuration (based on AWS MCP best practices)
+# Allows the container to access AWS services securely
+task_role: ""  # Copilot will create appropriate IAM role automatically
+
+# Enable ECS Exec for debugging (following AWS best practices)
+exec: true
+
+# Network configuration for Fargate
+network:
+  vpc:
+    enable_logs: true
+    # Use private subnets for enhanced security
+    placement: 'private'
+
+# Logging configuration following AWS ECS best practices
+logging:
+  enable_metadata: true
+  config:
+    awslogs-create-group: "true"
+    awslogs-stream-prefix: "mcp-server-sota"
+    awslogs-region: "us-east-2"
+
+# Environment-specific overrides
+environments:
+  production:
+    # SOTA Production Scaling
+    count:
+      min: 2         # High availability with 2 minimum instances
+      max: 8         # Higher scale for production workloads
+    cpu: 2048        # More CPU for production performance
+    memory: 4096     # More memory for production caching
+    
+    variables:
+      LOG_LEVEL: warn          # Less verbose logging in production
+      DEBUG: false
+      NODE_ENV: production
+      
+      # Production Performance Tuning
+      HEALTH_CACHE_TTL: 10000  # Longer cache in production
+      RATE_LIMIT_RPM: 200      # Higher rate limit for production
+      
+      # Production Security
+      CORS_ENABLED: false      # Disable CORS in production
+      ALLOWED_ORIGINS: "https://tk.mattcarpenter.com"
+      
+    # Production-specific networking
+    network:
+      vpc:
+        enable_logs: true
+    
+    # Enhanced observability for production
+    logging:
+      driver: awslogs
+      options:
+        awslogs-group: "/copilot/mcp-server-orchestrator"
+        awslogs-region: "us-east-2"
+        awslogs-stream-prefix: "ecs"
+        
+    # Production Fargate optimizations (from AWS best practices)
+    platform_version: "1.4.0"  # Latest Fargate platform version
+    
+    # Enable Container Insights for advanced monitoring
+    enable_container_insights: true
+    
+    # Advanced networking for production
+    network:
+      vpc:
+        enable_logs: true
+        placement: 'private'
+        # Enhanced security group configuration
+        ingress:
+          from_vpc: true  # Only allow traffic from VPC
+
+# Resource tagging following AWS best practices        
+tags:
+  Project: "AOMA-Mesh"
+  Component: "MCP-Server"
+  Version: "2.0.0_SOTA"
+  Environment: "Production"
+  Owner: "TK-Platform"
+  CreatedBy: "AWS-Copilot"
+  Purpose: "Business-Intelligence-API"

@@ -1,0 +1,130 @@
+{
+  "family": "mcp-agent-server",
+  "taskRoleArn": "arn:aws:iam::145023127572:role/ecsTaskRole",
+  "executionRoleArn": "arn:aws:iam::145023127572:role/ecsTaskExecutionRole",
+  "networkMode": "awsvpc",
+  "requiresCompatibilities": ["FARGATE"],
+  "cpu": "1024",
+  "memory": "2048",
+  "runtimePlatform": {
+    "cpuArchitecture": "X86_64",
+    "operatingSystemFamily": "LINUX"
+  },
+  "containerDefinitions": [
+    {
+      "name": "mcp-agent-server",
+      "image": "145023127572.dkr.ecr.us-east-2.amazonaws.com/mcp-agent-server:latest",
+      "cpu": 0,
+      "portMappings": [
+        {
+          "containerPort": 3333,
+          "hostPort": 3333,
+          "protocol": "tcp",
+          "name": "mcp-rpc"
+        }
+      ],
+      "essential": true,
+      "environment": [
+        {
+          "name": "PORT",
+          "value": "3333"
+        },
+        {
+          "name": "HOST",
+          "value": "0.0.0.0"
+        },
+        {
+          "name": "NODE_ENV",
+          "value": "production"
+        },
+        {
+          "name": "MCP_SERVER_VERSION",
+          "value": "2.0.0_SOTA"
+        },
+        {
+          "name": "NODE_OPTIONS",
+          "value": "--max-old-space-size=1536"
+        },
+        {
+          "name": "UV_THREADPOOL_SIZE",
+          "value": "16"
+        },
+        {
+          "name": "HEALTH_CHECK_TIMEOUT",
+          "value": "5000"
+        },
+        {
+          "name": "HEALTH_CACHE_TTL",
+          "value": "5000"
+        }
+      ],
+      "mountPoints": [],
+      "volumesFrom": [],
+      "linuxParameters": {
+        "initProcessEnabled": true
+      },
+      "secrets": [
+        {
+          "name": "OPENAI_API_KEY",
+          "valueFrom": "arn:aws:ssm:us-east-2:145023127572:parameter/mcp-server/openai-api-key"
+        },
+        {
+          "name": "AOMA_ASSISTANT_ID",
+          "valueFrom": "arn:aws:ssm:us-east-2:145023127572:parameter/mcp-server/aoma-assistant-id"
+        },
+        {
+          "name": "OPENAI_VECTOR_STORE_ID",
+          "valueFrom": "arn:aws:ssm:us-east-2:145023127572:parameter/mcp-server/openai-vector-store-id"
+        },
+        {
+          "name": "NEXT_PUBLIC_SUPABASE_URL",
+          "valueFrom": "arn:aws:ssm:us-east-2:145023127572:parameter/mcp-server/supabase-url"
+        },
+        {
+          "name": "SUPABASE_SERVICE_ROLE_KEY",
+          "valueFrom": "arn:aws:ssm:us-east-2:145023127572:parameter/mcp-server/supabase-service-role-key"
+        },
+        {
+          "name": "LANGCHAIN_API_KEY",
+          "valueFrom": "arn:aws:ssm:us-east-2:145023127572:parameter/mcp-server/langchain-api-key"
+        },
+        {
+          "name": "NEXT_PUBLIC_SUPABASE_ANON_KEY",
+          "valueFrom": "arn:aws:ssm:us-east-2:145023127572:parameter/mcp-server/supabase-anon-key"
+        }
+      ],
+      "startTimeout": 120,
+      "stopTimeout": 30,
+      "user": "1001:1001",
+      "privileged": false,
+      "readonlyRootFilesystem": false,
+      "ulimits": [
+        {
+          "name": "nofile",
+          "softLimit": 65536,
+          "hardLimit": 65536
+        }
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/mcp-agent-server",
+          "awslogs-create-group": "true",
+          "awslogs-region": "us-east-2",
+          "awslogs-stream-prefix": "ecs"
+        }
+      },
+      "healthCheck": {
+        "command": [
+          "CMD-SHELL",
+          "curl -f http://localhost:3333/health || exit 1"
+        ],
+        "interval": 30,
+        "timeout": 5,
+        "retries": 3,
+        "startPeriod": 60
+      },
+      "systemControls": []
+    }
+  ]
+}
