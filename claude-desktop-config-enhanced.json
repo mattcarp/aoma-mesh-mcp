@@ -1,0 +1,22 @@
+{
+  "mcpServers": {
+    "aoma-mesh-enhanced": {
+      "command": "tsx",
+      "args": [
+        "/Users/matt/Documents/projects/aoma-mesh-mcp/src/enhanced-cross-vector-server.ts"
+      ],
+      "env": {
+        "NODE_ENV": "development"
+      }
+    },
+    "aoma-mesh-original": {
+      "command": "tsx", 
+      "args": [
+        "/Users/matt/Documents/projects/aoma-mesh-mcp/src/aoma-mesh-server.ts"
+      ],
+      "env": {
+        "NODE_ENV": "development"
+      }
+    }
+  }
+}
