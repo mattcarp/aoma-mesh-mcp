@@ -1,0 +1,21 @@
+{
+  "metrics": {
+    "performance": true,
+    "errors": true,
+    "userExperience": true,
+    "systemHealth": true
+  },
+  "reporting": {
+    "daily": true,
+    "stakeholders": [
+      "irina@company.com"
+    ],
+    "format": "comprehensive",
+    "aomaEnhanced": true
+  },
+  "alerts": {
+    "criticalErrors": true,
+    "performanceDegradation": true,
+    "securityIssues": true
+  }
+}

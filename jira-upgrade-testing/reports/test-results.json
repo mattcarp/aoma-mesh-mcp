@@ -1,0 +1,391 @@
+{
+  "config": {
+    "configFile": "/Users/mcarpent/Documents/projects/aoma-mesh-mcp/playwright.jira-upgrade.config.ts",
+    "rootDir": "/Users/mcarpent/Documents/projects/aoma-mesh-mcp/jira-upgrade-testing/tests",
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "reporter": [
+      [
+        "html",
+        {
+          "outputFolder": "jira-upgrade-testing/reports/playwright-report"
+        }
+      ],
+      [
+        "json",
+        {
+          "outputFile": "jira-upgrade-testing/reports/test-results.json"
+        }
+      ],
+      [
+        "line",
+        null
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "quiet": false,
+    "projects": [
+      {
+        "outputDir": "/Users/mcarpent/Documents/projects/aoma-mesh-mcp/test-results",
+        "repeatEach": 1,
+        "retries": 1,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "chromium",
+        "name": "chromium",
+        "testDir": "/Users/mcarpent/Documents/projects/aoma-mesh-mcp/jira-upgrade-testing/tests",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 30000
+      }
+    ],
+    "shard": null,
+    "updateSnapshots": "missing",
+    "updateSourceMethod": "patch",
+    "version": "1.53.2",
+    "workers": 2,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "platform-validation/platform.spec.ts",
+      "file": "platform-validation/platform.spec.ts",
+      "column": 0,
+      "line": 0,
+      "specs": [],
+      "suites": [
+        {
+          "title": "Platform Validation - Jira 9.12 → 10.3 LTS",
+          "file": "platform-validation/platform.spec.ts",
+          "line": 3,
+          "column": 6,
+          "specs": [
+            {
+              "title": "should load Jira application successfully on Java 17",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 0,
+                      "parallelIndex": 0,
+                      "status": "timedOut",
+                      "duration": 41363,
+                      "error": {
+                        "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m",
+                        "stack": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                      },
+                      "errors": [
+                        {
+                          "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                        },
+                        {
+                          "location": {
+                            "file": "/Users/mcarpent/Documents/projects/aoma-mesh-mcp/jira-upgrade-testing/tests/platform-validation/platform.spec.ts",
+                            "column": 16,
+                            "line": 5
+                          },
+                          "message": "Error: page.goto: net::ERR_ABORTED; maybe frame was detached?\nCall log:\n\u001b[2m  - navigating to \"https://jirauat.smedigitalapps.com/\", waiting until \"load\"\u001b[22m\n\n\n\u001b[0m \u001b[90m 3 |\u001b[39m test\u001b[33m.\u001b[39mdescribe(\u001b[32m'Platform Validation - Jira 9.12 → 10.3 LTS'\u001b[39m\u001b[33m,\u001b[39m () \u001b[33m=>\u001b[39m {\n \u001b[90m 4 |\u001b[39m   test(\u001b[32m'should load Jira application successfully on Java 17'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 5 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'/'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m   |\u001b[39m                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 6 |\u001b[39m     \n \u001b[90m 7 |\u001b[39m     \u001b[90m// Check for successful page load - Updated to match actual Sony Music JIRA title\u001b[39m\n \u001b[90m 8 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page)\u001b[33m.\u001b[39mtoHaveTitle(\u001b[35m/System Dashboard.*Sony Music/\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[2m    at /Users/mcarpent/Documents/projects/aoma-mesh-mcp/jira-upgrade-testing/tests/platform-validation/platform.spec.ts:5:16\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-07-10T10:06:38.776Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/mcarpent/Documents/projects/aoma-mesh-mcp/test-results/platform-validation-platfo-84b8e-ion-successfully-on-Java-17-chromium/video.webm"
+                        }
+                      ]
+                    },
+                    {
+                      "workerIndex": 1,
+                      "parallelIndex": 0,
+                      "status": "timedOut",
+                      "duration": 41317,
+                      "error": {
+                        "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m",
+                        "stack": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                      },
+                      "errors": [
+                        {
+                          "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                        },
+                        {
+                          "location": {
+                            "file": "/Users/mcarpent/Documents/projects/aoma-mesh-mcp/jira-upgrade-testing/tests/platform-validation/platform.spec.ts",
+                            "column": 16,
+                            "line": 5
+                          },
+                          "message": "Error: page.goto: net::ERR_ABORTED; maybe frame was detached?\nCall log:\n\u001b[2m  - navigating to \"https://jirauat.smedigitalapps.com/\", waiting until \"load\"\u001b[22m\n\n\n\u001b[0m \u001b[90m 3 |\u001b[39m test\u001b[33m.\u001b[39mdescribe(\u001b[32m'Platform Validation - Jira 9.12 → 10.3 LTS'\u001b[39m\u001b[33m,\u001b[39m () \u001b[33m=>\u001b[39m {\n \u001b[90m 4 |\u001b[39m   test(\u001b[32m'should load Jira application successfully on Java 17'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 5 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'/'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m   |\u001b[39m                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 6 |\u001b[39m     \n \u001b[90m 7 |\u001b[39m     \u001b[90m// Check for successful page load - Updated to match actual Sony Music JIRA title\u001b[39m\n \u001b[90m 8 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page)\u001b[33m.\u001b[39mtoHaveTitle(\u001b[35m/System Dashboard.*Sony Music/\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[2m    at /Users/mcarpent/Documents/projects/aoma-mesh-mcp/jira-upgrade-testing/tests/platform-validation/platform.spec.ts:5:16\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 1,
+                      "startTime": "2025-07-10T10:07:24.405Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/mcarpent/Documents/projects/aoma-mesh-mcp/test-results/platform-validation-platfo-84b8e-ion-successfully-on-Java-17-chromium-retry1/video.webm"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/Users/mcarpent/Documents/projects/aoma-mesh-mcp/test-results/platform-validation-platfo-84b8e-ion-successfully-on-Java-17-chromium-retry1/trace.zip"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "cb23ccee1e3baf03d4c3-6367185afa23862f3edf",
+              "file": "platform-validation/platform.spec.ts",
+              "line": 4,
+              "column": 3
+            },
+            {
+              "title": "should support async webhooks",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 2,
+                      "parallelIndex": 0,
+                      "status": "timedOut",
+                      "duration": 41490,
+                      "error": {
+                        "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m",
+                        "stack": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                      },
+                      "errors": [
+                        {
+                          "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                        },
+                        {
+                          "location": {
+                            "file": "/Users/mcarpent/Documents/projects/aoma-mesh-mcp/jira-upgrade-testing/tests/platform-validation/platform.spec.ts",
+                            "column": 16,
+                            "line": 24
+                          },
+                          "message": "Error: page.goto: net::ERR_ABORTED; maybe frame was detached?\nCall log:\n\u001b[2m  - navigating to \"https://jirauat.smedigitalapps.com/secure/admin/webhooks/ViewWebhooks.jspa\", waiting until \"load\"\u001b[22m\n\n\n\u001b[0m \u001b[90m 22 |\u001b[39m   test(\u001b[32m'should support async webhooks'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\n \u001b[90m 23 |\u001b[39m     \u001b[90m// Navigate to webhook administration  \u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 24 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'/secure/admin/webhooks/ViewWebhooks.jspa'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 25 |\u001b[39m     \n \u001b[90m 26 |\u001b[39m     \u001b[90m// Verify webhook page loads (indicates Platform 7 compatibility)\u001b[39m\n \u001b[90m 27 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'h2'\u001b[39m))\u001b[33m.\u001b[39mtoContainText(\u001b[32m'Webhooks'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[2m    at /Users/mcarpent/Documents/projects/aoma-mesh-mcp/jira-upgrade-testing/tests/platform-validation/platform.spec.ts:24:16\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-07-10T10:08:07.618Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/mcarpent/Documents/projects/aoma-mesh-mcp/test-results/platform-validation-platfo-0dafa-ould-support-async-webhooks-chromium/video.webm"
+                        }
+                      ]
+                    },
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 0,
+                      "status": "timedOut",
+                      "duration": 41351,
+                      "error": {
+                        "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m",
+                        "stack": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                      },
+                      "errors": [
+                        {
+                          "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                        },
+                        {
+                          "location": {
+                            "file": "/Users/mcarpent/Documents/projects/aoma-mesh-mcp/jira-upgrade-testing/tests/platform-validation/platform.spec.ts",
+                            "column": 16,
+                            "line": 24
+                          },
+                          "message": "Error: page.goto: net::ERR_ABORTED; maybe frame was detached?\nCall log:\n\u001b[2m  - navigating to \"https://jirauat.smedigitalapps.com/secure/admin/webhooks/ViewWebhooks.jspa\", waiting until \"load\"\u001b[22m\n\n\n\u001b[0m \u001b[90m 22 |\u001b[39m   test(\u001b[32m'should support async webhooks'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\n \u001b[90m 23 |\u001b[39m     \u001b[90m// Navigate to webhook administration  \u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 24 |\u001b[39m     \u001b[36mawait\u001b[39m page\u001b[33m.\u001b[39mgoto(\u001b[32m'/secure/admin/webhooks/ViewWebhooks.jspa'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 25 |\u001b[39m     \n \u001b[90m 26 |\u001b[39m     \u001b[90m// Verify webhook page loads (indicates Platform 7 compatibility)\u001b[39m\n \u001b[90m 27 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'h2'\u001b[39m))\u001b[33m.\u001b[39mtoContainText(\u001b[32m'Webhooks'\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[2m    at /Users/mcarpent/Documents/projects/aoma-mesh-mcp/jira-upgrade-testing/tests/platform-validation/platform.spec.ts:24:16\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 1,
+                      "startTime": "2025-07-10T10:08:52.234Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/mcarpent/Documents/projects/aoma-mesh-mcp/test-results/platform-validation-platfo-0dafa-ould-support-async-webhooks-chromium-retry1/video.webm"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/Users/mcarpent/Documents/projects/aoma-mesh-mcp/test-results/platform-validation-platfo-0dafa-ould-support-async-webhooks-chromium-retry1/trace.zip"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "cb23ccee1e3baf03d4c3-575866a634856d5c939e",
+              "file": "platform-validation/platform.spec.ts",
+              "line": 22,
+              "column": 3
+            },
+            {
+              "title": "should maintain REST API compatibility",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 4,
+                      "parallelIndex": 0,
+                      "status": "timedOut",
+                      "duration": 30974,
+                      "error": {
+                        "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m",
+                        "stack": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                      },
+                      "errors": [
+                        {
+                          "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                        },
+                        {
+                          "location": {
+                            "file": "/Users/mcarpent/Documents/projects/aoma-mesh-mcp/jira-upgrade-testing/tests/platform-validation/platform.spec.ts",
+                            "column": 36,
+                            "line": 32
+                          },
+                          "message": "Error: apiRequestContext.get: Target page, context or browser has been closed\nCall log:\n\u001b[2m  - → GET https://jirauat.smedigitalapps.com/rest/api/2/serverInfo\u001b[22m\n\u001b[2m    - user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.7204.23 Safari/537.36\u001b[22m\n\u001b[2m    - accept: */*\u001b[22m\n\u001b[2m    - accept-encoding: gzip,deflate,br\u001b[22m\n\n\n\u001b[0m \u001b[90m 30 |\u001b[39m   test(\u001b[32m'should maintain REST API compatibility'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page\u001b[33m,\u001b[39m request }) \u001b[33m=>\u001b[39m {\n \u001b[90m 31 |\u001b[39m     \u001b[90m// Test REST v2 endpoints\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 32 |\u001b[39m     \u001b[36mconst\u001b[39m response \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m request\u001b[33m.\u001b[39m\u001b[36mget\u001b[39m(\u001b[32m'/rest/api/2/serverInfo'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                    \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 33 |\u001b[39m     expect(response\u001b[33m.\u001b[39mstatus())\u001b[33m.\u001b[39mtoBe(\u001b[35m200\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 34 |\u001b[39m     \n \u001b[90m 35 |\u001b[39m     \u001b[36mconst\u001b[39m serverInfo \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m response\u001b[33m.\u001b[39mjson()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[2m    at /Users/mcarpent/Documents/projects/aoma-mesh-mcp/jira-upgrade-testing/tests/platform-validation/platform.spec.ts:32:36\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-07-10T10:09:36.736Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/mcarpent/Documents/projects/aoma-mesh-mcp/test-results/platform-validation-platfo-7a6fb-tain-REST-API-compatibility-chromium/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/mcarpent/Documents/projects/aoma-mesh-mcp/test-results/platform-validation-platfo-7a6fb-tain-REST-API-compatibility-chromium/video.webm"
+                        }
+                      ]
+                    },
+                    {
+                      "workerIndex": 5,
+                      "parallelIndex": 0,
+                      "status": "timedOut",
+                      "duration": 31062,
+                      "error": {
+                        "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m",
+                        "stack": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                      },
+                      "errors": [
+                        {
+                          "message": "\u001b[31mTest timeout of 30000ms exceeded.\u001b[39m"
+                        },
+                        {
+                          "location": {
+                            "file": "/Users/mcarpent/Documents/projects/aoma-mesh-mcp/jira-upgrade-testing/tests/platform-validation/platform.spec.ts",
+                            "column": 36,
+                            "line": 32
+                          },
+                          "message": "Error: apiRequestContext.get: Target page, context or browser has been closed\nCall log:\n\u001b[2m  - → GET https://jirauat.smedigitalapps.com/rest/api/2/serverInfo\u001b[22m\n\u001b[2m    - user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.7204.23 Safari/537.36\u001b[22m\n\u001b[2m    - accept: */*\u001b[22m\n\u001b[2m    - accept-encoding: gzip,deflate,br\u001b[22m\n\n\n\u001b[0m \u001b[90m 30 |\u001b[39m   test(\u001b[32m'should maintain REST API compatibility'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page\u001b[33m,\u001b[39m request }) \u001b[33m=>\u001b[39m {\n \u001b[90m 31 |\u001b[39m     \u001b[90m// Test REST v2 endpoints\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 32 |\u001b[39m     \u001b[36mconst\u001b[39m response \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m request\u001b[33m.\u001b[39m\u001b[36mget\u001b[39m(\u001b[32m'/rest/api/2/serverInfo'\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                    \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 33 |\u001b[39m     expect(response\u001b[33m.\u001b[39mstatus())\u001b[33m.\u001b[39mtoBe(\u001b[35m200\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m 34 |\u001b[39m     \n \u001b[90m 35 |\u001b[39m     \u001b[36mconst\u001b[39m serverInfo \u001b[33m=\u001b[39m \u001b[36mawait\u001b[39m response\u001b[33m.\u001b[39mjson()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[2m    at /Users/mcarpent/Documents/projects/aoma-mesh-mcp/jira-upgrade-testing/tests/platform-validation/platform.spec.ts:32:36\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 1,
+                      "startTime": "2025-07-10T10:10:10.745Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/mcarpent/Documents/projects/aoma-mesh-mcp/test-results/platform-validation-platfo-7a6fb-tain-REST-API-compatibility-chromium-retry1/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/mcarpent/Documents/projects/aoma-mesh-mcp/test-results/platform-validation-platfo-7a6fb-tain-REST-API-compatibility-chromium-retry1/video.webm"
+                        },
+                        {
+                          "name": "trace",
+                          "contentType": "application/zip",
+                          "path": "/Users/mcarpent/Documents/projects/aoma-mesh-mcp/test-results/platform-validation-platfo-7a6fb-tain-REST-API-compatibility-chromium-retry1/trace.zip"
+                        }
+                      ]
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "cb23ccee1e3baf03d4c3-e194cd5908bd1f573136",
+              "file": "platform-validation/platform.spec.ts",
+              "line": 30,
+              "column": 3
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2025-07-10T10:06:37.742Z",
+    "duration": 245361.754,
+    "expected": 0,
+    "skipped": 0,
+    "unexpected": 3,
+    "flaky": 0
+  }
+}
