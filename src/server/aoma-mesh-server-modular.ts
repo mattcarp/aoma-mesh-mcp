@@ -21,23 +21,30 @@ import express from 'express';
 import cors from 'cors';
 
 // Configuration and utilities
-import { validateAndLoadEnvironment, Environment } from '../config/environment.js';
-import { createLogger } from '../utils/logger.js';
-import { getAvailablePort } from '../utils/port-manager.js';
-import { toMcpError } from '../utils/errors.js';
+import { validateAndLoadEnvironment, Environment } from '../config/environment';
+import { createLogger } from '../utils/logger';
+import { getAvailablePort } from '../utils/port-manager';
+import { toMcpError } from '../utils/errors';
 
 // Services
-import { OpenAIService } from '../services/openai.service.js';
-import { SupabaseService } from '../services/supabase.service.js';
+import { OpenAIService } from '../services/openai.service';
+import { SupabaseService } from '../services/supabase.service';
 
 // Tool system
-import { ToolRegistry } from '../tools/base/tool.registry.js';
-import { AOMAKnowledgeTool } from '../tools/aoma-knowledge.tool.js';
-import { SystemHealthTool } from '../tools/system-health.tool.js';
-import { JiraSearchTool } from '../tools/jira-search.tool.js';
+import { ToolRegistry } from '../tools/base/tool.registry';
+import { AOMAKnowledgeTool } from '../tools/aoma-knowledge.tool';
+import { SystemHealthTool } from '../tools/system-health.tool';
+import { JiraSearchTool } from '../tools/jira-search.tool';
+import { JiraCountTool } from '../tools/jira-count.tool';
+import { GitSearchTool } from '../tools/git-search.tool';
+import { CodeSearchTool } from '../tools/code-search.tool';
+import { OutlookSearchTool } from '../tools/outlook-search.tool';
+import { DevelopmentContextTool } from '../tools/development-context.tool';
+import { ServerCapabilitiesTool } from '../tools/server-capabilities.tool';
+import { SwarmAnalysisTool } from '../tools/swarm-analysis.tool';
 
 // Types
-import { ServerMetrics } from '../types/common.js';
+import { ServerMetrics } from '../types/common';
 
 const logger = createLogger('AOMAMeshServer');
 
@@ -104,12 +111,18 @@ export class AOMAMeshServer {
   }
 
   private setupTools(): void {
-    // Register core tools
+    // Register all available tools
     this.toolRegistry.registerAll([
       new AOMAKnowledgeTool(this.openaiService, this.supabaseService),
       new SystemHealthTool(this.openaiService, this.supabaseService, this.toolRegistry, this.metrics, this.startTime),
       new JiraSearchTool(this.supabaseService),
-      // TODO: Add remaining tools as they're created
+      new JiraCountTool(this.supabaseService),
+      new GitSearchTool(this.supabaseService),
+      new CodeSearchTool(this.supabaseService),
+      new OutlookSearchTool(this.supabaseService),
+      new DevelopmentContextTool(this.openaiService, this.supabaseService),
+      new ServerCapabilitiesTool(this.toolRegistry, this.config.MCP_SERVER_VERSION, this.config.NODE_ENV),
+      new SwarmAnalysisTool(this.openaiService, this.supabaseService),
     ]);
 
     logger.info('Tools registered', { 
@@ -179,7 +192,12 @@ export class AOMAMeshServer {
           requestId: `http-health-${Date.now()}`
         });
         
-        res.json(JSON.parse(result.content[0].text));
+        // Parse the result content
+        const healthData = typeof result.content[0].text === 'string' 
+          ? JSON.parse(result.content[0].text)
+          : result.content[0].text;
+        
+        res.json(healthData);
       } catch (error) {
         res.status(503).json({
           status: 'unhealthy',

@@ -6,9 +6,9 @@
  */
 
 import { Tool, CallToolResult } from '@modelcontextprotocol/sdk/types.js';
-import { BaseTool, ToolExecutionContext } from '../base/tool.interface.js';
-import { SupabaseService } from '../../services/supabase.service.js';
-import { JiraSearchRequest } from '../../types/requests.js';
+import { BaseTool, ToolExecutionContext } from '../base/tool.interface';
+import { SupabaseService } from '../../services/supabase.service';
+import { JiraSearchRequest } from '../../types/requests';
 
 export class JiraSearchTool extends BaseTool {
   readonly definition: Tool = {

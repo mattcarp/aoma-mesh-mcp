@@ -6,12 +6,12 @@
  */
 
 import { Tool, CallToolResult } from '@modelcontextprotocol/sdk/types.js';
-import { BaseTool, ToolExecutionContext } from '../base/tool.interface.js';
-import { OpenAIService } from '../../services/openai.service.js';
-import { SupabaseService } from '../../services/supabase.service.js';
-import { ToolRegistry } from '../base/tool.registry.js';
-import { SystemHealthRequest } from '../../types/requests.js';
-import { HealthStatus, ServerMetrics } from '../../types/common.js';
+import { BaseTool, ToolExecutionContext } from '../base/tool.interface';
+import { OpenAIService } from '../../services/openai.service';
+import { SupabaseService } from '../../services/supabase.service';
+import { ToolRegistry } from '../base/tool.registry';
+import { SystemHealthRequest } from '../../types/requests';
+import { HealthStatus, ServerMetrics } from '../../types/common';
 
 export class SystemHealthTool extends BaseTool {
   readonly definition: Tool = {
@@ -76,7 +76,7 @@ export class SystemHealthTool extends BaseTool {
     ]);
 
     // Check tool registry health
-    let toolHealth = { status: true };
+    let toolHealth: { status: boolean; unhealthyTools?: Array<{ name: string; error?: string }> } = { status: true };
     if (includeDiagnostics) {
       const toolHealthChecks = await this.toolRegistry.performHealthChecks();
       const unhealthyTools = Object.entries(toolHealthChecks).filter(([, health]) => !health.healthy);

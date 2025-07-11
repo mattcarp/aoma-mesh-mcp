@@ -6,10 +6,10 @@
  */
 
 import { Tool, CallToolResult } from '@modelcontextprotocol/sdk/types.js';
-import { BaseTool, ToolExecutionContext } from '../base/tool.interface.js';
-import { OpenAIService } from '../../services/openai.service.js';
-import { SupabaseService } from '../../services/supabase.service.js';
-import { AOMAQueryRequest } from '../../types/requests.js';
+import { BaseTool, ToolExecutionContext } from '../base/tool.interface';
+import { OpenAIService } from '../../services/openai.service';
+import { SupabaseService } from '../../services/supabase.service';
+import { AOMAQueryRequest } from '../../types/requests';
 
 export class AOMAKnowledgeTool extends BaseTool {
   readonly definition: Tool = {
