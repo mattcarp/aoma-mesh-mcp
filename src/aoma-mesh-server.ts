@@ -8,7 +8,8 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirnameFromMeta = path.dirname(__filename); // Renamed to avoid confusion
 
 // Import specific function from fs to avoid collision
-import { existsSync } from 'fs';
+import { existsSync, readFileSync } from 'fs';
+import net from 'net';
 
 // Function to find project root by looking for pnpm-workspace.yaml
 function findProjectRoot(startDir: string): string {
@@ -88,11 +89,12 @@ const EnvSchema = z.object({
   NEXT_PUBLIC_SUPABASE_URL: z.string().url('Invalid Supabase URL'),
   SUPABASE_SERVICE_ROLE_KEY: z.string().min(20, 'Supabase service key required'),
   NEXT_PUBLIC_SUPABASE_ANON_KEY: z.string().min(20, 'Supabase anonymous key required'),
+  JIRA_BASE_URL: z.string().url('Invalid Jira base URL').optional(),
   NODE_ENV: z.enum(['development', 'production', 'test']).default('production'),
   LOG_LEVEL: z.enum(['error', 'warn', 'info', 'debug']).default('info'),
   MCP_SERVER_VERSION: z.string().default('2.0.0'),
   MAX_RETRIES: z.coerce.number().int().min(1).max(10).default(3),
-  TIMEOUT_MS: z.coerce.number().int().min(5000).max(300000).default(30000),
+  TIMEOUT_MS: z.coerce.number().int().min(5000).max(300000).default(120000),
   HTTP_PORT: z.coerce.number().int().min(1024).max(65535).default(3333),
 });
 
@@ -211,16 +213,13 @@ const minutes = now.getMinutes().toString().padStart(2, '0');
 const seconds = now.getSeconds().toString().padStart(2, '0');
 const timestamp = `${year}${month}${day}-${hours}${minutes}${seconds}`;
 
-// Append timestamp to MCP_SERVER_VERSION.
-// EnvSchema ensures MCP_SERVER_VERSION is set (e.g., defaults to '2.0.0').
-if (process.env.MCP_SERVER_VERSION) {
-    process.env.MCP_SERVER_VERSION = `${process.env.MCP_SERVER_VERSION}_${timestamp}`;
-} else {
-    // Fallback, though EnvSchema should prevent this
-    process.env.MCP_SERVER_VERSION = `unknown_${timestamp}`;
-}
+// Create versioned instance without modifying global env
+const baseVersion = process.env.MCP_SERVER_VERSION || 'unknown';
+const versionWithTimestamp = `${baseVersion}_${timestamp}`;
 
 this.env = this.validateAndLoadEnvironment();
+// Override version for this instance only
+this.env.MCP_SERVER_VERSION = versionWithTimestamp;
     
     // Initialize OpenAI client with retry configuration
     this.openaiClient = new OpenAI({
@@ -284,7 +283,7 @@ this.env = this.validateAndLoadEnvironment();
       // Check for .env.local in parent directory
       try {
         const envPath = path.join(process.cwd(), '..', '.env.local');
-        const envContent = require('fs').readFileSync(envPath, 'utf8');
+        const envContent = readFileSync(envPath, 'utf8');
         const envLines = envContent.split('\n').filter((line: string) => line.trim() && !line.startsWith('#'));
         
         envLines.forEach((line: string) => {
@@ -296,7 +295,7 @@ this.env = this.validateAndLoadEnvironment();
             }
           }
         });
-      } catch {
+      } catch (error) {
         // .env.local not found or not readable - continue with process.env
       }
 
@@ -947,6 +946,137 @@ this.env = this.validateAndLoadEnvironment();
           additionalProperties: false,
         },
       },
+      {
+        name: 'generate_failure_heatmap',
+        description: '🔥 Generate actual heat map data for AOMA processing failures with temporal and geographic analysis',
+        inputSchema: {
+          type: 'object',
+          properties: {
+            timeRange: {
+              type: 'number',
+              description: 'Number of days to analyze (default: 90)',
+              minimum: 1,
+              maximum: 365,
+              default: 90,
+            },
+            includeGeographic: {
+              type: 'boolean',
+              description: 'Include geographic distribution analysis',
+              default: true,
+            },
+            includeTemporal: {
+              type: 'boolean', 
+              description: 'Include time-of-day and day-of-week analysis',
+              default: true,
+            },
+            generateVisualizationData: {
+              type: 'boolean',
+              description: 'Generate JSON data ready for chart visualization',
+              default: true,
+            },
+            minFailureThreshold: {
+              type: 'number',
+              description: 'Minimum failures to include in analysis',
+              minimum: 1,
+              default: 5,
+            },
+          },
+          additionalProperties: false,
+        },
+      },
+      {
+        name: 'analyze_performance_metrics',
+        description: '📊 Analyze real AOMA performance data and generate actionable insights with predictive elements',
+        inputSchema: {
+          type: 'object',
+          properties: {
+            analysisType: {
+              type: 'string',
+              enum: ['failure_patterns', 'performance_trends', 'capacity_planning', 'predictive_model'],
+              description: 'Type of performance analysis to conduct',
+              default: 'failure_patterns',
+            },
+            timeWindow: {
+              type: 'number',
+              description: 'Analysis time window in days',
+              minimum: 7,
+              maximum: 365,
+              default: 90,
+            },
+            includeRecommendations: {
+              type: 'boolean',
+              description: 'Generate actionable recommendations with impact estimates',
+              default: true,
+            },
+            generatePredictions: {
+              type: 'boolean',
+              description: 'Include predictive analysis for future periods',
+              default: false,
+            },
+            confidenceLevel: {
+              type: 'number',
+              description: 'Statistical confidence level for predictions (0-1)',
+              minimum: 0.8,
+              maximum: 0.99,
+              default: 0.95,
+            },
+          },
+          required: ['analysisType'],
+          additionalProperties: false,
+        },
+      },
+      {
+        name: 'build_predictive_model',
+        description: '🤖 Actually build and train predictive models for AOMA system failures using historical data',
+        inputSchema: {
+          type: 'object',
+          properties: {
+            targetVariable: {
+              type: 'string',
+              description: 'Target variable to predict (e.g., "system_failure", "processing_delay")',
+              default: 'system_failure',
+            },
+            predictorVariables: {
+              type: 'array',
+              items: { type: 'string' },
+              description: 'Variables to use as predictors',
+              default: ['jira_ticket_volume', 'commit_frequency', 'asset_volume', 'time_of_day', 'day_of_week'],
+            },
+            modelType: {
+              type: 'string',
+              enum: ['auto', 'logistic_regression', 'random_forest', 'gradient_boosting', 'time_series'],
+              description: 'Type of predictive model to build',
+              default: 'auto',
+            },
+            trainingPeriod: {
+              type: 'number',
+              description: 'Number of days of historical data to use for training',
+              minimum: 30,
+              maximum: 365,
+              default: 90,
+            },
+            predictionHorizon: {
+              type: 'number',
+              description: 'Number of days to predict into the future',
+              minimum: 1,
+              maximum: 30,
+              default: 7,
+            },
+            includeFeatureImportance: {
+              type: 'boolean',
+              description: 'Include feature importance analysis',
+              default: true,
+            },
+            generateActionablePredictions: {
+              type: 'boolean',
+              description: 'Generate specific predictions with confidence intervals and recommendations',
+              default: true,
+            },
+          },
+          required: ['targetVariable'],
+          additionalProperties: false,
+        },
+      },
     ];
   }
 
@@ -1011,6 +1141,12 @@ this.env = this.validateAndLoadEnvironment();
         return await this.swarmAgentHandoff(args);
       case 'swarm_context_engineering':
         return await this.swarmContextEngineering(args);
+      case 'generate_failure_heatmap':
+        return await this.generateFailureHeatmap(args);
+      case 'analyze_performance_metrics':
+        return await this.analyzePerformanceMetrics(args);
+      case 'build_predictive_model':
+        return await this.buildPredictiveModel(args);
       default:
         throw new McpError(ErrorCode.MethodNotFound, `Unknown tool: ${name}`);
     }
@@ -1157,7 +1293,7 @@ this.env = this.validateAndLoadEnvironment();
               priority: ticket.priority,
               project: ticket.project_key,
               similarity: ticket.similarity,
-              url: `https://mattcarp.atlassian.net/browse/${ticket.key}`,
+              url: `${this.env.JIRA_BASE_URL || 'https://jia.smedigitalapp.com'}/browse/${ticket.key}`,
             })),
             metadata: {
               totalResults: results.length,
@@ -1656,7 +1792,7 @@ Please provide:
   private async checkOpenAIHealth(includeDiagnostics: boolean): Promise<{ status: boolean; latency?: number; error?: string }> {
     const start = Date.now();
     const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 500); // SOTA: 500ms timeout
+    const timeout = setTimeout(() => controller.abort(), 5000); // Fixed: 5 second timeout
     
     try {
       // SOTA: Use fast HEAD request instead of full models.list()
@@ -1689,7 +1825,7 @@ Please provide:
   private async checkSupabaseHealth(includeDiagnostics: boolean): Promise<{ status: boolean; latency?: number; error?: string }> {
     const start = Date.now();
     const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 500); // SOTA: 500ms timeout
+    const timeout = setTimeout(() => controller.abort(), 5000); // Fixed: 5 second timeout
     
     try {
       // SOTA: Use fast HEAD request instead of database query
@@ -1973,8 +2109,6 @@ Generated: ${new Date().toISOString()}
       this.logError('Server initialization failed', error);
       throw error;
     }
-  }
-
   }
 
   /**
@@ -2547,16 +2681,51 @@ Please provide a comprehensive synthesis using 2025 swarm intelligence patterns.
   }
 
   /**
+   * Check if port is available before starting server
+   */
+  private async checkPortAvailability(port: number): Promise<boolean> {
+    return new Promise((resolve) => {
+      const server = net.createServer();
+      
+      server.listen(port, () => {
+        server.once('close', () => resolve(true));
+        server.close();
+      });
+      
+      server.on('error', () => resolve(false));
+    });
+  }
+
+  /**
+   * Find next available port starting from the configured port
+   */
+  private async findAvailablePort(startPort: number): Promise<number> {
+    for (let port = startPort; port <= startPort + 10; port++) {
+      if (await this.checkPortAvailability(port)) {
+        return port;
+      }
+    }
+    throw new Error(`No available ports found in range ${startPort}-${startPort + 10}`);
+  }
+  /**
    * Start the MCP server with both stdio and HTTP transports
    */
   public async start(): Promise<void> {
     try {
       await this.initialize();
       
+      // Check if preferred port is available, find alternative if not
+      let httpPort = this.env.HTTP_PORT;
+      if (!(await this.checkPortAvailability(httpPort))) {
+        this.logWarn(`Port ${httpPort} is busy, finding alternative...`);
+        httpPort = await this.findAvailablePort(httpPort + 1);
+        this.logInfo(`Using alternate port: ${httpPort}`);
+      }
+      
       // Start HTTP server for web applications (tk-ui, etc.)
-      const httpServer = this.httpApp.listen(this.env.HTTP_PORT, () => {
+      const httpServer = this.httpApp.listen(httpPort, () => {
         this.logInfo('🌐 HTTP endpoints available', {
-          port: this.env.HTTP_PORT,
+          port: httpPort,
           endpoints: ['/health', '/rpc', '/tools/:toolName', '/metrics'],
         });
       });
@@ -2570,16 +2739,54 @@ Please provide a comprehensive synthesis using 2025 swarm intelligence patterns.
         tools: this.getToolDefinitions().length,
         resources: this.getResourceDefinitions().length,
         environment: this.env.NODE_ENV,
-        httpPort: this.env.HTTP_PORT,
+        httpPort: httpPort,
         transports: ['stdio', 'http'],
       });
 
-      // Graceful shutdown handling
-      process.on('SIGINT', () => {
-        this.logInfo('Shutting down AOMA Mesh MCP Server...');
-        httpServer.close(() => {
+      // Enhanced graceful shutdown handling
+      const shutdown = async (signal: string) => {
+        this.logInfo(`Received ${signal}, shutting down AOMA Mesh MCP Server gracefully...`);
+        
+        try {
+          // Close HTTP server first
+          await new Promise<void>((resolve) => {
+            httpServer.close(() => {
+              this.logInfo('HTTP server closed');
+              resolve();
+            });
+          });
+          
+          // Close stdio transport
+          if (transport) {
+            transport.close();
+            this.logInfo('MCP transport closed');
+          }
+          
+          // Small delay to ensure everything is cleaned up
+          await this.delay(100);
+          
+          this.logInfo('AOMA Mesh MCP Server shutdown complete');
           process.exit(0);
-        });
+        } catch (error) {
+          this.logError('Error during shutdown', error);
+          process.exit(1);
+        }
+      };
+
+      // Handle multiple shutdown signals
+      process.on('SIGINT', () => shutdown('SIGINT'));
+      process.on('SIGTERM', () => shutdown('SIGTERM'));
+      process.on('SIGHUP', () => shutdown('SIGHUP'));
+      
+      // Handle uncaught exceptions
+      process.on('uncaughtException', (error) => {
+        this.logError('Uncaught exception', error);
+        shutdown('uncaughtException');
+      });
+      
+      process.on('unhandledRejection', (reason) => {
+        this.logError('Unhandled rejection', reason);
+        shutdown('unhandledRejection');
       });
       
     } catch (error) {
