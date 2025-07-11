@@ -33,6 +33,11 @@
     "src/health-check.ts",
     "src/streaming/**/*",
     "src/utils/**/*",
+    "src/config/**/*",
+    "src/types/**/*",
+    "src/services/**/*",
+    "src/tools/**/*",
+    "src/server/**/*",
     "src/__tests__/**/*"
   ],
   "exclude": [
