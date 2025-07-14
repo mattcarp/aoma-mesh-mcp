@@ -1,0 +1,29 @@
+{
+  "cookieHeader": "JSESSIONID=844D00678B642DE4D8E7DE91A3DD0D33; atlassian.xsrf.token=A1TC-B0TB-ACDD-Q6T9_5371f65ab04023e97668bcb277678ba3f5fc1573_lout",
+  "cookies": [
+    {
+      "name": "JSESSIONID",
+      "value": "844D00678B642DE4D8E7DE91A3DD0D33",
+      "domain": "jira.smedigitalapps.com",
+      "path": "/jira",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "atlassian.xsrf.token",
+      "value": "A1TC-B0TB-ACDD-Q6T9_5371f65ab04023e97668bcb277678ba3f5fc1573_lout",
+      "domain": "jira.smedigitalapps.com",
+      "path": "/jira",
+      "expires": -1,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    }
+  ],
+  "workingEndpoint": null,
+  "bestResult": null,
+  "timestamp": "2025-07-07T20:37:33.368Z",
+  "baseUrl": "https://jira.smedigitalapps.com/jira"
+}

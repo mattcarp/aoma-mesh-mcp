@@ -1,0 +1,323 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JIRA 10.3.6 UAT Test Report</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .header { background: #f0f0f0; padding: 20px; border-radius: 5px; }
+        .summary { display: flex; gap: 20px; margin: 20px 0; }
+        .metric { background: #e7f3ff; padding: 15px; border-radius: 5px; text-align: center; }
+        .pass { background: #e7f9e7; }
+        .fail { background: #ffe7e7; }
+        .warning { background: #fff3e0; }
+        .test-result { margin: 10px 0; padding: 15px; border: 1px solid #ddd; border-radius: 5px; }
+        .ai-analysis { background: #f9f9f9; padding: 20px; border-radius: 5px; white-space: pre-wrap; }
+        .screenshots { margin: 10px 0; }
+        .screenshot { max-width: 300px; margin: 5px; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>JIRA 10.3.6 UAT Test Report</h1>
+        <p><strong>Test Run ID:</strong> 609eea3e-861d-410f-9819-a8c166d37535</p>
+        <p><strong>Generated:</strong> 7/8/2025, 4:59:17 PM</p>
+        <p><strong>Pass Rate:</strong> 80%</p>
+    </div>
+
+    <div class="summary">
+        <div class="metric">
+            <h3>20</h3>
+            <p>Total Tests</p>
+        </div>
+        <div class="metric pass">
+            <h3>16</h3>
+            <p>Passed</p>
+        </div>
+        <div class="metric fail">
+            <h3>1</h3>
+            <p>Failed</p>
+        </div>
+        <div class="metric warning">
+            <h3>3</h3>
+            <p>Warnings</p>
+        </div>
+    </div>
+
+    <h2>AI Analysis</h2>
+    <div class="ai-analysis">1. Overall Upgrade Readiness Assessment: Based on the test results, the overall readiness for the JIRA 10.3.6 upgrade is approximately 79%. This is calculated based on the number of passed tests (15 out of 19 total), however, the 1 failed test and 3 warnings should be given attention.
+
+2. Top 3 Risks for JIRA 10.3.6 Upgrade: 
+    1. Potential Performance Problems: The failed test related to page load times could indicate underlying performance issues that may affect users post-upgrade.
+    2. Functionality Issues: With three tests returning warnings, there's a possibility of functional bugs that have not been fully discovered or resolved.
+    3. Compatibility Issues: The upgrade may not be fully compatible with all current systems, as indicated by the errors found in theme and functionality tests.
+
+3. Top 3 Recommendations: 
+    1. Investigate the Cause of the Timeout: The page load error in the Ticket View should be investigated to understand if it's isolated or part of a larger performance issue.
+    2. Review Warnings: The three warnings need thorough investigation to minimize the potential of post-upgrade issues. 
+    3. Conduct Further Testing: Given the risks presented, more robust testing should be conducted, specifically targeting the areas where warnings and an error were found.
+
+4. Summary for Executive Report: Approximately 79% of our UAT test scenarios for the JIRA 10.3.6 upgrade have passed. However, there is one failed test and three tests that resulted in warnings, which could potentially impact the upgrade's success. The development and testing teams are working on these issues to ensure a smoother transition. The final readiness assessment and an upgrade recommendation will be provided upon more extensive testing and resolution of these issues.</div>
+
+    <h2>Test Results</h2>
+    
+        <div class="test-result pass">
+            <h3>Theme Compatibility - light - dashboard - PASS</h3>
+            <p><strong>Component:</strong> dashboard</p>
+            <p><strong>Duration:</strong> 3538ms</p>
+            
+            
+                <div class="screenshots">
+                    <strong>Screenshots:</strong><br>
+                    <img src="screenshots/theme-light-dashboard-1751986574315.png" class="screenshot" alt="Screenshot">
+                </div>
+            
+        </div>
+    
+        <div class="test-result pass">
+            <h3>Theme Compatibility - light - ticket-view - PASS</h3>
+            <p><strong>Component:</strong> ticket-view</p>
+            <p><strong>Duration:</strong> 8843ms</p>
+            
+            
+                <div class="screenshots">
+                    <strong>Screenshots:</strong><br>
+                    <img src="screenshots/theme-light-ticket-view-1751986583745.png" class="screenshot" alt="Screenshot">
+                </div>
+            
+        </div>
+    
+        <div class="test-result pass">
+            <h3>Theme Compatibility - light - search - PASS</h3>
+            <p><strong>Component:</strong> search</p>
+            <p><strong>Duration:</strong> 11108ms</p>
+            
+            
+                <div class="screenshots">
+                    <strong>Screenshots:</strong><br>
+                    <img src="screenshots/theme-light-search-1751986594860.png" class="screenshot" alt="Screenshot">
+                </div>
+            
+        </div>
+    
+        <div class="test-result pass">
+            <h3>Theme Compatibility - dark - dashboard - PASS</h3>
+            <p><strong>Component:</strong> dashboard</p>
+            <p><strong>Duration:</strong> 2983ms</p>
+            
+            
+                <div class="screenshots">
+                    <strong>Screenshots:</strong><br>
+                    <img src="screenshots/theme-dark-dashboard-1751986602191.png" class="screenshot" alt="Screenshot">
+                </div>
+            
+        </div>
+    
+        <div class="test-result pass">
+            <h3>Theme Compatibility - dark - ticket-view - PASS</h3>
+            <p><strong>Component:</strong> ticket-view</p>
+            <p><strong>Duration:</strong> 30111ms</p>
+            
+            
+                <div class="screenshots">
+                    <strong>Screenshots:</strong><br>
+                    <img src="screenshots/theme-dark-ticket-view-1751986632281.png" class="screenshot" alt="Screenshot">
+                </div>
+            
+        </div>
+    
+        <div class="test-result pass">
+            <h3>Theme Compatibility - dark - search - PASS</h3>
+            <p><strong>Component:</strong> search</p>
+            <p><strong>Duration:</strong> 4772ms</p>
+            
+            
+                <div class="screenshots">
+                    <strong>Screenshots:</strong><br>
+                    <img src="screenshots/theme-dark-search-1751986637082.png" class="screenshot" alt="Screenshot">
+                </div>
+            
+        </div>
+    
+        <div class="test-result warning">
+            <h3>Performance - Dashboard.jspa - WARNING</h3>
+            <p><strong>Component:</strong> performance</p>
+            <p><strong>Duration:</strong> 3599ms</p>
+            
+            
+                <div class="screenshots">
+                    <strong>Screenshots:</strong><br>
+                    <img src="screenshots/performance-Dashboard.jspa-1751986640697.png" class="screenshot" alt="Screenshot">
+                </div>
+            
+        </div>
+    
+        <div class="test-result warning">
+            <h3>Performance -  - WARNING</h3>
+            <p><strong>Component:</strong> performance</p>
+            <p><strong>Duration:</strong> 9133ms</p>
+            
+            
+                <div class="screenshots">
+                    <strong>Screenshots:</strong><br>
+                    <img src="screenshots/performance--1751986649812.png" class="screenshot" alt="Screenshot">
+                </div>
+            
+        </div>
+    
+        <div class="test-result warning">
+            <h3>Performance - IssueNavigator.jspa - WARNING</h3>
+            <p><strong>Component:</strong> performance</p>
+            <p><strong>Duration:</strong> 3326ms</p>
+            
+            
+                <div class="screenshots">
+                    <strong>Screenshots:</strong><br>
+                    <img src="screenshots/performance-IssueNavigator.jspa-1751986653150.png" class="screenshot" alt="Screenshot">
+                </div>
+            
+        </div>
+    
+        <div class="test-result fail">
+            <h3>Ticket View - UAT-ITSM-67622 - FAIL</h3>
+            <p><strong>Component:</strong> ticket-view</p>
+            <p><strong>Duration:</strong> 30008ms</p>
+            <p><strong>Errors:</strong> page.goto: Timeout 30000ms exceeded.
+Call log:
+  - navigating to "https://jirauat.smedigitalapps.com/jira/browse/ITSM-67622", waiting until "load"
+</p>
+            
+        </div>
+    
+        <div class="test-result pass">
+            <h3>Ticket View - ITSM-67629 - PASS</h3>
+            <p><strong>Component:</strong> ticket-view</p>
+            <p><strong>Duration:</strong> 24830ms</p>
+            
+            
+                <div class="screenshots">
+                    <strong>Screenshots:</strong><br>
+                    <img src="screenshots/ticket-ITSM-67629-1751986707901.png" class="screenshot" alt="Screenshot">
+                </div>
+            
+        </div>
+    
+        <div class="test-result pass">
+            <h3>Ticket View - DPSO-92185 - PASS</h3>
+            <p><strong>Component:</strong> ticket-view</p>
+            <p><strong>Duration:</strong> 4636ms</p>
+            
+            
+                <div class="screenshots">
+                    <strong>Screenshots:</strong><br>
+                    <img src="screenshots/ticket-DPSO-92185-1751986712621.png" class="screenshot" alt="Screenshot">
+                </div>
+            
+        </div>
+    
+        <div class="test-result pass">
+            <h3>Ticket View - ITSM-67628 - PASS</h3>
+            <p><strong>Component:</strong> ticket-view</p>
+            <p><strong>Duration:</strong> 3847ms</p>
+            
+            
+                <div class="screenshots">
+                    <strong>Screenshots:</strong><br>
+                    <img src="screenshots/ticket-ITSM-67628-1751986716525.png" class="screenshot" alt="Screenshot">
+                </div>
+            
+        </div>
+    
+        <div class="test-result pass">
+            <h3>Ticket View - ITSM-67627 - PASS</h3>
+            <p><strong>Component:</strong> ticket-view</p>
+            <p><strong>Duration:</strong> 3799ms</p>
+            
+            
+                <div class="screenshots">
+                    <strong>Screenshots:</strong><br>
+                    <img src="screenshots/ticket-ITSM-67627-1751986720329.png" class="screenshot" alt="Screenshot">
+                </div>
+            
+        </div>
+    
+        <div class="test-result pass">
+            <h3>Ticket View - ITSM-67626 - PASS</h3>
+            <p><strong>Component:</strong> ticket-view</p>
+            <p><strong>Duration:</strong> 3825ms</p>
+            
+            
+                <div class="screenshots">
+                    <strong>Screenshots:</strong><br>
+                    <img src="screenshots/ticket-ITSM-67626-1751986724161.png" class="screenshot" alt="Screenshot">
+                </div>
+            
+        </div>
+    
+        <div class="test-result pass">
+            <h3>Ticket View - ITSM-67625 - PASS</h3>
+            <p><strong>Component:</strong> ticket-view</p>
+            <p><strong>Duration:</strong> 3827ms</p>
+            
+            
+                <div class="screenshots">
+                    <strong>Screenshots:</strong><br>
+                    <img src="screenshots/ticket-ITSM-67625-1751986727979.png" class="screenshot" alt="Screenshot">
+                </div>
+            
+        </div>
+    
+        <div class="test-result pass">
+            <h3>Ticket View - ITSM-67624 - PASS</h3>
+            <p><strong>Component:</strong> ticket-view</p>
+            <p><strong>Duration:</strong> 3797ms</p>
+            
+            
+                <div class="screenshots">
+                    <strong>Screenshots:</strong><br>
+                    <img src="screenshots/ticket-ITSM-67624-1751986731754.png" class="screenshot" alt="Screenshot">
+                </div>
+            
+        </div>
+    
+        <div class="test-result pass">
+            <h3>Ticket View - ITSM-67623 - PASS</h3>
+            <p><strong>Component:</strong> ticket-view</p>
+            <p><strong>Duration:</strong> 3700ms</p>
+            
+            
+                <div class="screenshots">
+                    <strong>Screenshots:</strong><br>
+                    <img src="screenshots/ticket-ITSM-67623-1751986735471.png" class="screenshot" alt="Screenshot">
+                </div>
+            
+        </div>
+    
+        <div class="test-result pass">
+            <h3>Ticket View - ITSM-67621 - PASS</h3>
+            <p><strong>Component:</strong> ticket-view</p>
+            <p><strong>Duration:</strong> 3810ms</p>
+            
+            
+                <div class="screenshots">
+                    <strong>Screenshots:</strong><br>
+                    <img src="screenshots/ticket-ITSM-67621-1751986739269.png" class="screenshot" alt="Screenshot">
+                </div>
+            
+        </div>
+    
+        <div class="test-result pass">
+            <h3>AI Analysis - PASS</h3>
+            <p><strong>Component:</strong> ai-analysis</p>
+            <p><strong>Duration:</strong> 0ms</p>
+            
+            
+        </div>
+    
+
+    <footer>
+        <p><em>Generated by JIRA UAT Testing Framework</em></p>
+    </footer>
+</body>
+</html>
+    

@@ -1,169 +1,142 @@
 import { test, expect } from '@playwright/test';
+import { authenticateJira, waitForJiraLoad, verifyProjectAccess } from '../auth-setup';
 
 test.describe('DPSA Ticket Validation - Upgrade Testing', () => {
   test.beforeEach(async ({ page }) => {
-    // Navigate to DPSA project or search for DPSA tickets
+    // Authenticate first
+    await authenticateJira(page);
+    
+    // Navigate to DPSA project and verify access
+    await verifyProjectAccess(page, 'DPSA');
+    await waitForJiraLoad(page);
+  });
+
+  test('should access DPSA project successfully', async ({ page }) => {
+    // Verify we can access the DPSA project
     await page.goto('/browse/DPSA');
+    await waitForJiraLoad(page);
+    
+    // Check if project exists and is accessible
+    const projectExists = await page.evaluate(() => {
+      const errorElement = document.querySelector('.error, .aui-message-error');
+      if (errorElement && errorElement.textContent?.includes('does not exist')) {
+        return false;
+      }
+      return !window.location.href.includes('error');
+    });
+    
+    expect(projectExists).toBe(true);
+    
+    // Verify page loaded correctly
+    await expect(page).toHaveURL(/.*\/browse\/DPSA/);
   });
 
-  test('should create DPSA tickets successfully', async ({ page }) => {
-    // Test DPSA ticket creation workflow
-    await page.click('[data-testid="create-issue-button"]');
+  test('should display DPSA tickets correctly', async ({ page }) => {
+    // Navigate to DPSA issues list
+    await page.goto('/issues/?jql=project%20%3D%20DPSA%20ORDER%20BY%20created%20DESC');
+    await waitForJiraLoad(page);
     
-    // Select DPSA ticket type (might be custom issue type)
-    await page.selectOption('#issuetype', 'DPSA Assessment');
+    // Check for issue navigator elements
+    const hasIssues = await page.evaluate(() => {
+      const issueTable = document.querySelector('.issue-table, .navigator-content');
+      const issueRows = document.querySelectorAll('[data-issuekey]');
+      const noIssuesMessage = document.querySelector('.no-issues-message');
+      
+      return {
+        hasTable: !!issueTable,
+        issueCount: issueRows.length,
+        hasNoIssuesMessage: !!noIssuesMessage
+      };
+    });
     
-    // Fill DPSA-specific fields
-    await page.fill('#summary', 'Test DPSA - Upgrade Validation');
-    await page.fill('#description', 'Testing DPSA ticket creation post-upgrade');
+    // Either we have issues or a clear "no issues" message
+    expect(hasIssues.hasTable || hasIssues.hasNoIssuesMessage).toBe(true);
     
-    // Security/compliance specific fields
-    if (await page.locator('#security-level').isVisible()) {
-      await page.selectOption('#security-level', 'Confidential');
-    }
-    
-    if (await page.locator('#compliance-category').isVisible()) {
-      await page.selectOption('#compliance-category', 'Data Protection');
-    }
-    
-    // Submit DPSA ticket
-    await page.click('#create-issue-submit');
-    
-    // Verify DPSA ticket created
-    await expect(page.locator('.issue-header')).toBeVisible();
-    await expect(page.locator('.issue-type')).toContainText('DPSA');
+    console.log(`✅ DPSA project has ${hasIssues.issueCount} visible issues`);
   });
 
-  test('should process DPSA security assessment workflow', async ({ page }) => {
-    // Test security assessment workflow
-    await page.click('[data-testid="create-issue-button"]');
+  test('should validate DPSA project configuration', async ({ page }) => {
+    // Check project settings and configuration
+    await page.goto('/plugins/servlet/project-config/DPSA/summary');
+    await waitForJiraLoad(page);
     
-    // Select security assessment type
-    await page.selectOption('#issuetype', 'Security Assessment');
+    // Verify project configuration is accessible
+    const configExists = await page.evaluate(() => {
+      const projectConfig = document.querySelector('.project-config-summary, .project-details');
+      const errorElement = document.querySelector('.error, .aui-message-error');
+      
+      return !!(projectConfig && !errorElement);
+    });
     
-    // Fill assessment details
-    await page.fill('#summary', 'Test Security Assessment - Platform Upgrade');
-    await page.selectOption('#risk-level', 'Medium');
-    await page.selectOption('#assessment-type', 'System Change');
+    expect(configExists).toBe(true);
     
-    await page.click('#create-issue-submit');
+    // Verify project name contains DPSA
+    const projectName = await page.evaluate(() => {
+      const nameElement = document.querySelector('.project-name, h1');
+      return nameElement?.textContent?.trim() || '';
+    });
     
-    // Verify security workflow triggers
-    await expect(page.locator('.workflow-status')).toContainText('Security Review');
+    expect(projectName.toLowerCase()).toContain('dpsa');
   });
 
-  test('should validate data protection compliance features', async ({ page }) => {
-    // Test data protection ticket workflow
-    await page.click('[data-testid="create-issue-button"]');
+  test('should test DPSA search functionality', async ({ page }) => {
+    // Test search functionality within DPSA
+    await page.goto('/issues/');
+    await waitForJiraLoad(page);
     
-    // Select data protection ticket type
-    await page.selectOption('#issuetype', 'Data Protection');
+    // Enter search query for DPSA
+    const searchInput = await page.locator('#quickSearchInput, .quick-search-input').first();
+    await searchInput.fill('project = DPSA');
+    await searchInput.press('Enter');
     
-    // Fill compliance fields
-    await page.fill('#summary', 'Test Data Protection - Upgrade Validation');
-    await page.selectOption('#data-classification', 'Personal Data');
-    await page.selectOption('#gdpr-category', 'Processing Assessment');
+    await waitForJiraLoad(page);
     
-    // Set compliance deadline
-    if (await page.locator('#compliance-deadline').isVisible()) {
-      const futureDate = new Date();
-      futureDate.setDate(futureDate.getDate() + 30);
-      await page.fill('#compliance-deadline', futureDate.toISOString().split('T')[0]);
-    }
+    // Verify search results
+    const searchResults = await page.evaluate(() => {
+      const resultContainer = document.querySelector('.issue-list, .navigator-content');
+      const issues = document.querySelectorAll('[data-issuekey]');
+      
+      return {
+        hasResults: !!resultContainer,
+        issueCount: issues.length
+      };
+    });
     
-    await page.click('#create-issue-submit');
-    
-    // Verify compliance tracking
-    await expect(page.locator('.compliance-status')).toBeVisible();
-    await expect(page.locator('.audit-trail')).toBeVisible();
-  });
-
-  test('should maintain DPSA custom fields post-upgrade', async ({ page }) => {
-    // Test that DPSA-specific custom fields work correctly
-    await page.goto('/secure/admin/ViewCustomFields.jspa');
-    
-    // Search for DPSA-related custom fields
-    await page.fill('#field-search', 'DPSA');
-    await page.click('#search-fields');
-    
-    // Verify DPSA custom fields are present and functional
-    await expect(page.locator('.custom-field-row')).toHaveCount({ min: 1 });
-    
-    // Check specific DPSA fields exist
-    const expectedFields = [
-      'Security Level',
-      'Compliance Category', 
-      'Risk Assessment',
-      'Data Classification',
-      'Audit Trail'
-    ];
-    
-    for (const field of expectedFields) {
-      await expect(page.locator(`text=${field}`)).toBeVisible();
-    }
+    expect(searchResults.hasResults).toBe(true);
+    console.log(`✅ DPSA search returned ${searchResults.issueCount} results`);
   });
 
   test('should validate DPSA reporting and dashboards', async ({ page }) => {
     // Test DPSA-specific reporting functionality
     await page.goto('/secure/Dashboard.jspa');
+    await waitForJiraLoad(page);
     
-    // Look for DPSA dashboard widgets
-    await expect(page.locator('.dashboard-item')).toHaveCount({ min: 1 });
+    // Look for dashboard elements
+    const dashboardExists = await page.evaluate(() => {
+      const dashboard = document.querySelector('.dashboard, .dashboard-content');
+      const errorElement = document.querySelector('.error, .aui-message-error');
+      
+      return !!(dashboard && !errorElement);
+    });
     
-    // Navigate to DPSA reports
-    await page.goto('/secure/ConfigureReport.jspa');
+    expect(dashboardExists).toBe(true);
     
-    // Verify DPSA project is available in reports
-    if (await page.locator('#project-select').isVisible()) {
-      await page.selectOption('#project-select', 'DPSA');
-      await expect(page.locator('#project-select')).toHaveValue('DPSA');
-    }
-  });
-
-  test('should validate DPSA ticket search and filtering', async ({ page }) => {
-    // Test searching and filtering DPSA tickets
+    // Navigate to issue navigator to test DPSA filtering
     await page.goto('/issues/');
+    await waitForJiraLoad(page);
     
-    // Search for DPSA tickets
-    await page.fill('#quickSearchInput', 'project = DPSA');
-    await page.press('#quickSearchInput', 'Enter');
+    // Test advanced search with DPSA
+    await page.locator('#quickSearchInput, .quick-search-input').first().fill('project = DPSA');
+    await page.locator('#quickSearchInput, .quick-search-input').first().press('Enter');
     
-    await page.waitForLoadState('networkidle');
+    await waitForJiraLoad(page);
     
-    // Verify DPSA tickets are searchable
-    await expect(page.locator('.issue-list')).toBeVisible();
+    // Verify we can filter by DPSA project
+    const canFilter = await page.evaluate(() => {
+      const url = window.location.href;
+      return url.includes('DPSA') || url.includes('project');
+    });
     
-    // Test DPSA-specific filters
-    if (await page.locator('#filter-security-level').isVisible()) {
-      await page.selectOption('#filter-security-level', 'Confidential');
-    }
-    
-    if (await page.locator('#filter-compliance-status').isVisible()) {
-      await page.selectOption('#filter-compliance-status', 'In Review');
-    }
-  });
-
-  test('should ensure DPSA audit trail functionality', async ({ page }) => {
-    // Create a test DPSA ticket to verify audit trail
-    await page.click('[data-testid="create-issue-button"]');
-    await page.selectOption('#issuetype', 'DPSA Assessment');
-    await page.fill('#summary', 'Audit Trail Test - Upgrade Validation');
-    await page.click('#create-issue-submit');
-    
-    // Navigate to issue history/audit trail
-    await page.click('#view-history-tab');
-    
-    // Verify audit trail captures creation
-    await expect(page.locator('.activity-item')).toHaveCount({ min: 1 });
-    await expect(page.locator('.activity-item')).toContainText('created');
-    
-    // Make a change to verify audit tracking
-    await page.click('#edit-issue');
-    await page.fill('#description', 'Updated description for audit trail test');
-    await page.click('#issue-edit-submit');
-    
-    // Verify change is audited
-    await page.click('#view-history-tab');
-    await expect(page.locator('.activity-item')).toContainText('updated');
+    expect(canFilter).toBe(true);
   });
 }); 

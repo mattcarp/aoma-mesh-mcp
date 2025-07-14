@@ -1,0 +1,68 @@
+{
+  "timestamp": "2025-07-08T13:08:54.470Z",
+  "environment": "UAT",
+  "baseUrl": "https://jirauat.smedigitalapps.com",
+  "dashboard": {
+    "user": "Unknown",
+    "navItems": [
+      {
+        "text": "Dashboards",
+        "href": "https://jirauat.smedigitalapps.com/jira/secure/Dashboard.jspa"
+      },
+      {
+        "text": "Issues",
+        "href": "https://jirauat.smedigitalapps.com/jira/issues/"
+      },
+      {
+        "text": "Give feedback to Atlassian",
+        "href": "https://jirauat.smedigitalapps.com/jira/secure/Dashboard.jspa#"
+      },
+      {
+        "text": "Help",
+        "href": "https://jirauat.smedigitalapps.com/jira/secure/ViewKeyboardShortcuts!default.jspa"
+      },
+      {
+        "text": "Keyboard Shortcuts",
+        "href": "https://jirauat.smedigitalapps.com/jira/secure/ViewKeyboardShortcuts!default.jspa"
+      },
+      {
+        "text": "About Jira",
+        "href": "https://jirauat.smedigitalapps.com/jira/secure/AboutPage.jspa"
+      },
+      {
+        "text": "Jira Credits",
+        "href": "https://jirauat.smedigitalapps.com/jira/secure/credits/AroundTheWorld!default.jspa"
+      },
+      {
+        "text": "Log In",
+        "href": "https://jirauat.smedigitalapps.com/jira/login.jsp?os_destination=%2Fsecure%2FDashboard.jspa"
+      },
+      {
+        "text": "Time to SLA Preferences",
+        "href": "https://jirauat.smedigitalapps.com/jira/plugins/servlet/tts/preferences"
+      }
+    ],
+    "dashboardItems": [
+      {
+        "content": ""
+      },
+      {
+        "title": "Introduction",
+        "content": "IntroductionMinimiseIntroduction Preferencesundefined\n\nWelcome to Sony Music JIRA\n\nSonyMusic Jira is now running version 9.12\n\nNew to JIRA? Check out the\nJIRA User's Guide.\n\nThe credentials to log int"
+      }
+    ],
+    "hasContent": true,
+    "title": "System Dashboard - Sony Music"
+  },
+  "loginStatus": "SUCCESS",
+  "findings": {
+    "hasAccess": true,
+    "isEmpty": true,
+    "possibleReasons": [
+      "UAT environment is empty (no projects/issues)",
+      "User permissions are limited",
+      "Data is in different location",
+      "Different JIRA version/setup"
+    ]
+  }
+}

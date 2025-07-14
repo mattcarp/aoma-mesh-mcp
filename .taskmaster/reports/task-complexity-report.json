@@ -1,0 +1,93 @@
+{
+  "meta": {
+    "generatedAt": "2025-07-08T21:53:34.451Z",
+    "tasksAnalyzed": 10,
+    "totalTasks": 10,
+    "analysisCount": 10,
+    "thresholdScore": 5,
+    "projectName": "Taskmaster",
+    "usedResearch": true
+  },
+  "complexityAnalysis": [
+    {
+      "taskId": 1,
+      "taskTitle": "Setup Project Repository",
+      "complexityScore": 4,
+      "recommendedSubtasks": 3,
+      "expansionPrompt": "Break down the task into initializing the Git repository, setting up Node.js and TypeScript, and configuring ESM support.",
+      "reasoning": "The task involves multiple setup steps that are straightforward but require attention to detail to ensure compatibility and proper configuration."
+    },
+    {
+      "taskId": 2,
+      "taskTitle": "Integrate OpenAI API",
+      "complexityScore": 5,
+      "recommendedSubtasks": 4,
+      "expansionPrompt": "Divide the task into setting up API keys, implementing authentication, handling requests, and testing the integration.",
+      "reasoning": "Integration with an external API involves multiple steps including authentication and testing, which adds to the complexity."
+    },
+    {
+      "taskId": 3,
+      "taskTitle": "Setup Supabase Vector Database",
+      "complexityScore": 6,
+      "recommendedSubtasks": 4,
+      "expansionPrompt": "Split the task into setting up Supabase, configuring pgvector, creating tables, and testing vector search.",
+      "reasoning": "Configuring a database with extensions and ensuring it supports specific functionalities like vector search increases complexity."
+    },
+    {
+      "taskId": 4,
+      "taskTitle": "Develop Core Agent Infrastructure",
+      "complexityScore": 7,
+      "recommendedSubtasks": 5,
+      "expansionPrompt": "Break down into designing agent classes, implementing the coordinator, defining interfaces, and testing communication.",
+      "reasoning": "Developing a foundational infrastructure with multiple components and ensuring they work together requires careful design and testing."
+    },
+    {
+      "taskId": 5,
+      "taskTitle": "Implement JIRA and Git Agents",
+      "complexityScore": 8,
+      "recommendedSubtasks": 6,
+      "expansionPrompt": "Separate into developing the JIRA agent, Git agent, integrating APIs, processing data, and testing each agent.",
+      "reasoning": "Creating specialized agents with API integrations and data processing logic is complex and requires thorough testing."
+    },
+    {
+      "taskId": 6,
+      "taskTitle": "Add Coordinator Agent",
+      "complexityScore": 7,
+      "recommendedSubtasks": 5,
+      "expansionPrompt": "Divide into extending the coordinator, implementing strategies, managing agents, and testing orchestration.",
+      "reasoning": "Enhancing the coordinator to handle complex strategies and manage multiple agents adds significant complexity."
+    },
+    {
+      "taskId": 7,
+      "taskTitle": "Develop Specialized Agents",
+      "complexityScore": 8,
+      "recommendedSubtasks": 6,
+      "expansionPrompt": "Break down into developing test generation, UI analysis, context retrieval agents, and integrating them.",
+      "reasoning": "Implementing specialized agents for different tasks requires diverse expertise and integration into existing infrastructure."
+    },
+    {
+      "taskId": 8,
+      "taskTitle": "Build Development Tools Suite",
+      "complexityScore": 9,
+      "recommendedSubtasks": 7,
+      "expansionPrompt": "Separate into developing tools for code analysis, refactoring, documentation, and integrating with agents.",
+      "reasoning": "Building a suite of tools with different functionalities and ensuring they work seamlessly with the agent infrastructure is highly complex."
+    },
+    {
+      "taskId": 9,
+      "taskTitle": "Create IDE Integrations",
+      "complexityScore": 7,
+      "recommendedSubtasks": 5,
+      "expansionPrompt": "Divide into developing plugins for each IDE, configuring features, and testing integrations.",
+      "reasoning": "Developing and testing integrations for multiple IDEs requires understanding of each IDE's plugin architecture and ensuring consistent functionality."
+    },
+    {
+      "taskId": 10,
+      "taskTitle": "Deploy to AWS Lambda",
+      "complexityScore": 8,
+      "recommendedSubtasks": 6,
+      "expansionPrompt": "Break down into setting up AWS Lambda, configuring Fargate, deploying the server, and performing end-to-end testing.",
+      "reasoning": "Deploying to a cloud environment with specific configurations and ensuring production readiness involves multiple complex steps."
+    }
+  ]
+}

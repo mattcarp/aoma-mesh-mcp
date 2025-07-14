@@ -1,0 +1,11 @@
+{
+  "repositories": [
+    { "url": "https://github.com/mattcarp/aoma-mesh-mcp.git", "name": "aoma-mesh-mcp" },
+    { "url": "https://github.com/your-org/internal-repo.git", "name": "internal-repo" }
+  ],
+  "options": {
+    "commits": true,
+    "files": true,
+    "maxCommits": 1000
+  }
+}

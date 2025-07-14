@@ -1,0 +1,20 @@
+# Jira Auto Tests PRD
+
+## Overview
+Continue with AI-assisted Jira auto tests using MCP tools, following this plan:
+
+1. Verify and fix Supabase connection: Check .env for valid SUPABASE_URL and SUPABASE_ANON_KEY. If invalid, request updated credentials. Then run check-supabase.ts to confirm connectivity.
+
+2. Set up database schema: Execute setup-database-schema.sql and create-uat-tables-direct.ts to ensure Jira tables exist and match the required structure.
+
+3. Use MCP web_eval_agent tool to evaluate Jira login flow: Launch browser to Jira login page, simulate user login, and evaluate UX for authentication (task: "Test Jira login process usability and error handling").
+
+4. Run existing test suites: Execute run-jira-uat-tests.ts and comprehensive-uat-test-suite.ts to validate scraping and data retrieval, analyzing any failures.
+
+5. Generate and embed missing data: Run generate-missing-embeddings.ts to populate any gaps in Jira ticket data for vector search.
+
+6. Use MCP web_eval_agent for ticket navigation testing: Evaluate Jira issue navigator UX (task: "Assess ticket search and filtering usability").
+
+7. Analyze test results and suggest improvements: Use search_files to find patterns in test logs, then propose fixes via replace_in_file if needed.
+
+8. Perform all of the above steps in sequence to complete comprehensive AI-assisted testing.

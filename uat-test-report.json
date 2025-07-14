@@ -1,0 +1,159 @@
+{
+  "timestamp": "2025-07-08T22:39:11.794Z",
+  "totalTests": 11,
+  "passed": 8,
+  "failed": 3,
+  "skipped": 0,
+  "duration": 166173,
+  "results": [
+    {
+      "testName": "Form Field Targeting & Viewport Handling",
+      "status": "FAIL",
+      "duration": 11936,
+      "details": "Could not detect or interact with form fields",
+      "errors": [
+        "No form fields found with expected selectors"
+      ]
+    },
+    {
+      "testName": "Session Persistence & Recovery",
+      "status": "PASS",
+      "duration": 1835,
+      "details": "Session persistence mechanisms working correctly",
+      "metadata": {
+        "sessionLoaded": true,
+        "sessionValid": false,
+        "hasSessionFile": true
+      }
+    },
+    {
+      "testName": "Microsoft SSO Flow Integration",
+      "status": "PASS",
+      "duration": 3835,
+      "details": "Microsoft SSO integration working",
+      "metadata": {
+        "currentStep": "email",
+        "ssoSupported": true
+      }
+    },
+    {
+      "testName": "Unified Framework Integration",
+      "status": "PASS",
+      "duration": 1109,
+      "details": "Framework components integrated correctly",
+      "metadata": {
+        "hasSessionManager": true,
+        "hasLoginAutomator": true,
+        "hasTicketExtractor": true,
+        "hasDataManager": true
+      }
+    },
+    {
+      "testName": "Configuration Handling",
+      "status": "PASS",
+      "duration": 0,
+      "details": "Configuration handling working correctly",
+      "metadata": {
+        "uatValid": {
+          "enabled": true,
+          "microsoftConfig": {
+            "username": "mcarpent",
+            "email": "matt.carpenter.ext@sonymusic.com",
+            "password": "Dooley1_Jude2",
+            "timeout": 30000,
+            "maxRetries": 3
+          },
+          "fallbackToManual": true
+        },
+        "prodValid": {
+          "enabled": true,
+          "microsoftConfig": {
+            "username": "mcarpent",
+            "email": "matt.carpenter.ext@sonymusic.com",
+            "password": "Dooley1_Jude2",
+            "timeout": 30000,
+            "maxRetries": 3
+          },
+          "fallbackToManual": true
+        },
+        "configsDifferent": true
+      }
+    },
+    {
+      "testName": "Error Handling Robustness",
+      "status": "PASS",
+      "duration": 2181,
+      "details": "Error handling mechanisms working correctly",
+      "metadata": {
+        "errorHandled": true,
+        "gracefulDegradation": true
+      }
+    },
+    {
+      "testName": "Network Interruption Handling",
+      "status": "FAIL",
+      "duration": 10507,
+      "details": "Network interruption test failed",
+      "errors": [
+        "page.goto: Timeout 10000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"https://jirauat.smedigitalapps.com/\", waiting until \"load\"\u001b[22m\n"
+      ]
+    },
+    {
+      "testName": "Invalid Credentials Handling",
+      "status": "PASS",
+      "duration": 121227,
+      "details": "Invalid credentials handled without crashing",
+      "metadata": {
+        "loginResult": false,
+        "gracefulFailure": true
+      }
+    },
+    {
+      "testName": "Login Performance",
+      "status": "FAIL",
+      "duration": 0,
+      "details": "Performance test failed",
+      "errors": [
+        "page.goto: Target page, context or browser has been closed"
+      ]
+    },
+    {
+      "testName": "Memory Usage",
+      "status": "PASS",
+      "duration": 9837,
+      "details": "Memory usage efficient",
+      "metadata": {
+        "initialMemory": {
+          "rss": 78020608,
+          "heapTotal": 35241984,
+          "heapUsed": 32350304,
+          "external": 5960067,
+          "arrayBuffers": 319049
+        },
+        "finalMemory": {
+          "rss": 80314368,
+          "heapTotal": 35766272,
+          "heapUsed": 33370336,
+          "external": 6018304,
+          "arrayBuffers": 377692
+        },
+        "memoryIncrease": 1020032,
+        "memoryEfficient": true
+      }
+    },
+    {
+      "testName": "Complete Workflow End-to-End",
+      "status": "PASS",
+      "duration": 1632,
+      "details": "Complete workflow functional",
+      "metadata": {
+        "initialization": true,
+        "sessionManager": true,
+        "loginAutomator": true,
+        "ticketExtractor": true,
+        "dataManager": true
+      }
+    }
+  ],
+  "summary": "\n╭─────────────────────────────────────────────────────────────╮\n│                 🧪 UAT TEST RESULTS SUMMARY                 │\n╰─────────────────────────────────────────────────────────────╯\n\n📊 Test Statistics:\n   • Total Tests:    11\n   • Passed:         8 (72.7%)\n   • Failed:         3\n   • Skipped:        0\n   • Duration:       166.17s\n\n🎯 Test Categories Covered:\n   ✅ Form Field Targeting & Viewport Handling\n   ✅ Session Persistence & Recovery\n   ✅ Microsoft SSO Flow Integration\n   ✅ Unified Framework Integration\n   ✅ Configuration Handling\n   ✅ Error Handling Robustness\n   ✅ Network Interruption Handling\n   ✅ Invalid Credentials Handling\n   ✅ Login Performance\n   ✅ Memory Usage\n   ✅ Complete Workflow End-to-End\n\n🚀 System Readiness: NEEDS ATTENTION\n        "
+}

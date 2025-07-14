@@ -1,0 +1,452 @@
+{
+  "testRunId": "35dea4bf-e3ce-468f-9bdc-20d6d001377b",
+  "timestamp": "2025-07-08T20:04:54.676Z",
+  "summary": {
+    "testRunId": "35dea4bf-e3ce-468f-9bdc-20d6d001377b",
+    "totalTests": 23,
+    "passed": 8,
+    "failed": 14,
+    "warnings": 1,
+    "skipped": 0,
+    "testsByType": {
+      "theme": {
+        "total": 6,
+        "passed": 0,
+        "failed": 0,
+        "warnings": 0,
+        "pass": null
+      },
+      "performance": {
+        "total": 3,
+        "passed": 0,
+        "failed": 0,
+        "warnings": 0,
+        "pass": null,
+        "warning": null
+      },
+      "functional": {
+        "total": 10,
+        "passed": 0,
+        "failed": 0,
+        "warnings": 0,
+        "fail": null
+      },
+      "accessibility": {
+        "total": 1,
+        "passed": 0,
+        "failed": 0,
+        "warnings": 0,
+        "fail": null
+      },
+      "visual-regression": {
+        "total": 3,
+        "passed": 0,
+        "failed": 0,
+        "warnings": 0,
+        "fail": null
+      }
+    },
+    "averageDuration": 2931.9565217391305,
+    "totalErrors": 14,
+    "totalWarnings": 0
+  },
+  "testResults": [
+    {
+      "testId": "d506b2f2-07c4-4e73-96e2-fa13b183fbd8",
+      "testRunId": "35dea4bf-e3ce-468f-9bdc-20d6d001377b",
+      "testName": "Theme Test - light - dashboard",
+      "testType": "theme",
+      "component": "dashboard",
+      "status": "pass",
+      "startTime": "2025-07-08T20:03:17.410Z",
+      "endTime": "2025-07-08T20:03:28.894Z",
+      "duration": 11484,
+      "screenshots": [
+        "screenshots/35dea4bf-e3ce-468f-9bdc-20d6d001377b/theme-light-dashboard.png"
+      ],
+      "errors": [],
+      "warnings": [],
+      "metadata": {}
+    },
+    {
+      "testId": "40ed802f-3f63-43bf-955d-e48cce23b5ba",
+      "testRunId": "35dea4bf-e3ce-468f-9bdc-20d6d001377b",
+      "testName": "Theme Test - light - ticket-view",
+      "testType": "theme",
+      "component": "ticket-view",
+      "status": "pass",
+      "startTime": "2025-07-08T20:03:29.370Z",
+      "endTime": "2025-07-08T20:03:35.277Z",
+      "duration": 5907,
+      "screenshots": [
+        "screenshots/35dea4bf-e3ce-468f-9bdc-20d6d001377b/theme-light-ticket-view.png"
+      ],
+      "errors": [],
+      "warnings": [],
+      "metadata": {}
+    },
+    {
+      "testId": "5417b3a8-f843-4243-890f-e8393b8adaae",
+      "testRunId": "35dea4bf-e3ce-468f-9bdc-20d6d001377b",
+      "testName": "Theme Test - light - search",
+      "testType": "theme",
+      "component": "search",
+      "status": "pass",
+      "startTime": "2025-07-08T20:03:35.728Z",
+      "endTime": "2025-07-08T20:03:50.335Z",
+      "duration": 14607,
+      "screenshots": [
+        "screenshots/35dea4bf-e3ce-468f-9bdc-20d6d001377b/theme-light-search.png"
+      ],
+      "errors": [],
+      "warnings": [],
+      "metadata": {}
+    },
+    {
+      "testId": "f508bdf7-93b2-4feb-ab34-aceed0f1ae47",
+      "testRunId": "35dea4bf-e3ce-468f-9bdc-20d6d001377b",
+      "testName": "Theme Test - dark - dashboard",
+      "testType": "theme",
+      "component": "dashboard",
+      "status": "pass",
+      "startTime": "2025-07-08T20:03:50.840Z",
+      "endTime": "2025-07-08T20:03:55.008Z",
+      "duration": 4168,
+      "screenshots": [
+        "screenshots/35dea4bf-e3ce-468f-9bdc-20d6d001377b/theme-dark-dashboard.png"
+      ],
+      "errors": [],
+      "warnings": [],
+      "metadata": {}
+    },
+    {
+      "testId": "1d8d2f22-117d-4bee-9afc-6bd557783d1d",
+      "testRunId": "35dea4bf-e3ce-468f-9bdc-20d6d001377b",
+      "testName": "Theme Test - dark - ticket-view",
+      "testType": "theme",
+      "component": "ticket-view",
+      "status": "pass",
+      "startTime": "2025-07-08T20:03:55.492Z",
+      "endTime": "2025-07-08T20:03:59.797Z",
+      "duration": 4305,
+      "screenshots": [
+        "screenshots/35dea4bf-e3ce-468f-9bdc-20d6d001377b/theme-dark-ticket-view.png"
+      ],
+      "errors": [],
+      "warnings": [],
+      "metadata": {}
+    },
+    {
+      "testId": "3e7448ad-e9cc-4732-aa60-315f5ccf6029",
+      "testRunId": "35dea4bf-e3ce-468f-9bdc-20d6d001377b",
+      "testName": "Theme Test - dark - search",
+      "testType": "theme",
+      "component": "search",
+      "status": "pass",
+      "startTime": "2025-07-08T20:04:00.293Z",
+      "endTime": "2025-07-08T20:04:10.200Z",
+      "duration": 9907,
+      "screenshots": [
+        "screenshots/35dea4bf-e3ce-468f-9bdc-20d6d001377b/theme-dark-search.png"
+      ],
+      "errors": [],
+      "warnings": [],
+      "metadata": {}
+    },
+    {
+      "testId": "8aab0c47-9948-4d64-9437-43f65fbc2876",
+      "testRunId": "35dea4bf-e3ce-468f-9bdc-20d6d001377b",
+      "testName": "Performance Test - Dashboard",
+      "testType": "performance",
+      "component": "dashboard",
+      "status": "pass",
+      "startTime": "2025-07-08T20:04:10.454Z",
+      "endTime": "2025-07-08T20:04:12.405Z",
+      "duration": 1951,
+      "screenshots": [
+        "screenshots/35dea4bf-e3ce-468f-9bdc-20d6d001377b/performance-dashboard.png"
+      ],
+      "errors": [],
+      "warnings": [],
+      "metadata": {
+        "loadTime": 1852
+      }
+    },
+    {
+      "testId": "76e24f77-f2b9-4322-af7c-86f9ef6052d7",
+      "testRunId": "35dea4bf-e3ce-468f-9bdc-20d6d001377b",
+      "testName": "Performance Test - Issue Navigator",
+      "testType": "performance",
+      "component": "issue navigator",
+      "status": "warning",
+      "startTime": "2025-07-08T20:04:12.791Z",
+      "endTime": "2025-07-08T20:04:19.910Z",
+      "duration": 7119,
+      "screenshots": [
+        "screenshots/35dea4bf-e3ce-468f-9bdc-20d6d001377b/performance-issue navigator.png"
+      ],
+      "errors": [],
+      "warnings": [],
+      "metadata": {
+        "loadTime": 7019
+      }
+    },
+    {
+      "testId": "1a41c207-b799-464c-9e0e-9b246d961df4",
+      "testRunId": "35dea4bf-e3ce-468f-9bdc-20d6d001377b",
+      "testName": "Performance Test - Search",
+      "testType": "performance",
+      "component": "search",
+      "status": "pass",
+      "startTime": "2025-07-08T20:04:20.372Z",
+      "endTime": "2025-07-08T20:04:22.661Z",
+      "duration": 2289,
+      "screenshots": [
+        "screenshots/35dea4bf-e3ce-468f-9bdc-20d6d001377b/performance-search.png"
+      ],
+      "errors": [],
+      "warnings": [],
+      "metadata": {
+        "loadTime": 2206
+      }
+    },
+    {
+      "testId": "b32b7ca8-e221-4a86-a198-e40a3775b86e",
+      "testRunId": "35dea4bf-e3ce-468f-9bdc-20d6d001377b",
+      "testName": "Functional Test - UAT-ITSM-67622",
+      "testType": "functional",
+      "component": "ticket-operations",
+      "status": "fail",
+      "startTime": "2025-07-08T20:04:22.834Z",
+      "endTime": "2025-07-08T20:04:28.516Z",
+      "duration": 5682,
+      "screenshots": [],
+      "errors": [
+        "page.waitForSelector: Target page, context or browser has been closed\nCall log:\n  - waiting for locator('#key-val, .issue-header, .issue-content') to be visible\n"
+      ],
+      "warnings": [],
+      "metadata": {}
+    },
+    {
+      "testId": "a208d4f1-c596-46c4-b599-e54661ea9f76",
+      "testRunId": "35dea4bf-e3ce-468f-9bdc-20d6d001377b",
+      "testName": "Functional Test - UAT-ITSM-67629",
+      "testType": "functional",
+      "component": "ticket-operations",
+      "status": "fail",
+      "startTime": "2025-07-08T20:04:29.076Z",
+      "endTime": "2025-07-08T20:04:29.076Z",
+      "duration": 0,
+      "screenshots": [],
+      "errors": [
+        "page.goto: Target page, context or browser has been closed"
+      ],
+      "warnings": [],
+      "metadata": {}
+    },
+    {
+      "testId": "a173074e-7c1c-4be5-aa06-e76e7a642c9c",
+      "testRunId": "35dea4bf-e3ce-468f-9bdc-20d6d001377b",
+      "testName": "Functional Test - UAT-DPSO-92185",
+      "testType": "functional",
+      "component": "ticket-operations",
+      "status": "fail",
+      "startTime": "2025-07-08T20:04:29.235Z",
+      "endTime": "2025-07-08T20:04:29.237Z",
+      "duration": 2,
+      "screenshots": [],
+      "errors": [
+        "page.goto: Target page, context or browser has been closed"
+      ],
+      "warnings": [],
+      "metadata": {}
+    },
+    {
+      "testId": "a9e3e11f-4523-4b96-92fe-83d7972a8a12",
+      "testRunId": "35dea4bf-e3ce-468f-9bdc-20d6d001377b",
+      "testName": "Functional Test - UAT-ITSM-67628",
+      "testType": "functional",
+      "component": "ticket-operations",
+      "status": "fail",
+      "startTime": "2025-07-08T20:04:29.413Z",
+      "endTime": "2025-07-08T20:04:29.414Z",
+      "duration": 1,
+      "screenshots": [],
+      "errors": [
+        "page.goto: Target page, context or browser has been closed"
+      ],
+      "warnings": [],
+      "metadata": {}
+    },
+    {
+      "testId": "dda4e49b-8dce-42a0-96c1-cd8921821b2d",
+      "testRunId": "35dea4bf-e3ce-468f-9bdc-20d6d001377b",
+      "testName": "Functional Test - UAT-ITSM-67627",
+      "testType": "functional",
+      "component": "ticket-operations",
+      "status": "fail",
+      "startTime": "2025-07-08T20:04:29.874Z",
+      "endTime": "2025-07-08T20:04:29.875Z",
+      "duration": 1,
+      "screenshots": [],
+      "errors": [
+        "page.goto: Target page, context or browser has been closed"
+      ],
+      "warnings": [],
+      "metadata": {}
+    },
+    {
+      "testId": "d5353a1d-c441-4cb8-af0a-6830f3961e2d",
+      "testRunId": "35dea4bf-e3ce-468f-9bdc-20d6d001377b",
+      "testName": "Functional Test - UAT-ITSM-67626",
+      "testType": "functional",
+      "component": "ticket-operations",
+      "status": "fail",
+      "startTime": "2025-07-08T20:04:30.226Z",
+      "endTime": "2025-07-08T20:04:30.228Z",
+      "duration": 2,
+      "screenshots": [],
+      "errors": [
+        "page.goto: Target page, context or browser has been closed"
+      ],
+      "warnings": [],
+      "metadata": {}
+    },
+    {
+      "testId": "c748645a-48ca-4352-aa22-0dfac120865e",
+      "testRunId": "35dea4bf-e3ce-468f-9bdc-20d6d001377b",
+      "testName": "Functional Test - UAT-ITSM-67625",
+      "testType": "functional",
+      "component": "ticket-operations",
+      "status": "fail",
+      "startTime": "2025-07-08T20:04:30.406Z",
+      "endTime": "2025-07-08T20:04:30.407Z",
+      "duration": 1,
+      "screenshots": [],
+      "errors": [
+        "page.goto: Target page, context or browser has been closed"
+      ],
+      "warnings": [],
+      "metadata": {}
+    },
+    {
+      "testId": "e79cceb0-e72d-46e8-bf6a-348d343d769e",
+      "testRunId": "35dea4bf-e3ce-468f-9bdc-20d6d001377b",
+      "testName": "Functional Test - UAT-ITSM-67624",
+      "testType": "functional",
+      "component": "ticket-operations",
+      "status": "fail",
+      "startTime": "2025-07-08T20:04:30.584Z",
+      "endTime": "2025-07-08T20:04:30.586Z",
+      "duration": 2,
+      "screenshots": [],
+      "errors": [
+        "page.goto: Target page, context or browser has been closed"
+      ],
+      "warnings": [],
+      "metadata": {}
+    },
+    {
+      "testId": "fc890cfd-4ec5-4daf-8768-13ab98f8957b",
+      "testRunId": "35dea4bf-e3ce-468f-9bdc-20d6d001377b",
+      "testName": "Functional Test - UAT-ITSM-67623",
+      "testType": "functional",
+      "component": "ticket-operations",
+      "status": "fail",
+      "startTime": "2025-07-08T20:04:30.759Z",
+      "endTime": "2025-07-08T20:04:30.761Z",
+      "duration": 2,
+      "screenshots": [],
+      "errors": [
+        "page.goto: Target page, context or browser has been closed"
+      ],
+      "warnings": [],
+      "metadata": {}
+    },
+    {
+      "testId": "7e8729cf-1122-4285-ab2c-0fa97ed34435",
+      "testRunId": "35dea4bf-e3ce-468f-9bdc-20d6d001377b",
+      "testName": "Functional Test - UAT-ITSM-67621",
+      "testType": "functional",
+      "component": "ticket-operations",
+      "status": "fail",
+      "startTime": "2025-07-08T20:04:31.108Z",
+      "endTime": "2025-07-08T20:04:31.108Z",
+      "duration": 0,
+      "screenshots": [],
+      "errors": [
+        "page.goto: Target page, context or browser has been closed"
+      ],
+      "warnings": [],
+      "metadata": {}
+    },
+    {
+      "testId": "b3cae21c-5d16-4716-b9db-3a7e9721a408",
+      "testRunId": "35dea4bf-e3ce-468f-9bdc-20d6d001377b",
+      "testName": "Accessibility Test",
+      "testType": "accessibility",
+      "component": "whole-application",
+      "status": "fail",
+      "startTime": "2025-07-08T20:04:31.272Z",
+      "endTime": "2025-07-08T20:04:31.273Z",
+      "duration": 1,
+      "screenshots": [],
+      "errors": [
+        "page.goto: Target page, context or browser has been closed"
+      ],
+      "warnings": [],
+      "metadata": {}
+    },
+    {
+      "testId": "9fe2f5e1-2100-4fb0-91bc-de26a826fc5c",
+      "testRunId": "35dea4bf-e3ce-468f-9bdc-20d6d001377b",
+      "testName": "Visual Test - dashboard",
+      "testType": "visual-regression",
+      "component": "dashboard",
+      "status": "fail",
+      "startTime": "2025-07-08T20:04:31.442Z",
+      "endTime": "2025-07-08T20:04:31.444Z",
+      "duration": 2,
+      "screenshots": [],
+      "errors": [
+        "page.goto: Target page, context or browser has been closed"
+      ],
+      "warnings": [],
+      "metadata": {}
+    },
+    {
+      "testId": "dcf62c03-554e-4fb5-a5a5-6c906dd70f95",
+      "testRunId": "35dea4bf-e3ce-468f-9bdc-20d6d001377b",
+      "testName": "Visual Test - issue-list",
+      "testType": "visual-regression",
+      "component": "issue-list",
+      "status": "fail",
+      "startTime": "2025-07-08T20:04:31.633Z",
+      "endTime": "2025-07-08T20:04:31.634Z",
+      "duration": 1,
+      "screenshots": [],
+      "errors": [
+        "page.goto: Target page, context or browser has been closed"
+      ],
+      "warnings": [],
+      "metadata": {}
+    },
+    {
+      "testId": "af19792a-bd93-49eb-969c-b6914097a448",
+      "testRunId": "35dea4bf-e3ce-468f-9bdc-20d6d001377b",
+      "testName": "Visual Test - ticket-view",
+      "testType": "visual-regression",
+      "component": "ticket-view",
+      "status": "fail",
+      "startTime": "2025-07-08T20:04:31.795Z",
+      "endTime": "2025-07-08T20:04:31.796Z",
+      "duration": 1,
+      "screenshots": [],
+      "errors": [
+        "page.goto: Target page, context or browser has been closed"
+      ],
+      "warnings": [],
+      "metadata": {}
+    }
+  ]
+}

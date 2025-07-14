@@ -1,0 +1,61 @@
+{
+  "timestamp": "2025-07-13T13:18:40.756Z",
+  "jiraVersion": "10.3",
+  "environment": "UAT",
+  "results": [
+    {
+      "test": "Dashboard",
+      "url": "https://jirauat.smedigitalapps.com/jira/secure/Dashboard.jspa",
+      "loadTime": 5657,
+      "domContentLoaded": 0.20000000018626451,
+      "networkRequests": 32,
+      "status": "success"
+    },
+    {
+      "test": "Issue Navigator",
+      "url": "https://jirauat.smedigitalapps.com/jira/issues/",
+      "loadTime": 20928,
+      "domContentLoaded": 0.5,
+      "networkRequests": 20,
+      "status": "success"
+    },
+    {
+      "test": "ITSM Project",
+      "url": "https://jirauat.smedigitalapps.com/jira/browse/ITSM",
+      "loadTime": 8873,
+      "domContentLoaded": 11,
+      "networkRequests": 42,
+      "status": "success"
+    },
+    {
+      "test": "DPSA Project",
+      "url": "https://jirauat.smedigitalapps.com/jira/browse/DPSA",
+      "loadTime": 1708,
+      "domContentLoaded": 4.5,
+      "networkRequests": 43,
+      "status": "success"
+    },
+    {
+      "test": "Search Performance",
+      "url": "https://jirauat.smedigitalapps.com/jira/issues/",
+      "loadTime": 4274,
+      "domContentLoaded": 4274,
+      "networkRequests": 0,
+      "status": "success"
+    },
+    {
+      "test": "Create Issue",
+      "url": "https://jirauat.smedigitalapps.com/jira/secure/CreateIssue.jspa",
+      "loadTime": 1599,
+      "domContentLoaded": 4.400000000372529,
+      "networkRequests": 24,
+      "status": "success"
+    }
+  ],
+  "summary": {
+    "totalTests": 6,
+    "successfulTests": 6,
+    "averageLoadTime": 7173.166666666667,
+    "averageDOMTime": 715.7666666667598
+  }
+}

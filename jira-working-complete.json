@@ -1,0 +1,49 @@
+{
+  "cookieHeader": "JSESSIONID=A5573C1BBC81BB4F2D79DA915E7382E0; atlassian.xsrf.token=A1TC-B0TB-ACDD-Q6T9_41fdf9ab2b44220226fe1372a86236125ad90e68_lout; ajs_user_id=53eb1ab19d08b3eab2433f7c7b8528c901ef0704; ajs_anonymous_id=f0467fe9-1f2d-4171-9824-3d34dd9dc1e8",
+  "cookies": [
+    {
+      "name": "JSESSIONID",
+      "value": "A5573C1BBC81BB4F2D79DA915E7382E0",
+      "domain": "jira.smedigitalapps.com",
+      "path": "/jira",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "atlassian.xsrf.token",
+      "value": "A1TC-B0TB-ACDD-Q6T9_41fdf9ab2b44220226fe1372a86236125ad90e68_lout",
+      "domain": "jira.smedigitalapps.com",
+      "path": "/jira",
+      "expires": -1,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "ajs_user_id",
+      "value": "53eb1ab19d08b3eab2433f7c7b8528c901ef0704",
+      "domain": ".smedigitalapps.com",
+      "path": "/",
+      "expires": 1783456856,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "ajs_anonymous_id",
+      "value": "f0467fe9-1f2d-4171-9824-3d34dd9dc1e8",
+      "domain": ".smedigitalapps.com",
+      "path": "/",
+      "expires": 1783456856,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    }
+  ],
+  "totalTickets": 0,
+  "sampleTickets": [],
+  "timestamp": "2025-07-07T20:41:20.158Z",
+  "baseUrl": "https://jira.smedigitalapps.com/jira"
+}

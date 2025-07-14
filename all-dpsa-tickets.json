@@ -1,0 +1,112 @@
+[
+  {
+    "key": "DPSA-31177",
+    "summary": "Unable to lock QC Notes: Registration failure found for master :27209157",
+    "status": "OPEN",
+    "assignee": "AOMA Asset Support",
+    "reporter": "Tobiason, Dan",
+    "created": "07/Jul/25",
+    "updated": "07/Jul/25",
+    "priority": "Medium",
+    "resolution": "Unresolved"
+  },
+  {
+    "key": "DPSA-31176",
+    "summary": "Archive Registration - Request to Fail and Upload - 27208616",
+    "status": "OPEN",
+    "assignee": "Deepak Kumar",
+    "reporter": "Jonathan Chinn",
+    "created": "07/Jul/25",
+    "updated": "07/Jul/25",
+    "priority": "High",
+    "resolution": "Unresolved"
+  },
+  {
+    "key": "DPSA-31175",
+    "summary": "exports failed",
+    "status": "OPEN",
+    "assignee": "Martens, Tim",
+    "reporter": "Martens, Tim",
+    "created": "07/Jul/25",
+    "updated": "07/Jul/25",
+    "priority": "High",
+    "resolution": "Unresolved"
+  },
+  {
+    "key": "DPSA-31174",
+    "summary": "logged out and unable to resume TUSD upload - no need to step in",
+    "status": "CLOSED",
+    "assignee": "Carrie Devening",
+    "reporter": "Martens, Tim",
+    "created": "04/Jul/25",
+    "updated": "04/Jul/25",
+    "priority": "Medium",
+    "resolution": "Fixed"
+  },
+  {
+    "key": "DPSA-31173",
+    "summary": "SONO - : Labelcopy incomplete - : CS 130758858 & 130758859 /198029329O2 / FORTISSIMA / Raphaela Gromes",
+    "status": "OPEN",
+    "assignee": "Igor Potyomkin",
+    "reporter": "Burgess, Fiona",
+    "created": "03/Jul/25",
+    "updated": "07/Jul/25",
+    "priority": "Medium",
+    "resolution": "Unresolved"
+  },
+  {
+    "key": "DPSA-31172",
+    "summary": "Special characters blocking AOMA upload",
+    "status": "OPEN",
+    "assignee": "Hambly, Lily",
+    "reporter": "Hambly, Lily",
+    "created": "03/Jul/25",
+    "updated": "03/Jul/25",
+    "priority": "Medium",
+    "resolution": "Unresolved"
+  },
+  {
+    "key": "DPSA-31171",
+    "summary": "Archive Submission Tool - Status showing Pending: G0100046981042, G0100046968913",
+    "status": "IN PROGRESS",
+    "assignee": "Kumar, Ramesh",
+    "reporter": "Burgess, Fiona",
+    "created": "03/Jul/25",
+    "updated": "07/Jul/25",
+    "priority": "Medium",
+    "resolution": "Unresolved"
+  },
+  {
+    "key": "DPSA-31170",
+    "summary": "Archive 27194871 - Delete Folder Request",
+    "status": "CLOSED",
+    "assignee": "Deepak Kumar",
+    "reporter": "Jonathan Chinn",
+    "created": "02/Jul/25",
+    "updated": "03/Jul/25",
+    "priority": "High",
+    "resolution": "Fixed"
+  },
+  {
+    "key": "DPSA-31169",
+    "summary": "Report Request: SME Canada Archive Masters",
+    "status": "OPEN",
+    "assignee": "McCarthy, Keith, Asbury Media",
+    "reporter": "McCarthy, Keith, Asbury Media",
+    "created": "02/Jul/25",
+    "updated": "03/Jul/25",
+    "priority": "Medium",
+    "resolution": "Unresolved"
+  },
+  {
+    "key": "DPSA-31168",
+    "summary": "*PRIORITY* Arjen Anthony Lucassen - 19802931572 - BDCMF - Link Is failing",
+    "status": "CLOSED",
+    "assignee": "Kevin Halvordson",
+    "reporter": "Kevin Halvordson",
+    "created": "02/Jul/25",
+    "updated": "02/Jul/25",
+    "priority": "High",
+    "resolution": "Complete"
+  }
+]

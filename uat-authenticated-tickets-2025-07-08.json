@@ -1,0 +1,11 @@
+{
+  "environment": "UAT_AUTHENTICATED",
+  "url": "https://jirauat.smedigitalapps.com",
+  "timestamp": "2025-07-08T11:52:34.292Z",
+  "totalTickets": 0,
+  "breakdown": {
+    "ITSM": 0,
+    "DPSA": 0
+  },
+  "tickets": []
+}

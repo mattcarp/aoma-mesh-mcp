@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Comprehensive UAT Test Report</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; background-color: #f5f5f5; }
+        .header { background: #2c3e50; color: white; padding: 20px; border-radius: 5px; }
+        .summary { background: white; padding: 20px; margin: 20px 0; border-radius: 5px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .test-result { background: white; margin: 10px 0; padding: 15px; border-radius: 5px; border-left: 4px solid #ccc; }
+        .pass { border-left-color: #27ae60; }
+        .fail { border-left-color: #e74c3c; }
+        .warning { border-left-color: #f39c12; }
+        .skip { border-left-color: #95a5a6; }
+        .stats { display: flex; justify-content: space-between; margin: 20px 0; }
+        .stat { text-align: center; padding: 10px; background: white; border-radius: 5px; flex: 1; margin: 0 5px; }
+        .stat-value { font-size: 24px; font-weight: bold; color: #2c3e50; }
+        .stat-label { color: #7f8c8d; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🚀 Comprehensive UAT Test Report</h1>
+        <p>Test Run ID: fddcd42d-b559-47a2-9ae7-eb4c99c04703</p>
+        <p>Generated: 7/8/2025, 10:22:46 PM</p>
+    </div>
+
+    <div class="stats">
+        <div class="stat">
+            <div class="stat-value">23</div>
+            <div class="stat-label">Total Tests</div>
+        </div>
+        <div class="stat">
+            <div class="stat-value" style="color: #27ae60;">11</div>
+            <div class="stat-label">Passed</div>
+        </div>
+        <div class="stat">
+            <div class="stat-value" style="color: #e74c3c;">10</div>
+            <div class="stat-label">Failed</div>
+        </div>
+        <div class="stat">
+            <div class="stat-value" style="color: #f39c12;">2</div>
+            <div class="stat-label">Warnings</div>
+        </div>
+    </div>
+
+    <div class="summary">
+        <h2>📊 Test Summary</h2>
+        <p><strong>Success Rate:</strong> 47.8%</p>
+        <p><strong>Average Duration:</strong> 8184ms</p>
+        <p><strong>Total Errors:</strong> 10</p>
+        <p><strong>Total Warnings:</strong> 0</p>
+        
+        <h3>Tests by Type:</h3>
+        <ul>
+            
+                <li><strong>theme:</strong> 6 tests (0 passed, 0 failed, 0 warnings)</li>
+            
+                <li><strong>performance:</strong> 3 tests (0 passed, 0 failed, 0 warnings)</li>
+            
+                <li><strong>functional:</strong> 10 tests (0 passed, 0 failed, 0 warnings)</li>
+            
+                <li><strong>accessibility:</strong> 1 tests (0 passed, 0 failed, 0 warnings)</li>
+            
+                <li><strong>visual-regression:</strong> 3 tests (0 passed, 0 failed, 0 warnings)</li>
+            
+        </ul>
+    </div>
+
+    <div class="summary">
+        <h2>🎯 Test Results</h2>
+        
+            <div class="test-result pass">
+                <h3>Theme Test - light - dashboard</h3>
+                <p><strong>Component:</strong> dashboard</p>
+                <p><strong>Status:</strong> PASS</p>
+                <p><strong>Duration:</strong> 10557ms</p>
+                
+                
+                <p><strong>Screenshots:</strong> 1 captured</p>
+            </div>
+        
+            <div class="test-result pass">
+                <h3>Theme Test - light - ticket-view</h3>
+                <p><strong>Component:</strong> ticket-view</p>
+                <p><strong>Status:</strong> PASS</p>
+                <p><strong>Duration:</strong> 6121ms</p>
+                
+                
+                <p><strong>Screenshots:</strong> 1 captured</p>
+            </div>
+        
+            <div class="test-result pass">
+                <h3>Theme Test - light - search</h3>
+                <p><strong>Component:</strong> search</p>
+                <p><strong>Status:</strong> PASS</p>
+                <p><strong>Duration:</strong> 9252ms</p>
+                
+                
+                <p><strong>Screenshots:</strong> 1 captured</p>
+            </div>
+        
+            <div class="test-result pass">
+                <h3>Theme Test - dark - dashboard</h3>
+                <p><strong>Component:</strong> dashboard</p>
+                <p><strong>Status:</strong> PASS</p>
+                <p><strong>Duration:</strong> 3851ms</p>
+                
+                
+                <p><strong>Screenshots:</strong> 1 captured</p>
+            </div>
+        
+            <div class="test-result pass">
+                <h3>Theme Test - dark - ticket-view</h3>
+                <p><strong>Component:</strong> ticket-view</p>
+                <p><strong>Status:</strong> PASS</p>
+                <p><strong>Duration:</strong> 3841ms</p>
+                
+                
+                <p><strong>Screenshots:</strong> 1 captured</p>
+            </div>
+        
+            <div class="test-result pass">
+                <h3>Theme Test - dark - search</h3>
+                <p><strong>Component:</strong> search</p>
+                <p><strong>Status:</strong> PASS</p>
+                <p><strong>Duration:</strong> 9072ms</p>
+                
+                
+                <p><strong>Screenshots:</strong> 1 captured</p>
+            </div>
+        
+            <div class="test-result pass">
+                <h3>Performance Test - Dashboard</h3>
+                <p><strong>Component:</strong> dashboard</p>
+                <p><strong>Status:</strong> PASS</p>
+                <p><strong>Duration:</strong> 2423ms</p>
+                
+                
+                <p><strong>Screenshots:</strong> 1 captured</p>
+            </div>
+        
+            <div class="test-result warning">
+                <h3>Performance Test - Issue Navigator</h3>
+                <p><strong>Component:</strong> issue navigator</p>
+                <p><strong>Status:</strong> WARNING</p>
+                <p><strong>Duration:</strong> 6230ms</p>
+                
+                
+                <p><strong>Screenshots:</strong> 1 captured</p>
+            </div>
+        
+            <div class="test-result pass">
+                <h3>Performance Test - Search</h3>
+                <p><strong>Component:</strong> search</p>
+                <p><strong>Status:</strong> PASS</p>
+                <p><strong>Duration:</strong> 2200ms</p>
+                
+                
+                <p><strong>Screenshots:</strong> 1 captured</p>
+            </div>
+        
+            <div class="test-result fail">
+                <h3>Functional Test - UAT-ITSM-67622</h3>
+                <p><strong>Component:</strong> ticket-operations</p>
+                <p><strong>Status:</strong> FAIL</p>
+                <p><strong>Duration:</strong> 12059ms</p>
+                <p><strong>Errors:</strong> page.waitForSelector: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator('#key-val, .issue-header, .issue-content') to be visible
+</p>
+                
+                
+            </div>
+        
+            <div class="test-result fail">
+                <h3>Functional Test - UAT-ITSM-67629</h3>
+                <p><strong>Component:</strong> ticket-operations</p>
+                <p><strong>Status:</strong> FAIL</p>
+                <p><strong>Duration:</strong> 11778ms</p>
+                <p><strong>Errors:</strong> page.waitForSelector: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator('#key-val, .issue-header, .issue-content') to be visible
+</p>
+                
+                
+            </div>
+        
+            <div class="test-result fail">
+                <h3>Functional Test - UAT-DPSO-92185</h3>
+                <p><strong>Component:</strong> ticket-operations</p>
+                <p><strong>Status:</strong> FAIL</p>
+                <p><strong>Duration:</strong> 11999ms</p>
+                <p><strong>Errors:</strong> page.waitForSelector: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator('#key-val, .issue-header, .issue-content') to be visible
+</p>
+                
+                
+            </div>
+        
+            <div class="test-result fail">
+                <h3>Functional Test - UAT-ITSM-67628</h3>
+                <p><strong>Component:</strong> ticket-operations</p>
+                <p><strong>Status:</strong> FAIL</p>
+                <p><strong>Duration:</strong> 11662ms</p>
+                <p><strong>Errors:</strong> page.waitForSelector: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator('#key-val, .issue-header, .issue-content') to be visible
+</p>
+                
+                
+            </div>
+        
+            <div class="test-result fail">
+                <h3>Functional Test - UAT-ITSM-67627</h3>
+                <p><strong>Component:</strong> ticket-operations</p>
+                <p><strong>Status:</strong> FAIL</p>
+                <p><strong>Duration:</strong> 11666ms</p>
+                <p><strong>Errors:</strong> page.waitForSelector: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator('#key-val, .issue-header, .issue-content') to be visible
+</p>
+                
+                
+            </div>
+        
+            <div class="test-result fail">
+                <h3>Functional Test - UAT-ITSM-67626</h3>
+                <p><strong>Component:</strong> ticket-operations</p>
+                <p><strong>Status:</strong> FAIL</p>
+                <p><strong>Duration:</strong> 11821ms</p>
+                <p><strong>Errors:</strong> page.waitForSelector: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator('#key-val, .issue-header, .issue-content') to be visible
+</p>
+                
+                
+            </div>
+        
+            <div class="test-result fail">
+                <h3>Functional Test - UAT-ITSM-67625</h3>
+                <p><strong>Component:</strong> ticket-operations</p>
+                <p><strong>Status:</strong> FAIL</p>
+                <p><strong>Duration:</strong> 11815ms</p>
+                <p><strong>Errors:</strong> page.waitForSelector: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator('#key-val, .issue-header, .issue-content') to be visible
+</p>
+                
+                
+            </div>
+        
+            <div class="test-result fail">
+                <h3>Functional Test - UAT-ITSM-67624</h3>
+                <p><strong>Component:</strong> ticket-operations</p>
+                <p><strong>Status:</strong> FAIL</p>
+                <p><strong>Duration:</strong> 11664ms</p>
+                <p><strong>Errors:</strong> page.waitForSelector: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator('#key-val, .issue-header, .issue-content') to be visible
+</p>
+                
+                
+            </div>
+        
+            <div class="test-result fail">
+                <h3>Functional Test - UAT-ITSM-67623</h3>
+                <p><strong>Component:</strong> ticket-operations</p>
+                <p><strong>Status:</strong> FAIL</p>
+                <p><strong>Duration:</strong> 12188ms</p>
+                <p><strong>Errors:</strong> page.waitForSelector: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator('#key-val, .issue-header, .issue-content') to be visible
+</p>
+                
+                
+            </div>
+        
+            <div class="test-result fail">
+                <h3>Functional Test - UAT-ITSM-67621</h3>
+                <p><strong>Component:</strong> ticket-operations</p>
+                <p><strong>Status:</strong> FAIL</p>
+                <p><strong>Duration:</strong> 11661ms</p>
+                <p><strong>Errors:</strong> page.waitForSelector: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator('#key-val, .issue-header, .issue-content') to be visible
+</p>
+                
+                
+            </div>
+        
+            <div class="test-result warning">
+                <h3>Accessibility Test</h3>
+                <p><strong>Component:</strong> whole-application</p>
+                <p><strong>Status:</strong> WARNING</p>
+                <p><strong>Duration:</strong> 1161ms</p>
+                
+                
+                <p><strong>Screenshots:</strong> 1 captured</p>
+            </div>
+        
+            <div class="test-result pass">
+                <h3>Visual Test - dashboard</h3>
+                <p><strong>Component:</strong> dashboard</p>
+                <p><strong>Status:</strong> PASS</p>
+                <p><strong>Duration:</strong> 3701ms</p>
+                
+                
+                <p><strong>Screenshots:</strong> 1 captured</p>
+            </div>
+        
+            <div class="test-result pass">
+                <h3>Visual Test - issue-list</h3>
+                <p><strong>Component:</strong> issue-list</p>
+                <p><strong>Status:</strong> PASS</p>
+                <p><strong>Duration:</strong> 7694ms</p>
+                
+                
+                <p><strong>Screenshots:</strong> 1 captured</p>
+            </div>
+        
+            <div class="test-result pass">
+                <h3>Visual Test - ticket-view</h3>
+                <p><strong>Component:</strong> ticket-view</p>
+                <p><strong>Status:</strong> PASS</p>
+                <p><strong>Duration:</strong> 3813ms</p>
+                
+                
+                <p><strong>Screenshots:</strong> 1 captured</p>
+            </div>
+        
+    </div>
+</body>
+</html>

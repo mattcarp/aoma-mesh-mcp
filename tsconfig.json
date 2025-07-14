@@ -22,44 +22,18 @@
     "declarationMap": true,
     "sourceMap": true,
     "resolveJsonModule": true,
-    "allowImportingTsExtensions": false,
     "noEmit": false,
     "isolatedModules": true,
-    "verbatimModuleSyntax": false
+    "verbatimModuleSyntax": true
   },
   "include": [
-    "src/index.ts",
+    "src/**/*.ts",
     "src/aoma-mesh-server.ts",
-    "src/health-check.ts",
-    "src/streaming/**/*",
-    "src/utils/**/*",
-    "src/config/**/*",
-    "src/types/**/*",
-    "src/services/**/*",
-    "src/tools/**/*",
-    "src/server/**/*",
-    "src/__tests__/**/*"
+    "src/server/**/*.ts"
   ],
   "exclude": [
     "node_modules",
-    "dist",
-    "**/*.test.ts",
-    "**/*.spec.ts",
-    "test-*.ts",
-    "comprehensive-*.ts",
-    "dogfood-*.ts",
-    "demo-*.ts",
-    "explore-*.ts",
-    "fix-*.ts",
-    "list-*.ts",
-    "quick-*.ts",
-    "simple-*.ts",
-    "check-*.ts",
-    "find-*.ts",
-    "src/agent-server.ts",
-    "src/enhanced-aoma-mesh-server.ts",
-    "src/betabase-test-agent.ts",
-    "src/visual-intelligence-agent.ts"
+    "dist"
   ],
   "ts-node": {
     "esm": true

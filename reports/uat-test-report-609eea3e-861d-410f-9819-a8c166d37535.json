@@ -1,0 +1,453 @@
+{
+  "testRunId": "609eea3e-861d-410f-9819-a8c166d37535",
+  "timestamp": "2025-07-08T14:59:17.941Z",
+  "summary": {
+    "total": 20,
+    "passed": 16,
+    "failed": 1,
+    "warnings": 3
+  },
+  "testResults": [
+    {
+      "testId": "d9986c80-c4ae-4b0b-8eb8-6f6d1dbf953f",
+      "testName": "Theme Compatibility - light - dashboard",
+      "ticketKey": "",
+      "component": "dashboard",
+      "theme": "light",
+      "status": "pass",
+      "duration": 3538,
+      "screenshots": [
+        "screenshots/theme-light-dashboard-1751986574315.png"
+      ],
+      "performanceMetrics": {},
+      "errors": [],
+      "metadata": {
+        "testType": "theme",
+        "theme": "light",
+        "component": "dashboard",
+        "hasRenderingIssues": false
+      }
+    },
+    {
+      "testId": "d9057f8b-296a-4ad8-b535-bb184473c64e",
+      "testName": "Theme Compatibility - light - ticket-view",
+      "ticketKey": "",
+      "component": "ticket-view",
+      "theme": "light",
+      "status": "pass",
+      "duration": 8843,
+      "screenshots": [
+        "screenshots/theme-light-ticket-view-1751986583745.png"
+      ],
+      "performanceMetrics": {},
+      "errors": [],
+      "metadata": {
+        "testType": "theme",
+        "theme": "light",
+        "component": "ticket-view",
+        "hasRenderingIssues": false
+      }
+    },
+    {
+      "testId": "070e0226-e18b-4f7d-a64c-0dcebf9b625a",
+      "testName": "Theme Compatibility - light - search",
+      "ticketKey": "",
+      "component": "search",
+      "theme": "light",
+      "status": "pass",
+      "duration": 11108,
+      "screenshots": [
+        "screenshots/theme-light-search-1751986594860.png"
+      ],
+      "performanceMetrics": {},
+      "errors": [],
+      "metadata": {
+        "testType": "theme",
+        "theme": "light",
+        "component": "search",
+        "hasRenderingIssues": false
+      }
+    },
+    {
+      "testId": "3afab156-5436-40bd-bd6c-76037e311e45",
+      "testName": "Theme Compatibility - dark - dashboard",
+      "ticketKey": "",
+      "component": "dashboard",
+      "theme": "dark",
+      "status": "pass",
+      "duration": 2983,
+      "screenshots": [
+        "screenshots/theme-dark-dashboard-1751986602191.png"
+      ],
+      "performanceMetrics": {},
+      "errors": [],
+      "metadata": {
+        "testType": "theme",
+        "theme": "dark",
+        "component": "dashboard",
+        "hasRenderingIssues": false
+      }
+    },
+    {
+      "testId": "3a7d2601-0404-429b-9add-69f37ed8d36f",
+      "testName": "Theme Compatibility - dark - ticket-view",
+      "ticketKey": "",
+      "component": "ticket-view",
+      "theme": "dark",
+      "status": "pass",
+      "duration": 30111,
+      "screenshots": [
+        "screenshots/theme-dark-ticket-view-1751986632281.png"
+      ],
+      "performanceMetrics": {},
+      "errors": [],
+      "metadata": {
+        "testType": "theme",
+        "theme": "dark",
+        "component": "ticket-view",
+        "hasRenderingIssues": false
+      }
+    },
+    {
+      "testId": "50a09a6c-3c39-4b00-ba0f-e1a664554d75",
+      "testName": "Theme Compatibility - dark - search",
+      "ticketKey": "",
+      "component": "search",
+      "theme": "dark",
+      "status": "pass",
+      "duration": 4772,
+      "screenshots": [
+        "screenshots/theme-dark-search-1751986637082.png"
+      ],
+      "performanceMetrics": {},
+      "errors": [],
+      "metadata": {
+        "testType": "theme",
+        "theme": "dark",
+        "component": "search",
+        "hasRenderingIssues": false
+      }
+    },
+    {
+      "testId": "5ede62a8-bd53-4e68-8e94-7060c8c27c1a",
+      "testName": "Performance - Dashboard.jspa",
+      "ticketKey": "",
+      "component": "performance",
+      "theme": "default",
+      "status": "warning",
+      "duration": 3599,
+      "screenshots": [
+        "screenshots/performance-Dashboard.jspa-1751986640697.png"
+      ],
+      "performanceMetrics": {
+        "loadTime": null,
+        "domContentLoaded": null,
+        "ttfb": null,
+        "fcp": 360,
+        "networkRequests": 57,
+        "pageSize": 308227
+      },
+      "errors": [],
+      "metadata": {
+        "testType": "performance",
+        "url": "https://jirauat.smedigitalapps.com/jira/secure/Dashboard.jspa",
+        "metrics": {
+          "loadTime": null,
+          "domContentLoaded": null,
+          "ttfb": null,
+          "fcp": 360,
+          "networkRequests": 57,
+          "pageSize": 308227
+        }
+      }
+    },
+    {
+      "testId": "3642a0dd-0f1f-4c37-9114-eefa02edbc3e",
+      "testName": "Performance - ",
+      "ticketKey": "",
+      "component": "performance",
+      "theme": "default",
+      "status": "warning",
+      "duration": 9133,
+      "screenshots": [
+        "screenshots/performance--1751986649812.png"
+      ],
+      "performanceMetrics": {
+        "loadTime": null,
+        "domContentLoaded": null,
+        "ttfb": null,
+        "fcp": 308,
+        "networkRequests": 60,
+        "pageSize": 433950
+      },
+      "errors": [],
+      "metadata": {
+        "testType": "performance",
+        "url": "https://jirauat.smedigitalapps.com/jira/issues/",
+        "metrics": {
+          "loadTime": null,
+          "domContentLoaded": null,
+          "ttfb": null,
+          "fcp": 308,
+          "networkRequests": 60,
+          "pageSize": 433950
+        }
+      }
+    },
+    {
+      "testId": "33fe4917-c304-48ce-91d6-59bce7f775a7",
+      "testName": "Performance - IssueNavigator.jspa",
+      "ticketKey": "",
+      "component": "performance",
+      "theme": "default",
+      "status": "warning",
+      "duration": 3326,
+      "screenshots": [
+        "screenshots/performance-IssueNavigator.jspa-1751986653150.png"
+      ],
+      "performanceMetrics": {
+        "loadTime": null,
+        "domContentLoaded": null,
+        "ttfb": null,
+        "fcp": 540,
+        "networkRequests": 59,
+        "pageSize": 806292
+      },
+      "errors": [],
+      "metadata": {
+        "testType": "performance",
+        "url": "https://jirauat.smedigitalapps.com/jira/secure/IssueNavigator.jspa",
+        "metrics": {
+          "loadTime": null,
+          "domContentLoaded": null,
+          "ttfb": null,
+          "fcp": 540,
+          "networkRequests": 59,
+          "pageSize": 806292
+        }
+      }
+    },
+    {
+      "testId": "aafa0f68-dbd8-45cf-a5bd-d832a6009ced",
+      "testName": "Ticket View - UAT-ITSM-67622",
+      "ticketKey": "UAT-ITSM-67622",
+      "component": "ticket-view",
+      "theme": "default",
+      "status": "fail",
+      "duration": 30008,
+      "screenshots": [],
+      "performanceMetrics": {},
+      "errors": [
+        "page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"https://jirauat.smedigitalapps.com/jira/browse/ITSM-67622\", waiting until \"load\"\n"
+      ],
+      "metadata": {
+        "testType": "functional",
+        "ticketKey": "UAT-ITSM-67622",
+        "error": "page.goto: Timeout 30000ms exceeded.\nCall log:\n  - navigating to \"https://jirauat.smedigitalapps.com/jira/browse/ITSM-67622\", waiting until \"load\"\n"
+      }
+    },
+    {
+      "testId": "474aac64-9b78-4395-b92c-643d918cac48",
+      "testName": "Ticket View - ITSM-67629",
+      "ticketKey": "UAT-ITSM-67629",
+      "component": "ticket-view",
+      "theme": "default",
+      "status": "pass",
+      "duration": 24830,
+      "screenshots": [
+        "screenshots/ticket-ITSM-67629-1751986707901.png"
+      ],
+      "performanceMetrics": {},
+      "errors": [],
+      "metadata": {
+        "testType": "functional",
+        "ticketKey": "ITSM-67629",
+        "ticketLoaded": true,
+        "ticketTitle": "[UAT] Re: Promo Portal Admin - E-Card Access Request"
+      }
+    },
+    {
+      "testId": "023a27f8-5596-4e72-96ed-de192cace9a0",
+      "testName": "Ticket View - DPSO-92185",
+      "ticketKey": "UAT-DPSO-92185",
+      "component": "ticket-view",
+      "theme": "default",
+      "status": "pass",
+      "duration": 4636,
+      "screenshots": [
+        "screenshots/ticket-DPSO-92185-1751986712621.png"
+      ],
+      "performanceMetrics": {},
+      "errors": [],
+      "metadata": {
+        "testType": "functional",
+        "ticketKey": "DPSO-92185",
+        "ticketLoaded": true,
+        "ticketTitle": "[UAT] STL - Unable to connect to host"
+      }
+    },
+    {
+      "testId": "7358a19f-d629-45fb-b395-c45f412e514b",
+      "testName": "Ticket View - ITSM-67628",
+      "ticketKey": "UAT-ITSM-67628",
+      "component": "ticket-view",
+      "theme": "default",
+      "status": "pass",
+      "duration": 3847,
+      "screenshots": [
+        "screenshots/ticket-ITSM-67628-1751986716525.png"
+      ],
+      "performanceMetrics": {},
+      "errors": [],
+      "metadata": {
+        "testType": "functional",
+        "ticketKey": "ITSM-67628",
+        "ticketLoaded": true,
+        "ticketTitle": "[UAT] Mfg Parts export request to SME Japan/Wiener Staatsoper Opera issues"
+      }
+    },
+    {
+      "testId": "1a48fe19-d5ff-410d-9afd-d15a99fa8816",
+      "testName": "Ticket View - ITSM-67627",
+      "ticketKey": "UAT-ITSM-67627",
+      "component": "ticket-view",
+      "theme": "default",
+      "status": "pass",
+      "duration": 3799,
+      "screenshots": [
+        "screenshots/ticket-ITSM-67627-1751986720329.png"
+      ],
+      "performanceMetrics": {},
+      "errors": [],
+      "metadata": {
+        "testType": "functional",
+        "ticketKey": "ITSM-67627",
+        "ticketLoaded": true,
+        "ticketTitle": "[UAT] Promo Portal Usage Report (08-Jun-2025)"
+      }
+    },
+    {
+      "testId": "916be0ab-9ed9-4780-9b95-e8c49adab4f2",
+      "testName": "Ticket View - ITSM-67626",
+      "ticketKey": "UAT-ITSM-67626",
+      "component": "ticket-view",
+      "theme": "default",
+      "status": "pass",
+      "duration": 3825,
+      "screenshots": [
+        "screenshots/ticket-ITSM-67626-1751986724161.png"
+      ],
+      "performanceMetrics": {},
+      "errors": [],
+      "metadata": {
+        "testType": "functional",
+        "ticketKey": "ITSM-67626",
+        "ticketLoaded": true,
+        "ticketTitle": "[UAT] Prod - Daily Mi Ingest Report"
+      }
+    },
+    {
+      "testId": "820f4c2d-f78b-4b59-b9d4-c6023902b7a4",
+      "testName": "Ticket View - ITSM-67625",
+      "ticketKey": "UAT-ITSM-67625",
+      "component": "ticket-view",
+      "theme": "default",
+      "status": "pass",
+      "duration": 3827,
+      "screenshots": [
+        "screenshots/ticket-ITSM-67625-1751986727979.png"
+      ],
+      "performanceMetrics": {},
+      "errors": [],
+      "metadata": {
+        "testType": "functional",
+        "ticketKey": "ITSM-67625",
+        "ticketLoaded": true,
+        "ticketTitle": "[UAT] Prod - Daily Messaging/Dataservices and DRF Report"
+      }
+    },
+    {
+      "testId": "dca1bff0-c307-45d3-96dc-e55a44e9e082",
+      "testName": "Ticket View - ITSM-67624",
+      "ticketKey": "UAT-ITSM-67624",
+      "component": "ticket-view",
+      "theme": "default",
+      "status": "pass",
+      "duration": 3797,
+      "screenshots": [
+        "screenshots/ticket-ITSM-67624-1751986731754.png"
+      ],
+      "performanceMetrics": {},
+      "errors": [],
+      "metadata": {
+        "testType": "functional",
+        "ticketKey": "ITSM-67624",
+        "ticketLoaded": true,
+        "ticketTitle": "[UAT] AOMA Digital and Physical Part Orders requested by Carrie Boyd"
+      }
+    },
+    {
+      "testId": "73ed00bb-76ff-4305-b49d-2b2d3db9ccdd",
+      "testName": "Ticket View - ITSM-67623",
+      "ticketKey": "UAT-ITSM-67623",
+      "component": "ticket-view",
+      "theme": "default",
+      "status": "pass",
+      "duration": 3700,
+      "screenshots": [
+        "screenshots/ticket-ITSM-67623-1751986735471.png"
+      ],
+      "performanceMetrics": {},
+      "errors": [],
+      "metadata": {
+        "testType": "functional",
+        "ticketKey": "ITSM-67623",
+        "ticketLoaded": true,
+        "ticketTitle": "[UAT] regarding B Springsteen, Tracks II"
+      }
+    },
+    {
+      "testId": "1992be23-5633-45fa-a67c-8ab58ac9910b",
+      "testName": "Ticket View - ITSM-67621",
+      "ticketKey": "UAT-ITSM-67621",
+      "component": "ticket-view",
+      "theme": "default",
+      "status": "pass",
+      "duration": 3810,
+      "screenshots": [
+        "screenshots/ticket-ITSM-67621-1751986739269.png"
+      ],
+      "performanceMetrics": {},
+      "errors": [],
+      "metadata": {
+        "testType": "functional",
+        "ticketKey": "ITSM-67621",
+        "ticketLoaded": true,
+        "ticketTitle": "[UAT] AOMA Digital and Physical Part Order Report for 'SME US LATIN LLC'"
+      }
+    },
+    {
+      "testId": "09a13af0-506c-4376-b17f-608ad9b6041a",
+      "testName": "AI Analysis",
+      "ticketKey": "",
+      "component": "ai-analysis",
+      "theme": "default",
+      "status": "pass",
+      "duration": 0,
+      "screenshots": [],
+      "performanceMetrics": {},
+      "errors": [],
+      "metadata": {
+        "testType": "ai-analysis",
+        "analysis": "1. Overall Upgrade Readiness Assessment: Based on the test results, the overall readiness for the JIRA 10.3.6 upgrade is approximately 79%. This is calculated based on the number of passed tests (15 out of 19 total), however, the 1 failed test and 3 warnings should be given attention.\n\n2. Top 3 Risks for JIRA 10.3.6 Upgrade: \n    1. Potential Performance Problems: The failed test related to page load times could indicate underlying performance issues that may affect users post-upgrade.\n    2. Functionality Issues: With three tests returning warnings, there's a possibility of functional bugs that have not been fully discovered or resolved.\n    3. Compatibility Issues: The upgrade may not be fully compatible with all current systems, as indicated by the errors found in theme and functionality tests.\n\n3. Top 3 Recommendations: \n    1. Investigate the Cause of the Timeout: The page load error in the Ticket View should be investigated to understand if it's isolated or part of a larger performance issue.\n    2. Review Warnings: The three warnings need thorough investigation to minimize the potential of post-upgrade issues. \n    3. Conduct Further Testing: Given the risks presented, more robust testing should be conducted, specifically targeting the areas where warnings and an error were found.\n\n4. Summary for Executive Report: Approximately 79% of our UAT test scenarios for the JIRA 10.3.6 upgrade have passed. However, there is one failed test and three tests that resulted in warnings, which could potentially impact the upgrade's success. The development and testing teams are working on these issues to ensure a smoother transition. The final readiness assessment and an upgrade recommendation will be provided upon more extensive testing and resolution of these issues.",
+        "testSummary": {
+          "total": 19,
+          "passed": 15,
+          "failed": 1,
+          "warnings": 3
+        }
+      }
+    }
+  ],
+  "aiAnalysis": "1. Overall Upgrade Readiness Assessment: Based on the test results, the overall readiness for the JIRA 10.3.6 upgrade is approximately 79%. This is calculated based on the number of passed tests (15 out of 19 total), however, the 1 failed test and 3 warnings should be given attention.\n\n2. Top 3 Risks for JIRA 10.3.6 Upgrade: \n    1. Potential Performance Problems: The failed test related to page load times could indicate underlying performance issues that may affect users post-upgrade.\n    2. Functionality Issues: With three tests returning warnings, there's a possibility of functional bugs that have not been fully discovered or resolved.\n    3. Compatibility Issues: The upgrade may not be fully compatible with all current systems, as indicated by the errors found in theme and functionality tests.\n\n3. Top 3 Recommendations: \n    1. Investigate the Cause of the Timeout: The page load error in the Ticket View should be investigated to understand if it's isolated or part of a larger performance issue.\n    2. Review Warnings: The three warnings need thorough investigation to minimize the potential of post-upgrade issues. \n    3. Conduct Further Testing: Given the risks presented, more robust testing should be conducted, specifically targeting the areas where warnings and an error were found.\n\n4. Summary for Executive Report: Approximately 79% of our UAT test scenarios for the JIRA 10.3.6 upgrade have passed. However, there is one failed test and three tests that resulted in warnings, which could potentially impact the upgrade's success. The development and testing teams are working on these issues to ensure a smoother transition. The final readiness assessment and an upgrade recommendation will be provided upon more extensive testing and resolution of these issues."
+}

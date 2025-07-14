@@ -1,0 +1,26 @@
+{
+  "environments": {
+    "production": {
+      "name": "PRODUCTION",
+      "jiraUrl": "https://jira.smedigitalapps.com",
+      "supabaseUrl": "https://kfxetwuuzljhybfgmpuc.supabase.co",
+      "warning": "⚠️ PRODUCTION ENVIRONMENT - Real business data!",
+      "requiresConfirmation": true,
+      "maxTicketsPerRun": 1000
+    },
+    "uat": {
+      "name": "UAT/STAGING", 
+      "jiraUrl": "https://jirauat.smedigitalapps.com",
+      "supabaseUrl": "https://kfxetwuuzljhybfgmpuc.supabase.co",
+      "warning": "🧪 UAT ENVIRONMENT - Safe for testing",
+      "requiresConfirmation": false,
+      "maxTicketsPerRun": 10000
+    }
+  },
+  "currentEnvironment": "uat",
+  "safetyChecks": {
+    "displayWarnings": true,
+    "requireUrlConfirmation": true,
+    "logAllRequests": true
+  }
+}

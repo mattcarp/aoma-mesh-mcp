@@ -1,0 +1,26 @@
+{
+  "cookies": [
+    {
+      "name": "JSESSIONID",
+      "value": "47148B795F6F4F87C7040E665FC039E4",
+      "domain": "jirauat.smedigitalapps.com",
+      "path": "/jira",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "atlassian.xsrf.token",
+      "value": "A1TC-B0TB-ACDD-Q6T9_8a1961573b0824141b50c7972e00b84090d911a3_lout",
+      "domain": "jirauat.smedigitalapps.com",
+      "path": "/jira",
+      "expires": -1,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    }
+  ],
+  "timestamp": "2025-07-08T20:50:36.882Z",
+  "verified": true
+}

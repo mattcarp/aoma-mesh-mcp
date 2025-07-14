@@ -6,10 +6,10 @@
  */
 
 import { Tool, CallToolResult } from '@modelcontextprotocol/sdk/types.js';
-import { BaseTool, ToolExecutionContext } from '../base/tool.interface';
-import { OpenAIService } from '../../services/openai.service';
-import { SupabaseService } from '../../services/supabase.service';
-import { AOMAQueryRequest } from '../../types/requests';
+import { BaseTool, ToolExecutionContext } from '../base/tool.interface.js';
+import { OpenAIService } from '../../services/openai.service.js';
+import { SupabaseService } from '../../services/supabase.service.js';
+import { AOMAQueryRequest } from '../../types/requests.js';
 
 export class AOMAKnowledgeTool extends BaseTool {
   readonly definition: Tool = {
@@ -73,7 +73,7 @@ export class AOMAKnowledgeTool extends BaseTool {
       context.logger.debug('Vector search completed', {
         resultCount: vectorResults.length,
         avgSimilarity: vectorResults.length > 0 
-          ? (vectorResults.reduce((sum, r) => sum + r.similarity, 0) / vectorResults.length).toFixed(3)
+          ? (vectorResults.reduce((sum: number, r: any) => sum + r.similarity, 0) / vectorResults.length).toFixed(3)
           : 0
       });
 
@@ -85,7 +85,7 @@ export class AOMAKnowledgeTool extends BaseTool {
 
       const result = {
         response,
-        vectorResults: vectorResults.map(r => ({
+        vectorResults: vectorResults.map((r: any) => ({
           title: r.title,
           similarity: r.similarity,
           url: r.url,

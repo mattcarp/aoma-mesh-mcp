@@ -21,30 +21,30 @@ import express from 'express';
 import cors from 'cors';
 
 // Configuration and utilities
-import { validateAndLoadEnvironment, Environment } from '../config/environment';
-import { createLogger } from '../utils/logger';
-import { getAvailablePort } from '../utils/port-manager';
-import { toMcpError } from '../utils/errors';
+import { validateAndLoadEnvironment, Environment } from '../config/environment.js';
+import { createLogger } from '../utils/logger.js';
+import { getAvailablePort } from '../utils/port-manager.js';
+import { toMcpError } from '../utils/errors.js';
 
 // Services
-import { OpenAIService } from '../services/openai.service';
-import { SupabaseService } from '../services/supabase.service';
+import { OpenAIService } from '../services/openai.service.js';
+import { SupabaseService } from '../services/supabase.service.js';
 
 // Tool system
-import { ToolRegistry } from '../tools/base/tool.registry';
-import { AOMAKnowledgeTool } from '../tools/aoma-knowledge.tool';
-import { SystemHealthTool } from '../tools/system-health.tool';
-import { JiraSearchTool } from '../tools/jira-search.tool';
-import { JiraCountTool } from '../tools/jira-count.tool';
-import { GitSearchTool } from '../tools/git-search.tool';
-import { CodeSearchTool } from '../tools/code-search.tool';
-import { OutlookSearchTool } from '../tools/outlook-search.tool';
-import { DevelopmentContextTool } from '../tools/development-context.tool';
-import { ServerCapabilitiesTool } from '../tools/server-capabilities.tool';
-import { SwarmAnalysisTool } from '../tools/swarm-analysis.tool';
+import { ToolRegistry } from '../tools/base/tool.registry.js';
+import { AOMAKnowledgeTool } from '../tools/aoma-knowledge.tool.js';
+import { SystemHealthTool } from '../tools/system-health.tool.js';
+import { JiraSearchTool } from '../tools/jira-search.tool.js';
+import { JiraCountTool } from '../tools/jira-count.tool.js';
+import { GitSearchTool } from '../tools/git-search.tool.js';
+import { CodeSearchTool } from '../tools/code-search.tool.js';
+import { OutlookSearchTool } from '../tools/outlook-search.tool.js';
+import { DevelopmentContextTool } from '../tools/development-context.tool.js';
+import { ServerCapabilitiesTool } from '../tools/server-capabilities.tool.js';
+import { SwarmAnalysisTool } from '../tools/swarm-analysis.tool.js';
 
 // Types
-import { ServerMetrics } from '../types/common';
+import { ServerMetrics } from '../types/common.js';
 
 const logger = createLogger('AOMAMeshServer');
 
@@ -193,9 +193,9 @@ export class AOMAMeshServer {
         });
         
         // Parse the result content
-        const healthData = typeof result.content[0].text === 'string' 
-          ? JSON.parse(result.content[0].text)
-          : result.content[0].text;
+        const healthData = typeof result.content?.[0]?.text === 'string' 
+          ? JSON.parse(result.content[0].text) 
+          : result.content?.[0]?.text || { status: 'error', message: 'Invalid health data' };
         
         res.json(healthData);
       } catch (error) {

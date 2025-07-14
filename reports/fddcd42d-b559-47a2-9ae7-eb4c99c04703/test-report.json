@@ -1,0 +1,456 @@
+{
+  "testRunId": "fddcd42d-b559-47a2-9ae7-eb4c99c04703",
+  "timestamp": "2025-07-08T20:22:46.244Z",
+  "summary": {
+    "testRunId": "fddcd42d-b559-47a2-9ae7-eb4c99c04703",
+    "totalTests": 23,
+    "passed": 11,
+    "failed": 10,
+    "warnings": 2,
+    "skipped": 0,
+    "testsByType": {
+      "theme": {
+        "total": 6,
+        "passed": 0,
+        "failed": 0,
+        "warnings": 0,
+        "pass": null
+      },
+      "performance": {
+        "total": 3,
+        "passed": 0,
+        "failed": 0,
+        "warnings": 0,
+        "pass": null,
+        "warning": null
+      },
+      "functional": {
+        "total": 10,
+        "passed": 0,
+        "failed": 0,
+        "warnings": 0,
+        "fail": null
+      },
+      "accessibility": {
+        "total": 1,
+        "passed": 0,
+        "failed": 0,
+        "warnings": 0,
+        "warning": null
+      },
+      "visual-regression": {
+        "total": 3,
+        "passed": 0,
+        "failed": 0,
+        "warnings": 0,
+        "pass": null
+      }
+    },
+    "averageDuration": 8183.869565217391,
+    "totalErrors": 10,
+    "totalWarnings": 0
+  },
+  "testResults": [
+    {
+      "testId": "47eea312-e223-498f-9549-6087fa14ab90",
+      "testRunId": "fddcd42d-b559-47a2-9ae7-eb4c99c04703",
+      "testName": "Theme Test - light - dashboard",
+      "testType": "theme",
+      "component": "dashboard",
+      "status": "pass",
+      "startTime": "2025-07-08T20:19:07.822Z",
+      "endTime": "2025-07-08T20:19:18.379Z",
+      "duration": 10557,
+      "screenshots": [
+        "screenshots/fddcd42d-b559-47a2-9ae7-eb4c99c04703/theme-light-dashboard.png"
+      ],
+      "errors": [],
+      "warnings": [],
+      "metadata": {}
+    },
+    {
+      "testId": "b013cf79-8da5-4a97-9794-8318f3ab9bf7",
+      "testRunId": "fddcd42d-b559-47a2-9ae7-eb4c99c04703",
+      "testName": "Theme Test - light - ticket-view",
+      "testType": "theme",
+      "component": "ticket-view",
+      "status": "pass",
+      "startTime": "2025-07-08T20:19:18.698Z",
+      "endTime": "2025-07-08T20:19:24.819Z",
+      "duration": 6121,
+      "screenshots": [
+        "screenshots/fddcd42d-b559-47a2-9ae7-eb4c99c04703/theme-light-ticket-view.png"
+      ],
+      "errors": [],
+      "warnings": [],
+      "metadata": {}
+    },
+    {
+      "testId": "21a3e5fa-0365-4df7-9346-c3b6cd06e975",
+      "testRunId": "fddcd42d-b559-47a2-9ae7-eb4c99c04703",
+      "testName": "Theme Test - light - search",
+      "testType": "theme",
+      "component": "search",
+      "status": "pass",
+      "startTime": "2025-07-08T20:19:25.289Z",
+      "endTime": "2025-07-08T20:19:34.541Z",
+      "duration": 9252,
+      "screenshots": [
+        "screenshots/fddcd42d-b559-47a2-9ae7-eb4c99c04703/theme-light-search.png"
+      ],
+      "errors": [],
+      "warnings": [],
+      "metadata": {}
+    },
+    {
+      "testId": "fcf0e22c-b76e-4e61-9ef4-e5583e38b901",
+      "testRunId": "fddcd42d-b559-47a2-9ae7-eb4c99c04703",
+      "testName": "Theme Test - dark - dashboard",
+      "testType": "theme",
+      "component": "dashboard",
+      "status": "pass",
+      "startTime": "2025-07-08T20:19:35.106Z",
+      "endTime": "2025-07-08T20:19:38.957Z",
+      "duration": 3851,
+      "screenshots": [
+        "screenshots/fddcd42d-b559-47a2-9ae7-eb4c99c04703/theme-dark-dashboard.png"
+      ],
+      "errors": [],
+      "warnings": [],
+      "metadata": {}
+    },
+    {
+      "testId": "64c5acf2-6dfb-474d-a875-7b0e2c917341",
+      "testRunId": "fddcd42d-b559-47a2-9ae7-eb4c99c04703",
+      "testName": "Theme Test - dark - ticket-view",
+      "testType": "theme",
+      "component": "ticket-view",
+      "status": "pass",
+      "startTime": "2025-07-08T20:19:39.323Z",
+      "endTime": "2025-07-08T20:19:43.164Z",
+      "duration": 3841,
+      "screenshots": [
+        "screenshots/fddcd42d-b559-47a2-9ae7-eb4c99c04703/theme-dark-ticket-view.png"
+      ],
+      "errors": [],
+      "warnings": [],
+      "metadata": {}
+    },
+    {
+      "testId": "4fd452b4-4beb-431d-bcd4-082729744f42",
+      "testRunId": "fddcd42d-b559-47a2-9ae7-eb4c99c04703",
+      "testName": "Theme Test - dark - search",
+      "testType": "theme",
+      "component": "search",
+      "status": "pass",
+      "startTime": "2025-07-08T20:19:43.511Z",
+      "endTime": "2025-07-08T20:19:52.583Z",
+      "duration": 9072,
+      "screenshots": [
+        "screenshots/fddcd42d-b559-47a2-9ae7-eb4c99c04703/theme-dark-search.png"
+      ],
+      "errors": [],
+      "warnings": [],
+      "metadata": {}
+    },
+    {
+      "testId": "b575a859-5395-4e96-80df-d09c6ff610ff",
+      "testRunId": "fddcd42d-b559-47a2-9ae7-eb4c99c04703",
+      "testName": "Performance Test - Dashboard",
+      "testType": "performance",
+      "component": "dashboard",
+      "status": "pass",
+      "startTime": "2025-07-08T20:19:52.940Z",
+      "endTime": "2025-07-08T20:19:55.363Z",
+      "duration": 2423,
+      "screenshots": [
+        "screenshots/fddcd42d-b559-47a2-9ae7-eb4c99c04703/performance-dashboard.png"
+      ],
+      "errors": [],
+      "warnings": [],
+      "metadata": {
+        "loadTime": 2014
+      }
+    },
+    {
+      "testId": "14984824-c17e-45bc-9062-189b1957cd7d",
+      "testRunId": "fddcd42d-b559-47a2-9ae7-eb4c99c04703",
+      "testName": "Performance Test - Issue Navigator",
+      "testType": "performance",
+      "component": "issue navigator",
+      "status": "warning",
+      "startTime": "2025-07-08T20:19:55.824Z",
+      "endTime": "2025-07-08T20:20:02.054Z",
+      "duration": 6230,
+      "screenshots": [
+        "screenshots/fddcd42d-b559-47a2-9ae7-eb4c99c04703/performance-issue navigator.png"
+      ],
+      "errors": [],
+      "warnings": [],
+      "metadata": {
+        "loadTime": 6153
+      }
+    },
+    {
+      "testId": "0a01e7dd-265a-4fb8-9f53-f8a0d21f828d",
+      "testRunId": "fddcd42d-b559-47a2-9ae7-eb4c99c04703",
+      "testName": "Performance Test - Search",
+      "testType": "performance",
+      "component": "search",
+      "status": "pass",
+      "startTime": "2025-07-08T20:20:02.756Z",
+      "endTime": "2025-07-08T20:20:04.956Z",
+      "duration": 2200,
+      "screenshots": [
+        "screenshots/fddcd42d-b559-47a2-9ae7-eb4c99c04703/performance-search.png"
+      ],
+      "errors": [],
+      "warnings": [],
+      "metadata": {
+        "loadTime": 2121
+      }
+    },
+    {
+      "testId": "68d46251-48a1-44a6-9528-07c39342ea1e",
+      "testRunId": "fddcd42d-b559-47a2-9ae7-eb4c99c04703",
+      "testName": "Functional Test - UAT-ITSM-67622",
+      "testType": "functional",
+      "component": "ticket-operations",
+      "status": "fail",
+      "startTime": "2025-07-08T20:20:05.309Z",
+      "endTime": "2025-07-08T20:20:17.368Z",
+      "duration": 12059,
+      "screenshots": [],
+      "errors": [
+        "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('#key-val, .issue-header, .issue-content') to be visible\n"
+      ],
+      "warnings": [],
+      "metadata": {}
+    },
+    {
+      "testId": "8caf178b-0d2f-439d-abf8-67a34eb745e6",
+      "testRunId": "fddcd42d-b559-47a2-9ae7-eb4c99c04703",
+      "testName": "Functional Test - UAT-ITSM-67629",
+      "testType": "functional",
+      "component": "ticket-operations",
+      "status": "fail",
+      "startTime": "2025-07-08T20:20:17.910Z",
+      "endTime": "2025-07-08T20:20:29.688Z",
+      "duration": 11778,
+      "screenshots": [],
+      "errors": [
+        "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('#key-val, .issue-header, .issue-content') to be visible\n"
+      ],
+      "warnings": [],
+      "metadata": {}
+    },
+    {
+      "testId": "adf246d8-5b71-44e6-b47b-6ae16ec4f9a9",
+      "testRunId": "fddcd42d-b559-47a2-9ae7-eb4c99c04703",
+      "testName": "Functional Test - UAT-DPSO-92185",
+      "testType": "functional",
+      "component": "ticket-operations",
+      "status": "fail",
+      "startTime": "2025-07-08T20:20:30.202Z",
+      "endTime": "2025-07-08T20:20:42.201Z",
+      "duration": 11999,
+      "screenshots": [],
+      "errors": [
+        "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('#key-val, .issue-header, .issue-content') to be visible\n"
+      ],
+      "warnings": [],
+      "metadata": {}
+    },
+    {
+      "testId": "16adae4c-af08-46ab-81ad-30f58a2cc96d",
+      "testRunId": "fddcd42d-b559-47a2-9ae7-eb4c99c04703",
+      "testName": "Functional Test - UAT-ITSM-67628",
+      "testType": "functional",
+      "component": "ticket-operations",
+      "status": "fail",
+      "startTime": "2025-07-08T20:20:42.692Z",
+      "endTime": "2025-07-08T20:20:54.354Z",
+      "duration": 11662,
+      "screenshots": [],
+      "errors": [
+        "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('#key-val, .issue-header, .issue-content') to be visible\n"
+      ],
+      "warnings": [],
+      "metadata": {}
+    },
+    {
+      "testId": "82b227a5-6bcd-4373-9138-446d8a32a215",
+      "testRunId": "fddcd42d-b559-47a2-9ae7-eb4c99c04703",
+      "testName": "Functional Test - UAT-ITSM-67627",
+      "testType": "functional",
+      "component": "ticket-operations",
+      "status": "fail",
+      "startTime": "2025-07-08T20:20:55.002Z",
+      "endTime": "2025-07-08T20:21:06.668Z",
+      "duration": 11666,
+      "screenshots": [],
+      "errors": [
+        "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('#key-val, .issue-header, .issue-content') to be visible\n"
+      ],
+      "warnings": [],
+      "metadata": {}
+    },
+    {
+      "testId": "9c3c7d2a-7054-495a-9f3a-f46c2bb1c78a",
+      "testRunId": "fddcd42d-b559-47a2-9ae7-eb4c99c04703",
+      "testName": "Functional Test - UAT-ITSM-67626",
+      "testType": "functional",
+      "component": "ticket-operations",
+      "status": "fail",
+      "startTime": "2025-07-08T20:21:07.142Z",
+      "endTime": "2025-07-08T20:21:18.963Z",
+      "duration": 11821,
+      "screenshots": [],
+      "errors": [
+        "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('#key-val, .issue-header, .issue-content') to be visible\n"
+      ],
+      "warnings": [],
+      "metadata": {}
+    },
+    {
+      "testId": "ad2bf8e5-664b-4da8-90bb-ecad62c6b43f",
+      "testRunId": "fddcd42d-b559-47a2-9ae7-eb4c99c04703",
+      "testName": "Functional Test - UAT-ITSM-67625",
+      "testType": "functional",
+      "component": "ticket-operations",
+      "status": "fail",
+      "startTime": "2025-07-08T20:21:19.314Z",
+      "endTime": "2025-07-08T20:21:31.129Z",
+      "duration": 11815,
+      "screenshots": [],
+      "errors": [
+        "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('#key-val, .issue-header, .issue-content') to be visible\n"
+      ],
+      "warnings": [],
+      "metadata": {}
+    },
+    {
+      "testId": "fc9ac0fe-f603-43ed-80f9-3785fc66cc0c",
+      "testRunId": "fddcd42d-b559-47a2-9ae7-eb4c99c04703",
+      "testName": "Functional Test - UAT-ITSM-67624",
+      "testType": "functional",
+      "component": "ticket-operations",
+      "status": "fail",
+      "startTime": "2025-07-08T20:21:31.629Z",
+      "endTime": "2025-07-08T20:21:43.293Z",
+      "duration": 11664,
+      "screenshots": [],
+      "errors": [
+        "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('#key-val, .issue-header, .issue-content') to be visible\n"
+      ],
+      "warnings": [],
+      "metadata": {}
+    },
+    {
+      "testId": "98d01ed7-1225-4a8e-9c60-9b7f7b7d0014",
+      "testRunId": "fddcd42d-b559-47a2-9ae7-eb4c99c04703",
+      "testName": "Functional Test - UAT-ITSM-67623",
+      "testType": "functional",
+      "component": "ticket-operations",
+      "status": "fail",
+      "startTime": "2025-07-08T20:21:43.575Z",
+      "endTime": "2025-07-08T20:21:55.763Z",
+      "duration": 12188,
+      "screenshots": [],
+      "errors": [
+        "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('#key-val, .issue-header, .issue-content') to be visible\n"
+      ],
+      "warnings": [],
+      "metadata": {}
+    },
+    {
+      "testId": "7edfd6b9-072b-4ac0-97d2-cc8727d8ec62",
+      "testRunId": "fddcd42d-b559-47a2-9ae7-eb4c99c04703",
+      "testName": "Functional Test - UAT-ITSM-67621",
+      "testType": "functional",
+      "component": "ticket-operations",
+      "status": "fail",
+      "startTime": "2025-07-08T20:21:56.040Z",
+      "endTime": "2025-07-08T20:22:07.701Z",
+      "duration": 11661,
+      "screenshots": [],
+      "errors": [
+        "page.waitForSelector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator('#key-val, .issue-header, .issue-content') to be visible\n"
+      ],
+      "warnings": [],
+      "metadata": {}
+    },
+    {
+      "testId": "0ac9c1c7-6bbf-4fd7-80c3-5b80df7ef073",
+      "testRunId": "fddcd42d-b559-47a2-9ae7-eb4c99c04703",
+      "testName": "Accessibility Test",
+      "testType": "accessibility",
+      "component": "whole-application",
+      "status": "warning",
+      "startTime": "2025-07-08T20:22:08.197Z",
+      "endTime": "2025-07-08T20:22:09.358Z",
+      "duration": 1161,
+      "screenshots": [
+        "screenshots/fddcd42d-b559-47a2-9ae7-eb4c99c04703/accessibility-test.png"
+      ],
+      "errors": [],
+      "warnings": [],
+      "metadata": {
+        "imagesWithoutAlt": 1,
+        "linksWithoutText": 4,
+        "focusableElements": 77
+      }
+    },
+    {
+      "testId": "b5cd4283-ab61-4400-a741-8f17c21f2459",
+      "testRunId": "fddcd42d-b559-47a2-9ae7-eb4c99c04703",
+      "testName": "Visual Test - dashboard",
+      "testType": "visual-regression",
+      "component": "dashboard",
+      "status": "pass",
+      "startTime": "2025-07-08T20:22:09.737Z",
+      "endTime": "2025-07-08T20:22:13.438Z",
+      "duration": 3701,
+      "screenshots": [
+        "screenshots/fddcd42d-b559-47a2-9ae7-eb4c99c04703/visual-dashboard.png"
+      ],
+      "errors": [],
+      "warnings": [],
+      "metadata": {}
+    },
+    {
+      "testId": "5786851a-59e2-4704-875a-48ff2e97f7e2",
+      "testRunId": "fddcd42d-b559-47a2-9ae7-eb4c99c04703",
+      "testName": "Visual Test - issue-list",
+      "testType": "visual-regression",
+      "component": "issue-list",
+      "status": "pass",
+      "startTime": "2025-07-08T20:22:13.933Z",
+      "endTime": "2025-07-08T20:22:21.627Z",
+      "duration": 7694,
+      "screenshots": [
+        "screenshots/fddcd42d-b559-47a2-9ae7-eb4c99c04703/visual-issue-list.png"
+      ],
+      "errors": [],
+      "warnings": [],
+      "metadata": {}
+    },
+    {
+      "testId": "b9073bc6-4d58-4841-8cac-470138e9d223",
+      "testRunId": "fddcd42d-b559-47a2-9ae7-eb4c99c04703",
+      "testName": "Visual Test - ticket-view",
+      "testType": "visual-regression",
+      "component": "ticket-view",
+      "status": "pass",
+      "startTime": "2025-07-08T20:22:21.988Z",
+      "endTime": "2025-07-08T20:22:25.801Z",
+      "duration": 3813,
+      "screenshots": [
+        "screenshots/fddcd42d-b559-47a2-9ae7-eb4c99c04703/visual-ticket-view.png"
+      ],
+      "errors": [],
+      "warnings": [],
+      "metadata": {}
+    }
+  ]
+}
