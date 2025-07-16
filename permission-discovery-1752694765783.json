@@ -1,0 +1,126 @@
+{
+  "timestamp": "2025-07-16T19:39:25.777Z",
+  "summary": {
+    "totalEndpoints": 19,
+    "successfulEndpoints": 8,
+    "userCanAccessProjects": false,
+    "userCanSearch": true,
+    "userHasPermissions": false
+  },
+  "apiResults": [
+    {
+      "endpoint": "/jira/rest/auth/1/session",
+      "status": 401,
+      "success": false,
+      "data": null
+    },
+    {
+      "endpoint": "/jira/rest/api/2/myself",
+      "status": 401,
+      "success": false,
+      "data": null
+    },
+    {
+      "endpoint": "/jira/rest/api/2/user?username=currentUser",
+      "status": 401,
+      "success": false,
+      "data": null
+    },
+    {
+      "endpoint": "/jira/rest/api/2/project",
+      "status": 200,
+      "success": true,
+      "data": "[]"
+    },
+    {
+      "endpoint": "/jira/rest/api/2/project?expand=description,lead,url",
+      "status": 200,
+      "success": true,
+      "data": "[]"
+    },
+    {
+      "endpoint": "/jira/rest/api/2/mypermissions",
+      "status": 401,
+      "success": false,
+      "data": null
+    },
+    {
+      "endpoint": "/jira/rest/api/2/permissions",
+      "status": 401,
+      "success": false,
+      "data": null
+    },
+    {
+      "endpoint": "/jira/rest/api/2/search?jql=ORDER%20BY%20created%20DESC&maxResults=5",
+      "status": 200,
+      "success": true,
+      "data": "{\"expand\":null,\"startAt\":0,\"maxResults\":5,\"total\":0,\"issues\":[],\"warningMessages\":null,\"names\":null,\"schema\":null}"
+    },
+    {
+      "endpoint": "/jira/rest/api/2/search?jql=assignee%20=%20currentUser()&maxResults=5",
+      "status": 400,
+      "success": false,
+      "data": null
+    },
+    {
+      "endpoint": "/jira/rest/api/2/search?maxResults=5",
+      "status": 200,
+      "success": true,
+      "data": "{\"expand\":null,\"startAt\":0,\"maxResults\":5,\"total\":0,\"issues\":[],\"warningMessages\":null,\"names\":null,\"schema\":null}"
+    },
+    {
+      "endpoint": "/jira/rest/api/2/search?jql=reporter%20=%20currentUser()&maxResults=5",
+      "status": 400,
+      "success": false,
+      "data": null
+    },
+    {
+      "endpoint": "/jira/rest/api/2/issuetype",
+      "status": 200,
+      "success": true,
+      "data": "[]"
+    },
+    {
+      "endpoint": "/jira/rest/api/2/status",
+      "status": 200,
+      "success": true,
+      "data": "[]"
+    },
+    {
+      "endpoint": "/jira/rest/api/2/priority",
+      "status": 401,
+      "success": false,
+      "data": null
+    },
+    {
+      "endpoint": "/jira/rest/api/2/dashboard",
+      "status": 200,
+      "success": true,
+      "data": "{\"startAt\":0,\"maxResults\":20,\"total\":120,\"next\":\"https://jirauat.smedigitalapps.com/jira/rest/api/2/dashboard?maxResults=20&startAt=20\",\"dashboards\":[{\"id\":\"19781\",\"name\":\"*France Dashboard\",\"self\":\"https://jirauat.smedigitalapps.com/jira/rest/api/2/dashboard/19781\",\"view\":\"https://jirauat.smedigitalapps.com/jira/secure/Dashboard.jspa?selectPageId=19781\"},{\"id\":\"15992\",\"name\":\"Accounting/Copyright/Union\",\"self\":\"https://jirauat.smedigitalapps.com/jira/rest/api/2/dashboard/15992\",\"view\":\"https://jirauat.smedigitalapps.com/jira/secure/Dashboard.jspa?selectPageId=15992\"},{\"id\":\"15710\",\"name\":\"All Requests\",\"self\":\"https://jirauat.smedigitalapps.com/jira/rest/api/2/dashboard/15710\",\"view\":\"https://jirauat.smedigitalapps.com/jira/secure/Dashboard.jspa?selectPageId=15710\"},{\"id\":\"15652\",\"name\":\"Amanda - ESR\",\"self\":\"https://jirauat.smedigitalapps.com/jira/rest/api/2/dashboard/15652\",\"view\":\"https://jirauat.smedigitalapps.com/jira/secure/Dashboard.jspa?selectPageId=15652\"},{\"id\":\"15982\",\"name"
+    },
+    {
+      "endpoint": "/jira/rest/api/2/filter/favourite",
+      "status": 200,
+      "success": true,
+      "data": "[]"
+    },
+    {
+      "endpoint": "/jira/rest/api/2/filter/search",
+      "status": 404,
+      "success": false,
+      "data": null
+    },
+    {
+      "endpoint": "/jira/rest/api/2/serverInfo",
+      "status": 401,
+      "success": false,
+      "data": null
+    },
+    {
+      "endpoint": "/jira/rest/api/2/configuration",
+      "status": 401,
+      "success": false,
+      "data": null
+    }
+  ]
+}

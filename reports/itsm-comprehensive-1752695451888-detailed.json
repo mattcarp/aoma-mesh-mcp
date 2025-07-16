@@ -1,0 +1,132 @@
+{
+  "summary": {
+    "totalTests": 13,
+    "passed": 8,
+    "warnings": 5,
+    "failed": 0,
+    "totalDuration": 60240,
+    "timestamp": "2025-07-16T20:06:53.409Z",
+    "reportId": "itsm-comprehensive-1752695451888"
+  },
+  "results": [
+    {
+      "testName": "AUTH_STATUS",
+      "status": "PASS",
+      "duration": 1513,
+      "details": "Successfully authenticated. Title: Dashboard for Matt Carpenter - Sony Music",
+      "screenshot": "screenshots/itsm-comprehensive-1752695451888/auth-success-1752696353703.png"
+    },
+    {
+      "testName": "PROJECT_ACCESS",
+      "status": "PASS",
+      "duration": 556,
+      "details": "Found 65 projects. ITSM access: true"
+    },
+    {
+      "testName": "ITSM_DASHBOARD",
+      "status": "PASS",
+      "duration": 2594,
+      "details": "Dashboard loaded in 2594ms",
+      "screenshot": "screenshots/itsm-comprehensive-1752695451888/itsm-dashboard-1752696357205.png",
+      "url": "https://jirauat.smedigitalapps.com/jira/secure/Dashboard.jspa",
+      "metrics": {
+        "timing": {
+          "connectStart": 1752696355049,
+          "secureConnectionStart": 0,
+          "unloadEventEnd": 1752696355239,
+          "domainLookupStart": 1752696355049,
+          "domainLookupEnd": 1752696355049,
+          "responseStart": 1752696355237,
+          "connectEnd": 1752696355049,
+          "responseEnd": 1752696355476,
+          "requestStart": 1752696355049,
+          "domLoading": 1752696355240,
+          "redirectStart": 0,
+          "loadEventEnd": 1752696355786,
+          "domComplete": 1752696355785,
+          "navigationStart": 1752696355047,
+          "loadEventStart": 1752696355785,
+          "domContentLoadedEventEnd": 1752696355751,
+          "unloadEventStart": 1752696355239,
+          "redirectEnd": 0,
+          "domInteractive": 1752696355478,
+          "fetchStart": 1752696355049,
+          "domContentLoadedEventStart": 1752696355751
+        },
+        "navigation": {
+          "type": 0,
+          "redirectCount": 0
+        }
+      }
+    },
+    {
+      "testName": "ITSM_ISSUE_NAVIGATOR",
+      "status": "WARN",
+      "duration": 18116,
+      "details": "Issue Navigator loaded in 18116ms. Title: Issue Navigator - Sony Music",
+      "screenshot": "screenshots/itsm-comprehensive-1752695451888/itsm-issue-navigator-1752696375465.png"
+    },
+    {
+      "testName": "ITSM_SEARCH",
+      "status": "WARN",
+      "duration": 2774,
+      "details": "ITSM search accessible but no results found in 2774ms",
+      "screenshot": "screenshots/itsm-comprehensive-1752695451888/itsm-search-1752696378368.png"
+    },
+    {
+      "testName": "ITSM_PROJECT_BROWSER",
+      "status": "WARN",
+      "duration": 6616,
+      "details": "Project browser accessible but ITSM not visible (6616ms)",
+      "screenshot": "screenshots/itsm-comprehensive-1752695451888/itsm-project-browser-1752696385127.png"
+    },
+    {
+      "testName": "PERF_DASHBOARD.JSPA",
+      "status": "PASS",
+      "duration": 2564,
+      "details": "Dashboard.jspa performance: 2564ms"
+    },
+    {
+      "testName": "PERF_ISSUENAVIGATOR.JSPA",
+      "status": "WARN",
+      "duration": 8544,
+      "details": "IssueNavigator.jspa performance: 8544ms"
+    },
+    {
+      "testName": "PERF_UNKNOWN",
+      "status": "PASS",
+      "duration": 3752,
+      "details": "unknown performance: 3752ms"
+    },
+    {
+      "testName": "PERF_BROWSEPROJECTS.JSPA",
+      "status": "PASS",
+      "duration": 2269,
+      "details": "BrowseProjects.jspa performance: 2269ms"
+    },
+    {
+      "testName": "TICKET_CREATION",
+      "status": "PASS",
+      "duration": 8656,
+      "details": "Ticket creation form accessible (8656ms)",
+      "screenshot": "screenshots/itsm-comprehensive-1752695451888/ticket-creation-1752696411043.png"
+    },
+    {
+      "testName": "WORKFLOW_ACCESS",
+      "status": "WARN",
+      "duration": 1625,
+      "details": "Limited workflow access (non-admin)"
+    },
+    {
+      "testName": "SECURITY_HEADERS",
+      "status": "PASS",
+      "duration": 661,
+      "details": "Security validation: 5/5 checks passed"
+    }
+  ],
+  "metadata": {
+    "jiraVersion": "10.3.x",
+    "testSuite": "ITSM Comprehensive Validation",
+    "environment": "UAT"
+  }
+}
