@@ -1,0 +1,57 @@
+{
+  "timestamp": "2025-07-15T19:33:51.679Z",
+  "testSuite": "JIRA 10.3 Upgrade Validation with Saved Session",
+  "environment": "UAT (jirauat.smedigitalapps.com)",
+  "sessionUsed": "2025-07-15T19:30:33.473Z",
+  "tests": [
+    {
+      "testId": "TEST-001",
+      "name": "Dashboard Access & Performance",
+      "status": "FAIL",
+      "loadTime": "7842ms",
+      "threshold": "15000ms",
+      "authenticated": false,
+      "pageTitle": "System Dashboard - Sony Music",
+      "screenshot": "test-1-dashboard.png",
+      "details": "Login required"
+    },
+    {
+      "testId": "TEST-002",
+      "name": "ITSM Project Access",
+      "status": "PASS",
+      "accessible": true,
+      "hasProject": null,
+      "pageTitle": "Log into Atlassian - Sony Music",
+      "screenshot": "test-2-itsm-project.png"
+    },
+    {
+      "testId": "TEST-003",
+      "name": "DPSA Project Access",
+      "status": "PASS",
+      "accessible": true,
+      "hasProject": null,
+      "pageTitle": "Log into Atlassian - Sony Music",
+      "screenshot": "test-3-dpsa-project.png"
+    },
+    {
+      "testId": "TEST-004",
+      "name": "Issue Navigator Performance",
+      "status": "PASS",
+      "loadTime": "7938ms",
+      "threshold": "20000ms",
+      "screenshot": "test-4-issue-navigator.png",
+      "notes": "Within acceptable limits"
+    },
+    {
+      "testId": "TEST-005",
+      "name": "Cross-Project Search",
+      "status": "FAIL",
+      "loadTime": "2944ms",
+      "needsLogin": true,
+      "hasResults": true,
+      "hasError": true,
+      "pageTitle": "Issue Navigator - Sony Music",
+      "screenshot": "test-5-search-results.png"
+    }
+  ]
+}

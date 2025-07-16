@@ -1,0 +1,19 @@
+{
+  "projects": [
+    "DPSA"
+  ],
+  "availablePages": [
+    "/jira/secure/Dashboard.jspa",
+    "/jira/issues/"
+  ],
+  "dashboardInfo": {
+    "url": "/jira/secure/Dashboard.jspa",
+    "title": "Dashboard for Matt Carpenter - Sony Music",
+    "workingUrl": "https://jirauat.smedigitalapps.com/jira/secure/Dashboard.jspa"
+  },
+  "searchCapabilities": {
+    "searchWorks": false,
+    "testProject": "DPSA",
+    "searchUrl": "/jira/issues/?jql=project%20%3D%20DPSA"
+  }
+}

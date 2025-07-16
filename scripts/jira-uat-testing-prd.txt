@@ -1,0 +1,169 @@
+# JIRA 10.3 UAT Testing Framework - Product Requirements Document
+
+## Executive Summary
+Comprehensive testing framework for JIRA 10.3 upgrade validation with primary focus on ITSM project (65,689 tickets). Based on intelligent exploration of 89 projects, 392 URLs, and identification of 196 performance issues.
+
+## Project Scope & Objectives
+
+### Primary Focus: ITSM Project Testing
+- **Target**: ITSM (JIRA ITSM – App Support) with 65,689 tickets
+- **Goal**: Comprehensive validation of ITSM workflows, performance, and data integrity
+- **Approach**: Intelligent UAT data manipulation based on Supabase knowledge
+- **Success Criteria**: 95% functional tests passing, <10s average load times
+
+### Secondary Objectives: Enterprise-Wide Validation
+- Performance optimization for 196 identified slow pages (>5s load time)
+- Cross-project testing for top 5 critical projects (WPTS: 436k, DPSO: 91k, ITSM: 65k, DPS: 46k, ASIAREG: 39k)
+- Authentication and session management validation
+- Comprehensive reporting and analytics
+
+## Discovered System Architecture
+
+### Projects Discovered (89 total)
+**Critical High-Volume Projects:**
+- WPTS: 436,514 tickets (Worldwide Production Tracking)
+- DPSO: 91,162 tickets (DPS Order Management)
+- ITSM: 65,689 tickets (PRIMARY FOCUS - App Support)
+- DPS: 46,661 tickets (Digital Production Support - RETIRED)
+- ASIAREG: 39,970 tickets (Asian Registrations - RETIRED)
+
+**ITSM Ecosystem Projects:**
+- DPSA: 30,673 tickets (DPS Asset Management)
+- CLOUDOPS: 21,821 tickets (Cloud Operations)
+- AOMA: 16,432 tickets (AOMA)
+- PRMO: 7,989 tickets (Promo)
+- CLOUDSD: 7,155 tickets (CloudOps ServiceDesk)
+
+### Performance Issues Identified
+- Average load time: 7.5 seconds across all pages
+- 196 pages exceeding 5-second threshold
+- Critical performance problems:
+  - AOMA3 project browse: 31.6 seconds
+  - PAPR search: 30 seconds
+  - DDI project view: 29.4 seconds
+  - Multiple timeout failures on high-traffic pages
+
+### Authentication Challenges
+- Login flow regression with `permissionViolation=true` redirect loop
+- Session management inconsistencies
+- Manual authentication capture required for testing
+
+## Technical Requirements
+
+### 1. ITSM-Focused Testing Framework
+**Functional Testing:**
+- ITSM project page navigation and performance
+- ITSM ticket search and filtering (65,689 tickets)
+- ITSM ticket creation, editing, and workflow validation
+- ITSM reporting and dashboard functionality
+- Cross-project ITSM data relationships
+
+**Performance Testing:**
+- ITSM page load times (<10s target)
+- Large dataset handling (65k+ tickets)
+- Search performance with complex JQL queries
+- Concurrent user simulation for ITSM workflows
+
+**Data Integrity Testing:**
+- ITSM ticket data consistency
+- Intelligent UAT data manipulation for realistic testing scenarios
+- Field validation and custom field behavior
+- Attachment and comment functionality
+
+### 2. Session-Based Automation System
+**Requirements:**
+- Capture and reuse authentication sessions
+- Support for SSO and 2FA workflows
+- 8-hour session persistence
+- Cross-browser context sharing
+- Automatic session refresh and validation
+
+### 3. Performance Optimization Framework
+**Targets:**
+- Reduce 196 slow pages to <5s load time
+- Optimize ITSM-specific pages for <3s load time
+- Database query optimization recommendations
+- Network and rendering performance analysis
+
+### 4. Comprehensive Reporting System
+**Supabase Integration:**
+- Store all test results in structured database
+- Real-time performance metrics tracking
+- Historical trend analysis
+- Executive dashboard with key metrics
+
+**Report Types:**
+- ITSM-focused validation reports
+- Enterprise-wide performance analysis
+- Authentication and security validation
+- Compliance and upgrade readiness assessment
+
+### 5. Intelligent Test Data Management
+**UAT Data Enhancement:**
+- Leverage existing Supabase knowledge about tickets
+- Create realistic test scenarios for ITSM workflows
+- Intelligent data seeding for edge cases
+- Backup and restore capabilities for UAT environment
+
+## Implementation Strategy
+
+### Phase 1: ITSM Foundation (Priority 1)
+1. Session capture and authentication automation
+2. ITSM project comprehensive exploration
+3. Core ITSM workflow testing automation
+4. Performance baseline establishment for ITSM
+
+### Phase 2: Performance & Cross-Project (Priority 2)
+1. Performance testing for all 196 slow pages
+2. Cross-project testing for top 5 critical projects
+3. Authentication security validation
+4. Automated reporting system
+
+### Phase 3: Data Intelligence & Analytics (Priority 3)
+1. Intelligent UAT data manipulation
+2. Advanced Supabase analytics integration
+3. Predictive performance modeling
+4. Comprehensive executive reporting
+
+## Success Metrics
+
+### ITSM-Specific KPIs:
+- 95% ITSM functional tests passing
+- <3s average ITSM page load time
+- Zero critical ITSM workflow failures
+- 100% ITSM data integrity validation
+
+### Enterprise KPIs:
+- 80% reduction in pages >5s load time
+- 90% overall functional test success rate
+- Zero authentication failures
+- Complete test coverage for all 89 projects
+
+### Quality Metrics:
+- Automated test execution in <2 hours
+- Zero false positives in critical path tests
+- 100% test result reproducibility
+- Real-time issue detection and alerting
+
+## Technical Stack
+- **Testing Framework**: Playwright with TypeScript
+- **Session Management**: Browser context persistence with cookie management
+- **Performance Analysis**: Page load metrics, network analysis, DOM profiling
+- **Data Storage**: Supabase for results, analytics, and historical tracking
+- **Reporting**: Real-time dashboards with executive summaries
+- **Authentication**: Intelligent session capture supporting SSO/2FA
+
+## Risk Mitigation
+- Session expiration handling with automatic refresh
+- Timeout management for large dataset operations
+- Rollback procedures for UAT data modifications
+- Isolated test environments to prevent production impact
+- Comprehensive logging and error tracking
+
+## Deliverables
+1. ITSM-focused automated testing suite
+2. Performance optimization recommendations
+3. Session-based automation framework
+4. Supabase-integrated analytics platform
+5. Executive validation reports for JIRA 10.3 readiness
+6. Documentation and knowledge transfer materials 

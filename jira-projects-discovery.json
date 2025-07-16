@@ -1,0 +1,892 @@
+[
+  {
+    "key": "DPSA",
+    "name": "Projects",
+    "type": "unknown",
+    "lead": "unknown",
+    "ticketCount": 30673,
+    "workflows": [],
+    "issueTypes": [],
+    "customFields": []
+  },
+  {
+    "key": "AMPSV",
+    "name": "AMP Microservices",
+    "type": "unknown",
+    "lead": "unknown",
+    "ticketCount": 1430,
+    "workflows": [],
+    "issueTypes": [],
+    "customFields": []
+  },
+  {
+    "key": "AMSE",
+    "name": "AMSE",
+    "type": "unknown",
+    "lead": "unknown",
+    "ticketCount": 1461,
+    "workflows": [],
+    "issueTypes": [],
+    "customFields": []
+  },
+  {
+    "key": "AOMA",
+    "name": "AOMA",
+    "type": "unknown",
+    "lead": "unknown",
+    "ticketCount": 16432,
+    "workflows": [],
+    "issueTypes": [],
+    "customFields": []
+  },
+  {
+    "key": "AMEBA",
+    "name": "AOMA Microservice Event Backplane",
+    "type": "unknown",
+    "lead": "unknown",
+    "ticketCount": 1111,
+    "workflows": [],
+    "issueTypes": [],
+    "customFields": []
+  },
+  {
+    "key": "AMINO",
+    "name": "AOMA Microservice Integration/Overhaul",
+    "type": "unknown",
+    "lead": "unknown",
+    "ticketCount": 1253,
+    "workflows": [],
+    "issueTypes": [],
+    "customFields": []
+  },
+  {
+    "key": "ATF",
+    "name": "AOMA Task Force",
+    "type": "unknown",
+    "lead": "unknown",
+    "ticketCount": 656,
+    "workflows": [],
+    "issueTypes": [],
+    "customFields": []
+  },
+  {
+    "key": "ASIAREG",
+    "name": "Asian Registrations - RETIRED",
+    "type": "unknown",
+    "lead": "unknown",
+    "ticketCount": 39970,
+    "workflows": [],
+    "issueTypes": [],
+    "customFields": []
+  },
+  {
+    "key": "ACS",
+    "name": "Asset Conversion System",
+    "type": "unknown",
+    "lead": "unknown",
+    "ticketCount": 3297,
+    "workflows": [],
+    "issueTypes": [],
+    "customFields": []
+  },
+  {
+    "key": "CLOUDBA",
+    "name": "Cloud BA Task",
+    "type": "unknown",
+    "lead": "unknown",
+    "ticketCount": 106,
+    "workflows": [],
+    "issueTypes": [],
+    "customFields": []
+  },
+  {
+    "key": "CLOUDOPS",
+    "name": "Cloud Operations",
+    "type": "unknown",
+    "lead": "unknown",
+    "ticketCount": 21821,
+    "workflows": [],
+    "issueTypes": [],
+    "customFields": []
+  },
+  {
+    "key": "CLOUDSD",
+    "name": "CloudOps ServiceDesk",
+    "type": "unknown",
+    "lead": "unknown",
+    "ticketCount": 7155,
+    "workflows": [],
+    "issueTypes": [],
+    "customFields": []
+  },
+  {
+    "key": "XSC",
+    "name": "Cross-System Coordination",
+    "type": "unknown",
+    "lead": "unknown",
+    "ticketCount": 530,
+    "workflows": [],
+    "issueTypes": [],
+    "customFields": []
+  },
+  {
+    "key": "DA",
+    "name": "DA",
+    "type": "unknown",
+    "lead": "unknown",
+    "ticketCount": 712,
+    "workflows": [],
+    "issueTypes": [],
+    "customFields": []
+  },
+  {
+    "key": "DSG",
+    "name": "Delivery Service Gateway",
+    "type": "unknown",
+    "lead": "unknown",
+    "ticketCount": 27,
+    "workflows": [],
+    "issueTypes": [],
+    "customFields": []
+  },
+  {
+    "key": "DAAH",
+    "name": "Delivery: Aoma Asset Handler",
+    "type": "unknown",
+    "lead": "unknown",
+    "ticketCount": 101,
+    "workflows": [],
+    "issueTypes": [],
+    "customFields": []
+  },
+  {
+    "key": "DAE",
+    "name": "Delivery: AOMA Export",
+    "type": "unknown",
+    "lead": "unknown",
+    "ticketCount": 119,
+    "workflows": [],
+    "issueTypes": [],
+    "customFields": []
+  },
+  {
+    "key": "DLBH",
+    "name": "Delivery: Batch Handler",
+    "type": "unknown",
+    "lead": "unknown",
+    "ticketCount": 60,
+    "workflows": [],
+    "issueTypes": [],
+    "customFields": []
+  },
+  {
+    "key": "DBH",
+    "name": "Delivery: Bulk Reset/invalidate Handler",
+    "type": "unknown",
+    "lead": "unknown",
+    "ticketCount": 45,
+    "workflows": [],
+    "issueTypes": [],
+    "customFields": []
+  },
+  {
+    "key": "DCCS",
+    "name": "Delivery: Conversion Completion Service",
+    "type": "unknown",
+    "lead": "unknown",
+    "ticketCount": 48,
+    "workflows": [],
+    "issueTypes": [],
+    "customFields": []
+  },
+  {
+    "key": "DCRS",
+    "name": "Delivery: Conversion Request Service",
+    "type": "unknown",
+    "lead": "unknown",
+    "ticketCount": 75,
+    "workflows": [],
+    "issueTypes": [],
+    "customFields": []
+  },
+  {
+    "key": "DDB",
+    "name": "Delivery: Dashboard",
+    "type": "unknown",
+    "lead": "unknown",
+    "ticketCount": 330,
+    "workflows": [],
+    "issueTypes": [],
+    "customFields": []
+  },
+  {
+    "key": "DDI",
+    "name": "Delivery: Dashboard UI",
+    "type": "unknown",
+    "lead": "unknown",
+    "ticketCount": 524,
+    "workflows": [],
+    "issueTypes": [],
+    "customFields": []
+  },
+  {
+    "key": "DDAR",
+    "name": "Delivery: DDEX Ack Reader",
+    "type": "unknown",
+    "lead": "unknown",
+    "ticketCount": 62,
+    "workflows": [],
+    "issueTypes": [],
+    "customFields": []
+  },
+  {
+    "key": "AMPSV",
+    "name": "AMP Microservices",
+    "type": "software",
+    "lead": "unknown",
+    "ticketCount": 1430,
+    "workflows": [],
+    "issueTypes": [],
+    "customFields": []
+  },
+  {
+    "key": "AMSE",
+    "name": "AMSE",
+    "type": "software",
+    "lead": "unknown",
+    "ticketCount": 1461,
+    "workflows": [],
+    "issueTypes": [],
+    "customFields": []
+  },
+  {
+    "key": "AOMA",
+    "name": "AOMA",
+    "type": "software",
+    "lead": "unknown",
+    "ticketCount": 16432,
+    "workflows": [],
+    "issueTypes": [],
+    "customFields": []
+  },
+  {
+    "key": "AMEBA",
+    "name": "AOMA Microservice Event Backplane",
+    "type": "software",
+    "lead": "unknown",
+    "ticketCount": 1111,
+    "workflows": [],
+    "issueTypes": [],
+    "customFields": []
+  },
+  {
+    "key": "AMINO",
+    "name": "AOMA Microservice Integration/Overhaul",
+    "type": "software",
+    "lead": "unknown",
+    "ticketCount": 1253,
+    "workflows": [],
+    "issueTypes": [],
+    "customFields": []
+  },
+  {
+    "key": "ATF",
+    "name": "AOMA Task Force",
+    "type": "software",
+    "lead": "unknown",
+    "ticketCount": 656,
+    "workflows": [],
+    "issueTypes": [],
+    "customFields": []
+  },
+  {
+    "key": "AOMA2",
+    "name": "AOMA2",
+    "type": "software",
+    "lead": "unknown",
+    "ticketCount": 1624,
+    "workflows": [],
+    "issueTypes": [],
+    "customFields": []
+  },
+  {
+    "key": "AOMA3",
+    "name": "aoma3",
+    "type": "software",
+    "lead": "unknown",
+    "ticketCount": 2687,
+    "workflows": [],
+    "issueTypes": [],
+    "customFields": []
+  },
+  {
+    "key": "ASIAREG",
+    "name": "Asian Registrations - RETIRED",
+    "type": "software",
+    "lead": "unknown",
+    "ticketCount": 39970,
+    "workflows": [],
+    "issueTypes": [],
+    "customFields": []
+  },
+  {
+    "key": "ACS",
+    "name": "Asset Conversion System",
+    "type": "software",
+    "lead": "unknown",
+    "ticketCount": 3297,
+    "workflows": [],
+    "issueTypes": [],
+    "customFields": []
+  },
+  {
+    "key": "CLOUDBA",
+    "name": "Cloud BA Task",
+    "type": "software",
+    "lead": "unknown",
+    "ticketCount": 106,
+    "workflows": [],
+    "issueTypes": [],
+    "customFields": []
+  },
+  {
+    "key": "CLOUDOPS",
+    "name": "Cloud Operations",
+    "type": "software",
+    "lead": "unknown",
+    "ticketCount": 21821,
+    "workflows": [],
+    "issueTypes": [],
+    "customFields": []
+  },
+  {
+    "key": "CLOUDSD",
+    "name": "CloudOps ServiceDesk",
+    "type": "service_desk",
+    "lead": "unknown",
+    "ticketCount": 7155,
+    "workflows": [],
+    "issueTypes": [],
+    "customFields": []
+  },
+  {
+    "key": "XSC",
+    "name": "Cross-System Coordination",
+    "type": "software",
+    "lead": "unknown",
+    "ticketCount": 530,
+    "workflows": [],
+    "issueTypes": [],
+    "customFields": []
+  },
+  {
+    "key": "DA",
+    "name": "DA",
+    "type": "software",
+    "lead": "unknown",
+    "ticketCount": 712,
+    "workflows": [],
+    "issueTypes": [],
+    "customFields": []
+  },
+  {
+    "key": "DSG",
+    "name": "Delivery Service Gateway",
+    "type": "software",
+    "lead": "unknown",
+    "ticketCount": 27,
+    "workflows": [],
+    "issueTypes": [],
+    "customFields": []
+  },
+  {
+    "key": "DAAH",
+    "name": "Delivery: Aoma Asset Handler",
+    "type": "software",
+    "lead": "unknown",
+    "ticketCount": 101,
+    "workflows": [],
+    "issueTypes": [],
+    "customFields": []
+  },
+  {
+    "key": "DAE",
+    "name": "Delivery: AOMA Export",
+    "type": "software",
+    "lead": "unknown",
+    "ticketCount": 119,
+    "workflows": [],
+    "issueTypes": [],
+    "customFields": []
+  },
+  {
+    "key": "DLBH",
+    "name": "Delivery: Batch Handler",
+    "type": "software",
+    "lead": "unknown",
+    "ticketCount": 60,
+    "workflows": [],
+    "issueTypes": [],
+    "customFields": []
+  },
+  {
+    "key": "DBH",
+    "name": "Delivery: Bulk Reset/invalidate Handler",
+    "type": "software",
+    "lead": "unknown",
+    "ticketCount": 45,
+    "workflows": [],
+    "issueTypes": [],
+    "customFields": []
+  },
+  {
+    "key": "DCCS",
+    "name": "Delivery: Conversion Completion Service",
+    "type": "software",
+    "lead": "unknown",
+    "ticketCount": 48,
+    "workflows": [],
+    "issueTypes": [],
+    "customFields": []
+  },
+  {
+    "key": "DCRS",
+    "name": "Delivery: Conversion Request Service",
+    "type": "software",
+    "lead": "unknown",
+    "ticketCount": 75,
+    "workflows": [],
+    "issueTypes": [],
+    "customFields": []
+  },
+  {
+    "key": "DDB",
+    "name": "Delivery: Dashboard",
+    "type": "software",
+    "lead": "unknown",
+    "ticketCount": 330,
+    "workflows": [],
+    "issueTypes": [],
+    "customFields": []
+  },
+  {
+    "key": "DDI",
+    "name": "Delivery: Dashboard UI",
+    "type": "software",
+    "lead": "unknown",
+    "ticketCount": 524,
+    "workflows": [],
+    "issueTypes": [],
+    "customFields": []
+  },
+  {
+    "key": "DDAR",
+    "name": "Delivery: DDEX Ack Reader",
+    "type": "software",
+    "lead": "unknown",
+    "ticketCount": 62,
+    "workflows": [],
+    "issueTypes": [],
+    "customFields": []
+  },
+  {
+    "key": "DDW",
+    "name": "Delivery: DDEX Webservice",
+    "type": "software",
+    "lead": "unknown",
+    "ticketCount": 178,
+    "workflows": [],
+    "issueTypes": [],
+    "customFields": []
+  },
+  {
+    "key": "DD",
+    "name": "Delivery: Dispatcher",
+    "type": "software",
+    "lead": "unknown",
+    "ticketCount": 109,
+    "workflows": [],
+    "issueTypes": [],
+    "customFields": []
+  },
+  {
+    "key": "DEN",
+    "name": "Delivery: Email Notifier",
+    "type": "software",
+    "lead": "unknown",
+    "ticketCount": 10,
+    "workflows": [],
+    "issueTypes": [],
+    "customFields": []
+  },
+  {
+    "key": "DPA",
+    "name": "Delivery: Package Archive",
+    "type": "software",
+    "lead": "unknown",
+    "ticketCount": 61,
+    "workflows": [],
+    "issueTypes": [],
+    "customFields": []
+  },
+  {
+    "key": "DPC",
+    "name": "Delivery: Package Creator",
+    "type": "software",
+    "lead": "unknown",
+    "ticketCount": 61,
+    "workflows": [],
+    "issueTypes": [],
+    "customFields": []
+  },
+  {
+    "key": "DP",
+    "name": "Delivery: Packager",
+    "type": "software",
+    "lead": "unknown",
+    "ticketCount": 299,
+    "workflows": [],
+    "issueTypes": [],
+    "customFields": []
+  },
+  {
+    "key": "DPI",
+    "name": "Delivery: Pitch Integration",
+    "type": "software",
+    "lead": "unknown",
+    "ticketCount": 35,
+    "workflows": [],
+    "issueTypes": [],
+    "customFields": []
+  },
+  {
+    "key": "DSP",
+    "name": "Delivery: Status Publisher",
+    "type": "software",
+    "lead": "unknown",
+    "ticketCount": 50,
+    "workflows": [],
+    "issueTypes": [],
+    "customFields": []
+  },
+  {
+    "key": "DCE",
+    "name": "Delivery: Supply Chain Enhancements",
+    "type": "software",
+    "lead": "unknown",
+    "ticketCount": 1149,
+    "workflows": [],
+    "issueTypes": [],
+    "customFields": []
+  },
+  {
+    "key": "DTD",
+    "name": "Delivery: Transfer Daemons",
+    "type": "software",
+    "lead": "unknown",
+    "ticketCount": 336,
+    "workflows": [],
+    "issueTypes": [],
+    "customFields": []
+  },
+  {
+    "key": "DX",
+    "name": "Digital Exchange",
+    "type": "software",
+    "lead": "unknown",
+    "ticketCount": 2650,
+    "workflows": [],
+    "issueTypes": [],
+    "customFields": []
+  },
+  {
+    "key": "DPS",
+    "name": "Digital Production Support (DPS) - Archive - RETIRED",
+    "type": "software",
+    "lead": "unknown",
+    "ticketCount": 46661,
+    "workflows": [],
+    "issueTypes": [],
+    "customFields": []
+  },
+  {
+    "key": "DSCE",
+    "name": "Digital Supply Chain Enhancement",
+    "type": "software",
+    "lead": "unknown",
+    "ticketCount": 2505,
+    "workflows": [],
+    "issueTypes": [],
+    "customFields": []
+  },
+  {
+    "key": "DSOPM",
+    "name": "Digital Systems Oracle-Postgres Migration",
+    "type": "software",
+    "lead": "unknown",
+    "ticketCount": 1922,
+    "workflows": [],
+    "issueTypes": [],
+    "customFields": []
+  },
+  {
+    "key": "DPSA",
+    "name": "DPS Asset Management",
+    "type": "software",
+    "lead": "unknown",
+    "ticketCount": 30673,
+    "workflows": [],
+    "issueTypes": [],
+    "customFields": []
+  },
+  {
+    "key": "DPSC",
+    "name": "DPS Clearances Management",
+    "type": "software",
+    "lead": "unknown",
+    "ticketCount": 5543,
+    "workflows": [],
+    "issueTypes": [],
+    "customFields": []
+  },
+  {
+    "key": "DPSJ",
+    "name": "DPS Jira",
+    "type": "software",
+    "lead": "unknown",
+    "ticketCount": 5827,
+    "workflows": [],
+    "issueTypes": [],
+    "customFields": []
+  },
+  {
+    "key": "DPSO",
+    "name": "DPS Order Management and Delivery",
+    "type": "software",
+    "lead": "unknown",
+    "ticketCount": 91162,
+    "workflows": [],
+    "issueTypes": [],
+    "customFields": []
+  },
+  {
+    "key": "DPSRP",
+    "name": "DPS Reporting",
+    "type": "software",
+    "lead": "unknown",
+    "ticketCount": 1620,
+    "workflows": [],
+    "issueTypes": [],
+    "customFields": []
+  },
+  {
+    "key": "DSCDS",
+    "name": "DSC: Data Systems",
+    "type": "software",
+    "lead": "unknown",
+    "ticketCount": 210,
+    "workflows": [],
+    "issueTypes": [],
+    "customFields": []
+  },
+  {
+    "key": "GRRD",
+    "name": "GRPS Report Request and Delivery",
+    "type": "software",
+    "lead": "unknown",
+    "ticketCount": 1982,
+    "workflows": [],
+    "issueTypes": [],
+    "customFields": []
+  },
+  {
+    "key": "GRPSS",
+    "name": "GRPS Support",
+    "type": "software",
+    "lead": "unknown",
+    "ticketCount": 3079,
+    "workflows": [],
+    "issueTypes": [],
+    "customFields": []
+  },
+  {
+    "key": "ITSM",
+    "name": "JIRA ITSM – App Support",
+    "type": "software",
+    "lead": "unknown",
+    "ticketCount": 65689,
+    "workflows": [],
+    "issueTypes": [],
+    "customFields": []
+  },
+  {
+    "key": "LGR",
+    "name": "Ledger - DO NOT USE-OLD INSTANCE - RETIRED",
+    "type": "software",
+    "lead": "unknown",
+    "ticketCount": 3483,
+    "workflows": [],
+    "issueTypes": [],
+    "customFields": []
+  },
+  {
+    "key": "MCSE",
+    "name": "Media Conversion System Enhancements",
+    "type": "software",
+    "lead": "unknown",
+    "ticketCount": 283,
+    "workflows": [],
+    "issueTypes": [],
+    "customFields": []
+  },
+  {
+    "key": "MGSRV",
+    "name": "Media Gate Service",
+    "type": "software",
+    "lead": "unknown",
+    "ticketCount": 43,
+    "workflows": [],
+    "issueTypes": [],
+    "customFields": []
+  },
+  {
+    "key": "MLIB",
+    "name": "Media Library",
+    "type": "software",
+    "lead": "unknown",
+    "ticketCount": 722,
+    "workflows": [],
+    "issueTypes": [],
+    "customFields": []
+  },
+  {
+    "key": "MPUB",
+    "name": "Media Publisher",
+    "type": "software",
+    "lead": "unknown",
+    "ticketCount": 723,
+    "workflows": [],
+    "issueTypes": [],
+    "customFields": []
+  },
+  {
+    "key": "MSRV",
+    "name": "Media Service",
+    "type": "software",
+    "lead": "unknown",
+    "ticketCount": 579,
+    "workflows": [],
+    "issueTypes": [],
+    "customFields": []
+  },
+  {
+    "key": "PAPR",
+    "name": "Partner Previewer",
+    "type": "software",
+    "lead": "unknown",
+    "ticketCount": 167,
+    "workflows": [],
+    "issueTypes": [],
+    "customFields": []
+  },
+  {
+    "key": "PRMO",
+    "name": "Promo",
+    "type": "software",
+    "lead": "unknown",
+    "ticketCount": 7989,
+    "workflows": [],
+    "issueTypes": [],
+    "customFields": []
+  },
+  {
+    "key": "PRMO2",
+    "name": "Promo2",
+    "type": "software",
+    "lead": "unknown",
+    "ticketCount": 2964,
+    "workflows": [],
+    "issueTypes": [],
+    "customFields": []
+  },
+  {
+    "key": "RXPT",
+    "name": "RAAS Export",
+    "type": "software",
+    "lead": "unknown",
+    "ticketCount": 719,
+    "workflows": [],
+    "issueTypes": [],
+    "customFields": []
+  },
+  {
+    "key": "RRS",
+    "name": "Release Runway Support",
+    "type": "software",
+    "lead": "unknown",
+    "ticketCount": 16,
+    "workflows": [],
+    "issueTypes": [],
+    "customFields": []
+  },
+  {
+    "key": "SSRV",
+    "name": "Search Service - RETIRED",
+    "type": "software",
+    "lead": "unknown",
+    "ticketCount": 36,
+    "workflows": [],
+    "issueTypes": [],
+    "customFields": []
+  },
+  {
+    "key": "SMCT",
+    "name": "Sony Music Content Protection Tool Development",
+    "type": "software",
+    "lead": "unknown",
+    "ticketCount": 2117,
+    "workflows": [],
+    "issueTypes": [],
+    "customFields": []
+  },
+  {
+    "key": "UST",
+    "name": "Unified Submission Tool",
+    "type": "software",
+    "lead": "unknown",
+    "ticketCount": 2450,
+    "workflows": [],
+    "issueTypes": [],
+    "customFields": []
+  },
+  {
+    "key": "VLAB",
+    "name": "Voice Lab",
+    "type": "software",
+    "lead": "unknown",
+    "ticketCount": 727,
+    "workflows": [],
+    "issueTypes": [],
+    "customFields": []
+  },
+  {
+    "key": "WEBOPS",
+    "name": "Web Operations",
+    "type": "software",
+    "lead": "unknown",
+    "ticketCount": 0,
+    "workflows": [],
+    "issueTypes": [],
+    "customFields": []
+  },
+  {
+    "key": "WPTS",
+    "name": "WPTS (Worldwide Production Tracking System)",
+    "type": "software",
+    "lead": "unknown",
+    "ticketCount": 436514,
+    "workflows": [],
+    "issueTypes": [],
+    "customFields": []
+  }
+]

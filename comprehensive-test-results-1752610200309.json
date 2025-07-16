@@ -1,0 +1,83 @@
+{
+  "sessionId": 1752610200309,
+  "timestamp": "2025-07-15T20:10:00.309Z",
+  "environment": "UAT",
+  "jiraVersion": "10.3.6",
+  "sessionFile": "jira-uat-session-1752610130300.json",
+  "tests": [
+    {
+      "phase": 1,
+      "name": "Authentication & Baseline",
+      "status": "FAILED",
+      "duration": 16641,
+      "details": {
+        "isAuthenticated": true,
+        "hasSessionCookies": false,
+        "dashboardLoaded": false,
+        "currentUrl": "https://jirauat.smedigitalapps.com/jira/secure/Dashboard.jspa",
+        "pageTitle": "Dashboard for Matt Carpenter - Sony Music"
+      }
+    },
+    {
+      "phase": 2,
+      "name": "Core Functionality",
+      "status": "PASSED",
+      "duration": 13436,
+      "details": {
+        "itsm": {
+          "accessible": true,
+          "loadTime": 8300,
+          "url": "https://jirauat.smedigitalapps.com/jira/projects/ITSM/issues/ITSM-64915?filter=allopenissues"
+        },
+        "dpsa": {
+          "accessible": true,
+          "loadTime": 5136,
+          "url": "https://jirauat.smedigitalapps.com/jira/projects/DPSA/issues/DPSA-31093?filter=allopenissues"
+        }
+      }
+    },
+    {
+      "phase": 3,
+      "name": "Performance & Navigation",
+      "status": "PASSED",
+      "duration": 10736,
+      "details": {
+        "dashboardLoad": 2127,
+        "navigatorLoad": 8609,
+        "dashboardAcceptable": true,
+        "navigatorAcceptable": true
+      }
+    },
+    {
+      "phase": 4,
+      "name": "Advanced Functionality",
+      "status": "WARNING",
+      "duration": 14268,
+      "details": {
+        "searchFunctional": true,
+        "searchTime": 5016,
+        "profileAccessible": false,
+        "profileTime": 9252
+      }
+    },
+    {
+      "phase": 5,
+      "name": "System Health & Integration",
+      "status": "WARNING",
+      "duration": 8710,
+      "details": {
+        "adminAccessible": false,
+        "adminTime": 8710,
+        "mobileResponsive": true,
+        "mobileOverflowElements": 0
+      }
+    }
+  ],
+  "summary": {
+    "total": 5,
+    "passed": 2,
+    "warnings": 2,
+    "failed": 1,
+    "avgPerformance": 12758
+  }
+}

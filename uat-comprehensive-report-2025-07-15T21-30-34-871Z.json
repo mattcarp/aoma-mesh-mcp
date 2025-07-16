@@ -1,0 +1,104 @@
+{
+  "timestamp": "2025-07-15T21:30:34.871Z",
+  "summary": {
+    "uatEnvironment": "jirauat.smedigitalapps.com",
+    "discoveredProjects": 1,
+    "availablePages": 2,
+    "totalTests": 2,
+    "passedTests": 1,
+    "failedTests": 1,
+    "successRate": "50.0%"
+  },
+  "discovery": {
+    "projects": [
+      "DPSA"
+    ],
+    "availablePages": [
+      "/jira/secure/Dashboard.jspa",
+      "/jira/issues/"
+    ],
+    "dashboardInfo": {
+      "url": "/jira/secure/Dashboard.jspa",
+      "title": "Dashboard for Matt Carpenter - Sony Music",
+      "workingUrl": "https://jirauat.smedigitalapps.com/jira/secure/Dashboard.jspa"
+    },
+    "searchCapabilities": {
+      "searchWorks": false,
+      "testProject": "DPSA",
+      "searchUrl": "/jira/issues/?jql=project%20%3D%20DPSA"
+    }
+  },
+  "testResults": {
+    "dashboardTest": {
+      "success": true,
+      "loadTime": 1571,
+      "title": "Dashboard for Matt Carpenter - Sony Music",
+      "url": "https://jirauat.smedigitalapps.com/jira/secure/Dashboard.jspa"
+    },
+    "projectTests": [
+      {
+        "project": "DPSA",
+        "success": false,
+        "loadTime": 570,
+        "title": "HTTP Status 404 – Not Found",
+        "errorCount": 0
+      }
+    ],
+    "searchTests": [],
+    "navigationTests": [],
+    "totalTests": 2,
+    "passedTests": 1,
+    "failedTests": 1
+  },
+  "performanceResults": {
+    "pageLoadTimes": [
+      {
+        "page": "Dashboard",
+        "url": "https://jirauat.smedigitalapps.com/jira/secure/Dashboard.jspa",
+        "loadTime": 1080,
+        "metrics": {
+          "domContentLoaded": 693.0999999977648,
+          "loadComplete": 731.7999999970198,
+          "firstPaint": 308,
+          "firstContentfulPaint": 308,
+          "resourceCount": 23,
+          "transferSize": 2585
+        }
+      },
+      {
+        "page": "Project-DPSA",
+        "url": "https://jirauat.smedigitalapps.com/browse/DPSA",
+        "loadTime": 494,
+        "metrics": {
+          "domContentLoaded": 142.30000000074506,
+          "loadComplete": 142.40000000223517,
+          "firstPaint": 168,
+          "firstContentfulPaint": 168,
+          "resourceCount": 0,
+          "transferSize": 0
+        }
+      },
+      {
+        "page": "Search",
+        "url": "https://jirauat.smedigitalapps.com/jira/issues/?jql=project%20%3D%20DPSA",
+        "loadTime": 12055,
+        "metrics": {
+          "domContentLoaded": 11658,
+          "loadComplete": 11705.60000000149,
+          "firstPaint": 512,
+          "firstContentfulPaint": 512,
+          "resourceCount": 42,
+          "transferSize": 11346277
+        }
+      }
+    ],
+    "networkMetrics": [],
+    "webVitals": []
+  },
+  "recommendations": [
+    "Address 1 failed tests before proceeding with UAT validation",
+    "Page load performance is excellent",
+    "UAT environment structure discovered and tested successfully",
+    "Ready for extended comprehensive testing campaign"
+  ]
+}

@@ -1,0 +1,1257 @@
+{
+  "summary": {
+    "totalProjects": 89,
+    "accessibleProjects": 88,
+    "totalUrls": 392,
+    "accessibleUrls": 392,
+    "avgLoadTime": 7506
+  },
+  "projectTests": [
+    {
+      "projectKey": "DPSA",
+      "projectName": "Projects",
+      "ticketCount": 30673,
+      "recommendedTests": [
+        "Browse DPSA project page",
+        "Search for DPSA tickets",
+        "Load random DPSA ticket",
+        "Test DPSA ticket creation form",
+        "Performance test with large DPSA dataset"
+      ]
+    },
+    {
+      "projectKey": "AMPSV",
+      "projectName": "AMP Microservices",
+      "ticketCount": 1430,
+      "recommendedTests": [
+        "Browse AMPSV project page",
+        "Search for AMPSV tickets",
+        "Load random AMPSV ticket",
+        "Test AMPSV ticket creation form",
+        "Performance test with large AMPSV dataset"
+      ]
+    },
+    {
+      "projectKey": "AMSE",
+      "projectName": "AMSE",
+      "ticketCount": 1461,
+      "recommendedTests": [
+        "Browse AMSE project page",
+        "Search for AMSE tickets",
+        "Load random AMSE ticket",
+        "Test AMSE ticket creation form",
+        "Performance test with large AMSE dataset"
+      ]
+    },
+    {
+      "projectKey": "AOMA",
+      "projectName": "AOMA",
+      "ticketCount": 16432,
+      "recommendedTests": [
+        "Browse AOMA project page",
+        "Search for AOMA tickets",
+        "Load random AOMA ticket",
+        "Test AOMA ticket creation form",
+        "Performance test with large AOMA dataset"
+      ]
+    },
+    {
+      "projectKey": "AMEBA",
+      "projectName": "AOMA Microservice Event Backplane",
+      "ticketCount": 1111,
+      "recommendedTests": [
+        "Browse AMEBA project page",
+        "Search for AMEBA tickets",
+        "Load random AMEBA ticket",
+        "Test AMEBA ticket creation form",
+        "Performance test with large AMEBA dataset"
+      ]
+    },
+    {
+      "projectKey": "AMINO",
+      "projectName": "AOMA Microservice Integration/Overhaul",
+      "ticketCount": 1253,
+      "recommendedTests": [
+        "Browse AMINO project page",
+        "Search for AMINO tickets",
+        "Load random AMINO ticket",
+        "Test AMINO ticket creation form",
+        "Performance test with large AMINO dataset"
+      ]
+    },
+    {
+      "projectKey": "ATF",
+      "projectName": "AOMA Task Force",
+      "ticketCount": 656,
+      "recommendedTests": [
+        "Browse ATF project page",
+        "Search for ATF tickets",
+        "Load random ATF ticket",
+        "Test ATF ticket creation form",
+        "Performance test with large ATF dataset"
+      ]
+    },
+    {
+      "projectKey": "ASIAREG",
+      "projectName": "Asian Registrations - RETIRED",
+      "ticketCount": 39970,
+      "recommendedTests": [
+        "Browse ASIAREG project page",
+        "Search for ASIAREG tickets",
+        "Load random ASIAREG ticket",
+        "Test ASIAREG ticket creation form",
+        "Performance test with large ASIAREG dataset"
+      ]
+    },
+    {
+      "projectKey": "ACS",
+      "projectName": "Asset Conversion System",
+      "ticketCount": 3297,
+      "recommendedTests": [
+        "Browse ACS project page",
+        "Search for ACS tickets",
+        "Load random ACS ticket",
+        "Test ACS ticket creation form",
+        "Performance test with large ACS dataset"
+      ]
+    },
+    {
+      "projectKey": "CLOUDBA",
+      "projectName": "Cloud BA Task",
+      "ticketCount": 106,
+      "recommendedTests": [
+        "Browse CLOUDBA project page",
+        "Search for CLOUDBA tickets",
+        "Load random CLOUDBA ticket",
+        "Test CLOUDBA ticket creation form",
+        "Performance test with large CLOUDBA dataset"
+      ]
+    },
+    {
+      "projectKey": "CLOUDOPS",
+      "projectName": "Cloud Operations",
+      "ticketCount": 21821,
+      "recommendedTests": [
+        "Browse CLOUDOPS project page",
+        "Search for CLOUDOPS tickets",
+        "Load random CLOUDOPS ticket",
+        "Test CLOUDOPS ticket creation form",
+        "Performance test with large CLOUDOPS dataset"
+      ]
+    },
+    {
+      "projectKey": "CLOUDSD",
+      "projectName": "CloudOps ServiceDesk",
+      "ticketCount": 7155,
+      "recommendedTests": [
+        "Browse CLOUDSD project page",
+        "Search for CLOUDSD tickets",
+        "Load random CLOUDSD ticket",
+        "Test CLOUDSD ticket creation form",
+        "Performance test with large CLOUDSD dataset"
+      ]
+    },
+    {
+      "projectKey": "XSC",
+      "projectName": "Cross-System Coordination",
+      "ticketCount": 530,
+      "recommendedTests": [
+        "Browse XSC project page",
+        "Search for XSC tickets",
+        "Load random XSC ticket",
+        "Test XSC ticket creation form",
+        "Performance test with large XSC dataset"
+      ]
+    },
+    {
+      "projectKey": "DA",
+      "projectName": "DA",
+      "ticketCount": 712,
+      "recommendedTests": [
+        "Browse DA project page",
+        "Search for DA tickets",
+        "Load random DA ticket",
+        "Test DA ticket creation form",
+        "Performance test with large DA dataset"
+      ]
+    },
+    {
+      "projectKey": "DSG",
+      "projectName": "Delivery Service Gateway",
+      "ticketCount": 27,
+      "recommendedTests": [
+        "Browse DSG project page",
+        "Search for DSG tickets",
+        "Load random DSG ticket",
+        "Test DSG ticket creation form"
+      ]
+    },
+    {
+      "projectKey": "DAAH",
+      "projectName": "Delivery: Aoma Asset Handler",
+      "ticketCount": 101,
+      "recommendedTests": [
+        "Browse DAAH project page",
+        "Search for DAAH tickets",
+        "Load random DAAH ticket",
+        "Test DAAH ticket creation form",
+        "Performance test with large DAAH dataset"
+      ]
+    },
+    {
+      "projectKey": "DAE",
+      "projectName": "Delivery: AOMA Export",
+      "ticketCount": 119,
+      "recommendedTests": [
+        "Browse DAE project page",
+        "Search for DAE tickets",
+        "Load random DAE ticket",
+        "Test DAE ticket creation form",
+        "Performance test with large DAE dataset"
+      ]
+    },
+    {
+      "projectKey": "DLBH",
+      "projectName": "Delivery: Batch Handler",
+      "ticketCount": 60,
+      "recommendedTests": [
+        "Browse DLBH project page",
+        "Search for DLBH tickets",
+        "Load random DLBH ticket",
+        "Test DLBH ticket creation form"
+      ]
+    },
+    {
+      "projectKey": "DBH",
+      "projectName": "Delivery: Bulk Reset/invalidate Handler",
+      "ticketCount": 45,
+      "recommendedTests": [
+        "Browse DBH project page",
+        "Search for DBH tickets",
+        "Load random DBH ticket",
+        "Test DBH ticket creation form"
+      ]
+    },
+    {
+      "projectKey": "DCCS",
+      "projectName": "Delivery: Conversion Completion Service",
+      "ticketCount": 48,
+      "recommendedTests": [
+        "Browse DCCS project page",
+        "Search for DCCS tickets",
+        "Load random DCCS ticket",
+        "Test DCCS ticket creation form"
+      ]
+    },
+    {
+      "projectKey": "DCRS",
+      "projectName": "Delivery: Conversion Request Service",
+      "ticketCount": 75,
+      "recommendedTests": [
+        "Browse DCRS project page",
+        "Search for DCRS tickets",
+        "Load random DCRS ticket",
+        "Test DCRS ticket creation form"
+      ]
+    },
+    {
+      "projectKey": "DDB",
+      "projectName": "Delivery: Dashboard",
+      "ticketCount": 330,
+      "recommendedTests": [
+        "Browse DDB project page",
+        "Search for DDB tickets",
+        "Load random DDB ticket",
+        "Test DDB ticket creation form",
+        "Performance test with large DDB dataset"
+      ]
+    },
+    {
+      "projectKey": "DDI",
+      "projectName": "Delivery: Dashboard UI",
+      "ticketCount": 524,
+      "recommendedTests": [
+        "Browse DDI project page",
+        "Search for DDI tickets",
+        "Load random DDI ticket",
+        "Test DDI ticket creation form",
+        "Performance test with large DDI dataset"
+      ]
+    },
+    {
+      "projectKey": "DDAR",
+      "projectName": "Delivery: DDEX Ack Reader",
+      "ticketCount": 62,
+      "recommendedTests": [
+        "Browse DDAR project page",
+        "Search for DDAR tickets",
+        "Load random DDAR ticket",
+        "Test DDAR ticket creation form"
+      ]
+    },
+    {
+      "projectKey": "AMPSV",
+      "projectName": "AMP Microservices",
+      "ticketCount": 1430,
+      "recommendedTests": [
+        "Browse AMPSV project page",
+        "Search for AMPSV tickets",
+        "Load random AMPSV ticket",
+        "Test AMPSV ticket creation form",
+        "Performance test with large AMPSV dataset"
+      ]
+    },
+    {
+      "projectKey": "AMSE",
+      "projectName": "AMSE",
+      "ticketCount": 1461,
+      "recommendedTests": [
+        "Browse AMSE project page",
+        "Search for AMSE tickets",
+        "Load random AMSE ticket",
+        "Test AMSE ticket creation form",
+        "Performance test with large AMSE dataset"
+      ]
+    },
+    {
+      "projectKey": "AOMA",
+      "projectName": "AOMA",
+      "ticketCount": 16432,
+      "recommendedTests": [
+        "Browse AOMA project page",
+        "Search for AOMA tickets",
+        "Load random AOMA ticket",
+        "Test AOMA ticket creation form",
+        "Performance test with large AOMA dataset"
+      ]
+    },
+    {
+      "projectKey": "AMEBA",
+      "projectName": "AOMA Microservice Event Backplane",
+      "ticketCount": 1111,
+      "recommendedTests": [
+        "Browse AMEBA project page",
+        "Search for AMEBA tickets",
+        "Load random AMEBA ticket",
+        "Test AMEBA ticket creation form",
+        "Performance test with large AMEBA dataset"
+      ]
+    },
+    {
+      "projectKey": "AMINO",
+      "projectName": "AOMA Microservice Integration/Overhaul",
+      "ticketCount": 1253,
+      "recommendedTests": [
+        "Browse AMINO project page",
+        "Search for AMINO tickets",
+        "Load random AMINO ticket",
+        "Test AMINO ticket creation form",
+        "Performance test with large AMINO dataset"
+      ]
+    },
+    {
+      "projectKey": "ATF",
+      "projectName": "AOMA Task Force",
+      "ticketCount": 656,
+      "recommendedTests": [
+        "Browse ATF project page",
+        "Search for ATF tickets",
+        "Load random ATF ticket",
+        "Test ATF ticket creation form",
+        "Performance test with large ATF dataset"
+      ]
+    },
+    {
+      "projectKey": "AOMA2",
+      "projectName": "AOMA2",
+      "ticketCount": 1624,
+      "recommendedTests": [
+        "Browse AOMA2 project page",
+        "Search for AOMA2 tickets",
+        "Load random AOMA2 ticket",
+        "Test AOMA2 ticket creation form",
+        "Performance test with large AOMA2 dataset"
+      ]
+    },
+    {
+      "projectKey": "AOMA3",
+      "projectName": "aoma3",
+      "ticketCount": 2687,
+      "recommendedTests": [
+        "Browse AOMA3 project page",
+        "Search for AOMA3 tickets",
+        "Load random AOMA3 ticket",
+        "Test AOMA3 ticket creation form",
+        "Performance test with large AOMA3 dataset"
+      ]
+    },
+    {
+      "projectKey": "ASIAREG",
+      "projectName": "Asian Registrations - RETIRED",
+      "ticketCount": 39970,
+      "recommendedTests": [
+        "Browse ASIAREG project page",
+        "Search for ASIAREG tickets",
+        "Load random ASIAREG ticket",
+        "Test ASIAREG ticket creation form",
+        "Performance test with large ASIAREG dataset"
+      ]
+    },
+    {
+      "projectKey": "ACS",
+      "projectName": "Asset Conversion System",
+      "ticketCount": 3297,
+      "recommendedTests": [
+        "Browse ACS project page",
+        "Search for ACS tickets",
+        "Load random ACS ticket",
+        "Test ACS ticket creation form",
+        "Performance test with large ACS dataset"
+      ]
+    },
+    {
+      "projectKey": "CLOUDBA",
+      "projectName": "Cloud BA Task",
+      "ticketCount": 106,
+      "recommendedTests": [
+        "Browse CLOUDBA project page",
+        "Search for CLOUDBA tickets",
+        "Load random CLOUDBA ticket",
+        "Test CLOUDBA ticket creation form",
+        "Performance test with large CLOUDBA dataset"
+      ]
+    },
+    {
+      "projectKey": "CLOUDOPS",
+      "projectName": "Cloud Operations",
+      "ticketCount": 21821,
+      "recommendedTests": [
+        "Browse CLOUDOPS project page",
+        "Search for CLOUDOPS tickets",
+        "Load random CLOUDOPS ticket",
+        "Test CLOUDOPS ticket creation form",
+        "Performance test with large CLOUDOPS dataset"
+      ]
+    },
+    {
+      "projectKey": "CLOUDSD",
+      "projectName": "CloudOps ServiceDesk",
+      "ticketCount": 7155,
+      "recommendedTests": [
+        "Browse CLOUDSD project page",
+        "Search for CLOUDSD tickets",
+        "Load random CLOUDSD ticket",
+        "Test CLOUDSD ticket creation form",
+        "Performance test with large CLOUDSD dataset"
+      ]
+    },
+    {
+      "projectKey": "XSC",
+      "projectName": "Cross-System Coordination",
+      "ticketCount": 530,
+      "recommendedTests": [
+        "Browse XSC project page",
+        "Search for XSC tickets",
+        "Load random XSC ticket",
+        "Test XSC ticket creation form",
+        "Performance test with large XSC dataset"
+      ]
+    },
+    {
+      "projectKey": "DA",
+      "projectName": "DA",
+      "ticketCount": 712,
+      "recommendedTests": [
+        "Browse DA project page",
+        "Search for DA tickets",
+        "Load random DA ticket",
+        "Test DA ticket creation form",
+        "Performance test with large DA dataset"
+      ]
+    },
+    {
+      "projectKey": "DSG",
+      "projectName": "Delivery Service Gateway",
+      "ticketCount": 27,
+      "recommendedTests": [
+        "Browse DSG project page",
+        "Search for DSG tickets",
+        "Load random DSG ticket",
+        "Test DSG ticket creation form"
+      ]
+    },
+    {
+      "projectKey": "DAAH",
+      "projectName": "Delivery: Aoma Asset Handler",
+      "ticketCount": 101,
+      "recommendedTests": [
+        "Browse DAAH project page",
+        "Search for DAAH tickets",
+        "Load random DAAH ticket",
+        "Test DAAH ticket creation form",
+        "Performance test with large DAAH dataset"
+      ]
+    },
+    {
+      "projectKey": "DAE",
+      "projectName": "Delivery: AOMA Export",
+      "ticketCount": 119,
+      "recommendedTests": [
+        "Browse DAE project page",
+        "Search for DAE tickets",
+        "Load random DAE ticket",
+        "Test DAE ticket creation form",
+        "Performance test with large DAE dataset"
+      ]
+    },
+    {
+      "projectKey": "DLBH",
+      "projectName": "Delivery: Batch Handler",
+      "ticketCount": 60,
+      "recommendedTests": [
+        "Browse DLBH project page",
+        "Search for DLBH tickets",
+        "Load random DLBH ticket",
+        "Test DLBH ticket creation form"
+      ]
+    },
+    {
+      "projectKey": "DBH",
+      "projectName": "Delivery: Bulk Reset/invalidate Handler",
+      "ticketCount": 45,
+      "recommendedTests": [
+        "Browse DBH project page",
+        "Search for DBH tickets",
+        "Load random DBH ticket",
+        "Test DBH ticket creation form"
+      ]
+    },
+    {
+      "projectKey": "DCCS",
+      "projectName": "Delivery: Conversion Completion Service",
+      "ticketCount": 48,
+      "recommendedTests": [
+        "Browse DCCS project page",
+        "Search for DCCS tickets",
+        "Load random DCCS ticket",
+        "Test DCCS ticket creation form"
+      ]
+    },
+    {
+      "projectKey": "DCRS",
+      "projectName": "Delivery: Conversion Request Service",
+      "ticketCount": 75,
+      "recommendedTests": [
+        "Browse DCRS project page",
+        "Search for DCRS tickets",
+        "Load random DCRS ticket",
+        "Test DCRS ticket creation form"
+      ]
+    },
+    {
+      "projectKey": "DDB",
+      "projectName": "Delivery: Dashboard",
+      "ticketCount": 330,
+      "recommendedTests": [
+        "Browse DDB project page",
+        "Search for DDB tickets",
+        "Load random DDB ticket",
+        "Test DDB ticket creation form",
+        "Performance test with large DDB dataset"
+      ]
+    },
+    {
+      "projectKey": "DDI",
+      "projectName": "Delivery: Dashboard UI",
+      "ticketCount": 524,
+      "recommendedTests": [
+        "Browse DDI project page",
+        "Search for DDI tickets",
+        "Load random DDI ticket",
+        "Test DDI ticket creation form",
+        "Performance test with large DDI dataset"
+      ]
+    },
+    {
+      "projectKey": "DDAR",
+      "projectName": "Delivery: DDEX Ack Reader",
+      "ticketCount": 62,
+      "recommendedTests": [
+        "Browse DDAR project page",
+        "Search for DDAR tickets",
+        "Load random DDAR ticket",
+        "Test DDAR ticket creation form"
+      ]
+    },
+    {
+      "projectKey": "DDW",
+      "projectName": "Delivery: DDEX Webservice",
+      "ticketCount": 178,
+      "recommendedTests": [
+        "Browse DDW project page",
+        "Search for DDW tickets",
+        "Load random DDW ticket",
+        "Test DDW ticket creation form",
+        "Performance test with large DDW dataset"
+      ]
+    },
+    {
+      "projectKey": "DD",
+      "projectName": "Delivery: Dispatcher",
+      "ticketCount": 109,
+      "recommendedTests": [
+        "Browse DD project page",
+        "Search for DD tickets",
+        "Load random DD ticket",
+        "Test DD ticket creation form",
+        "Performance test with large DD dataset"
+      ]
+    },
+    {
+      "projectKey": "DEN",
+      "projectName": "Delivery: Email Notifier",
+      "ticketCount": 10,
+      "recommendedTests": [
+        "Browse DEN project page",
+        "Search for DEN tickets",
+        "Load random DEN ticket",
+        "Test DEN ticket creation form"
+      ]
+    },
+    {
+      "projectKey": "DPA",
+      "projectName": "Delivery: Package Archive",
+      "ticketCount": 61,
+      "recommendedTests": [
+        "Browse DPA project page",
+        "Search for DPA tickets",
+        "Load random DPA ticket",
+        "Test DPA ticket creation form"
+      ]
+    },
+    {
+      "projectKey": "DPC",
+      "projectName": "Delivery: Package Creator",
+      "ticketCount": 61,
+      "recommendedTests": [
+        "Browse DPC project page",
+        "Search for DPC tickets",
+        "Load random DPC ticket",
+        "Test DPC ticket creation form"
+      ]
+    },
+    {
+      "projectKey": "DP",
+      "projectName": "Delivery: Packager",
+      "ticketCount": 299,
+      "recommendedTests": [
+        "Browse DP project page",
+        "Search for DP tickets",
+        "Load random DP ticket",
+        "Test DP ticket creation form",
+        "Performance test with large DP dataset"
+      ]
+    },
+    {
+      "projectKey": "DPI",
+      "projectName": "Delivery: Pitch Integration",
+      "ticketCount": 35,
+      "recommendedTests": [
+        "Browse DPI project page",
+        "Search for DPI tickets",
+        "Load random DPI ticket",
+        "Test DPI ticket creation form"
+      ]
+    },
+    {
+      "projectKey": "DSP",
+      "projectName": "Delivery: Status Publisher",
+      "ticketCount": 50,
+      "recommendedTests": [
+        "Browse DSP project page",
+        "Search for DSP tickets",
+        "Load random DSP ticket",
+        "Test DSP ticket creation form"
+      ]
+    },
+    {
+      "projectKey": "DCE",
+      "projectName": "Delivery: Supply Chain Enhancements",
+      "ticketCount": 1149,
+      "recommendedTests": [
+        "Browse DCE project page",
+        "Search for DCE tickets",
+        "Load random DCE ticket",
+        "Test DCE ticket creation form",
+        "Performance test with large DCE dataset"
+      ]
+    },
+    {
+      "projectKey": "DTD",
+      "projectName": "Delivery: Transfer Daemons",
+      "ticketCount": 336,
+      "recommendedTests": [
+        "Browse DTD project page",
+        "Search for DTD tickets",
+        "Load random DTD ticket",
+        "Test DTD ticket creation form",
+        "Performance test with large DTD dataset"
+      ]
+    },
+    {
+      "projectKey": "DX",
+      "projectName": "Digital Exchange",
+      "ticketCount": 2650,
+      "recommendedTests": [
+        "Browse DX project page",
+        "Search for DX tickets",
+        "Load random DX ticket",
+        "Test DX ticket creation form",
+        "Performance test with large DX dataset"
+      ]
+    },
+    {
+      "projectKey": "DPS",
+      "projectName": "Digital Production Support (DPS) - Archive - RETIRED",
+      "ticketCount": 46661,
+      "recommendedTests": [
+        "Browse DPS project page",
+        "Search for DPS tickets",
+        "Load random DPS ticket",
+        "Test DPS ticket creation form",
+        "Performance test with large DPS dataset"
+      ]
+    },
+    {
+      "projectKey": "DSCE",
+      "projectName": "Digital Supply Chain Enhancement",
+      "ticketCount": 2505,
+      "recommendedTests": [
+        "Browse DSCE project page",
+        "Search for DSCE tickets",
+        "Load random DSCE ticket",
+        "Test DSCE ticket creation form",
+        "Performance test with large DSCE dataset"
+      ]
+    },
+    {
+      "projectKey": "DSOPM",
+      "projectName": "Digital Systems Oracle-Postgres Migration",
+      "ticketCount": 1922,
+      "recommendedTests": [
+        "Browse DSOPM project page",
+        "Search for DSOPM tickets",
+        "Load random DSOPM ticket",
+        "Test DSOPM ticket creation form",
+        "Performance test with large DSOPM dataset"
+      ]
+    },
+    {
+      "projectKey": "DPSA",
+      "projectName": "DPS Asset Management",
+      "ticketCount": 30673,
+      "recommendedTests": [
+        "Browse DPSA project page",
+        "Search for DPSA tickets",
+        "Load random DPSA ticket",
+        "Test DPSA ticket creation form",
+        "Performance test with large DPSA dataset"
+      ]
+    },
+    {
+      "projectKey": "DPSC",
+      "projectName": "DPS Clearances Management",
+      "ticketCount": 5543,
+      "recommendedTests": [
+        "Browse DPSC project page",
+        "Search for DPSC tickets",
+        "Load random DPSC ticket",
+        "Test DPSC ticket creation form",
+        "Performance test with large DPSC dataset"
+      ]
+    },
+    {
+      "projectKey": "DPSJ",
+      "projectName": "DPS Jira",
+      "ticketCount": 5827,
+      "recommendedTests": [
+        "Browse DPSJ project page",
+        "Search for DPSJ tickets",
+        "Load random DPSJ ticket",
+        "Test DPSJ ticket creation form",
+        "Performance test with large DPSJ dataset"
+      ]
+    },
+    {
+      "projectKey": "DPSO",
+      "projectName": "DPS Order Management and Delivery",
+      "ticketCount": 91162,
+      "recommendedTests": [
+        "Browse DPSO project page",
+        "Search for DPSO tickets",
+        "Load random DPSO ticket",
+        "Test DPSO ticket creation form",
+        "Performance test with large DPSO dataset"
+      ]
+    },
+    {
+      "projectKey": "DPSRP",
+      "projectName": "DPS Reporting",
+      "ticketCount": 1620,
+      "recommendedTests": [
+        "Browse DPSRP project page",
+        "Search for DPSRP tickets",
+        "Load random DPSRP ticket",
+        "Test DPSRP ticket creation form",
+        "Performance test with large DPSRP dataset"
+      ]
+    },
+    {
+      "projectKey": "DSCDS",
+      "projectName": "DSC: Data Systems",
+      "ticketCount": 210,
+      "recommendedTests": [
+        "Browse DSCDS project page",
+        "Search for DSCDS tickets",
+        "Load random DSCDS ticket",
+        "Test DSCDS ticket creation form",
+        "Performance test with large DSCDS dataset"
+      ]
+    },
+    {
+      "projectKey": "GRRD",
+      "projectName": "GRPS Report Request and Delivery",
+      "ticketCount": 1982,
+      "recommendedTests": [
+        "Browse GRRD project page",
+        "Search for GRRD tickets",
+        "Load random GRRD ticket",
+        "Test GRRD ticket creation form",
+        "Performance test with large GRRD dataset"
+      ]
+    },
+    {
+      "projectKey": "GRPSS",
+      "projectName": "GRPS Support",
+      "ticketCount": 3079,
+      "recommendedTests": [
+        "Browse GRPSS project page",
+        "Search for GRPSS tickets",
+        "Load random GRPSS ticket",
+        "Test GRPSS ticket creation form",
+        "Performance test with large GRPSS dataset"
+      ]
+    },
+    {
+      "projectKey": "ITSM",
+      "projectName": "JIRA ITSM – App Support",
+      "ticketCount": 65689,
+      "recommendedTests": [
+        "Browse ITSM project page",
+        "Search for ITSM tickets",
+        "Load random ITSM ticket",
+        "Test ITSM ticket creation form",
+        "Performance test with large ITSM dataset"
+      ]
+    },
+    {
+      "projectKey": "LGR",
+      "projectName": "Ledger - DO NOT USE-OLD INSTANCE - RETIRED",
+      "ticketCount": 3483,
+      "recommendedTests": [
+        "Browse LGR project page",
+        "Search for LGR tickets",
+        "Load random LGR ticket",
+        "Test LGR ticket creation form",
+        "Performance test with large LGR dataset"
+      ]
+    },
+    {
+      "projectKey": "MCSE",
+      "projectName": "Media Conversion System Enhancements",
+      "ticketCount": 283,
+      "recommendedTests": [
+        "Browse MCSE project page",
+        "Search for MCSE tickets",
+        "Load random MCSE ticket",
+        "Test MCSE ticket creation form",
+        "Performance test with large MCSE dataset"
+      ]
+    },
+    {
+      "projectKey": "MGSRV",
+      "projectName": "Media Gate Service",
+      "ticketCount": 43,
+      "recommendedTests": [
+        "Browse MGSRV project page",
+        "Search for MGSRV tickets",
+        "Load random MGSRV ticket",
+        "Test MGSRV ticket creation form"
+      ]
+    },
+    {
+      "projectKey": "MLIB",
+      "projectName": "Media Library",
+      "ticketCount": 722,
+      "recommendedTests": [
+        "Browse MLIB project page",
+        "Search for MLIB tickets",
+        "Load random MLIB ticket",
+        "Test MLIB ticket creation form",
+        "Performance test with large MLIB dataset"
+      ]
+    },
+    {
+      "projectKey": "MPUB",
+      "projectName": "Media Publisher",
+      "ticketCount": 723,
+      "recommendedTests": [
+        "Browse MPUB project page",
+        "Search for MPUB tickets",
+        "Load random MPUB ticket",
+        "Test MPUB ticket creation form",
+        "Performance test with large MPUB dataset"
+      ]
+    },
+    {
+      "projectKey": "MSRV",
+      "projectName": "Media Service",
+      "ticketCount": 579,
+      "recommendedTests": [
+        "Browse MSRV project page",
+        "Search for MSRV tickets",
+        "Load random MSRV ticket",
+        "Test MSRV ticket creation form",
+        "Performance test with large MSRV dataset"
+      ]
+    },
+    {
+      "projectKey": "PAPR",
+      "projectName": "Partner Previewer",
+      "ticketCount": 167,
+      "recommendedTests": [
+        "Browse PAPR project page",
+        "Search for PAPR tickets",
+        "Load random PAPR ticket",
+        "Test PAPR ticket creation form",
+        "Performance test with large PAPR dataset"
+      ]
+    },
+    {
+      "projectKey": "PRMO",
+      "projectName": "Promo",
+      "ticketCount": 7989,
+      "recommendedTests": [
+        "Browse PRMO project page",
+        "Search for PRMO tickets",
+        "Load random PRMO ticket",
+        "Test PRMO ticket creation form",
+        "Performance test with large PRMO dataset"
+      ]
+    },
+    {
+      "projectKey": "PRMO2",
+      "projectName": "Promo2",
+      "ticketCount": 2964,
+      "recommendedTests": [
+        "Browse PRMO2 project page",
+        "Search for PRMO2 tickets",
+        "Load random PRMO2 ticket",
+        "Test PRMO2 ticket creation form",
+        "Performance test with large PRMO2 dataset"
+      ]
+    },
+    {
+      "projectKey": "RXPT",
+      "projectName": "RAAS Export",
+      "ticketCount": 719,
+      "recommendedTests": [
+        "Browse RXPT project page",
+        "Search for RXPT tickets",
+        "Load random RXPT ticket",
+        "Test RXPT ticket creation form",
+        "Performance test with large RXPT dataset"
+      ]
+    },
+    {
+      "projectKey": "RRS",
+      "projectName": "Release Runway Support",
+      "ticketCount": 16,
+      "recommendedTests": [
+        "Browse RRS project page",
+        "Search for RRS tickets",
+        "Load random RRS ticket",
+        "Test RRS ticket creation form"
+      ]
+    },
+    {
+      "projectKey": "SSRV",
+      "projectName": "Search Service - RETIRED",
+      "ticketCount": 36,
+      "recommendedTests": [
+        "Browse SSRV project page",
+        "Search for SSRV tickets",
+        "Load random SSRV ticket",
+        "Test SSRV ticket creation form"
+      ]
+    },
+    {
+      "projectKey": "SMCT",
+      "projectName": "Sony Music Content Protection Tool Development",
+      "ticketCount": 2117,
+      "recommendedTests": [
+        "Browse SMCT project page",
+        "Search for SMCT tickets",
+        "Load random SMCT ticket",
+        "Test SMCT ticket creation form",
+        "Performance test with large SMCT dataset"
+      ]
+    },
+    {
+      "projectKey": "UST",
+      "projectName": "Unified Submission Tool",
+      "ticketCount": 2450,
+      "recommendedTests": [
+        "Browse UST project page",
+        "Search for UST tickets",
+        "Load random UST ticket",
+        "Test UST ticket creation form",
+        "Performance test with large UST dataset"
+      ]
+    },
+    {
+      "projectKey": "VLAB",
+      "projectName": "Voice Lab",
+      "ticketCount": 727,
+      "recommendedTests": [
+        "Browse VLAB project page",
+        "Search for VLAB tickets",
+        "Load random VLAB ticket",
+        "Test VLAB ticket creation form",
+        "Performance test with large VLAB dataset"
+      ]
+    },
+    {
+      "projectKey": "WPTS",
+      "projectName": "WPTS (Worldwide Production Tracking System)",
+      "ticketCount": 436514,
+      "recommendedTests": [
+        "Browse WPTS project page",
+        "Search for WPTS tickets",
+        "Load random WPTS ticket",
+        "Test WPTS ticket creation form",
+        "Performance test with large WPTS dataset"
+      ]
+    }
+  ],
+  "functionalTests": [
+    "Dashboard load and gadget functionality",
+    "Issue Navigator search capabilities",
+    "Cross-project search performance",
+    "User profile and settings access",
+    "Report generation capabilities"
+  ],
+  "performanceTests": [
+    "Optimize /jira/browse/DPSA (currently 8357ms)",
+    "Optimize /jira/secure/project/ViewProject.jspa?pid=DPSA (currently 10305ms)",
+    "Optimize /jira/issues/?jql=project=DPSA (currently 10215ms)",
+    "Optimize /jira/browse/AMPSV (currently 9277ms)",
+    "Optimize /jira/secure/project/ViewProject.jspa?pid=AMPSV (currently 6382ms)",
+    "Optimize /jira/issues/?jql=project=AMPSV (currently 14896ms)",
+    "Optimize /jira/browse/AMSE (currently 9400ms)",
+    "Optimize /jira/secure/project/ViewProject.jspa?pid=AMSE (currently 5673ms)",
+    "Optimize /jira/issues/?jql=project=AMSE (currently 7199ms)",
+    "Optimize /jira/browse/AOMA (currently 11761ms)",
+    "Optimize /jira/secure/project/ViewProject.jspa?pid=AOMA (currently 6488ms)",
+    "Optimize /jira/issues/?jql=project=AOMA (currently 8237ms)",
+    "Optimize /jira/browse/AMEBA (currently 10571ms)",
+    "Optimize /jira/secure/project/ViewProject.jspa?pid=AMEBA (currently 5547ms)",
+    "Optimize /jira/issues/?jql=project=AMEBA (currently 7176ms)",
+    "Optimize /jira/browse/AMINO (currently 6310ms)",
+    "Optimize /jira/secure/project/ViewProject.jspa?pid=AMINO (currently 5439ms)",
+    "Optimize /jira/issues/?jql=project=AMINO (currently 7011ms)",
+    "Optimize /jira/browse/ATF (currently 8296ms)",
+    "Optimize /jira/secure/project/ViewProject.jspa?pid=ATF (currently 5829ms)",
+    "Optimize /jira/issues/?jql=project=ATF (currently 7907ms)",
+    "Optimize /jira/browse/ASIAREG (currently 8759ms)",
+    "Optimize /jira/secure/project/ViewProject.jspa?pid=ASIAREG (currently 5470ms)",
+    "Optimize /jira/issues/?jql=project=ASIAREG (currently 8643ms)",
+    "Optimize /jira/browse/ACS (currently 8912ms)",
+    "Optimize /jira/secure/project/ViewProject.jspa?pid=ACS (currently 7853ms)",
+    "Optimize /jira/issues/?jql=project=ACS (currently 7506ms)",
+    "Optimize /jira/browse/CLOUDBA (currently 7714ms)",
+    "Optimize /jira/secure/project/ViewProject.jspa?pid=CLOUDBA (currently 6756ms)",
+    "Optimize /jira/issues/?jql=project=CLOUDBA (currently 9225ms)",
+    "Optimize /jira/browse/CLOUDOPS (currently 8449ms)",
+    "Optimize /jira/secure/project/ViewProject.jspa?pid=CLOUDOPS (currently 6034ms)",
+    "Optimize /jira/issues/?jql=project=CLOUDOPS (currently 7451ms)",
+    "Optimize /jira/browse/CLOUDSD (currently 13093ms)",
+    "Optimize /jira/secure/project/ViewProject.jspa?pid=CLOUDSD (currently 7238ms)",
+    "Optimize /jira/issues/?jql=project=CLOUDSD (currently 7044ms)",
+    "Optimize /jira/browse/XSC (currently 8857ms)",
+    "Optimize /jira/secure/project/ViewProject.jspa?pid=XSC (currently 6828ms)",
+    "Optimize /jira/issues/?jql=project=XSC (currently 8602ms)",
+    "Optimize /jira/browse/DA (currently 10188ms)",
+    "Optimize /jira/secure/project/ViewProject.jspa?pid=DA (currently 7600ms)",
+    "Optimize /jira/issues/?jql=project=DA (currently 12066ms)",
+    "Optimize /jira/browse/DSG (currently 7402ms)",
+    "Optimize /jira/secure/project/ViewProject.jspa?pid=DSG (currently 5326ms)",
+    "Optimize /jira/issues/?jql=project=DSG (currently 12611ms)",
+    "Optimize /jira/browse/DAAH (currently 7629ms)",
+    "Optimize /jira/secure/project/ViewProject.jspa?pid=DAAH (currently 6936ms)",
+    "Optimize /jira/issues/?jql=project=DAAH (currently 7804ms)",
+    "Optimize /jira/browse/DAE (currently 6737ms)",
+    "Optimize /jira/secure/project/ViewProject.jspa?pid=DAE (currently 8208ms)",
+    "Optimize /jira/issues/?jql=project=DAE (currently 8051ms)",
+    "Optimize /jira/browse/DLBH (currently 6723ms)",
+    "Optimize /jira/secure/project/ViewProject.jspa?pid=DLBH (currently 9384ms)",
+    "Optimize /jira/issues/?jql=project=DLBH (currently 8606ms)",
+    "Optimize /jira/browse/DBH (currently 6630ms)",
+    "Optimize /jira/secure/project/ViewProject.jspa?pid=DBH (currently 5794ms)",
+    "Optimize /jira/issues/?jql=project=DBH (currently 7985ms)",
+    "Optimize /jira/browse/DCCS (currently 6561ms)",
+    "Optimize /jira/secure/project/ViewProject.jspa?pid=DCCS (currently 7166ms)",
+    "Optimize /jira/issues/?jql=project=DCCS (currently 8790ms)",
+    "Optimize /jira/browse/DCRS (currently 6464ms)",
+    "Optimize /jira/secure/project/ViewProject.jspa?pid=DCRS (currently 8697ms)",
+    "Optimize /jira/issues/?jql=project=DCRS (currently 27912ms)",
+    "Optimize /jira/browse/DDB (currently 23003ms)",
+    "Optimize /jira/secure/project/ViewProject.jspa?pid=DDB (currently 19133ms)",
+    "Optimize /jira/issues/?jql=project=DDB (currently 11768ms)",
+    "Optimize /jira/secure/project/ViewProject.jspa?pid=DDI (currently 29403ms)",
+    "Optimize /jira/browse/DDAR (currently 24003ms)",
+    "Optimize /jira/secure/project/ViewProject.jspa?pid=DDAR (currently 20130ms)",
+    "Optimize /jira/issues/?jql=project=DDAR (currently 29336ms)",
+    "Optimize /jira/browse/AOMA2 (currently 32281ms)",
+    "Optimize /jira/secure/project/ViewProject.jspa?pid=AOMA2 (currently 20608ms)",
+    "Optimize /jira/issues/?jql=project=AOMA2 (currently 13955ms)",
+    "Optimize /jira/browse/AOMA3 (currently 31661ms)",
+    "Optimize /jira/secure/project/ViewProject.jspa?pid=AOMA3 (currently 17006ms)",
+    "Optimize /jira/issues/?jql=project=AOMA3 (currently 31003ms)",
+    "Optimize /jira/browse/DDW (currently 16511ms)",
+    "Optimize /jira/secure/project/ViewProject.jspa?pid=DDW (currently 23814ms)",
+    "Optimize /jira/issues/?jql=project=DDW (currently 10254ms)",
+    "Optimize /jira/browse/DD (currently 16592ms)",
+    "Optimize /jira/secure/project/ViewProject.jspa?pid=DD (currently 22553ms)",
+    "Optimize /jira/issues/?jql=project=DD (currently 27697ms)",
+    "Optimize /jira/browse/DEN (currently 19864ms)",
+    "Optimize /jira/secure/project/ViewProject.jspa?pid=DEN (currently 25202ms)",
+    "Optimize /jira/browse/DPA (currently 6965ms)",
+    "Optimize /jira/secure/project/ViewProject.jspa?pid=DPA (currently 8693ms)",
+    "Optimize /jira/issues/?jql=project=DPA (currently 25448ms)",
+    "Optimize /jira/browse/DPC (currently 20147ms)",
+    "Optimize /jira/secure/project/ViewProject.jspa?pid=DPC (currently 29306ms)",
+    "Optimize /jira/issues/?jql=project=DPC (currently 28597ms)",
+    "Optimize /jira/browse/DP (currently 15701ms)",
+    "Optimize /jira/secure/project/ViewProject.jspa?pid=DP (currently 23018ms)",
+    "Optimize /jira/issues/?jql=project=DP (currently 10145ms)",
+    "Optimize /jira/browse/DPI (currently 21540ms)",
+    "Optimize /jira/secure/project/ViewProject.jspa?pid=DPI (currently 21001ms)",
+    "Optimize /jira/issues/?jql=project=DPI (currently 19528ms)",
+    "Optimize /jira/browse/DSP (currently 15078ms)",
+    "Optimize /jira/secure/project/ViewProject.jspa?pid=DSP (currently 17666ms)",
+    "Optimize /jira/browse/DCE (currently 7705ms)",
+    "Optimize /jira/secure/project/ViewProject.jspa?pid=DCE (currently 7107ms)",
+    "Optimize /jira/issues/?jql=project=DCE (currently 22155ms)",
+    "Optimize /jira/browse/DTD (currently 21532ms)",
+    "Optimize /jira/secure/project/ViewProject.jspa?pid=DTD (currently 14374ms)",
+    "Optimize /jira/issues/?jql=project=DTD (currently 29725ms)",
+    "Optimize /jira/browse/DX (currently 20731ms)",
+    "Optimize /jira/secure/project/ViewProject.jspa?pid=DX (currently 9434ms)",
+    "Optimize /jira/issues/?jql=project=DX (currently 25220ms)",
+    "Optimize /jira/browse/DPS (currently 21912ms)",
+    "Optimize /jira/secure/project/ViewProject.jspa?pid=DPS (currently 14389ms)",
+    "Optimize /jira/issues/?jql=project=DPS (currently 22794ms)",
+    "Optimize /jira/browse/DSCE (currently 11528ms)",
+    "Optimize /jira/secure/project/ViewProject.jspa?pid=DSCE (currently 14578ms)",
+    "Optimize /jira/issues/?jql=project=DSCE (currently 6380ms)",
+    "Optimize /jira/browse/DSOPM (currently 8336ms)",
+    "Optimize /jira/secure/project/ViewProject.jspa?pid=DSOPM (currently 10392ms)",
+    "Optimize /jira/issues/?jql=project=DSOPM (currently 9057ms)",
+    "Optimize /jira/browse/DPSC (currently 24516ms)",
+    "Optimize /jira/secure/project/ViewProject.jspa?pid=DPSC (currently 17720ms)",
+    "Optimize /jira/issues/?jql=project=DPSC (currently 6829ms)",
+    "Optimize /jira/browse/DPSJ (currently 13158ms)",
+    "Optimize /jira/secure/project/ViewProject.jspa?pid=DPSJ (currently 5864ms)",
+    "Optimize /jira/issues/?jql=project=DPSJ (currently 6976ms)",
+    "Optimize /jira/browse/DPSO (currently 7111ms)",
+    "Optimize /jira/secure/project/ViewProject.jspa?pid=DPSO (currently 5707ms)",
+    "Optimize /jira/issues/?jql=project=DPSO (currently 9665ms)",
+    "Optimize /jira/browse/DPSRP (currently 8975ms)",
+    "Optimize /jira/secure/project/ViewProject.jspa?pid=DPSRP (currently 5808ms)",
+    "Optimize /jira/issues/?jql=project=DPSRP (currently 7491ms)",
+    "Optimize /jira/browse/DSCDS (currently 5867ms)",
+    "Optimize /jira/secure/project/ViewProject.jspa?pid=DSCDS (currently 6697ms)",
+    "Optimize /jira/issues/?jql=project=DSCDS (currently 10286ms)",
+    "Optimize /jira/browse/GRRD (currently 7231ms)",
+    "Optimize /jira/secure/project/ViewProject.jspa?pid=GRRD (currently 5776ms)",
+    "Optimize /jira/issues/?jql=project=GRRD (currently 7024ms)",
+    "Optimize /jira/browse/GRPSS (currently 9208ms)",
+    "Optimize /jira/secure/project/ViewProject.jspa?pid=GRPSS (currently 6027ms)",
+    "Optimize /jira/issues/?jql=project=GRPSS (currently 6916ms)",
+    "Optimize /jira/browse/ITSM (currently 7252ms)",
+    "Optimize /jira/secure/project/ViewProject.jspa?pid=ITSM (currently 7067ms)",
+    "Optimize /jira/issues/?jql=project=ITSM (currently 7477ms)",
+    "Optimize /jira/browse/LGR (currently 9241ms)",
+    "Optimize /jira/secure/project/ViewProject.jspa?pid=LGR (currently 6748ms)",
+    "Optimize /jira/issues/?jql=project=LGR (currently 6816ms)",
+    "Optimize /jira/browse/MCSE (currently 6247ms)",
+    "Optimize /jira/secure/project/ViewProject.jspa?pid=MCSE (currently 5339ms)",
+    "Optimize /jira/issues/?jql=project=MCSE (currently 7867ms)",
+    "Optimize /jira/browse/MGSRV (currently 11739ms)",
+    "Optimize /jira/secure/project/ViewProject.jspa?pid=MGSRV (currently 9258ms)",
+    "Optimize /jira/issues/?jql=project=MGSRV (currently 9262ms)",
+    "Optimize /jira/browse/MLIB (currently 16861ms)",
+    "Optimize /jira/secure/project/ViewProject.jspa?pid=MLIB (currently 11707ms)",
+    "Optimize /jira/issues/?jql=project=MLIB (currently 21135ms)",
+    "Optimize /jira/browse/MPUB (currently 13853ms)",
+    "Optimize /jira/secure/project/ViewProject.jspa?pid=MPUB (currently 21036ms)",
+    "Optimize /jira/issues/?jql=project=MPUB (currently 16446ms)",
+    "Optimize /jira/browse/MSRV (currently 14696ms)",
+    "Optimize /jira/secure/project/ViewProject.jspa?pid=MSRV (currently 15737ms)",
+    "Optimize /jira/issues/?jql=project=MSRV (currently 14636ms)",
+    "Optimize /jira/browse/PAPR (currently 27534ms)",
+    "Optimize /jira/secure/project/ViewProject.jspa?pid=PAPR (currently 18438ms)",
+    "Optimize /jira/issues/?jql=project=PAPR (currently 30026ms)",
+    "Optimize /jira/browse/PRMO (currently 24038ms)",
+    "Optimize /jira/secure/project/ViewProject.jspa?pid=PRMO (currently 14328ms)",
+    "Optimize /jira/issues/?jql=project=PRMO (currently 20534ms)",
+    "Optimize /jira/projects/PRMO2 (currently 6670ms)",
+    "Optimize /jira/secure/project/ViewProject.jspa?pid=PRMO2 (currently 14902ms)",
+    "Optimize /jira/issues/?jql=project=PRMO2 (currently 20180ms)",
+    "Optimize /jira/browse/RXPT (currently 19467ms)",
+    "Optimize /jira/secure/project/ViewProject.jspa?pid=RXPT (currently 8707ms)",
+    "Optimize /jira/browse/RRS (currently 14514ms)",
+    "Optimize /jira/secure/project/ViewProject.jspa?pid=RRS (currently 20455ms)",
+    "Optimize /jira/issues/?jql=project=RRS (currently 29393ms)",
+    "Optimize /jira/browse/SSRV (currently 19316ms)",
+    "Optimize /jira/secure/project/ViewProject.jspa?pid=SSRV (currently 17604ms)",
+    "Optimize /jira/issues/?jql=project=SSRV (currently 26294ms)",
+    "Optimize /jira/browse/SMCT (currently 5465ms)",
+    "Optimize /jira/secure/project/ViewProject.jspa?pid=SMCT (currently 16832ms)",
+    "Optimize /jira/issues/?jql=project=SMCT (currently 25811ms)",
+    "Optimize /jira/browse/UST (currently 7458ms)",
+    "Optimize /jira/secure/project/ViewProject.jspa?pid=UST (currently 19990ms)",
+    "Optimize /jira/issues/?jql=project=UST (currently 24017ms)",
+    "Optimize /jira/browse/VLAB (currently 21766ms)",
+    "Optimize /jira/secure/project/ViewProject.jspa?pid=VLAB (currently 21746ms)",
+    "Optimize /jira/issues/?jql=project=VLAB (currently 11224ms)",
+    "Optimize /jira/browse/WEBOPS (currently 20157ms)",
+    "Optimize /jira/secure/project/ViewProject.jspa?pid=WEBOPS (currently 15272ms)",
+    "Optimize /jira/issues/?jql=project=WEBOPS (currently 18516ms)",
+    "Optimize /jira/browse/WPTS (currently 23852ms)",
+    "Optimize /jira/secure/project/ViewProject.jspa?pid=WPTS (currently 25448ms)",
+    "Optimize /jira/issues/?jql=project=WPTS (currently 9353ms)",
+    "Optimize /jira/secure/Dashboard.jspa (currently 5693ms)",
+    "Optimize /jira/issues/ (currently 21822ms)",
+    "Optimize /jira/secure/ViewProfile.jspa (currently 16461ms)",
+    "Optimize /jira/secure/ViewPersonalSettings.jspa (currently 21346ms)",
+    "Optimize /jira/secure/project/ViewProjects.jspa (currently 12223ms)",
+    "Optimize /jira/plugins/servlet/project-config (currently 23791ms)"
+  ],
+  "securityTests": [
+    "Verify authentication requirements",
+    "Test unauthorized access prevention",
+    "Validate session management"
+  ]
+}

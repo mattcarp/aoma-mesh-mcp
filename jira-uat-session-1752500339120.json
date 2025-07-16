@@ -1,8 +1,11 @@
 {
+  "url": "https://jirauat.smedigitalapps.com/jira/secure/Dashboard.jspa",
+  "timestamp": "2025-07-14T13:38:59.116Z",
+  "environment": "UAT_ONLY",
   "cookies": [
     {
       "name": "JSESSIONID",
-      "value": "C4A094E775F8E335146FD2F9B2943505",
+      "value": "694B8C7ACD91D9B11CCD199776C9A1EB",
       "domain": "jirauat.smedigitalapps.com",
       "path": "/jira",
       "expires": -1,
@@ -12,7 +15,7 @@
     },
     {
       "name": "atlassian.xsrf.token",
-      "value": "A1TC-B0TB-ACDD-Q6T9_3e22f9ec93d925fe9208dc387a1834b130be2691_lout",
+      "value": "A1TC-B0TB-ACDD-Q6T9_152c2bc222214cca1c0180e360fbd685a8a107a9_lout",
       "domain": "jirauat.smedigitalapps.com",
       "path": "/jira",
       "expires": -1,
@@ -21,6 +24,6 @@
       "sameSite": "None"
     }
   ],
-  "timestamp": "2025-07-15T19:25:28.005Z",
-  "url": "https://jirauat.smedigitalapps.com/jira/login.jsp"
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36",
+  "domain": "jirauat.smedigitalapps.com"
 }

@@ -1,0 +1,54 @@
+{
+  "timestamp": "2025-07-14T13:16:36.167Z",
+  "url": "https://www.google.com/sorry/index?continue=https://www.google.com/search%3Fq%3Djira.smedigitalapp%2540sonymusic.com%26oq%3Djira.smedigitalapp%2540sonymusic.com%26gs_lcrp%3DEgZjaHJvbWUyBggAEEUYOTIGCAEQRRg60gEJMTg0NzNqMGo0qAIAsAIA%26sourceid%3Dchrome%26ie%3DUTF-8%26sei%3DJwN1aOnaOKqyhbIPwvmXyQQ&q=EgRNR6mAGKiG1MMGIjCyQ7ci_jmUZH2iLWRwuzV80R9ixyTBO9Zwny8_5Nr43911S-i5Y3Fs71-Sik871gMyAVJaAUM",
+  "cookies": [
+    {
+      "name": "JSESSIONID",
+      "value": "CF9ED2E89B8BEACAFAF22F105BD36C7A",
+      "domain": "jirauat.smedigitalapps.com",
+      "path": "/jira",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "atlassian.xsrf.token",
+      "value": "A1TC-B0TB-ACDD-Q6T9_c1a086d1513906218d8a84f4f16b905ea655795e_lout",
+      "domain": "jirauat.smedigitalapps.com",
+      "path": "/jira",
+      "expires": -1,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "AEC",
+      "value": "AVh_V2h1i15MTfuDNr5gtvmsqpCm2Zm0lUZN_NW9vDEQ7mymVd1LLlLdYA",
+      "domain": ".google.com",
+      "path": "/",
+      "expires": 1768050983.855201,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "__Secure-ENID",
+      "value": "28.SE=nU67Wxlrlfyp0Y0evta9lO5uEHm8T9Z8K19qMwlZWJyBE-j6u7ONrwSGVO67RuO_h7esStvcZDik9zkH-B0XNroE-980eXPfeoFikSkQYvK8HyBfwYL0ZAIJjU6Y8ukInIMDJHIOuKwtqFkwaSfyKA5sIlZuNQFCGlqNhfZH7dtZRsNBgK1jiJWteljHUeUwetg4fyaMWsawyK52kEqSrwqHz5m5rfq6V5RJPtWf3yV0JF8TPnyMeEROmE8OOGXjHErYoQgjU6HGh_R2XUH_GA_4iA",
+      "domain": ".google.com",
+      "path": "/",
+      "expires": 1786685681.536798,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    }
+  ],
+  "localStorage": {
+    "rc::a": "NWVoYmxrcnAxdHh3"
+  },
+  "sessionStorage": {
+    "JwN1aOnaOKqyhbIPwvmXyQQ": "1752498983633",
+    "rc::c": "BEIlJUTKQvE1B1PHmIrgSCVJH9nh9WlmKTIBN5hygUmhigZVYV-Xm9wzvTGh-RM9PYjN_wlaebKcDnUFBUo2eY0H88eU"
+  },
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36"
+}

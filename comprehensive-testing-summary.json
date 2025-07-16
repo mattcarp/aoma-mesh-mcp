@@ -1,0 +1,116 @@
+{
+  "totalTests": 319,
+  "categories": [
+    {
+      "name": "📊 Dashboard Tests",
+      "count": 85,
+      "description": "Complete dashboard functionality, performance, and interaction testing",
+      "examples": [
+        "Dashboard Load Time - Cold Cache",
+        "Dashboard Component - Navigation Visibility",
+        "Dashboard Interaction - Keyboard Navigation",
+        "Dashboard Performance - Morning Load",
+        "Dashboard Error Handling - Network Timeout"
+      ]
+    },
+    {
+      "name": "📋 Project Tests (DPSA)",
+      "count": 70,
+      "description": "DPSA project access, navigation, content, permissions, and performance",
+      "examples": [
+        "DPSA Project - Basic Access",
+        "DPSA Navigation - Breadcrumbs Functionality",
+        "DPSA Content - Header Load",
+        "DPSA Permissions - Read Access",
+        "DPSA Performance - Initial Load"
+      ]
+    },
+    {
+      "name": "🔍 Search Tests",
+      "count": 49,
+      "description": "Basic, advanced, performance, and error condition search testing",
+      "examples": [
+        "Basic Search - project = DPSA",
+        "Advanced Search - Complex Query 1",
+        "Search Performance - Large Result Set",
+        "Search Error - Invalid JQL Syntax",
+        "Search Performance - Wildcard Searches"
+      ]
+    },
+    {
+      "name": "⚡ Performance Tests",
+      "count": 55,
+      "description": "Web Vitals, load testing, network conditions, and resource optimization",
+      "examples": [
+        "Dashboard - LCP Performance",
+        "Load Test - Heavy Load",
+        "Network Test - Slow 3G",
+        "Resource Test - CSS Optimization",
+        "Web Vitals - CLS Measurement"
+      ]
+    },
+    {
+      "name": "🌐 Cross-Browser Tests",
+      "count": 16,
+      "description": "Chrome, Firefox, WebKit, and Edge compatibility testing",
+      "examples": [
+        "Chrome - Basic Navigation",
+        "Firefox - Search Functionality",
+        "WebKit - Dashboard Load",
+        "Edge - Project Access"
+      ]
+    },
+    {
+      "name": "📱 Responsive Tests",
+      "count": 24,
+      "description": "Mobile, tablet, desktop, and orientation testing",
+      "examples": [
+        "Mobile Portrait - Navigation",
+        "Tablet Landscape - Search",
+        "Desktop - Content Display",
+        "Large Desktop Portrait - Navigation"
+      ]
+    },
+    {
+      "name": "💪 Stress Tests",
+      "count": 10,
+      "description": "Concurrent users, memory/CPU stress, and endurance testing",
+      "examples": [
+        "Concurrent Users - 50 Users",
+        "Memory Stress - Large Dataset",
+        "CPU Stress - Complex Queries",
+        "Endurance Test - 4 Hours"
+      ]
+    },
+    {
+      "name": "🎯 Edge Case Tests",
+      "count": 10,
+      "description": "Browser edge cases, data edge cases, and error conditions",
+      "examples": [
+        "Browser Back Button",
+        "Session Timeout During Use",
+        "Network Interruption",
+        "Empty Result Sets",
+        "Special Characters in Data"
+      ]
+    }
+  ],
+  "executionStrategy": [
+    "Phase 1: Dashboard + Project Tests (155 tests) - Core functionality validation",
+    "Phase 2: Search + Performance Tests (104 tests) - Feature and speed validation",
+    "Phase 3: Cross-browser + Responsive Tests (40 tests) - Compatibility validation",
+    "Phase 4: Stress + Edge Case Tests (20 tests) - Reliability validation"
+  ],
+  "sessionManagement": [
+    "✅ Enhanced Session Manager eliminates manual login requirements",
+    "✅ Automatic session validation and refresh (8-hour persistence)",
+    "✅ Cross-browser context session sharing",
+    "✅ Comprehensive error handling and recovery",
+    "✅ Zero downtime between test batches"
+  ],
+  "timestamp": "2025-07-15T21:39:15.623Z",
+  "environment": "UAT",
+  "jiraVersion": "10.3.6",
+  "framework": "Playwright + Enhanced Session Management",
+  "status": "Ready for Execution"
+}
