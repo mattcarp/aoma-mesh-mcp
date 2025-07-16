@@ -1,0 +1,16 @@
+{
+  "name": "jira-upgrade-testing",
+  "version": "1.0.0",
+  "description": "JIRA authentication and testing with Playwright",
+  "scripts": {
+    "test": "npx playwright test",
+    "test:setup": "npx playwright test --project=setup",
+    "test:headed": "npx playwright test --headed",
+    "test:ui": "npx playwright test --ui",
+    "test:debug": "npx playwright test --debug",
+    "report": "npx playwright show-report"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.45.0"
+  }
+}

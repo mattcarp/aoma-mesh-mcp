@@ -1,0 +1,10 @@
+# Playwright authentication files
+playwright/.auth/
+
+# Test results
+test-results/
+playwright-report/
+
+# Videos and screenshots
+videos/
+screenshots/
