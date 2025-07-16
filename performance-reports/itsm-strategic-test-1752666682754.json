@@ -1,0 +1,28 @@
+{
+  "summary": {
+    "totalTests": 1,
+    "averageLoadTime": 978,
+    "passedThreshold": 1,
+    "retriedTests": 0,
+    "networkErrors": 1
+  },
+  "results": [
+    {
+      "url": "https://jirauat.smedigitalapps.com/projects/ITSM",
+      "attempt": 1,
+      "loadTime": 978,
+      "webVitals": {
+        "FCP": 480,
+        "LCP": 0,
+        "FID": 0,
+        "CLS": 0,
+        "TTFB": 385.29999999701977
+      },
+      "networkError": true,
+      "timestamp": "2025-07-16T11:51:22.651Z",
+      "passedThreshold": true
+    }
+  ],
+  "dataModifications": [],
+  "timestamp": "2025-07-16T11:51:22.754Z"
+}

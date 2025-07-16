@@ -1,0 +1,41 @@
+{
+  "summary": {
+    "totalSearches": 2,
+    "averageLoadTime": 2086.5,
+    "performancePassed": 2,
+    "errorCount": 0,
+    "totalTicketsFound": 0,
+    "searchTypes": {
+      "basic": 0,
+      "jql": 0,
+      "filter": 2
+    }
+  },
+  "searchResults": [
+    {
+      "query": "status=Open",
+      "jql": "project = ITSM AND status = \"Open\"",
+      "resultCount": 0,
+      "loadTime": 2103,
+      "performancePass": true,
+      "timestamp": "2025-07-16T11:56:37.824Z",
+      "errorOccurred": false,
+      "searchType": "filter"
+    },
+    {
+      "query": "priority=Highest",
+      "jql": "project = ITSM AND priority = \"Highest\"",
+      "resultCount": 0,
+      "loadTime": 2070,
+      "performancePass": true,
+      "timestamp": "2025-07-16T11:56:41.610Z",
+      "errorOccurred": false,
+      "searchType": "filter"
+    }
+  ],
+  "itsmProjectAnalysis": {
+    "totalKnownTickets": 65689,
+    "searchCoverage": "0.00%"
+  },
+  "timestamp": "2025-07-16T11:56:41.647Z"
+}

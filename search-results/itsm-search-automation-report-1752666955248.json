@@ -1,0 +1,31 @@
+{
+  "summary": {
+    "totalSearches": 1,
+    "averageLoadTime": 11242,
+    "performancePassed": 0,
+    "errorCount": 0,
+    "totalTicketsFound": 0,
+    "searchTypes": {
+      "basic": 1,
+      "jql": 0,
+      "filter": 0
+    }
+  },
+  "searchResults": [
+    {
+      "query": "bug",
+      "jql": "text ~ \"bug\"",
+      "resultCount": 0,
+      "loadTime": 11242,
+      "performancePass": false,
+      "timestamp": "2025-07-16T11:55:55.244Z",
+      "errorOccurred": false,
+      "searchType": "basic"
+    }
+  ],
+  "itsmProjectAnalysis": {
+    "totalKnownTickets": 65689,
+    "searchCoverage": "0.00%"
+  },
+  "timestamp": "2025-07-16T11:55:55.248Z"
+}

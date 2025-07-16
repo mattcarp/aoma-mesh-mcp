@@ -1,0 +1,20 @@
+{
+  "summary": {
+    "totalSearches": 0,
+    "averageLoadTime": null,
+    "performancePassed": 0,
+    "errorCount": 0,
+    "totalTicketsFound": 0,
+    "searchTypes": {
+      "basic": 0,
+      "jql": 0,
+      "filter": 0
+    }
+  },
+  "searchResults": [],
+  "itsmProjectAnalysis": {
+    "totalKnownTickets": 65689,
+    "searchCoverage": "0.00%"
+  },
+  "timestamp": "2025-07-16T11:52:09.177Z"
+}

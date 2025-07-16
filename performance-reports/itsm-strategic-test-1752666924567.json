@@ -1,0 +1,28 @@
+{
+  "summary": {
+    "totalTests": 1,
+    "averageLoadTime": 15723,
+    "passedThreshold": 0,
+    "retriedTests": 0,
+    "networkErrors": 0
+  },
+  "results": [
+    {
+      "url": "https://jirauat.smedigitalapps.com/jira/issues/?jql=project%20%3D%20ITSM",
+      "attempt": 1,
+      "loadTime": 15723,
+      "webVitals": {
+        "FCP": 1596,
+        "LCP": 0,
+        "FID": 0,
+        "CLS": 0,
+        "TTFB": 387.90000000596046
+      },
+      "networkError": false,
+      "timestamp": "2025-07-16T11:55:24.331Z",
+      "passedThreshold": false
+    }
+  ],
+  "dataModifications": [],
+  "timestamp": "2025-07-16T11:55:24.567Z"
+}

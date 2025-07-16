@@ -193,7 +193,7 @@ class ITSMStrategicTester {
     
     try {
       // Navigate to ticket
-      await page.goto(`https://jirauat.smedigitalapps.com/browse/${ticketId}`);
+      await page.goto(`https://jirauat.smedigitalapps.com/jira/browse/${ticketId}`);
       await page.waitForLoadState('networkidle');
 
       // Capture original value
@@ -246,7 +246,7 @@ class ITSMStrategicTester {
     }
 
     try {
-      await page.goto(`https://jirauat.smedigitalapps.com/browse/${ticketId}`);
+      await page.goto(`https://jirauat.smedigitalapps.com/jira/browse/${ticketId}`);
       await page.waitForLoadState('networkidle');
 
       // Restore original value
@@ -323,7 +323,7 @@ test.describe('ITSM Strategic Performance Testing', () => {
     // Test ITSM dashboard performance
     const result = await tester.performanceTestWithRetry(
       page, 
-      'https://jirauat.smedigitalapps.com/projects/ITSM',
+      'https://jirauat.smedigitalapps.com/jira/projects/ITSM',
       'itsm-dashboard'
     );
 
@@ -339,7 +339,7 @@ test.describe('ITSM Strategic Performance Testing', () => {
 
     const result = await tester.performanceTestWithRetry(
       page,
-      'https://jirauat.smedigitalapps.com/issues/?jql=project%20%3D%20ITSM',
+      'https://jirauat.smedigitalapps.com/jira/issues/?jql=project%20%3D%20ITSM',
       'itsm-issue-navigator'
     );
 
