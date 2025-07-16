@@ -1,0 +1,65 @@
+{
+  "timestamp": "2025-07-16T19:29:38.809Z",
+  "approaches": [
+    {
+      "name": "Direct API calls",
+      "success": true,
+      "results": [
+        {
+          "endpoint": "/jira/rest/api/2/search?jql=project=ITSM&maxResults=1",
+          "status": 400,
+          "success": false,
+          "data": null
+        },
+        {
+          "endpoint": "/jira/rest/api/2/project/ITSM",
+          "status": 404,
+          "success": false,
+          "data": null
+        },
+        {
+          "endpoint": "/jira/rest/api/2/project",
+          "status": 200,
+          "success": true,
+          "data": "[]"
+        },
+        {
+          "endpoint": "/jira/rest/api/2/search?jql=project%20in%20(ITSM)&maxResults=1",
+          "status": 400,
+          "success": false,
+          "data": null
+        },
+        {
+          "endpoint": "/jira/rest/api/2/issue/ITSM-1",
+          "status": 401,
+          "success": false,
+          "data": null
+        },
+        {
+          "endpoint": "/jira/rest/api/2/project/ITSM/components",
+          "status": 404,
+          "success": false,
+          "data": null
+        },
+        {
+          "endpoint": "/jira/rest/api/2/search?jql=key=ITSM-1",
+          "status": 200,
+          "success": true,
+          "data": "{\"expand\":null,\"startAt\":0,\"maxResults\":50,\"total\":0,\"issues\":[],\"warningMessages\":null,\"names\":null,\"schema\":null}"
+        }
+      ]
+    },
+    {
+      "name": "Project Browser",
+      "success": true,
+      "data": {
+        "projectLines": [
+          "Log in to browse projects.",
+          "Atlassian Jira Project Management Software  About Jira  Report a problem"
+        ],
+        "projectLinks": [],
+        "allProjects": []
+      }
+    }
+  ]
+}
