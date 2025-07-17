@@ -83,3 +83,4 @@ aws-credentials.json
 # Test output
 test-results/
 test-output/
+aoma-secrets.json
