@@ -60,7 +60,7 @@ export class AOMAMeshMCPStack extends cdk.Stack {
       },
     });
 
-    // Lambda function
+    // Lambda function with Web Adapter
     this.lambdaFunction = new lambda.Function(this, 'AOMAMeshMCPFunction', {
       functionName: 'aoma-mesh-mcp-server',
       runtime: lambda.Runtime.NODEJS_20_X,
@@ -70,13 +70,13 @@ export class AOMAMeshMCPStack extends cdk.Stack {
       role: lambdaRole,
       timeout: Duration.seconds(30),
       memorySize: 1024,
-      reservedConcurrentExecutions: 10,
+
       environment: {
         NODE_ENV: 'production',
         LOG_LEVEL: 'info',
         MCP_SERVER_VERSION: '2.0.0-lambda',
         MAX_RETRIES: '3',
-        TIMEOUT_MS: '30000',
+        TIMEOUT_MS: '30000'
       },
       description: 'AOMA Mesh MCP Server - Lambda deployment with stable Function URLs',
       logRetention: logs.RetentionDays.THIRTY_DAYS,
@@ -89,7 +89,7 @@ export class AOMAMeshMCPStack extends cdk.Stack {
       cors: {
         allowCredentials: false,
         allowedHeaders: ['Content-Type', 'Authorization'],
-        allowedMethods: [lambda.HttpMethod.GET, lambda.HttpMethod.POST, lambda.HttpMethod.OPTIONS],
+        allowedMethods: [lambda.HttpMethod.GET, lambda.HttpMethod.POST],
         allowedOrigins: ['*'], // Open for development; restrict in production
         maxAge: Duration.hours(1),
       },
@@ -136,21 +136,12 @@ export class AOMAMeshMCPStack extends cdk.Stack {
       'NEXT_PUBLIC_SUPABASE_ANON_KEY': '/mcp-server/supabase-anon-key',
     };
 
+    // Add SSM parameter paths as environment variables for runtime lookup
     Object.entries(ssmParameters).forEach(([envVarName, ssmPath]) => {
-      // Reference existing SSM parameters (created during ECS deployment)
-      const parameter = ssm.StringParameter.fromStringParameterName(
-        this,
-        `AOMAMeshMCP${envVarName.replace(/[^a-zA-Z0-9]/g, '')}Param`,
-        ssmPath
-      );
-
-      // Grant Lambda function access to read this parameter
-      parameter.grantRead(this.lambdaFunction);
-
-      // Add parameter to Lambda environment variables
+      // Store the parameter path, not the value (to avoid CloudFormation SecureString issues)
       this.lambdaFunction.addEnvironment(
-        envVarName,
-        parameter.stringValue
+        `${envVarName}_SSM_PATH`,
+        ssmPath
       );
     });
 

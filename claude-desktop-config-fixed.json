@@ -1,0 +1,17 @@
+{
+  "mcpServers": {
+    "aoma-mesh-mcp": {
+      "command": "npx",
+      "args": ["tsx", "src/aoma-mesh-server.ts"],
+      "cwd": "/Users/matt/Documents/projects/aoma-mesh-mcp",
+      "env": {
+        "OPENAI_API_KEY": "${OPENAI_API_KEY}",
+        "AOMA_ASSISTANT_ID": "${AOMA_ASSISTANT_ID}",
+        "NEXT_PUBLIC_SUPABASE_URL": "${NEXT_PUBLIC_SUPABASE_URL}",
+        "NEXT_PUBLIC_SUPABASE_ANON_KEY": "${NEXT_PUBLIC_SUPABASE_ANON_KEY}",
+        "SUPABASE_SERVICE_ROLE_KEY": "${SUPABASE_SERVICE_ROLE_KEY}",
+        "NODE_ENV": "development"
+      }
+    }
+  }
+}

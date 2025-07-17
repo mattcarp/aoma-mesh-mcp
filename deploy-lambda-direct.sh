@@ -18,6 +18,10 @@ echo "================================"
 FUNCTION_NAME="aoma-mesh-mcp-server"
 REGION="us-east-2"
 
+# Generate timestamp version
+TIMESTAMP=$(date +"%Y%m%d-%H%M%S")
+VERSION_WITH_TIMESTAMP="2.0.0-lambda-${TIMESTAMP}"
+
 # Step 1: Create IAM role for Lambda
 echo -e "${BLUE}Step 1: Creating IAM role...${NC}"
 
@@ -89,18 +93,17 @@ ROLE_ARN="arn:aws:iam::${ACCOUNT_ID}:role/${FUNCTION_NAME}-role"
 
 echo -e "${GREEN}✅ IAM role created: ${ROLE_ARN}${NC}"
 
-# Step 2: Create environment variables from SSM
-echo -e "${BLUE}Step 2: Preparing environment variables...${NC}"
+# Step 2: Prepare SSM parameter paths (not values)
+echo -e "${BLUE}Step 2: Preparing SSM parameter paths...${NC}"
 
-# Get values from SSM parameters
-OPENAI_API_KEY=$(aws ssm get-parameter --name "/mcp-server/openai-api-key" --with-decryption --query Parameter.Value --output text)
-AOMA_ASSISTANT_ID=$(aws ssm get-parameter --name "/mcp-server/aoma-assistant-id" --with-decryption --query Parameter.Value --output text)
-OPENAI_VECTOR_STORE_ID=$(aws ssm get-parameter --name "/mcp-server/openai-vector-store-id" --with-decryption --query Parameter.Value --output text)
-SUPABASE_URL=$(aws ssm get-parameter --name "/mcp-server/supabase-url" --with-decryption --query Parameter.Value --output text)
-SUPABASE_SERVICE_KEY=$(aws ssm get-parameter --name "/mcp-server/supabase-service-role-key" --with-decryption --query Parameter.Value --output text)
-SUPABASE_ANON_KEY=$(aws ssm get-parameter --name "/mcp-server/supabase-anon-key" --with-decryption --query Parameter.Value --output text)
+# Get actual values from SSM parameters for direct deployment
+OPENAI_API_KEY=$(aws ssm get-parameter --name "/mcp-server/openai-api-key" --with-decryption --query Parameter.Value --output text 2>/dev/null || echo "")
+AOMA_ASSISTANT_ID=$(aws ssm get-parameter --name "/mcp-server/aoma-assistant-id" --with-decryption --query Parameter.Value --output text 2>/dev/null || echo "")
+SUPABASE_URL=$(aws ssm get-parameter --name "/mcp-server/supabase-url" --with-decryption --query Parameter.Value --output text 2>/dev/null || echo "")
+SUPABASE_SERVICE_KEY=$(aws ssm get-parameter --name "/mcp-server/supabase-service-role-key" --with-decryption --query Parameter.Value --output text 2>/dev/null || echo "")
+SUPABASE_ANON_KEY=$(aws ssm get-parameter --name "/mcp-server/supabase-anon-key" --with-decryption --query Parameter.Value --output text 2>/dev/null || echo "")
 
-echo -e "${GREEN}✅ Environment variables retrieved from SSM${NC}"
+echo -e "${GREEN}✅ SSM parameter paths configured${NC}"
 
 # Step 3: Create or update Lambda function
 echo -e "${BLUE}Step 3: Creating Lambda function...${NC}"
@@ -121,12 +124,11 @@ if aws lambda get-function --function-name $FUNCTION_NAME >/dev/null 2>&1; then
       --environment Variables="{
         NODE_ENV=production,
         LOG_LEVEL=info,
-        MCP_SERVER_VERSION=2.0.0-lambda,
+        MCP_SERVER_VERSION=$VERSION_WITH_TIMESTAMP,
         MAX_RETRIES=3,
         TIMEOUT_MS=30000,
         OPENAI_API_KEY=$OPENAI_API_KEY,
         AOMA_ASSISTANT_ID=$AOMA_ASSISTANT_ID,
-        OPENAI_VECTOR_STORE_ID=$OPENAI_VECTOR_STORE_ID,
         NEXT_PUBLIC_SUPABASE_URL=$SUPABASE_URL,
         SUPABASE_SERVICE_ROLE_KEY=$SUPABASE_SERVICE_KEY,
         NEXT_PUBLIC_SUPABASE_ANON_KEY=$SUPABASE_ANON_KEY
@@ -146,12 +148,11 @@ else
       --environment Variables="{
         NODE_ENV=production,
         LOG_LEVEL=info,
-        MCP_SERVER_VERSION=2.0.0-lambda,
+        MCP_SERVER_VERSION=$VERSION_WITH_TIMESTAMP,
         MAX_RETRIES=3,
         TIMEOUT_MS=30000,
         OPENAI_API_KEY=$OPENAI_API_KEY,
         AOMA_ASSISTANT_ID=$AOMA_ASSISTANT_ID,
-        OPENAI_VECTOR_STORE_ID=$OPENAI_VECTOR_STORE_ID,
         NEXT_PUBLIC_SUPABASE_URL=$SUPABASE_URL,
         SUPABASE_SERVICE_ROLE_KEY=$SUPABASE_SERVICE_KEY,
         NEXT_PUBLIC_SUPABASE_ANON_KEY=$SUPABASE_ANON_KEY
@@ -167,12 +168,22 @@ echo -e "${BLUE}Step 4: Creating Function URL...${NC}"
 # Delete existing Function URL if it exists
 aws lambda delete-function-url-config --function-name $FUNCTION_NAME 2>/dev/null || true
 
-# Create new Function URL
+# Create new Function URL (without CORS first)
 FUNCTION_URL=$(aws lambda create-function-url-config \
   --function-name $FUNCTION_NAME \
   --auth-type NONE \
-  --cors "AllowCredentials=false,AllowHeaders=Content-Type,AllowMethods=GET,AllowMethods=POST,AllowMethods=OPTIONS,AllowOrigins=*,MaxAge=3600" \
   --query FunctionUrl --output text)
+
+# Update CORS configuration separately
+aws lambda update-function-url-config \
+  --function-name $FUNCTION_NAME \
+  --cors '{
+    "AllowCredentials": false,
+    "AllowHeaders": ["Content-Type", "Authorization"],
+    "AllowMethods": ["GET", "POST", "OPTIONS"],
+    "AllowOrigins": ["*"],
+    "MaxAge": 3600
+  }' >/dev/null 2>&1 || echo "CORS update failed, but function URL created"
 
 echo -e "${GREEN}✅ Function URL created: ${FUNCTION_URL}${NC}"
 
