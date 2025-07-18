@@ -66,7 +66,7 @@ export class AOMAMeshMCPStack extends cdk.Stack {
       runtime: lambda.Runtime.NODEJS_20_X,
       architecture: lambda.Architecture.X86_64,
       handler: 'lambda-handler.handler',
-      code: lambda.Code.fromAsset('../lambda-deployment.zip'),
+      code: lambda.Code.fromAsset('../dist'),
       role: lambdaRole,
       timeout: Duration.seconds(30),
       memorySize: 1024,

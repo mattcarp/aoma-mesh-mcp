@@ -85,7 +85,38 @@ export class AOMAMeshServer {
 
     // Initialize HTTP server
     this.httpApp = express();
-    this.httpApp.use(cors());
+
+    // CORS configuration
+    const allowedOriginsRaw =
+      process.env.ALLOWED_ORIGINS ||
+      (this.config && (this.config as any).ALLOWED_ORIGINS) ||
+      '*';
+    let allowedOrigins: string[] | string = allowedOriginsRaw;
+
+    if (allowedOriginsRaw !== '*') {
+      allowedOrigins = allowedOriginsRaw
+        .split(',')
+        .map(origin => origin.trim())
+        .filter(Boolean);
+    }
+
+    // In production, require explicit origins
+    const isProduction =
+      (this.config && this.config.NODE_ENV === 'production') ||
+      process.env.NODE_ENV === 'production';
+
+    if (isProduction && (allowedOrigins === '*' || !allowedOrigins || (Array.isArray(allowedOrigins) && allowedOrigins.length === 0))) {
+      throw new Error(
+        'CORS misconfiguration: ALLOWED_ORIGINS must be set to explicit origins in production'
+      );
+    }
+
+    this.httpApp.use(
+      cors({
+        origin: allowedOrigins,
+        credentials: false,
+      })
+    );
     this.httpApp.use(express.json({ limit: '10mb' }));
 
     // Initialize metrics

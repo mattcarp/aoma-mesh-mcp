@@ -124,6 +124,10 @@ fi
 print_status "Building TypeScript..."
 npm run build
 
+# Ensure package.json exists in dist for ES modules
+print_status "Ensuring ES module configuration..."
+echo '{"type": "module"}' > "$DIST_DIR/package.json"
+
 # Verify dist directory
 if [ ! -d "$DIST_DIR" ]; then
     print_error "Build failed - dist directory not found"

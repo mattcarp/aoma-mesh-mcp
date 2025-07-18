@@ -17,6 +17,7 @@ export default {
   moduleNameMapper: {
     '^(\\.{1,2}/.*)\\.js$': '$1'
   },
+  transformIgnorePatterns: [],
   transform: {
     '^.+\\.ts$': ['ts-jest', {
       useESM: true

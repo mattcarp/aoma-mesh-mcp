@@ -9,6 +9,9 @@
  * @author MC-TK Development Team
  */
 
+// Lambda-specific: Disable OpenAI shims to avoid conflicts with AWS OpenTelemetry
+// AWS Lambda runtime provides necessary polyfills
+
 import { 
   Tool, 
   Resource, 
@@ -128,9 +131,9 @@ interface ServerMetrics {
  * Lambda-optimized AOMA Mesh MCP Server
  */
 export class AOMAMeshServer {
-  private readonly env: Environment;
-  private readonly openaiClient: OpenAI;
-  private readonly supabaseClient: any;
+  private env: Environment | null = null;
+  private openaiClient: OpenAI | null = null;
+  private supabaseClient: any = null;
   private readonly startTime: number = Date.now();
   private metrics: ServerMetrics;
   private healthCache: { status: HealthStatus; lastCheck: number } | null = null;
@@ -138,28 +141,6 @@ export class AOMAMeshServer {
   private isInitialized = false;
 
   constructor() {
-    // Lambda optimization: Load environment without file system dependencies
-    this.env = this.validateAndLoadEnvironment();
-    
-    // Initialize OpenAI client with retry configuration
-    this.openaiClient = new OpenAI({
-      apiKey: this.env.OPENAI_API_KEY,
-      timeout: this.env.TIMEOUT_MS,
-      maxRetries: this.env.MAX_RETRIES,
-    });
-
-    // Initialize Supabase client with optimized settings for Lambda
-    this.supabaseClient = createClient(
-      this.env.NEXT_PUBLIC_SUPABASE_URL,
-      this.env.SUPABASE_SERVICE_ROLE_KEY,
-      {
-        auth: { persistSession: false, autoRefreshToken: false },
-        global: { 
-          headers: { 'x-client-info': 'aoma-mesh-mcp-lambda/2.0.0' }
-        },
-      }
-    );
-
     // Initialize metrics with Lambda-specific fields
     this.metrics = {
       uptime: 0,
@@ -168,7 +149,7 @@ export class AOMAMeshServer {
       failedRequests: 0,
       averageResponseTime: 0,
       lastRequestTime: new Date().toISOString(),
-      version: this.env.MCP_SERVER_VERSION,
+      version: '2.0.0-lambda',
       lambdaInvocations: 0,
       coldStarts: 0,
     };
@@ -184,6 +165,19 @@ export class AOMAMeshServer {
     }
 
     try {
+      // First validate and load environment
+      this.env = await this.validateAndLoadEnvironment();
+      
+      // Initialize clients
+      this.openaiClient = new OpenAI({
+        apiKey: this.env.OPENAI_API_KEY,
+      });
+      
+      this.supabaseClient = createClient(
+        this.env.NEXT_PUBLIC_SUPABASE_URL,
+        this.env.SUPABASE_SERVICE_ROLE_KEY
+      );
+
       this.logInfo('🚀 Initializing AOMA Mesh MCP Server (Lambda)', {
         version: this.env.MCP_SERVER_VERSION,
         environment: this.env.NODE_ENV,
@@ -207,11 +201,14 @@ export class AOMAMeshServer {
   }
 
   /**
-   * Validate environment (Lambda optimized - no file system access)
+   * Validate environment and load from SSM (Lambda optimized)
    */
-  private validateAndLoadEnvironment(): Environment {
+  private async validateAndLoadEnvironment(): Promise<Environment> {
     try {
-      // In Lambda, environment variables are already loaded
+      // First, load SSM parameters if SSM paths are provided
+      await this.loadSSMParameters();
+      
+      // Then validate the environment
       const result = EnvSchema.parse(process.env);
       
       console.log('[INFO] Environment validated successfully', {
@@ -231,6 +228,66 @@ export class AOMAMeshServer {
         throw new Error(`Environment validation failed: ${issues}`);
       }
       throw error;
+    }
+  }
+
+  /**
+   * Load parameters from SSM Parameter Store
+   */
+  private async loadSSMParameters(): Promise<void> {
+    const { SSMClient, GetParametersCommand } = await import('@aws-sdk/client-ssm');
+    
+    const ssmClient = new SSMClient({ region: process.env.AWS_REGION || 'us-east-2' });
+    
+    // Map of environment variable names to their SSM paths
+    const ssmMappings = {
+      'OPENAI_API_KEY': process.env.OPENAI_API_KEY_SSM_PATH,
+      'AOMA_ASSISTANT_ID': process.env.AOMA_ASSISTANT_ID_SSM_PATH,
+      'OPENAI_VECTOR_STORE_ID': process.env.OPENAI_VECTOR_STORE_ID_SSM_PATH,
+      'NEXT_PUBLIC_SUPABASE_URL': process.env.NEXT_PUBLIC_SUPABASE_URL_SSM_PATH,
+      'SUPABASE_SERVICE_ROLE_KEY': process.env.SUPABASE_SERVICE_ROLE_KEY_SSM_PATH,
+      'NEXT_PUBLIC_SUPABASE_ANON_KEY': process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY_SSM_PATH,
+    };
+
+    // Get parameter names that have SSM paths defined
+    const parameterNames = Object.values(ssmMappings).filter(Boolean) as string[];
+    
+    if (parameterNames.length === 0) {
+      console.log('[INFO] No SSM parameters to load, using existing environment variables');
+      return;
+    }
+
+    try {
+      console.log('[INFO] Loading parameters from SSM:', parameterNames);
+      
+      const command = new GetParametersCommand({
+        Names: parameterNames,
+        WithDecryption: true,
+      });
+
+      const response = await ssmClient.send(command);
+      
+      if (response.Parameters) {
+        for (const param of response.Parameters) {
+          // Find the env var name for this SSM parameter
+          const envVarName = Object.keys(ssmMappings).find(
+            key => ssmMappings[key as keyof typeof ssmMappings] === param.Name
+          );
+          
+          if (envVarName && param.Value) {
+            process.env[envVarName] = param.Value;
+            console.log(`[INFO] Loaded ${envVarName} from SSM`);
+          }
+        }
+      }
+
+      if (response.InvalidParameters && response.InvalidParameters.length > 0) {
+        console.warn('[WARN] Invalid SSM parameters:', response.InvalidParameters);
+      }
+
+    } catch (error) {
+      console.error('[ERROR] Failed to load SSM parameters:', error);
+      // Don't throw here - fall back to existing env vars
     }
   }
 
@@ -281,6 +338,14 @@ export class AOMAMeshServer {
         },
       };
     }
+  }
+
+  /**
+   * Execute a tool and return the result (for direct tool execution endpoint)
+   */
+  async executeTool(name: string, args: Record<string, unknown>): Promise<any> {
+    const result = await this.callTool(name, args);
+    return result;
   }
 
   /**
@@ -489,70 +554,92 @@ export class AOMAMeshServer {
       vectorStore: { status: false, latency: 0, error: undefined as string | undefined },
     };
 
-    // Test OpenAI
     try {
-      const start = Date.now();
-      await this.openaiClient.models.list();
-      services.openai = { status: true, latency: Date.now() - start, error: undefined };
-    } catch (error) {
-      services.openai = { 
-        status: false, 
-        latency: 0, 
-        error: this.getErrorMessage(error) 
-      };
-    }
-
-    // Test Supabase
-    try {
-      const start = Date.now();
-      await this.supabaseClient.from('docs').select('id').limit(1);
-      services.supabase = { status: true, latency: Date.now() - start, error: undefined };
-    } catch (error) {
-      services.supabase = { 
-        status: false, 
-        latency: 0, 
-        error: this.getErrorMessage(error) 
-      };
-    }
-
-    // Test Vector Store (if configured)
-    if (this.env.OPENAI_VECTOR_STORE_ID) {
+      // Test OpenAI
       try {
         const start = Date.now();
-        // Check if vectorStore API is available
-        if ('vectorStores' in this.openaiClient.beta) {
-          await (this.openaiClient.beta as any).vectorStores.retrieve(this.env.OPENAI_VECTOR_STORE_ID);
-        }
-        services.vectorStore = { status: true, latency: Date.now() - start, error: undefined };
+        await this.openaiClient.models.list();
+        services.openai = { status: true, latency: Date.now() - start, error: undefined };
       } catch (error) {
-        services.vectorStore = { 
-          status: false, 
-          latency: 0, 
-          error: this.getErrorMessage(error) 
+        services.openai = {
+          status: false,
+          latency: 0,
+          error: this.getErrorMessage(error)
         };
+        console.error('[HEALTH] OpenAI check failed:', error);
       }
-    } else {
-      services.vectorStore = { status: true, latency: 0, error: undefined };
-    }
 
-    // Determine overall status
-    const allHealthy = Object.values(services).every(service => service.status);
-    const someHealthy = Object.values(services).some(service => service.status);
-    
-    return {
-      status: allHealthy ? 'healthy' : someHealthy ? 'degraded' : 'unhealthy',
-      services,
-      metrics: {
-        uptime: Date.now() - this.startTime,
-        totalRequests: this.metrics.totalRequests,
-        successfulRequests: this.metrics.successfulRequests,
-        failedRequests: this.metrics.failedRequests,
-        averageResponseTime: this.metrics.averageResponseTime,
-        lastRequestTime: this.metrics.lastRequestTime,
-        version: this.env.MCP_SERVER_VERSION,
-      },
-      timestamp: new Date().toISOString(),
-    };
+      // Test Supabase
+      try {
+        const start = Date.now();
+        await this.supabaseClient.from('docs').select('id').limit(1);
+        services.supabase = { status: true, latency: Date.now() - start, error: undefined };
+      } catch (error) {
+        services.supabase = {
+          status: false,
+          latency: 0,
+          error: this.getErrorMessage(error)
+        };
+        console.error('[HEALTH] Supabase check failed:', error);
+      }
+
+      // Test Vector Store (if configured)
+      if (this.env.OPENAI_VECTOR_STORE_ID) {
+        try {
+          const start = Date.now();
+          // Check if vectorStore API is available
+          if ('vectorStores' in this.openaiClient.beta) {
+            await (this.openaiClient.beta as any).vectorStores.retrieve(this.env.OPENAI_VECTOR_STORE_ID);
+          }
+          services.vectorStore = { status: true, latency: Date.now() - start, error: undefined };
+        } catch (error) {
+          services.vectorStore = {
+            status: false,
+            latency: 0,
+            error: this.getErrorMessage(error)
+          };
+          console.error('[HEALTH] Vector Store check failed:', error);
+        }
+      } else {
+        services.vectorStore = { status: true, latency: 0, error: undefined };
+      }
+
+      // Determine overall status
+      const allHealthy = Object.values(services).every(service => service.status);
+      const someHealthy = Object.values(services).some(service => service.status);
+      
+      return {
+        status: allHealthy ? 'healthy' : someHealthy ? 'degraded' : 'unhealthy',
+        services,
+        metrics: {
+          uptime: Date.now() - this.startTime,
+          totalRequests: this.metrics.totalRequests,
+          successfulRequests: this.metrics.successfulRequests,
+          failedRequests: this.metrics.failedRequests,
+          averageResponseTime: this.metrics.averageResponseTime,
+          lastRequestTime: this.metrics.lastRequestTime,
+          version: this.env.MCP_SERVER_VERSION,
+        },
+        timestamp: new Date().toISOString(),
+      };
+    } catch (fatalError) {
+      // Log and return a fatal error status
+      console.error('[HEALTH] Fatal error in performHealthCheck:', fatalError);
+      return {
+        status: 'unhealthy',
+        services,
+        metrics: {
+          uptime: Date.now() - this.startTime,
+          totalRequests: this.metrics.totalRequests,
+          successfulRequests: this.metrics.successfulRequests,
+          failedRequests: this.metrics.failedRequests,
+          averageResponseTime: this.metrics.averageResponseTime,
+          lastRequestTime: this.metrics.lastRequestTime,
+          version: this.env.MCP_SERVER_VERSION,
+        },
+        timestamp: new Date().toISOString(),
+      };
+    }
   }
 
   /**

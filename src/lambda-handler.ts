@@ -1,94 +1,175 @@
-import { APIGatewayProxyEvent, APIGatewayProxyResult, Context } from 'aws-lambda';
+#!/usr/bin/env node
+/**
+ * AWS Lambda Handler for AOMA Mesh MCP Server
+ * Simplified version to avoid OpenTelemetry conflicts
+ */
+
+// Disable OpenTelemetry auto-instrumentation for OpenAI to prevent shims conflicts
+process.env.OTEL_INSTRUMENTATIONS_DISABLED = 'openai';
+process.env.OTEL_RESOURCE_ATTRIBUTES = 'service.name=aoma-mesh-mcp-server';
+
 import { AOMAMeshServer } from './aoma-mesh-server-lambda.js';
 
-let server: AOMAMeshServer;
+// Singleton instance
+let serverInstance = null;
 
-// Complete CORS headers for all responses
-const getCorsHeaders = () => ({
-  'Content-Type': 'application/json',
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
-  'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Requested-With',
-  'Access-Control-Max-Age': '86400'
-});
+// CORS headers
+const corsHeaders = {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Headers': 'Content-Type, Authorization, X-Requested-With',
+    'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+    'Access-Control-Max-Age': '86400'
+};
 
-export const handler = async (event: APIGatewayProxyEvent, context: Context): Promise<APIGatewayProxyResult> => {
-  console.log('Lambda handler called with event:', JSON.stringify(event, null, 2));
+/**
+ * AWS Lambda handler function
+ */
+export const handler = async (event, context) => {
+    // Disable Lambda timeout callback for cleaner logs
+    context.callbackWaitsForEmptyEventLoop = false;
+    
+    console.log('Lambda invocation:', {
+        requestId: context.awsRequestId,
+        path: event.path,
+        method: event.httpMethod
+    });
 
-  // Handle CORS preflight requests (OPTIONS)
-  if (event.httpMethod === 'OPTIONS') {
-    return {
-      statusCode: 200,
-      headers: getCorsHeaders(),
-      body: ''
-    };
-  }
-
-  // Health check
-  if (event.path === '/health' && event.httpMethod === 'GET') {
-    return {
-      statusCode: 200,
-      headers: getCorsHeaders(),
-      body: JSON.stringify({
-        status: 'healthy',
-        timestamp: new Date().toISOString(),
-        version: '2.0.0-lambda'
-      })
-    };
-  }
-
-  // Initialize server if not already done
-  if (!server) {
     try {
-      server = new AOMAMeshServer();
-      await server.initialize();
+        const { httpMethod, path, body } = event;
+
+        // CORS preflight
+        if (httpMethod === 'OPTIONS') {
+            return {
+                statusCode: 200,
+                headers: corsHeaders,
+                body: ''
+            };
+        }
+
+        // Initialize server if needed
+        if (!serverInstance) {
+            console.log('Initializing AOMA Mesh Server...');
+            try {
+                serverInstance = new AOMAMeshServer();
+                await serverInstance.initialize();
+                console.log('Server initialized successfully');
+            } catch (error) {
+                console.error('Failed to initialize server:', error);
+                return {
+                    statusCode: 500,
+                    headers: corsHeaders,
+                    body: JSON.stringify({
+                        error: 'Server initialization failed',
+                        message: error instanceof Error ? error.message : String(error)
+                    })
+                };
+            }
+        }
+
+        // Health endpoint
+        if (path === '/health' && httpMethod === 'GET') {
+            try {
+                const health = await serverInstance.getHealthStatus();
+                return {
+                    statusCode: health.status === 'healthy' ? 200 : 503,
+                    headers: corsHeaders,
+                    body: JSON.stringify(health)
+                };
+            } catch (error) {
+                return {
+                    statusCode: 503,
+                    headers: corsHeaders,
+                    body: JSON.stringify({
+                        status: 'unhealthy',
+                        error: error instanceof Error ? error.message : String(error)
+                    })
+                };
+            }
+        }
+
+        // MCP RPC endpoint
+        if (path === '/rpc' && httpMethod === 'POST') {
+            if (!body) {
+                return {
+                    statusCode: 400,
+                    headers: corsHeaders,
+                    body: JSON.stringify({ error: 'Request body required' })
+                };
+            }
+
+            try {
+                const rpcRequest = JSON.parse(body);
+                const result = await serverInstance.handleMCPRequest(rpcRequest);
+                return {
+                    statusCode: 200,
+                    headers: corsHeaders,
+                    body: JSON.stringify(result)
+                };
+            } catch (error) {
+                console.error('RPC error:', error);
+                return {
+                    statusCode: 500,
+                    headers: corsHeaders,
+                    body: JSON.stringify({
+                        error: 'RPC processing failed',
+                        message: error instanceof Error ? error.message : String(error)
+                    })
+                };
+            }
+        }
+
+        // Tool execution endpoint
+        if (path?.startsWith('/tools/') && httpMethod === 'POST') {
+            const toolName = path.replace('/tools/', '');
+            
+            if (!body) {
+                return {
+                    statusCode: 400,
+                    headers: corsHeaders,
+                    body: JSON.stringify({ error: 'Request body required' })
+                };
+            }
+
+            try {
+                const toolArgs = JSON.parse(body);
+                const result = await serverInstance.executeTool(toolName, toolArgs);
+                return {
+                    statusCode: 200,
+                    headers: corsHeaders,
+                    body: JSON.stringify(result)
+                };
+            } catch (error) {
+                console.error('Tool execution error:', error);
+                return {
+                    statusCode: 500,
+                    headers: corsHeaders,
+                    body: JSON.stringify({
+                        error: 'Tool execution failed',
+                        message: error instanceof Error ? error.message : String(error)
+                    })
+                };
+            }
+        }
+
+        // Default response
+        return {
+            statusCode: 404,
+            headers: corsHeaders,
+            body: JSON.stringify({
+                error: 'Not found',
+                message: `Unknown endpoint: ${httpMethod} ${path}`
+            })
+        };
+
     } catch (error) {
-      console.error('Failed to initialize AOMAMeshServer:', error);
-      return {
-        statusCode: 500,
-        headers: getCorsHeaders(),
-        body: JSON.stringify({
-          error: 'Failed to initialize server',
-          message: error instanceof Error ? error.message : 'Unknown error'
-        })
-      };
+        console.error('Unhandled error:', error);
+        return {
+            statusCode: 500,
+            headers: corsHeaders,
+            body: JSON.stringify({
+                error: 'Internal server error',
+                message: error instanceof Error ? error.message : String(error)
+            })
+        };
     }
-  }
-
-  try {
-    // Handle RPC requests
-    if (event.path === '/rpc' && event.httpMethod === 'POST') {
-      const requestBody = JSON.parse(event.body || '{}');
-      
-      // Handle the RPC call using existing server
-      const result = await server.handleMCPRequest(requestBody);
-      
-      return {
-        statusCode: 200,
-        headers: getCorsHeaders(),
-        body: JSON.stringify(result)
-      };
-    }
-
-    // Default response for other paths
-    return {
-      statusCode: 404,
-      headers: getCorsHeaders(),
-      body: JSON.stringify({
-        error: 'Not Found',
-        message: `Path ${event.path} not found`
-      })
-    };
-
-  } catch (error) {
-    console.error('Error handling request:', error);
-    return {
-      statusCode: 500,
-      headers: getCorsHeaders(),
-      body: JSON.stringify({
-        error: 'Internal Server Error',
-        message: error instanceof Error ? error.message : 'Unknown error'
-      })
-    };
-  }
 };

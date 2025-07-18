@@ -1,0 +1,88 @@
+{
+  "tech_stack": [
+    "TypeScript",
+    "Node.js",
+    "AWS Lambda",
+    "Model Context Protocol (MCP)",
+    "Express.js",
+    "OpenAI API",
+    "Supabase",
+    "Vector Database"
+  ],
+  "features": [
+    {
+      "name": "AOMA Knowledge Query",
+      "description": "Semantic search and query system for AOMA knowledge base",
+      "files": ["src/tools/aoma-knowledge.tool.ts"],
+      "api_doc": {
+        "openapi": "3.0.0",
+        "info": {"title": "AOMA Knowledge API", "version": "1.0.0"},
+        "paths": {
+          "/rpc": {
+            "post": {
+              "summary": "Query AOMA Knowledge Base",
+              "requestBody": {
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "type": "object",
+                      "properties": {
+                        "method": {"type": "string", "enum": ["tools/call"]},
+                        "params": {
+                          "type": "object",
+                          "properties": {
+                            "name": {"type": "string", "enum": ["query_aoma_knowledge"]},
+                            "arguments": {
+                              "type": "object",
+                              "properties": {
+                                "query": {"type": "string"},
+                                "strategy": {"type": "string", "enum": ["focused", "comprehensive", "rapid"]},
+                                "maxResults": {"type": "integer", "default": 10}
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "System Health Check",
+      "description": "Health monitoring for the MCP server",
+      "files": ["src/health-check.ts"],
+      "api_doc": {
+        "openapi": "3.0.0",
+        "info": {"title": "Health API", "version": "1.0.0"},
+        "paths": {
+          "/health": {
+            "get": {
+              "summary": "Get System Health",
+              "responses": {
+                "200": {
+                  "description": "Health status",
+                  "content": {
+                    "application/json": {
+                      "schema": {
+                        "type": "object",
+                        "properties": {
+                          "status": {"type": "string", "enum": ["healthy", "degraded", "unhealthy"]},
+                          "services": {"type": "object"}
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

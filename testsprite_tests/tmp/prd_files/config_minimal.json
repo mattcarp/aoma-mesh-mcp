@@ -1,0 +1,11 @@
+{
+  "deepgram_api_key": "c7515027601f5f34c07ee3c756481767d46794ff",
+  "audio_device_index": 1,
+  "system_audio_device_index": null,
+  "topic_extraction_method": "tfidf",
+  "relevance_threshold": 0.7,
+  "max_insights_per_minute": 3,
+  "cooldown_period": 20,
+  "history_length": 10,
+  "update_interval": 1
+}

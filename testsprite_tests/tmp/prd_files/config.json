@@ -1,0 +1,13 @@
+{
+  "audio_device_index": 1,
+  "system_audio_device_index": null,
+  "topic_extraction_method": "tfidf",
+  "relevance_threshold": 0.7,
+  "max_insights_per_minute": 3,
+  "cooldown_period": 20,
+  "history_length": 10,
+  "update_interval": 1,
+  "max_recent_transcriptions": 20,
+  "max_recent_insights": 30,
+  "max_session_history": 100
+}
