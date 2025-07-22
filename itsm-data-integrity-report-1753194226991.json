@@ -1,0 +1,350 @@
+{
+  "summary": {
+    "totalTests": 4,
+    "passedTests": 2,
+    "successRate": "50.00%",
+    "totalDataPoints": 12,
+    "averageDuration": "112058ms"
+  },
+  "testResults": [
+    {
+      "testName": "Basic ITSM Data Integrity",
+      "testType": "validation",
+      "success": true,
+      "details": {
+        "totalTickets": 10,
+        "validTickets": 0,
+        "integrityScore": "0.00%",
+        "sampleChecks": [
+          {
+            "ticketKey": "ITSM-64915",
+            "isValid": false,
+            "fields": {
+              "summary": {
+                "present": false,
+                "valid": "",
+                "value": ""
+              },
+              "status": {
+                "present": false,
+                "valid": "",
+                "value": ""
+              },
+              "priority": {
+                "present": false,
+                "valid": "",
+                "value": ""
+              },
+              "assignee": {
+                "present": false,
+                "valid": "",
+                "value": ""
+              },
+              "reporter": {
+                "present": false,
+                "valid": "",
+                "value": ""
+              },
+              "created": {
+                "present": false,
+                "valid": "",
+                "value": ""
+              },
+              "updated": {
+                "present": false,
+                "valid": "",
+                "value": ""
+              },
+              "customFields": {}
+            },
+            "consistencyChecks": {
+              "supabaseMatch": true,
+              "fieldCompleteness": 0,
+              "dataTypeConsistency": true
+            }
+          },
+          {
+            "ticketKey": "ITSM-64915",
+            "isValid": false,
+            "fields": {
+              "summary": {
+                "present": false,
+                "valid": "",
+                "value": ""
+              },
+              "status": {
+                "present": false,
+                "valid": "",
+                "value": ""
+              },
+              "priority": {
+                "present": false,
+                "valid": "",
+                "value": ""
+              },
+              "assignee": {
+                "present": false,
+                "valid": "",
+                "value": ""
+              },
+              "reporter": {
+                "present": false,
+                "valid": "",
+                "value": ""
+              },
+              "created": {
+                "present": false,
+                "valid": "",
+                "value": ""
+              },
+              "updated": {
+                "present": false,
+                "valid": "",
+                "value": ""
+              },
+              "customFields": {}
+            },
+            "consistencyChecks": {
+              "supabaseMatch": true,
+              "fieldCompleteness": 0,
+              "dataTypeConsistency": true
+            }
+          },
+          {
+            "ticketKey": "ITSM-64915",
+            "isValid": false,
+            "fields": {
+              "summary": {
+                "present": false,
+                "valid": "",
+                "value": ""
+              },
+              "status": {
+                "present": false,
+                "valid": "",
+                "value": ""
+              },
+              "priority": {
+                "present": false,
+                "valid": "",
+                "value": ""
+              },
+              "assignee": {
+                "present": false,
+                "valid": "",
+                "value": ""
+              },
+              "reporter": {
+                "present": false,
+                "valid": "",
+                "value": ""
+              },
+              "created": {
+                "present": false,
+                "valid": "",
+                "value": ""
+              },
+              "updated": {
+                "present": false,
+                "valid": "",
+                "value": ""
+              },
+              "customFields": {}
+            },
+            "consistencyChecks": {
+              "supabaseMatch": true,
+              "fieldCompleteness": 0,
+              "dataTypeConsistency": true
+            }
+          },
+          {
+            "ticketKey": "ITSM-64915",
+            "isValid": false,
+            "fields": {
+              "summary": {
+                "present": false,
+                "valid": "",
+                "value": ""
+              },
+              "status": {
+                "present": false,
+                "valid": "",
+                "value": ""
+              },
+              "priority": {
+                "present": false,
+                "valid": "",
+                "value": ""
+              },
+              "assignee": {
+                "present": false,
+                "valid": "",
+                "value": ""
+              },
+              "reporter": {
+                "present": false,
+                "valid": "",
+                "value": ""
+              },
+              "created": {
+                "present": false,
+                "valid": "",
+                "value": ""
+              },
+              "updated": {
+                "present": false,
+                "valid": "",
+                "value": ""
+              },
+              "customFields": {}
+            },
+            "consistencyChecks": {
+              "supabaseMatch": true,
+              "fieldCompleteness": 0,
+              "dataTypeConsistency": true
+            }
+          },
+          {
+            "ticketKey": "ITSM-64915",
+            "isValid": false,
+            "fields": {
+              "summary": {
+                "present": false,
+                "valid": "",
+                "value": ""
+              },
+              "status": {
+                "present": false,
+                "valid": "",
+                "value": ""
+              },
+              "priority": {
+                "present": false,
+                "valid": "",
+                "value": ""
+              },
+              "assignee": {
+                "present": false,
+                "valid": "",
+                "value": ""
+              },
+              "reporter": {
+                "present": false,
+                "valid": "",
+                "value": ""
+              },
+              "created": {
+                "present": false,
+                "valid": "",
+                "value": ""
+              },
+              "updated": {
+                "present": false,
+                "valid": "",
+                "value": ""
+              },
+              "customFields": {}
+            },
+            "consistencyChecks": {
+              "supabaseMatch": true,
+              "fieldCompleteness": 0,
+              "dataTypeConsistency": true
+            }
+          }
+        ],
+        "fieldCompleteness": {
+          "summary": "0.00%",
+          "status": "0.00%",
+          "priority": "0.00%",
+          "assignee": "0.00%",
+          "reporter": "0.00%",
+          "created": "0.00%",
+          "updated": "0.00%"
+        }
+      },
+      "timestamp": "2025-07-22T14:16:35.707Z",
+      "duration": 17621,
+      "dataPoints": 10
+    },
+    {
+      "testName": "Custom Fields Integrity",
+      "testType": "custom_fields",
+      "success": true,
+      "details": {
+        "customFields": {
+          "Labels:": {
+            "value": "None",
+            "type": "string",
+            "length": 4,
+            "isPopulated": true
+          }
+        },
+        "validation": {
+          "totalFields": 1,
+          "populatedFields": 1,
+          "fieldTypes": {
+            "string": 1
+          },
+          "averageLength": 4
+        },
+        "integrityScore": 100
+      },
+      "timestamp": "2025-07-22T14:16:38.471Z",
+      "duration": 2763,
+      "dataPoints": 1
+    },
+    {
+      "testName": "Safe UAT Data Manipulation",
+      "testType": "manipulation",
+      "success": false,
+      "details": {
+        "searchTests": [],
+        "consistencyValidation": {
+          "searchResultsConsistent": true,
+          "totalDataPoints": 0,
+          "querySuccessRate": "NaN%"
+        },
+        "manipulationSafety": "READ_ONLY_VALIDATED"
+      },
+      "timestamp": "2025-07-22T14:23:46.315Z",
+      "duration": 427844,
+      "dataPoints": 0,
+      "errors": [
+        "Search test failed for \"project = ITSM AND status = \"Open\"\": TimeoutError: locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('button:has-text(\"Search\"), input[value=\"Search\"]').first()\u001b[22m\n\u001b[2m    - locator resolved to <input type=\"submit\" class=\"hidden\" value=\"Search\"/>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    58 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is not visible\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n",
+        "Search test failed for \"project = ITSM AND priority = \"High\"\": TimeoutError: locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('button:has-text(\"Search\"), input[value=\"Search\"]').first()\u001b[22m\n\u001b[2m    - locator resolved to <input type=\"submit\" class=\"hidden\" value=\"Search\"/>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    5 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 500ms\u001b[22m\n",
+        "Search test failed for \"project = ITSM AND assignee = currentUser()\": TimeoutError: locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('button:has-text(\"Search\"), input[value=\"Search\"]').first()\u001b[22m\n\u001b[2m    - locator resolved to <input type=\"submit\" class=\"hidden\" value=\"Search\"/>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    58 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is not visible\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n",
+        "Search test failed for \"project = ITSM AND created >= -30d\": TimeoutError: locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('button:has-text(\"Search\"), input[value=\"Search\"]').first()\u001b[22m\n\u001b[2m    - locator resolved to <input type=\"submit\" class=\"hidden\" value=\"Search\"/>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is not visible\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    30 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m       - element is not visible\u001b[22m\n\u001b[2m     - retrying click action\u001b[22m\n\u001b[2m       - waiting 500ms\u001b[22m\n"
+      ]
+    },
+    {
+      "testName": "Data Corruption Prevention",
+      "testType": "corruption_check",
+      "success": false,
+      "details": {
+        "backupValidation": {
+          "timestamp": "2025-07-22T14:23:46.989Z",
+          "sessionFilesPresent": 21,
+          "corruptionChecksPassed": false
+        },
+        "preventionMeasures": [
+          "READ_ONLY_OPERATIONS",
+          "SESSION_BACKUP_VALIDATED",
+          "SUPABASE_HEALTH_MONITORED",
+          "ERROR_HANDLING_VERIFIED"
+        ]
+      },
+      "timestamp": "2025-07-22T14:23:46.991Z",
+      "duration": 5,
+      "dataPoints": 1,
+      "errors": [
+        "Supabase health check failed: TypeError: fetch failed"
+      ]
+    }
+  ],
+  "integrityValidation": {
+    "dataConsistency": false,
+    "manipulationSafety": false,
+    "corruptionPrevention": false
+  },
+  "timestamp": "2025-07-22T14:23:46.991Z"
+}

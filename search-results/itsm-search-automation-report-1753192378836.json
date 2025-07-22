@@ -1,0 +1,81 @@
+{
+  "summary": {
+    "totalSearches": 6,
+    "averageLoadTime": 3029.3333333333335,
+    "performancePassed": 6,
+    "errorCount": 0,
+    "totalTicketsFound": 6,
+    "searchTypes": {
+      "basic": 0,
+      "jql": 0,
+      "filter": 6
+    }
+  },
+  "searchResults": [
+    {
+      "query": "status=Open",
+      "jql": "project = ITSM AND status = \"Open\"",
+      "resultCount": 1,
+      "loadTime": 7548,
+      "performancePass": true,
+      "timestamp": "2025-07-22T13:52:44.340Z",
+      "errorOccurred": false,
+      "searchType": "filter"
+    },
+    {
+      "query": "status=In Progress",
+      "jql": "project = ITSM AND status = \"In Progress\"",
+      "resultCount": 1,
+      "loadTime": 2138,
+      "performancePass": true,
+      "timestamp": "2025-07-22T13:52:46.566Z",
+      "errorOccurred": false,
+      "searchType": "filter"
+    },
+    {
+      "query": "status=Resolved",
+      "jql": "project = ITSM AND status = \"Resolved\"",
+      "resultCount": 1,
+      "loadTime": 2117,
+      "performancePass": true,
+      "timestamp": "2025-07-22T13:52:48.763Z",
+      "errorOccurred": false,
+      "searchType": "filter"
+    },
+    {
+      "query": "status=Closed",
+      "jql": "project = ITSM AND status = \"Closed\"",
+      "resultCount": 1,
+      "loadTime": 2121,
+      "performancePass": true,
+      "timestamp": "2025-07-22T13:52:50.966Z",
+      "errorOccurred": false,
+      "searchType": "filter"
+    },
+    {
+      "query": "priority=Highest",
+      "jql": "project = ITSM AND priority = \"Highest\"",
+      "resultCount": 1,
+      "loadTime": 2139,
+      "performancePass": true,
+      "timestamp": "2025-07-22T13:52:56.450Z",
+      "errorOccurred": false,
+      "searchType": "filter"
+    },
+    {
+      "query": "priority=High",
+      "jql": "project = ITSM AND priority = \"High\"",
+      "resultCount": 1,
+      "loadTime": 2113,
+      "performancePass": true,
+      "timestamp": "2025-07-22T13:52:58.650Z",
+      "errorOccurred": false,
+      "searchType": "filter"
+    }
+  ],
+  "itsmProjectAnalysis": {
+    "totalKnownTickets": 65689,
+    "searchCoverage": "0.01%"
+  },
+  "timestamp": "2025-07-22T13:52:58.836Z"
+}

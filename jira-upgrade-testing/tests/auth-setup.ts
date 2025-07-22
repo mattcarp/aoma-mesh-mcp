@@ -172,7 +172,7 @@ export async function waitForJiraLoad(page: Page) {
 
 // Helper to verify we're on the correct project
 export async function verifyProjectAccess(page: Page, projectKey: string) {
-  await page.goto(`/browse/${projectKey}`);
+  await page.goto(`https://jirauat.smedigitalapps.com/jira/browse/${projectKey}`);
   await waitForJiraLoad(page);
   
   const projectExists = await page.evaluate((key) => {

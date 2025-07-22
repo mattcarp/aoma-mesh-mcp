@@ -1,0 +1,232 @@
+{
+  "executiveSummary": {
+    "totalTests": 5,
+    "accessViolations": 1,
+    "legitimateAccess": 0,
+    "overallRiskLevel": "high",
+    "readyForProduction": false
+  },
+  "detailedFindings": [
+    {
+      "testId": "AC-001",
+      "testName": "Administrative Interface Access",
+      "url": "https://jirauat.smedigitalapps.com/jira/secure/admin/",
+      "accessGranted": false,
+      "responseTime": 8711,
+      "httpStatus": 200,
+      "pageTitle": "Log into Atlassian - Sony Music",
+      "accessControlEvidence": [
+        "Analysis error: page.$$eval: TypeError: el.className?.toLowerCase is not a function\n    at eval (eval at evaluate (:291:30), <anonymous>:1:149)\n    at Array.filter (<anonymous>)\n    at eval (eval at evaluate (:291:30), <anonymous>:1:28)\n    at UtilityScript.evaluate (<anonymous>:293:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)"
+      ],
+      "securityHeaders": {
+        "cache-control": "no-cache, no-store, must-revalidate",
+        "connection": "Keep-Alive",
+        "content-encoding": "gzip",
+        "content-security-policy": "frame-ancestors 'self'",
+        "content-type": "text/html;charset=UTF-8",
+        "date": "Tue, 22 Jul 2025 15:08:14 GMT",
+        "expires": "Thu, 01 Jan 1970 00:00:00 GMT",
+        "keep-alive": "timeout=10, max=99",
+        "pragma": "no-cache",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "server": "Apache",
+        "server-timing": "threadId;desc=68",
+        "strict-transport-security": "max-age=31536000",
+        "transfer-encoding": "chunked",
+        "vary": "User-Agent",
+        "x-arequestid": "1028x38476x1",
+        "x-asessionid": "48yqr2",
+        "x-ausername": "mcarpent",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "SAMEORIGIN",
+        "x-seraph-loginreason": "OK",
+        "x-xss-protection": "1; mode=block"
+      },
+      "riskAssessment": "LOW RISK - Access properly denied",
+      "recommendation": "No action required - access control working correctly",
+      "screenshot": "access-control-evidence-AC-001-1753196903049.png",
+      "timestamp": "2025-07-22T15:08:23.138Z"
+    },
+    {
+      "testId": "AC-002",
+      "testName": "System Information Disclosure",
+      "url": "https://jirauat.smedigitalapps.com/jira/secure/ViewSystemInfo.jspa",
+      "accessGranted": false,
+      "responseTime": 1791,
+      "httpStatus": 200,
+      "pageTitle": "Log into Atlassian - Sony Music",
+      "accessControlEvidence": [
+        "Analysis error: page.$$eval: TypeError: el.className?.toLowerCase is not a function\n    at eval (eval at evaluate (:291:30), <anonymous>:1:149)\n    at Array.filter (<anonymous>)\n    at eval (eval at evaluate (:291:30), <anonymous>:1:28)\n    at UtilityScript.evaluate (<anonymous>:293:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)"
+      ],
+      "securityHeaders": {
+        "cache-control": "no-cache, no-store, must-revalidate",
+        "connection": "Keep-Alive",
+        "content-encoding": "gzip",
+        "content-security-policy": "frame-ancestors 'self'",
+        "content-type": "text/html;charset=UTF-8",
+        "date": "Tue, 22 Jul 2025 15:08:23 GMT",
+        "expires": "Thu, 01 Jan 1970 00:00:00 GMT",
+        "keep-alive": "timeout=10, max=90",
+        "pragma": "no-cache",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "server": "Apache",
+        "server-timing": "threadId;desc=67",
+        "strict-transport-security": "max-age=31536000",
+        "transfer-encoding": "chunked",
+        "vary": "User-Agent",
+        "x-arequestid": "1028x38528x1",
+        "x-asessionid": "48yqr2",
+        "x-ausername": "mcarpent",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "SAMEORIGIN",
+        "x-seraph-loginreason": "OK",
+        "x-xss-protection": "1; mode=block"
+      },
+      "riskAssessment": "LOW RISK - Access properly denied",
+      "recommendation": "No action required - access control working correctly",
+      "screenshot": "access-control-evidence-AC-002-1753196907951.png",
+      "timestamp": "2025-07-22T15:08:28.019Z"
+    },
+    {
+      "testId": "AC-003",
+      "testName": "ITSM Project Configuration Access",
+      "url": "https://jirauat.smedigitalapps.com/jira/plugins/servlet/project-config/ITSM/permissions",
+      "accessGranted": true,
+      "responseTime": 6081,
+      "httpStatus": 200,
+      "pageTitle": "Project JIRA ITSM – App Support - Project Permissions - Sony Music",
+      "accessControlEvidence": [
+        "Analysis error: page.$$eval: TypeError: el.className?.toLowerCase is not a function\n    at eval (eval at evaluate (:291:30), <anonymous>:1:149)\n    at Array.filter (<anonymous>)\n    at eval (eval at evaluate (:291:30), <anonymous>:1:28)\n    at UtilityScript.evaluate (<anonymous>:293:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)"
+      ],
+      "securityHeaders": {
+        "cache-control": "no-cache, no-store, must-revalidate",
+        "connection": "Keep-Alive",
+        "content-encoding": "gzip",
+        "content-security-policy": "frame-ancestors 'self'",
+        "content-type": "text/html;charset=UTF-8",
+        "date": "Tue, 22 Jul 2025 15:08:28 GMT",
+        "expires": "Wed, 31 Dec 1969 23:59:59 GMT",
+        "keep-alive": "timeout=10, max=86",
+        "pragma": "no-cache",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "server": "Apache",
+        "server-timing": "threadId;desc=60",
+        "strict-transport-security": "max-age=31536000",
+        "transfer-encoding": "chunked",
+        "vary": "User-Agent",
+        "x-arequestid": "1028x38539x1",
+        "x-asessionid": "48yqr2",
+        "x-ausername": "mcarpent",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "SAMEORIGIN",
+        "x-seraph-loginreason": "OK",
+        "x-xss-protection": "1; mode=block"
+      },
+      "riskAssessment": "MEDIUM RISK - Requires role validation",
+      "recommendation": "VALIDATE: Confirm user has legitimate administrative privileges",
+      "screenshot": "access-control-evidence-AC-003-1753196917126.png",
+      "timestamp": "2025-07-22T15:08:37.437Z"
+    },
+    {
+      "testId": "AC-004",
+      "testName": "User Management Interface",
+      "url": "https://jirauat.smedigitalapps.com/jira/secure/admin/user/UserBrowser.jspa",
+      "accessGranted": false,
+      "responseTime": 1999,
+      "httpStatus": 200,
+      "pageTitle": "Log into Atlassian - Sony Music",
+      "accessControlEvidence": [
+        "Analysis error: page.$$eval: TypeError: el.className?.toLowerCase is not a function\n    at eval (eval at evaluate (:291:30), <anonymous>:1:149)\n    at Array.filter (<anonymous>)\n    at eval (eval at evaluate (:291:30), <anonymous>:1:28)\n    at UtilityScript.evaluate (<anonymous>:293:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)"
+      ],
+      "securityHeaders": {
+        "cache-control": "no-cache, no-store, must-revalidate",
+        "connection": "Keep-Alive",
+        "content-encoding": "gzip",
+        "content-security-policy": "frame-ancestors 'self'",
+        "content-type": "text/html;charset=UTF-8",
+        "date": "Tue, 22 Jul 2025 15:08:37 GMT",
+        "expires": "Thu, 01 Jan 1970 00:00:00 GMT",
+        "keep-alive": "timeout=10, max=79",
+        "pragma": "no-cache",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "server": "Apache",
+        "server-timing": "threadId;desc=64",
+        "strict-transport-security": "max-age=31536000",
+        "transfer-encoding": "chunked",
+        "vary": "User-Agent",
+        "x-arequestid": "1028x38580x1",
+        "x-asessionid": "48yqr2",
+        "x-ausername": "mcarpent",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "SAMEORIGIN",
+        "x-seraph-loginreason": "OK",
+        "x-xss-protection": "1; mode=block"
+      },
+      "riskAssessment": "LOW RISK - Access properly denied",
+      "recommendation": "No action required - access control working correctly",
+      "screenshot": "access-control-evidence-AC-004-1753196922455.png",
+      "timestamp": "2025-07-22T15:08:42.525Z"
+    },
+    {
+      "testId": "AC-005",
+      "testName": "Global Permissions Configuration",
+      "url": "https://jirauat.smedigitalapps.com/jira/secure/admin/GlobalPermissions.jspa",
+      "accessGranted": false,
+      "responseTime": 1863,
+      "httpStatus": 200,
+      "pageTitle": "Log into Atlassian - Sony Music",
+      "accessControlEvidence": [
+        "Analysis error: page.$$eval: TypeError: el.className?.toLowerCase is not a function\n    at eval (eval at evaluate (:291:30), <anonymous>:1:149)\n    at Array.filter (<anonymous>)\n    at eval (eval at evaluate (:291:30), <anonymous>:1:28)\n    at UtilityScript.evaluate (<anonymous>:293:16)\n    at UtilityScript.<anonymous> (<anonymous>:1:44)"
+      ],
+      "securityHeaders": {
+        "cache-control": "no-cache, no-store, must-revalidate",
+        "connection": "Keep-Alive",
+        "content-encoding": "gzip",
+        "content-security-policy": "frame-ancestors 'self'",
+        "content-type": "text/html;charset=UTF-8",
+        "date": "Tue, 22 Jul 2025 15:08:43 GMT",
+        "expires": "Thu, 01 Jan 1970 00:00:00 GMT",
+        "keep-alive": "timeout=10, max=73",
+        "pragma": "no-cache",
+        "referrer-policy": "strict-origin-when-cross-origin",
+        "server": "Apache",
+        "server-timing": "threadId;desc=62",
+        "strict-transport-security": "max-age=31536000",
+        "transfer-encoding": "chunked",
+        "vary": "User-Agent",
+        "x-arequestid": "1028x38593x1",
+        "x-asessionid": "48yqr2",
+        "x-ausername": "mcarpent",
+        "x-content-type-options": "nosniff",
+        "x-frame-options": "SAMEORIGIN",
+        "x-seraph-loginreason": "OK",
+        "x-xss-protection": "1; mode=block"
+      },
+      "riskAssessment": "LOW RISK - Access properly denied",
+      "recommendation": "No action required - access control working correctly",
+      "screenshot": "access-control-evidence-AC-005-1753196927407.png",
+      "timestamp": "2025-07-22T15:08:47.473Z"
+    }
+  ],
+  "complianceAnalysis": {
+    "owaspCompliance": [
+      "A01:2021 – Broken Access Control (Validated)",
+      "A07:2021 – Identification and Authentication Failures"
+    ],
+    "recommendations": [
+      "Implement principle of least privilege",
+      "Regular access control audits",
+      "Role-based permission validation",
+      "Administrative function logging"
+    ],
+    "immediateActions": []
+  },
+  "evidenceFiles": [
+    "access-control-evidence-AC-001-1753196903049.png",
+    "access-control-evidence-AC-002-1753196907951.png",
+    "access-control-evidence-AC-003-1753196917126.png",
+    "access-control-evidence-AC-004-1753196922455.png",
+    "access-control-evidence-AC-005-1753196927407.png"
+  ],
+  "timestamp": "2025-07-22T15:08:48.009Z"
+}

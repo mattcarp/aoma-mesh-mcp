@@ -1,0 +1,83 @@
+{
+  "sessionId": 1753193433953,
+  "timestamp": "2025-07-22T14:10:33.953Z",
+  "environment": "UAT",
+  "jiraVersion": "10.3.6",
+  "sessionFile": "jira-uat-session-1753192860406.json",
+  "tests": [
+    {
+      "phase": 1,
+      "name": "Authentication & Baseline",
+      "status": "FAILED",
+      "duration": 22802,
+      "details": {
+        "isAuthenticated": true,
+        "hasSessionCookies": false,
+        "dashboardLoaded": false,
+        "currentUrl": "https://jirauat.smedigitalapps.com/jira/secure/Dashboard.jspa",
+        "pageTitle": "Dashboard for Matt Carpenter - Sony Music"
+      }
+    },
+    {
+      "phase": 2,
+      "name": "Core Functionality",
+      "status": "PASSED",
+      "duration": 17494,
+      "details": {
+        "itsm": {
+          "accessible": true,
+          "loadTime": 12955,
+          "url": "https://jirauat.smedigitalapps.com/jira/projects/ITSM/issues/ITSM-64915?filter=allopenissues"
+        },
+        "dpsa": {
+          "accessible": true,
+          "loadTime": 4539,
+          "url": "https://jirauat.smedigitalapps.com/jira/projects/DPSA/issues/DPSA-31093?filter=allopenissues"
+        }
+      }
+    },
+    {
+      "phase": 3,
+      "name": "Performance & Navigation",
+      "status": "PASSED",
+      "duration": 25139,
+      "details": {
+        "dashboardLoad": 2397,
+        "navigatorLoad": 22742,
+        "dashboardAcceptable": true,
+        "navigatorAcceptable": false
+      }
+    },
+    {
+      "phase": 4,
+      "name": "Advanced Functionality",
+      "status": "WARNING",
+      "duration": 24369,
+      "details": {
+        "searchFunctional": true,
+        "searchTime": 3555,
+        "profileAccessible": false,
+        "profileTime": 20814
+      }
+    },
+    {
+      "phase": 5,
+      "name": "System Health & Integration",
+      "status": "WARNING",
+      "duration": 10911,
+      "details": {
+        "adminAccessible": false,
+        "adminTime": 10911,
+        "mobileResponsive": true,
+        "mobileOverflowElements": 0
+      }
+    }
+  ],
+  "summary": {
+    "total": 5,
+    "passed": 2,
+    "warnings": 2,
+    "failed": 1,
+    "avgPerformance": 20143
+  }
+}

@@ -1,0 +1,98 @@
+{
+  "scanSummary": {
+    "totalScans": 1,
+    "totalVulnerabilities": 4,
+    "criticalFindings": 3,
+    "owaspCoverage": [
+      "A07:2021 – Identification and Authentication Failures",
+      "A01:2021 – Broken Access Control"
+    ],
+    "scanDuration": 201468
+  },
+  "detailedResults": [
+    {
+      "scanType": "authenticated",
+      "duration": 201468,
+      "urlsScanned": 5,
+      "vulnerabilities": [
+        {
+          "testName": "Session Cookie HttpOnly",
+          "riskLevel": "Medium",
+          "vulnerability": "Session Cookie Not HttpOnly",
+          "description": "Session cookie ai_session is accessible via JavaScript",
+          "evidence": "Cookie: ai_session, HttpOnly: false",
+          "solution": "Mark session cookies with HttpOnly flag to prevent XSS attacks",
+          "references": [
+            "https://owasp.org/www-community/HttpOnly"
+          ],
+          "url": "https://jirauat.smedigitalapps.com/jira/secure/Dashboard.jspa",
+          "cweid": "CWE-1004",
+          "timestamp": "2025-07-22T14:53:37.148Z"
+        },
+        {
+          "testName": "Access Control Bypass",
+          "riskLevel": "High",
+          "vulnerability": "Insufficient Access Controls",
+          "description": "User has access to potentially restricted administrative areas",
+          "evidence": "Successfully accessed: https://jirauat.smedigitalapps.com/jira/secure/admin/",
+          "solution": "Implement proper role-based access controls for administrative functions",
+          "references": [
+            "https://owasp.org/Top10/A01_2021-Broken_Access_Control/"
+          ],
+          "url": "https://jirauat.smedigitalapps.com/jira/secure/admin/",
+          "cweid": "CWE-285",
+          "timestamp": "2025-07-22T14:53:43.878Z"
+        },
+        {
+          "testName": "Access Control Bypass",
+          "riskLevel": "High",
+          "vulnerability": "Insufficient Access Controls",
+          "description": "User has access to potentially restricted administrative areas",
+          "evidence": "Successfully accessed: https://jirauat.smedigitalapps.com/jira/secure/ViewSystemInfo.jspa",
+          "solution": "Implement proper role-based access controls for administrative functions",
+          "references": [
+            "https://owasp.org/Top10/A01_2021-Broken_Access_Control/"
+          ],
+          "url": "https://jirauat.smedigitalapps.com/jira/secure/ViewSystemInfo.jspa",
+          "cweid": "CWE-285",
+          "timestamp": "2025-07-22T14:53:45.730Z"
+        },
+        {
+          "testName": "Access Control Bypass",
+          "riskLevel": "High",
+          "vulnerability": "Insufficient Access Controls",
+          "description": "User has access to potentially restricted administrative areas",
+          "evidence": "Successfully accessed: https://jirauat.smedigitalapps.com/jira/plugins/servlet/project-config/ITSM/permissions",
+          "solution": "Implement proper role-based access controls for administrative functions",
+          "references": [
+            "https://owasp.org/Top10/A01_2021-Broken_Access_Control/"
+          ],
+          "url": "https://jirauat.smedigitalapps.com/jira/plugins/servlet/project-config/ITSM/permissions",
+          "cweid": "CWE-285",
+          "timestamp": "2025-07-22T14:53:55.670Z"
+        }
+      ],
+      "summary": {
+        "high": 3,
+        "medium": 1,
+        "low": 0,
+        "informational": 0
+      },
+      "owaspTop10Coverage": [
+        "A07:2021 – Identification and Authentication Failures",
+        "A01:2021 – Broken Access Control"
+      ],
+      "timestamp": "2025-07-22T14:56:45.308Z"
+    }
+  ],
+  "recommendations": [
+    "Implement proper input validation and output encoding",
+    "Configure security headers (CSP, HSTS, X-Frame-Options)",
+    "Review and strengthen access control mechanisms",
+    "Enable secure cookie attributes (Secure, HttpOnly)",
+    "Implement regular security scanning in CI/CD pipeline",
+    "Conduct penetration testing before production deployment",
+    "Review authentication and session management practices"
+  ],
+  "timestamp": "2025-07-22T14:56:45.308Z"
+}
