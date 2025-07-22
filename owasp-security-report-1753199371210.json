@@ -1,0 +1,82 @@
+{
+  "scanSummary": {
+    "totalScans": 1,
+    "totalVulnerabilities": 3,
+    "criticalFindings": 3,
+    "owaspCoverage": [
+      "A01:2021 – Broken Access Control"
+    ],
+    "scanDuration": 215208
+  },
+  "detailedResults": [
+    {
+      "scanType": "authenticated",
+      "duration": 215208,
+      "urlsScanned": 5,
+      "vulnerabilities": [
+        {
+          "testName": "Access Control Bypass",
+          "riskLevel": "High",
+          "vulnerability": "Insufficient Access Controls",
+          "description": "User has access to potentially restricted administrative areas",
+          "evidence": "Successfully accessed: https://jirauat.smedigitalapps.com/jira/secure/admin/",
+          "solution": "Implement proper role-based access controls for administrative functions",
+          "references": [
+            "https://owasp.org/Top10/A01_2021-Broken_Access_Control/"
+          ],
+          "url": "https://jirauat.smedigitalapps.com/jira/secure/admin/",
+          "cweid": "CWE-285",
+          "timestamp": "2025-07-22T15:46:31.165Z"
+        },
+        {
+          "testName": "Access Control Bypass",
+          "riskLevel": "High",
+          "vulnerability": "Insufficient Access Controls",
+          "description": "User has access to potentially restricted administrative areas",
+          "evidence": "Successfully accessed: https://jirauat.smedigitalapps.com/jira/secure/ViewSystemInfo.jspa",
+          "solution": "Implement proper role-based access controls for administrative functions",
+          "references": [
+            "https://owasp.org/Top10/A01_2021-Broken_Access_Control/"
+          ],
+          "url": "https://jirauat.smedigitalapps.com/jira/secure/ViewSystemInfo.jspa",
+          "cweid": "CWE-285",
+          "timestamp": "2025-07-22T15:46:33.045Z"
+        },
+        {
+          "testName": "Access Control Bypass",
+          "riskLevel": "High",
+          "vulnerability": "Insufficient Access Controls",
+          "description": "User has access to potentially restricted administrative areas",
+          "evidence": "Successfully accessed: https://jirauat.smedigitalapps.com/jira/plugins/servlet/project-config/ITSM/permissions",
+          "solution": "Implement proper role-based access controls for administrative functions",
+          "references": [
+            "https://owasp.org/Top10/A01_2021-Broken_Access_Control/"
+          ],
+          "url": "https://jirauat.smedigitalapps.com/jira/plugins/servlet/project-config/ITSM/permissions",
+          "cweid": "CWE-285",
+          "timestamp": "2025-07-22T15:46:51.976Z"
+        }
+      ],
+      "summary": {
+        "high": 3,
+        "medium": 0,
+        "low": 0,
+        "informational": 0
+      },
+      "owaspTop10Coverage": [
+        "A01:2021 – Broken Access Control"
+      ],
+      "timestamp": "2025-07-22T15:49:31.210Z"
+    }
+  ],
+  "recommendations": [
+    "Implement proper input validation and output encoding",
+    "Configure security headers (CSP, HSTS, X-Frame-Options)",
+    "Review and strengthen access control mechanisms",
+    "Enable secure cookie attributes (Secure, HttpOnly)",
+    "Implement regular security scanning in CI/CD pipeline",
+    "Conduct penetration testing before production deployment",
+    "Review authentication and session management practices"
+  ],
+  "timestamp": "2025-07-22T15:49:31.210Z"
+}

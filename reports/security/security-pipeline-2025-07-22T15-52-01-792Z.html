@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Security Pipeline Report - uat</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .header { background: #f5f5f5; padding: 20px; border-radius: 5px; }
+        .success { color: #28a745; }
+        .failure { color: #dc3545; }
+        .warning { color: #ffc107; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🛡️ Security Pipeline Report</h1>
+        <p><strong>Environment:</strong> uat</p>
+        <p><strong>Status:</strong> <span class="failure">FAILED</span></p>
+        <p><strong>Duration:</strong> 371s</p>
+    </div>
+    
+    <h2>📊 Summary</h2>
+    <table>
+        <tr><th>Metric</th><th>Value</th></tr>
+        <tr><td>Total Tests</td><td>3</td></tr>
+        <tr><td>Passed Tests</td><td class="success">1</td></tr>
+        <tr><td>Failed Tests</td><td class="failure">2</td></tr>
+        <tr><td>Total Vulnerabilities</td><td>8</td></tr>
+        <tr><td>Critical</td><td class="failure">NaN</td></tr>
+        <tr><td>High</td><td class="warning">4</td></tr>
+        <tr><td>Medium</td><td>0</td></tr>
+        <tr><td>Low</td><td>0</td></tr>
+    </table>
+    
+    <h2>🧪 Test Results</h2>
+    <table>
+        <tr><th>Test Suite</th><th>Type</th><th>Status</th><th>Duration</th><th>Vulnerabilities</th></tr>
+        
+        <tr>
+            <td>vulnerability_scan</td>
+            <td>vulnerability</td>
+            <td class="failure">FAILED</td>
+            <td>216s</td>
+            <td>3</td>
+        </tr>
+        
+        <tr>
+            <td>access_control</td>
+            <td>access_control</td>
+            <td class="failure">FAILED</td>
+            <td>49s</td>
+            <td>5</td>
+        </tr>
+        
+        <tr>
+            <td>authentication</td>
+            <td>authentication</td>
+            <td class="success">PASSED</td>
+            <td>101s</td>
+            <td>0</td>
+        </tr>
+        
+    </table>
+</body>
+</html>

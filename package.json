@@ -40,7 +40,25 @@
     "deploy:lambda": "npm run build:lambda && npm run cdk:deploy",
     "cdk:deploy": "cd infrastructure && npx cdk deploy",
     "cdk:diff": "cd infrastructure && npx cdk diff",
-    "cdk:synth": "cd infrastructure && npx cdk synth"
+    "cdk:synth": "cd infrastructure && npx cdk synth",
+    "security:test": "npx tsx automated-security-test-framework.ts",
+    "security:test:uat": "SECURITY_TEST_ENV=uat npm run security:test",
+    "security:test:staging": "SECURITY_TEST_ENV=staging npm run security:test",
+    "security:test:production": "SECURITY_TEST_ENV=production npm run security:test",
+    "security:scan:vulnerability": "npx tsx owasp-vulnerability-scanner.ts",
+    "security:scan:access-control": "npx tsx manual-access-control-validator.ts",
+    "security:scan:authentication": "npx tsx manual-authentication-validator.ts",
+    "security:capture-session": "npx tsx manual-login-session-capture.ts",
+    "security:reports": "open reports/security/",
+    "security:clean": "rm -rf reports/security/* logs/security/* *.json *.png",
+    "security:validate": "npm run security:clean && npm run security:test:uat",
+    "security:ci": "npm run security:test && npm run security:reports",
+    "test": "npm run security:validate",
+    "test:watch": "nodemon --exec npm run security:test:uat",
+    "test:debug": "DEBUG=1 npm run security:test:uat",
+    "playwright:install": "npx playwright install chromium",
+    "playwright:update": "npx playwright install --force",
+    "setup": "npm install && npm run playwright:install"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.0.2",
@@ -52,7 +70,9 @@
     "helmet": "^8.0.0",
     "node-fetch": "^3.3.2",
     "openai": "^4.20.1",
-    "zod": "^3.24.2"
+    "zod": "^3.24.2",
+    "playwright": "^1.40.0",
+    "typescript": "^5.3.0"
   },
   "devDependencies": {
     "@playwright/test": "^1.54.1",
@@ -88,5 +108,16 @@
       "import": "./dist/index.js",
       "types": "./dist/index.d.ts"
     }
-  }
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-org/aoma-mesh-mcp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-org/aoma-mesh-mcp/issues"
+  },
+  "homepage": "https://github.com/your-org/aoma-mesh-mcp#readme"
 }
