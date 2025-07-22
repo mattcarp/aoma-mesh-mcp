@@ -1,18 +1,5 @@
 # JIRA v9.12 → v10 Pre-UAT Testing Report - ITSM Project
 
-**To:** Irina Beregovich, Intime Technologies  
-**From:** Matt Carpenter (External Consultant)  
-**Date:** July 16, 2025  
-**Subject:** RE: ITSM Jira upgrade pre-UAT - Testing Results
-
----
-
-Dear Irina,
-
-Thank you for selecting me as one of the key JIRA stakeholders for the preliminary UAT testing. I confirm my availability to assist with both this pre-UAT and the upcoming official Jira-wide UAT.
-
-I have completed comprehensive testing of the ITSM project on the UAT environment (https://jirauat.smedigitalapps.com/) focusing on positive scenarios and my normal daily usage patterns as requested.
-
 ## 📋 Test Summary
 
 **Upgrade Context:** JIRA v9.12 → v10 (Major Version Upgrade)  

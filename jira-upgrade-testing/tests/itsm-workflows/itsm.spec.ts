@@ -3,10 +3,8 @@ import { authenticateJira, waitForJiraLoad, verifyProjectAccess } from '../auth-
 
 test.describe('ITSM Project Validation', () => {
   test.beforeEach(async ({ page }) => {
-    // Authenticate first
-    await authenticateJira(page);
-    
-    // Navigate to ITSM project and verify access
+    // Skip authentication - use saved session from auth.setup.ts
+    // Just navigate to ITSM project and verify access
     await verifyProjectAccess(page, 'ITSM');
     await waitForJiraLoad(page);
   });
@@ -38,9 +36,10 @@ test.describe('ITSM Project Validation', () => {
     
     // Check for issue navigator elements
     const hasIssues = await page.evaluate(() => {
-      const issueTable = document.querySelector('.issue-table, .navigator-content');
-      const issueRows = document.querySelectorAll('[data-issuekey]');
-      const noIssuesMessage = document.querySelector('.no-issues-message');
+      // Prefer data-test-id for robust selectors, fallback to legacy classes
+      const issueTable = document.querySelector('[data-test-id="issue-table"], .issue-table, .navigator-content');
+      const issueRows = document.querySelectorAll('[data-test-id="issue-row"], [data-issuekey]');
+      const noIssuesMessage = document.querySelector('[data-test-id="no-issues-message"], .no-issues-message');
       
       return {
         hasTable: !!issueTable,

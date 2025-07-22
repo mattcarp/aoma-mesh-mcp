@@ -21,18 +21,29 @@ export async function authenticateJira(page: Page) {
         // Test if session is still valid
         await page.goto('/jira/dashboard.jspa');
         await page.waitForLoadState('networkidle');
-        
-        const isLoggedIn = await page.evaluate(() => {
-          const hasAuthCookie = document.cookie.includes('JSESSIONID') || document.cookie.includes('atlxsid');
-          return hasAuthCookie;
+
+        // Check for presence of login indicators
+        const needsLogin = await page.evaluate(() => {
+          const loginButton = document.querySelector('button, a, input[type="submit"]');
+          if (loginButton && loginButton.textContent && loginButton.textContent.match(/log in|sign in/i)) {
+            return true;
+          }
+          const usernameField = document.querySelector('input[placeholder*="username" i], input[placeholder*="email" i]');
+          const passwordField = document.querySelector('input[placeholder*="password" i], input[type="password"]');
+          // If any login form fields are present, require login
+          if (usernameField || passwordField) {
+            return true;
+          }
+          // Otherwise, assume session is valid
+          return false;
         });
-        
-        if (isLoggedIn) {
-          console.log('   ✅ Session is valid!');
+
+        if (!needsLogin) {
+          console.log('   ✅ Session is valid (no login indicators found)!');
           return;
         }
-        
-        console.log('   ⚠️ Session expired, proceeding with fresh login...');
+
+        console.log('   ⚠️ Session expired or login required, proceeding with fresh login...');
       }
     } catch (error) {
       console.log('   ⚠️ Could not load session, proceeding with fresh login...');

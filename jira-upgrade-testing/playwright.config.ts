@@ -41,7 +41,8 @@ export default defineConfig({
         baseURL: 'https://jirauat.smedigitalapps.com/jira',
         ignoreHTTPSErrors: true,
       },
-      dependencies: ['setup'],
+      // Temporarily remove setup dependency to test saved session directly
+      // dependencies: ['setup'],
     },
   ],
   
@@ -56,6 +57,6 @@ export default defineConfig({
     trace: 'retain-on-failure',
     
     // Browser settings
-    headless: process.env.CI ? true : false,
+    headless: false, // Always run in headed mode for interactive JIRA login
   },
 });

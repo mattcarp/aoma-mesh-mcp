@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AOMA Mesh MCP Chat</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .chat-container {
+            height: calc(100vh - 2rem);
+        }
+        .messages-container {
+            height: calc(100% - 8rem);
+        }
+        .typing-indicator {
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        .tool-badge {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .status-indicator {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 8px;
+        }
+        .status-connected { background-color: #10b981; }
+        .status-disconnected { background-color: #ef4444; }
+        .status-connecting { background-color: #f59e0b; animation: pulse 1s infinite; }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useEffect, useRef } = React;
+
+        // MCP Client for communicating with AOMA Mesh server
+        class MCPClient {
+            constructor(baseUrl = 'http://localhost:3333') {
+                this.baseUrl = baseUrl;
+                this.requestId = 1;
+            }
+
+            async callTool(toolName, args = {}) {
+                try {
+                    const response = await fetch(`${this.baseUrl}/rpc`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            jsonrpc: '2.0',
+                            id: this.requestId++,
+                            method: 'tools/call',
+                            params: {
+                                name: toolName,
+                                arguments: args
+                            }
+                        })
+                    });
+
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+
+                    const data = await response.json();
+                    
+                    if (data.error) {
+                        throw new Error(data.error.message || 'Unknown error');
+                    }
+
+                    return data.result;
+                } catch (error) {
+                    console.error('MCP call failed:', error);
+                    throw error;
+                }
+            }
+
+            async getHealth() {
+                try {
+                    const response = await fetch(`${this.baseUrl}/health`);
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return await response.json();
+                } catch (error) {
+                    console.error('Health check failed:', error);
+                    throw error;
+                }
+            }
+        }
+
+        // Available tools with descriptions
+        const AVAILABLE_TOOLS = [
+            {
+                name: 'get_system_health',
+                label: 'System Health',
+                description: 'Check the health status of all MCP server components',
+                icon: '🏥'
+            },
+            {
+                name: 'query_aoma_knowledge',
+                label: 'AOMA Knowledge',
+                description: 'Query the AOMA knowledge base with AI assistance',
+                icon: '🧠'
+            },
+            {
+                name: 'search_jira_tickets',
+                label: 'JIRA Search',
+                description: 'Search JIRA tickets using semantic vector search',
+                icon: '🎫'
+            },
+            {
+                name: 'search_git_commits',
+                label: 'Git Search',
+                description: 'Search Git commit history across repositories',
+                icon: '🔍'
+            },
+            {
+                name: 'search_code_files',
+                label: 'Code Search',
+                description: 'Search code files using semantic analysis',
+                icon: '💻'
+            },
+            {
+                name: 'swarm_analyze_cross_vector',
+                label: 'Cross-Vector Analysis',
+                description: 'Advanced multi-agent cross-vector analysis',
+                icon: '🚀'
+            }
+        ];
+
+        // Main Chat Component
+        function ChatApp() {
+            const [messages, setMessages] = useState([]);
+            const [inputValue, setInputValue] = useState('');
+            const [isLoading, setIsLoading] = useState(false);
+            const [connectionStatus, setConnectionStatus] = useState('disconnected');
+            const [selectedTool, setSelectedTool] = useState('query_aoma_knowledge');
+            const [serverHealth, setServerHealth] = useState(null);
+            const [errorMessage, setErrorMessage] = useState('');
+            const messagesEndRef = useRef(null);
+            const mcpClient = useRef(new MCPClient());
+
+            // Scroll to bottom of messages
+            const scrollToBottom = () => {
+                messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+            };
+
+            useEffect(() => {
+                scrollToBottom();
+            }, [messages]);
+
+            // Check server health on mount
+            useEffect(() => {
+                checkServerHealth();
+                const interval = setInterval(checkServerHealth, 30000); // Check every 30 seconds
+                return () => clearInterval(interval);
+            }, []);
+
+            const checkServerHealth = async () => {
+                try {
+                    setConnectionStatus('connecting');
+                    const health = await mcpClient.current.getHealth();
+                    setServerHealth(health);
+                    setConnectionStatus('connected');
+                } catch (error) {
+                    setConnectionStatus('disconnected');
+                    setServerHealth(null);
+                }
+            };
+
+            const addMessage = (content, type = 'user', toolUsed = null) => {
+                const message = {
+                    id: Date.now() + Math.random(),
+                    content,
+                    type,
+                    timestamp: new Date(),
+                    toolUsed
+                };
+                setMessages(prev => [...prev, message]);
+                return message;
+            };
+
+            const handleSendMessage = async () => {
+                if (!inputValue.trim() || isLoading) return;
+
+                const userMessage = inputValue.trim();
+                setInputValue('');
+                setErrorMessage('');
+                // Add user message
+                addMessage(userMessage, 'user');
+                setIsLoading(true);
+
+                try {
+                    // Prepare arguments based on selected tool
+                    let args = {};
+                    if (selectedTool === 'query_aoma_knowledge') {
+                        args = { query: userMessage, strategy: 'comprehensive' };
+                    } else if (selectedTool === 'search_jira_tickets') {
+                        args = { query: userMessage, maxResults: 10, threshold: 0.7 };
+                    } else if (selectedTool === 'search_git_commits') {
+                        args = { query: userMessage, maxResults: 10 };
+                    } else if (selectedTool === 'search_code_files') {
+                        args = { query: userMessage, maxResults: 10, threshold: 0.7 };
+                    } else if (selectedTool === 'swarm_analyze_cross_vector') {
+                        args = { query: userMessage, sources: ['code', 'jira', 'aoma'], analysisDepth: 'comprehensive' };
+                    } else if (selectedTool === 'get_system_health') {
+                        args = { includeMetrics: true, includeDiagnostics: true };
+                    }
+                    // Call the MCP tool
+                    const result = await mcpClient.current.callTool(selectedTool, args);
+                    // Parse and display the result
+                    let responseContent = '';
+                    if (result.content && result.content[0]) {
+                        const content = result.content[0];
+                        if (content.type === 'text') {
+                            try {
+                                const parsed = JSON.parse(content.text);
+                                responseContent = formatResponse(parsed, selectedTool);
+                            } catch (e) {
+                                responseContent = content.text;
+                            }
+                        }
+                    } else {
+                        responseContent = 'No response received from server.';
+                    }
+                    addMessage(responseContent, 'assistant', selectedTool);
+                } catch (error) {
+                    addMessage(`Error: ${error.message}`, 'error');
+                    setErrorMessage(error.message || 'Unknown error');
+                } finally {
+                    setIsLoading(false);
+                }
+            };
+
+            const formatResponse = (data, toolName) => {
+                if (toolName === 'get_system_health') {
+                    return `**System Health Report**\n\n` +
+                           `Status: ${data.status}\n` +
+                           `Uptime: ${Math.round(data.uptime / 1000)}s\n` +
+                           `Version: ${data.version}\n\n` +
+                           `**Services:**\n` +
+                           `• OpenAI: ${data.services?.openai?.status ? '✅' : '❌'}\n` +
+                           `• Supabase: ${data.services?.supabase?.status ? '✅' : '❌'}\n` +
+                           `• Vector Store: ${data.services?.vectorStore?.status ? '✅' : '❌'}`;
+                }
+                if (toolName === 'query_aoma_knowledge') {
+                    return data.response || data.message || JSON.stringify(data, null, 2);
+                }
+                if (toolName === 'search_jira_tickets') {
+                    if (data.results && data.results.length > 0) {
+                        return `**Found ${data.totalResults} JIRA tickets:**\n\n` +
+                               data.results.map(ticket => `• **${ticket.key}**: ${ticket.summary}\n  Priority: ${ticket.priority} | Status: ${ticket.status}`).join('\n\n');
+                    }
+                    return 'No JIRA tickets found for your query.';
+                }
+                if (toolName === 'swarm_analyze_cross_vector') {
+                    if (data.analysis) {
+                        return `**Cross-Vector Analysis Results**\n\n` +
+                               `Query: "${data.query}"\n\n` +
+                               `**Analysis:**\n${data.analysis.synthesis || 'Analysis completed successfully.'}`;
+                    }
+                }
+                return JSON.stringify(data, null, 2);
+            };
+
+            const handleKeyPress = (e) => {
+                if (e.key === 'Enter' && !e.shiftKey) {
+                    e.preventDefault();
+                    handleSendMessage();
+                }
+            };
+
+            return (
+                <div className="max-w-6xl mx-auto p-4 chat-container" data-test-id="chat-container">
+                    {/* Header */}
+                    <div className="bg-white rounded-lg shadow-sm p-4 mb-4" data-test-id="chat-header">
+                        <div className="flex items-center justify-between">
+                            <div className="flex items-center space-x-3">
+                                <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+                                    <span className="text-white font-bold text-lg">A</span>
+                                </div>
+                                <div>
+                                    <h1 className="text-xl font-bold text-gray-900">AOMA Mesh MCP Chat</h1>
+                                    <p className="text-sm text-gray-600">Intelligent development assistance</p>
+                                </div>
+                            </div>
+                            <div className="flex items-center space-x-2" data-test-id="status-indicator">
+                                <span className={`status-indicator status-${connectionStatus}`}></span>
+                                <span className="text-sm text-gray-600 capitalize">{connectionStatus}</span>
+                                {serverHealth && (
+                                    <span className="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">
+                                        v{serverHealth.version}
+                                    </span>
+                                )}
+                            </div>
+                        </div>
+                    </div>
+                    {errorMessage && (
+                        <div className="bg-red-100 text-red-800 px-4 py-2 rounded mb-2 text-center" data-test-id="error-message">
+                            {errorMessage}
+                        </div>
+                    )}
+                    <div className="flex gap-4 h-full">
+                        {/* Tool Selection Sidebar */}
+                        <div className="w-80 bg-white rounded-lg shadow-sm p-4" data-test-id="tool-selection">
+                            <h3 className="font-semibold text-gray-900 mb-3">Available Tools</h3>
+                            <div className="space-y-2">
+                                {AVAILABLE_TOOLS.map(tool => (
+                                    <button
+                                        key={tool.name}
+                                        onClick={() => setSelectedTool(tool.name)}
+                                        className={`w-full text-left p-3 rounded-lg border transition-all ${selectedTool === tool.name ? 'border-blue-500 bg-blue-50 text-blue-900' : 'border-gray-200 hover:border-gray-300 hover:bg-gray-50'}`}
+                                        data-test-id={`tool-btn-${tool.name}`}
+                                    >
+                                        <div className="flex items-start space-x-3">
+                                            <span className="text-lg">{tool.icon}</span>
+                                            <div className="flex-1 min-w-0">
+                                                <div className="font-medium text-sm">{tool.label}</div>
+                                                <div className="text-xs text-gray-600 mt-1">{tool.description}</div>
+                                            </div>
+                                        </div>
+                                    </button>
+                                ))}
+                            </div>
+                        </div>
+                        {/* Chat Area */}
+                        <div className="flex-1 bg-white rounded-lg shadow-sm flex flex-col" data-test-id="chat-area">
+                            {/* Messages */}
+                            <div className="messages-container overflow-y-auto p-4 space-y-4" data-test-id="messages-container">
+                                {messages.length === 0 && (
+                                    <div className="text-center text-gray-500 mt-8" data-test-id="empty-state">
+                                        <div className="text-4xl mb-2">💬</div>
+                                        <p>Welcome to AOMA Mesh MCP Chat!</p>
+                                        <p className="text-sm mt-1">Select a tool and start chatting to interact with the MCP server.</p>
+                                    </div>
+                                )}
+                                {messages.map((msg, idx) => (
+                                    <div
+                                        key={msg.id}
+                                        className={`flex ${msg.type === 'user' ? 'justify-end' : 'justify-start'}`}
+                                        data-test-id={`chat-message-${msg.type}`}
+                                    >
+                                        <div
+                                            className={`rounded-lg px-4 py-2 shadow-sm max-w-[80%] whitespace-pre-line ${msg.type === 'user' ? 'bg-blue-600 text-white self-end' : msg.type === 'assistant' ? 'bg-gray-100 text-gray-900 self-start' : 'bg-red-100 text-red-800 self-start'}`}
+                                            data-test-id={msg.type === 'assistant' ? 'chat-message-response' : undefined}
+                                        >
+                                            {msg.content}
+                                            {msg.toolUsed && (
+                                                <span className="block text-xs mt-1 text-gray-400">[{msg.toolUsed}]</span>
+                                            )}
+                                        </div>
+                                    </div>
+                                ))}
+                                <div ref={messagesEndRef} />
+                            </div>
+                            {/* Input Area */}
+                            <div className="p-4 border-t flex items-center gap-2" data-test-id="input-area">
+                                <input
+                                    type="text"
+                                    className="flex-1 border rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                                    placeholder="Type your message..."
+                                    value={inputValue}
+                                    onChange={e => setInputValue(e.target.value)}
+                                    onKeyDown={handleKeyPress}
+                                    disabled={isLoading || connectionStatus !== 'connected'}
+                                    data-test-id="chat-input"
+                                />
+                                <button
+                                    onClick={handleSendMessage}
+                                    className="ml-2 px-6 py-2 rounded-lg bg-blue-600 text-white font-semibold shadow-sm disabled:opacity-60"
+                                    disabled={isLoading || connectionStatus !== 'connected'}
+                                    data-test-id="send-button"
+                                >
+                                    {isLoading ? (
+                                        <span className="typing-indicator">...</span>
+                                    ) : (
+                                        'Send'
+                                    )}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            );
+        }
+
+        ReactDOM.render(<ChatApp />, document.getElementById('root'));
+    </script>
+</body>
+</html>

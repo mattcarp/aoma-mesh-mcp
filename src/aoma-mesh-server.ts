@@ -58,14 +58,40 @@ if (existsSync(packageEnvPath)) { // Use existsSync directly
  * @author MC-TK Development Team
  */
 
-import { 
+import type { 
   Tool, 
-  Resource, 
-  CallToolResult, 
-  ReadResourceResult,
-  ErrorCode,
-  McpError 
+  Resource
 } from '@modelcontextprotocol/sdk/types.js';
+import { 
+  ErrorCode
+} from '@modelcontextprotocol/sdk/types.js';
+
+// Define our own types based on MCP schema
+type CallToolResult = {
+  content?: Array<{
+    type: string;
+    text?: string;
+    data?: string;
+    mimeType?: string;
+  }>;
+  isError?: boolean;
+};
+
+type ReadResourceResult = {
+  contents: Array<{
+    uri: string;
+    mimeType?: string;
+    text?: string;
+    blob?: string;
+  }>;
+};
+
+class McpError extends Error {
+  constructor(public code: ErrorCode, message: string) {
+    super(message);
+    this.name = 'McpError';
+  }
+}
 import { Server } from '@modelcontextprotocol/sdk/server/index.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
 import {
@@ -1829,7 +1855,7 @@ Please provide:
     
     try {
       // SOTA: Use fast HEAD request instead of database query
-      const supabaseUrl = this.env.NEXT_PUBLIC_SUPABASE_URL || this.env.SUPABASE_URL;
+      const supabaseUrl = this.env.NEXT_PUBLIC_SUPABASE_URL;
       const response = await fetch(`${supabaseUrl}/rest/v1/`, {
         method: 'HEAD',
         signal: controller.signal,
@@ -2840,6 +2866,81 @@ Please provide a comprehensive synthesis using 2025 swarm intelligence patterns.
   private logInfo(message: string, meta?: Record<string, unknown>): void {
     if (['info', 'debug'].includes(this.env.LOG_LEVEL)) {
       console.error(`[INFO] ${message}`, meta ? JSON.stringify(meta) : '');
+    }
+  }
+
+  /**
+   * Generate failure heatmap data
+   */
+  private async generateFailureHeatmap(args: Record<string, unknown>): Promise<CallToolResult> {
+    try {
+      return {
+        content: [{
+          type: 'text',
+          text: JSON.stringify({
+            message: 'Failure heatmap generation not implemented yet',
+            status: 'placeholder'
+          })
+        }]
+      };
+    } catch (error) {
+      return {
+        content: [{
+          type: 'text',
+          text: JSON.stringify({ error: this.getErrorMessage(error) })
+        }],
+        isError: true
+      };
+    }
+  }
+
+  /**
+   * Analyze performance metrics
+   */
+  private async analyzePerformanceMetrics(args: Record<string, unknown>): Promise<CallToolResult> {
+    try {
+      return {
+        content: [{
+          type: 'text',
+          text: JSON.stringify({
+            message: 'Performance metrics analysis not implemented yet',
+            status: 'placeholder'
+          })
+        }]
+      };
+    } catch (error) {
+      return {
+        content: [{
+          type: 'text',
+          text: JSON.stringify({ error: this.getErrorMessage(error) })
+        }],
+        isError: true
+      };
+    }
+  }
+
+  /**
+   * Build predictive model
+   */
+  private async buildPredictiveModel(args: Record<string, unknown>): Promise<CallToolResult> {
+    try {
+      return {
+        content: [{
+          type: 'text',
+          text: JSON.stringify({
+            message: 'Predictive model building not implemented yet',
+            status: 'placeholder'
+          })
+        }]
+      };
+    } catch (error) {
+      return {
+        content: [{
+          type: 'text',
+          text: JSON.stringify({ error: this.getErrorMessage(error) })
+        }],
+        isError: true
+      };
     }
   }
 }
