@@ -1,0 +1,361 @@
+{
+  "reportTime": "2025-07-23T07:14:17.853Z",
+  "overallStats": {
+    "totalTests": 9,
+    "consistentPasses": 0,
+    "consistentFails": 9,
+    "flakyTests": 0,
+    "overallHealth": "COMPLETE FAILURE (0%)"
+  },
+  "testResults": [
+    {
+      "testName": "Network Connectivity",
+      "category": "Infrastructure",
+      "totalAttempts": 3,
+      "passed": 0,
+      "failed": 3,
+      "successRate": "0%",
+      "isFlaky": false,
+      "isConsistentFail": true,
+      "attempts": [
+        {
+          "attemptNumber": 1,
+          "timestamp": "2025-07-23T07:00:16.224Z",
+          "passed": false,
+          "duration": 10541,
+          "errorMessage": "fetch failed",
+          "details": "Network connectivity test failed"
+        },
+        {
+          "attemptNumber": 2,
+          "timestamp": "2025-07-23T07:00:36.736Z",
+          "passed": false,
+          "duration": 10504,
+          "errorMessage": "fetch failed",
+          "details": "Network connectivity test failed"
+        },
+        {
+          "attemptNumber": 3,
+          "timestamp": "2025-07-23T07:00:57.241Z",
+          "passed": false,
+          "duration": 10503,
+          "errorMessage": "fetch failed",
+          "details": "Network connectivity test failed"
+        }
+      ],
+      "conclusion": "CONSISTENT_FAIL"
+    },
+    {
+      "testName": "Basic Page Access",
+      "category": "Infrastructure",
+      "totalAttempts": 3,
+      "passed": 0,
+      "failed": 3,
+      "successRate": "0%",
+      "isFlaky": false,
+      "isConsistentFail": true,
+      "attempts": [
+        {
+          "attemptNumber": 1,
+          "timestamp": "2025-07-23T07:01:22.058Z",
+          "passed": false,
+          "duration": 22774,
+          "errorMessage": "page.goto: Timeout 20000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"https://jirauat.smedigitalapps.com/jira/secure/Dashboard.jspa\", waiting until \"domcontentloaded\"\u001b[22m\n",
+          "details": "Failed to load basic JIRA page"
+        },
+        {
+          "attemptNumber": 2,
+          "timestamp": "2025-07-23T07:01:52.746Z",
+          "passed": false,
+          "duration": 20664,
+          "errorMessage": "page.goto: Timeout 20000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"https://jirauat.smedigitalapps.com/jira/secure/Dashboard.jspa\", waiting until \"domcontentloaded\"\u001b[22m\n",
+          "details": "Failed to load basic JIRA page"
+        },
+        {
+          "attemptNumber": 3,
+          "timestamp": "2025-07-23T07:02:23.633Z",
+          "passed": false,
+          "duration": 20834,
+          "errorMessage": "page.goto: Timeout 20000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"https://jirauat.smedigitalapps.com/jira/secure/Dashboard.jspa\", waiting until \"domcontentloaded\"\u001b[22m\n",
+          "details": "Failed to load basic JIRA page"
+        }
+      ],
+      "conclusion": "CONSISTENT_FAIL"
+    },
+    {
+      "testName": "Login Page Elements",
+      "category": "UI/UX",
+      "totalAttempts": 3,
+      "passed": 0,
+      "failed": 3,
+      "successRate": "0%",
+      "isFlaky": false,
+      "isConsistentFail": true,
+      "attempts": [
+        {
+          "attemptNumber": 1,
+          "timestamp": "2025-07-23T07:02:46.512Z",
+          "passed": false,
+          "duration": 20840,
+          "errorMessage": "page.goto: Timeout 20000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"https://jirauat.smedigitalapps.com/jira/secure/Dashboard.jspa\", waiting until \"domcontentloaded\"\u001b[22m\n",
+          "details": "Failed to analyze login page elements"
+        },
+        {
+          "attemptNumber": 2,
+          "timestamp": "2025-07-23T07:03:17.223Z",
+          "passed": false,
+          "duration": 20670,
+          "errorMessage": "page.goto: Timeout 20000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"https://jirauat.smedigitalapps.com/jira/secure/Dashboard.jspa\", waiting until \"domcontentloaded\"\u001b[22m\n",
+          "details": "Failed to analyze login page elements"
+        },
+        {
+          "attemptNumber": 3,
+          "timestamp": "2025-07-23T07:03:48.071Z",
+          "passed": false,
+          "duration": 20809,
+          "errorMessage": "page.goto: Timeout 20000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"https://jirauat.smedigitalapps.com/jira/secure/Dashboard.jspa\", waiting until \"domcontentloaded\"\u001b[22m\n",
+          "details": "Failed to analyze login page elements"
+        }
+      ],
+      "conclusion": "CONSISTENT_FAIL"
+    },
+    {
+      "testName": "Can't Log In Clickability",
+      "category": "UI/UX",
+      "totalAttempts": 3,
+      "passed": 0,
+      "failed": 3,
+      "successRate": "0%",
+      "isFlaky": false,
+      "isConsistentFail": true,
+      "attempts": [
+        {
+          "attemptNumber": 1,
+          "timestamp": "2025-07-23T07:04:10.764Z",
+          "passed": false,
+          "duration": 20651,
+          "errorMessage": "page.goto: Timeout 20000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"https://jirauat.smedigitalapps.com/jira/secure/Dashboard.jspa\", waiting until \"domcontentloaded\"\u001b[22m\n",
+          "details": "Failed to test Can't Log In clickability"
+        },
+        {
+          "attemptNumber": 2,
+          "timestamp": "2025-07-23T07:04:41.610Z",
+          "passed": false,
+          "duration": 20815,
+          "errorMessage": "page.goto: Timeout 20000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"https://jirauat.smedigitalapps.com/jira/secure/Dashboard.jspa\", waiting until \"domcontentloaded\"\u001b[22m\n",
+          "details": "Failed to test Can't Log In clickability"
+        },
+        {
+          "attemptNumber": 3,
+          "timestamp": "2025-07-23T07:05:12.467Z",
+          "passed": false,
+          "duration": 20817,
+          "errorMessage": "page.goto: Timeout 20000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"https://jirauat.smedigitalapps.com/jira/secure/Dashboard.jspa\", waiting until \"domcontentloaded\"\u001b[22m\n",
+          "details": "Failed to test Can't Log In clickability"
+        }
+      ],
+      "conclusion": "CONSISTENT_FAIL"
+    },
+    {
+      "testName": "Session Authentication",
+      "category": "Authentication",
+      "totalAttempts": 3,
+      "passed": 0,
+      "failed": 3,
+      "successRate": "0%",
+      "isFlaky": false,
+      "isConsistentFail": true,
+      "attempts": [
+        {
+          "attemptNumber": 1,
+          "timestamp": "2025-07-23T07:05:35.354Z",
+          "passed": false,
+          "duration": 20851,
+          "errorMessage": "page.goto: Timeout 20000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"https://jirauat.smedigitalapps.com/jira/secure/Dashboard.jspa\", waiting until \"domcontentloaded\"\u001b[22m\n",
+          "details": "Authentication test failed"
+        },
+        {
+          "attemptNumber": 2,
+          "timestamp": "2025-07-23T07:06:06.245Z",
+          "passed": false,
+          "duration": 20851,
+          "errorMessage": "page.goto: Timeout 20000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"https://jirauat.smedigitalapps.com/jira/secure/Dashboard.jspa\", waiting until \"domcontentloaded\"\u001b[22m\n",
+          "details": "Authentication test failed"
+        },
+        {
+          "attemptNumber": 3,
+          "timestamp": "2025-07-23T07:06:37.135Z",
+          "passed": false,
+          "duration": 20848,
+          "errorMessage": "page.goto: Timeout 20000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"https://jirauat.smedigitalapps.com/jira/secure/Dashboard.jspa\", waiting until \"domcontentloaded\"\u001b[22m\n",
+          "details": "Authentication test failed"
+        }
+      ],
+      "conclusion": "CONSISTENT_FAIL"
+    },
+    {
+      "testName": "Dashboard Navigation",
+      "category": "Navigation",
+      "totalAttempts": 3,
+      "passed": 0,
+      "failed": 3,
+      "successRate": "0%",
+      "isFlaky": false,
+      "isConsistentFail": true,
+      "attempts": [
+        {
+          "attemptNumber": 1,
+          "timestamp": "2025-07-23T07:07:10.032Z",
+          "passed": false,
+          "duration": 30861,
+          "errorMessage": "page.goto: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"https://jirauat.smedigitalapps.com/jira/secure/Dashboard.jspa\", waiting until \"networkidle\"\u001b[22m\n",
+          "details": "Navigation test failed"
+        },
+        {
+          "attemptNumber": 2,
+          "timestamp": "2025-07-23T07:07:50.915Z",
+          "passed": false,
+          "duration": 30860,
+          "errorMessage": "page.goto: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"https://jirauat.smedigitalapps.com/jira/secure/Dashboard.jspa\", waiting until \"networkidle\"\u001b[22m\n",
+          "details": "Navigation test failed"
+        },
+        {
+          "attemptNumber": 3,
+          "timestamp": "2025-07-23T07:08:31.811Z",
+          "passed": false,
+          "duration": 30859,
+          "errorMessage": "page.goto: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"https://jirauat.smedigitalapps.com/jira/secure/Dashboard.jspa\", waiting until \"networkidle\"\u001b[22m\n",
+          "details": "Navigation test failed"
+        }
+      ],
+      "conclusion": "CONSISTENT_FAIL"
+    },
+    {
+      "testName": "Create Button Accessibility",
+      "category": "Core Functions",
+      "totalAttempts": 3,
+      "passed": 0,
+      "failed": 3,
+      "successRate": "0%",
+      "isFlaky": false,
+      "isConsistentFail": true,
+      "attempts": [
+        {
+          "attemptNumber": 1,
+          "timestamp": "2025-07-23T07:09:04.657Z",
+          "passed": false,
+          "duration": 30802,
+          "errorMessage": "page.goto: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"https://jirauat.smedigitalapps.com/jira/secure/Dashboard.jspa\", waiting until \"networkidle\"\u001b[22m\n",
+          "details": "Create button access test failed"
+        },
+        {
+          "attemptNumber": 2,
+          "timestamp": "2025-07-23T07:09:45.538Z",
+          "passed": false,
+          "duration": 30846,
+          "errorMessage": "page.goto: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"https://jirauat.smedigitalapps.com/jira/secure/Dashboard.jspa\", waiting until \"networkidle\"\u001b[22m\n",
+          "details": "Create button access test failed"
+        },
+        {
+          "attemptNumber": 3,
+          "timestamp": "2025-07-23T07:10:26.432Z",
+          "passed": false,
+          "duration": 30864,
+          "errorMessage": "page.goto: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"https://jirauat.smedigitalapps.com/jira/secure/Dashboard.jspa\", waiting until \"networkidle\"\u001b[22m\n",
+          "details": "Create button access test failed"
+        }
+      ],
+      "conclusion": "CONSISTENT_FAIL"
+    },
+    {
+      "testName": "Ticket Creation Form",
+      "category": "Core Functions",
+      "totalAttempts": 3,
+      "passed": 0,
+      "failed": 3,
+      "successRate": "0%",
+      "isFlaky": false,
+      "isConsistentFail": true,
+      "attempts": [
+        {
+          "attemptNumber": 1,
+          "timestamp": "2025-07-23T07:10:59.308Z",
+          "passed": false,
+          "duration": 30845,
+          "errorMessage": "page.goto: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"https://jirauat.smedigitalapps.com/jira/secure/Dashboard.jspa\", waiting until \"networkidle\"\u001b[22m\n",
+          "details": "Ticket creation form test failed"
+        },
+        {
+          "attemptNumber": 2,
+          "timestamp": "2025-07-23T07:11:40.321Z",
+          "passed": false,
+          "duration": 30988,
+          "errorMessage": "page.goto: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"https://jirauat.smedigitalapps.com/jira/secure/Dashboard.jspa\", waiting until \"networkidle\"\u001b[22m\n",
+          "details": "Ticket creation form test failed"
+        },
+        {
+          "attemptNumber": 3,
+          "timestamp": "2025-07-23T07:12:21.198Z",
+          "passed": false,
+          "duration": 30840,
+          "errorMessage": "page.goto: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"https://jirauat.smedigitalapps.com/jira/secure/Dashboard.jspa\", waiting until \"networkidle\"\u001b[22m\n",
+          "details": "Ticket creation form test failed"
+        }
+      ],
+      "conclusion": "CONSISTENT_FAIL"
+    },
+    {
+      "testName": "Ticket Submission",
+      "category": "Core Functions",
+      "totalAttempts": 3,
+      "passed": 0,
+      "failed": 3,
+      "successRate": "0%",
+      "isFlaky": false,
+      "isConsistentFail": true,
+      "attempts": [
+        {
+          "attemptNumber": 1,
+          "timestamp": "2025-07-23T07:12:54.097Z",
+          "passed": false,
+          "duration": 30869,
+          "errorMessage": "page.goto: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"https://jirauat.smedigitalapps.com/jira/secure/Dashboard.jspa\", waiting until \"networkidle\"\u001b[22m\n",
+          "details": "Ticket submission test failed"
+        },
+        {
+          "attemptNumber": 2,
+          "timestamp": "2025-07-23T07:13:34.959Z",
+          "passed": false,
+          "duration": 30831,
+          "errorMessage": "page.goto: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"https://jirauat.smedigitalapps.com/jira/secure/Dashboard.jspa\", waiting until \"networkidle\"\u001b[22m\n",
+          "details": "Ticket submission test failed"
+        },
+        {
+          "attemptNumber": 3,
+          "timestamp": "2025-07-23T07:14:15.852Z",
+          "passed": false,
+          "duration": 30857,
+          "errorMessage": "page.goto: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"https://jirauat.smedigitalapps.com/jira/secure/Dashboard.jspa\", waiting until \"networkidle\"\u001b[22m\n",
+          "details": "Ticket submission test failed"
+        }
+      ],
+      "conclusion": "CONSISTENT_FAIL"
+    }
+  ],
+  "recommendations": [
+    "CRITICAL: 9 tests show consistent failure - these are reliable blocking issues",
+    "URGENT: Infrastructure issues detected - check network, servers, and basic connectivity",
+    "UX ISSUES: 2 user interface problems found - needs development attention"
+  ],
+  "nextActions": [
+    "Investigate: Network Connectivity (Infrastructure) - consistent failure across 3 attempts",
+    "Investigate: Basic Page Access (Infrastructure) - consistent failure across 3 attempts",
+    "Investigate: Login Page Elements (UI/UX) - consistent failure across 3 attempts",
+    "Investigate: Can't Log In Clickability (UI/UX) - consistent failure across 3 attempts",
+    "Investigate: Session Authentication (Authentication) - consistent failure across 3 attempts",
+    "Investigate: Dashboard Navigation (Navigation) - consistent failure across 3 attempts",
+    "Investigate: Create Button Accessibility (Core Functions) - consistent failure across 3 attempts",
+    "Investigate: Ticket Creation Form (Core Functions) - consistent failure across 3 attempts",
+    "Investigate: Ticket Submission (Core Functions) - consistent failure across 3 attempts"
+  ]
+}

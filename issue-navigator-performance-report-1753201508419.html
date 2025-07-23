@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Issue Navigator Performance Analysis Report</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; line-height: 1.6; }
+        .header { background: #f5f5f5; padding: 20px; border-radius: 8px; margin-bottom: 20px; }
+        .metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .metric-card { background: white; border: 1px solid #ddd; border-radius: 8px; padding: 20px; }
+        .score-A { color: #28a745; font-weight: bold; }
+        .score-B { color: #6f42c1; font-weight: bold; }
+        .score-C { color: #fd7e14; font-weight: bold; }
+        .score-D { color: #dc3545; font-weight: bold; }
+        .score-F { color: #dc3545; font-weight: bold; background: #f8d7da; }
+        .good { color: #28a745; }
+        .needs-improvement { color: #ffc107; }
+        .poor { color: #dc3545; }
+        table { width: 100%; border-collapse: collapse; margin: 20px 0; }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        .bottleneck { background: #fff3cd; padding: 10px; margin: 5px 0; border-radius: 4px; }
+        .recommendation { background: #d1ecf1; padding: 10px; margin: 5px 0; border-radius: 4px; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🚀 Issue Navigator Performance Analysis</h1>
+        <p><strong>Test Date:</strong> 2025-07-22T16:25:08.415Z</p>
+        <p><strong>URL:</strong> https://jirauat.smedigitalapps.com/jira/issues/?jql=project%20%3D%20ITSM</p>
+        <p><strong>Overall Score:</strong> <span class="score-C">75/100 (C)</span></p>
+    </div>
+
+    <div class="metrics">
+        <div class="metric-card">
+            <h3>📊 Core Web Vitals</h3>
+            <p><strong>LCP:</strong> <span class="good">0ms (good)</span></p>
+            <p><strong>FID:</strong> <span class="good">0ms (good)</span></p>
+            <p><strong>CLS:</strong> <span class="good">0.000 (good)</span></p>
+        </div>
+
+        <div class="metric-card">
+            <h3>⏱️ Timing Metrics</h3>
+            <p><strong>Page Load Time:</strong> 9766ms</p>
+            <p><strong>DOM Content Loaded:</strong> NaNms</p>
+            <p><strong>First Contentful Paint:</strong> 1892ms</p>
+            <p><strong>Time to First Byte:</strong> NaNms</p>
+        </div>
+
+        <div class="metric-card">
+            <h3>📦 Resource Metrics</h3>
+            <p><strong>Total Requests:</strong> 57</p>
+            <p><strong>Total Size:</strong> 12.29MB</p>
+            <p><strong>JS Execution Time:</strong> 17019ms</p>
+            <p><strong>Rendering Time:</strong> 66ms</p>
+        </div>
+    </div>
+
+    <h2>🚨 Performance Bottlenecks</h2>
+    <div class="bottleneck">Slow page load time: 9766ms (target: <3000ms)</div><div class="bottleneck">Large total resource size: 12MB</div><div class="bottleneck">High JavaScript execution time: 17019ms</div><div class="bottleneck">7 resources taking >1s to load</div>
+
+    <h2>💡 Recommendations</h2>
+    <div class="recommendation">Compress images, minify CSS/JS, and enable gzip compression</div><div class="recommendation">Optimize JavaScript by code splitting and removing unused code</div><div class="recommendation">Optimize script loading by using async/defer attributes and code splitting</div>
+
+    <h2>🐌 Slowest Resources</h2>
+    <table>
+        <tr><th>Resource</th><th>Type</th><th>Duration</th><th>Size</th></tr>
+        
+        <tr>
+            <td>batch.js?_v=bdb80ca&agile_global_admin_condition=true&assets-chaperone-condition-assets-imports-global-view-chaperone-sync-key=true&chaperone-condition-share-request-with-groups-issue-view-chaperone=true&condition-share-request-with-groups=true&feature-flag-condition-assets.imports.global.view=true&feature-flag-condition-assets.imports.global.view.chaperone=true&jag=true&jaguser=true&jira.create.linked.issue=true&locale=en-US&plugins.jquery.migrate.load.disabled=false&richediton=true&s_available=true&s_availableOnIssuePage=true&tempo_is_data_center_license_expiration_showing=false&tempo_is_tempo_privacy_policy_banner_showing%3F=false&tempo_is_tempo_timesheets_license_valid_and_work_on_issues=true&tempo_product_access=true&time_entry_panel=false&timesheets_access=true</td>
+            <td>script</td>
+            <td>5698ms</td>
+            <td>11072KB</td>
+        </tr>
+        
+        <tr>
+            <td>batch.js?locale=en-US&plugins.jquery.migrate.load.disabled=false</td>
+            <td>script</td>
+            <td>1824ms</td>
+            <td>315KB</td>
+        </tr>
+        
+        <tr>
+            <td>com.atlassian.jira.jira-tzdetect-plugin:tzdetect-banner-component.js?locale=en-US</td>
+            <td>script</td>
+            <td>1336ms</td>
+            <td>3KB</td>
+        </tr>
+        
+        <tr>
+            <td>jira.webresources:calendar-localisation-moment.js</td>
+            <td>script</td>
+            <td>1335ms</td>
+            <td>1KB</td>
+        </tr>
+        
+        <tr>
+            <td>batch.js?locale=en-US&plugins.jquery.migrate.load.disabled=false</td>
+            <td>script</td>
+            <td>1322ms</td>
+            <td>8KB</td>
+        </tr>
+        
+        <tr>
+            <td>com.atlassian.jira.jira-tzdetect-plugin:tzdetect-lib.js</td>
+            <td>script</td>
+            <td>1322ms</td>
+            <td>1KB</td>
+        </tr>
+        
+        <tr>
+            <td>batch.css?_v=bdb80ca&agile_global_admin_condition=true&assets-chaperone-condition-assets-imports-global-view-chaperone-sync-key=true&chaperone-condition-share-request-with-groups-issue-view-chaperone=true&condition-share-request-with-groups=true&feature-flag-condition-assets.imports.global.view=true&feature-flag-condition-assets.imports.global.view.chaperone=true&jag=true&jaguser=true&jira.create.linked.issue=true&plugins.jquery.migrate.load.disabled=false&richediton=true&s_available=true&s_availableOnIssuePage=true&tempo_is_data_center_license_expiration_showing=false&tempo_is_tempo_privacy_policy_banner_showing%3F=false&tempo_is_tempo_timesheets_license_valid_and_work_on_issues=true&tempo_product_access=true&time_entry_panel=false&timesheets_access=true</td>
+            <td>link</td>
+            <td>1225ms</td>
+            <td>540KB</td>
+        </tr>
+        
+        <tr>
+            <td>batch.js?plugins.jquery.migrate.load.disabled=false</td>
+            <td>script</td>
+            <td>995ms</td>
+            <td>1KB</td>
+        </tr>
+        
+        <tr>
+            <td>batch.css?plugins.jquery.migrate.load.disabled=false</td>
+            <td>link</td>
+            <td>815ms</td>
+            <td>46KB</td>
+        </tr>
+        
+        <tr>
+            <td>jira.webresources:auto-theme-handler.js</td>
+            <td>script</td>
+            <td>639ms</td>
+            <td>1KB</td>
+        </tr>
+        
+    </table>
+
+    <h2>⏰ Loading Timeline</h2>
+    <table>
+        <tr><th>Phase</th><th>Duration</th></tr>
+        
+        <tr>
+            <td>DNS Lookup</td>
+            <td>1ms</td>
+        </tr>
+        
+        <tr>
+            <td>TCP Connection</td>
+            <td>299ms</td>
+        </tr>
+        
+        <tr>
+            <td>Request/Response</td>
+            <td>1044ms</td>
+        </tr>
+        
+        <tr>
+            <td>DOM Processing</td>
+            <td>NaNms</td>
+        </tr>
+        
+        <tr>
+            <td>Load Event</td>
+            <td>1ms</td>
+        </tr>
+        
+    </table>
+
+    <footer style="margin-top: 40px; text-align: center; color: #666;">
+        <p>Generated by Issue Navigator Performance Analyzer</p>
+    </footer>
+</body>
+</html>

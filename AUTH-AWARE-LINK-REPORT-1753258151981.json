@@ -1,0 +1,1308 @@
+{
+  "reportTime": "2025-07-23T08:09:11.980Z",
+  "authStatus": {
+    "isAuthenticated": true,
+    "username": "Unknown",
+    "sessionValid": true,
+    "authMethod": "SESSION",
+    "authTime": "2025-07-23T08:01:07.368Z"
+  },
+  "totalPages": 6,
+  "totalLinksFound": 200,
+  "totalLinksTested": 77,
+  "overallLinkHealth": "GOOD (88%)",
+  "pageResults": [
+    {
+      "pageName": "Dashboard",
+      "pageUrl": "https://jirauat.smedigitalapps.com/jira/secure/Dashboard.jspa",
+      "authRequired": true,
+      "totalLinks": 31,
+      "clickableLinks": 20,
+      "brokenLinks": 0,
+      "workingLinks": 18,
+      "unresponsiveLinks": 0,
+      "authBlockedLinks": 0,
+      "linkResults": [
+        {
+          "linkText": "Log in",
+          "href": "/jira/login.jsp?os_destination=%2Fsecure%2FDashboard.jspa",
+          "selector": "a[href=\"/jira/login.jsp?os_destination=%2Fsecure%2FDashboard.jspa\"]",
+          "isClickable": true,
+          "destinationStatus": "SUCCESS",
+          "destinationUrl": "https://jirauat.smedigitalapps.com/jira/secure/Dashboard.jspa",
+          "responseTime": 8410,
+          "screenshot": "auth-link-destination-1-1753257688728.png"
+        },
+        {
+          "linkText": "Skip to main content",
+          "href": "#main",
+          "selector": "a[href=\"#main\"]",
+          "isClickable": true,
+          "destinationStatus": "SUCCESS",
+          "destinationUrl": "https://jirauat.smedigitalapps.com/jira/secure/Dashboard.jspa",
+          "responseTime": 8424,
+          "screenshot": "auth-link-destination-2-1753257697799.png"
+        },
+        {
+          "linkText": "Skip to sidebar",
+          "href": "#sidebar",
+          "selector": "a[href=\"#sidebar\"]",
+          "isClickable": false,
+          "destinationStatus": "UNTESTED"
+        },
+        {
+          "linkText": "Linked Applications",
+          "href": "#app-switcher",
+          "selector": "button[href=\"#app-switcher\"]",
+          "isClickable": true,
+          "destinationStatus": "SUCCESS",
+          "destinationUrl": "https://jirauat.smedigitalapps.com/jira/secure/Dashboard.jspa",
+          "responseTime": 3335,
+          "screenshot": "auth-link-destination-4-1753257702314.png"
+        },
+        {
+          "linkText": "https://jirauat.smedigitalapps.com/jira/secure/MyJiraHome.jspa",
+          "href": "https://jirauat.smedigitalapps.com/jira/secure/MyJiraHome.jspa",
+          "selector": "a[href=\"https://jirauat.smedigitalapps.com/jira/secure/MyJiraHome.jspa\"]",
+          "isClickable": true,
+          "destinationStatus": "SUCCESS",
+          "destinationUrl": "https://jirauat.smedigitalapps.com/jira/secure/MyJiraHome.jspa",
+          "responseTime": 982
+        },
+        {
+          "linkText": "Dashboards",
+          "href": "/jira/secure/Dashboard.jspa",
+          "selector": "a[href=\"/jira/secure/Dashboard.jspa\"]",
+          "isClickable": true,
+          "destinationStatus": "SUCCESS",
+          "destinationUrl": "https://jirauat.smedigitalapps.com/jira/secure/Dashboard.jspa",
+          "responseTime": 3448,
+          "screenshot": "auth-link-destination-6-1753257707919.png"
+        },
+        {
+          "linkText": "Issues",
+          "href": "/jira/issues/",
+          "selector": "a[href=\"/jira/issues/\"]",
+          "isClickable": true,
+          "destinationStatus": "SUCCESS",
+          "destinationUrl": "https://jirauat.smedigitalapps.com/jira/secure/Dashboard.jspa",
+          "responseTime": 3480,
+          "screenshot": "auth-link-destination-7-1753257712051.png"
+        },
+        {
+          "linkText": "input-element",
+          "href": "",
+          "selector": "input",
+          "isClickable": false,
+          "destinationStatus": "UNTESTED"
+        },
+        {
+          "linkText": "Give feedback to Atlassian",
+          "href": "#",
+          "selector": "a[href=\"#\"]",
+          "isClickable": true,
+          "destinationStatus": "SUCCESS",
+          "destinationUrl": "https://jirauat.smedigitalapps.com/jira/secure/Dashboard.jspa",
+          "responseTime": 3488,
+          "screenshot": "auth-link-destination-9-1753257716719.png"
+        },
+        {
+          "linkText": "Help",
+          "href": "/jira/secure/ViewKeyboardShortcuts!default.jspa",
+          "selector": "a[href=\"/jira/secure/ViewKeyboardShortcuts!default.jspa\"]",
+          "isClickable": true,
+          "destinationStatus": "SUCCESS",
+          "destinationUrl": "https://jirauat.smedigitalapps.com/jira/secure/Dashboard.jspa",
+          "responseTime": 3451,
+          "screenshot": "auth-link-destination-10-1753257720818.png"
+        },
+        {
+          "linkText": "Keyboard Shortcuts",
+          "href": "/jira/secure/ViewKeyboardShortcuts!default.jspa",
+          "selector": "a[href=\"/jira/secure/ViewKeyboardShortcuts!default.jspa\"]",
+          "isClickable": false,
+          "destinationStatus": "UNTESTED"
+        },
+        {
+          "linkText": "About Jira",
+          "href": "/jira/secure/AboutPage.jspa",
+          "selector": "a[href=\"/jira/secure/AboutPage.jspa\"]",
+          "isClickable": false,
+          "destinationStatus": "UNTESTED"
+        },
+        {
+          "linkText": "Jira Credits",
+          "href": "/jira/secure/credits/AroundTheWorld!default.jspa",
+          "selector": "a[href=\"/jira/secure/credits/AroundTheWorld!default.jspa\"]",
+          "isClickable": false,
+          "destinationStatus": "UNTESTED"
+        },
+        {
+          "linkText": "Log In",
+          "href": "/jira/login.jsp?os_destination=%2Fsecure%2FDashboard.jspa",
+          "selector": "a[href=\"/jira/login.jsp?os_destination=%2Fsecure%2FDashboard.jspa\"]",
+          "isClickable": true,
+          "destinationStatus": "SUCCESS",
+          "destinationUrl": "https://jirauat.smedigitalapps.com/jira/secure/Dashboard.jspa",
+          "responseTime": 8497,
+          "screenshot": "auth-link-destination-14-1753257731556.png"
+        },
+        {
+          "linkText": "Time to SLA Preferences",
+          "href": "/jira/plugins/servlet/tts/preferences",
+          "selector": "a[href=\"/jira/plugins/servlet/tts/preferences\"]",
+          "isClickable": false,
+          "destinationStatus": "UNTESTED"
+        },
+        {
+          "linkText": "Tools",
+          "href": "#tools-dropdown-items",
+          "selector": "a[href=\"#tools-dropdown-items\"]",
+          "isClickable": true,
+          "destinationStatus": "SUCCESS",
+          "destinationUrl": "https://jirauat.smedigitalapps.com/jira/secure/Dashboard.jspa",
+          "responseTime": 3421,
+          "screenshot": "auth-link-destination-16-1753257736137.png"
+        },
+        {
+          "linkText": "View as wallboard",
+          "href": "https://jirauat.smedigitalapps.com/jira/plugins/servlet/Wallboard/?dashboardId=10000",
+          "selector": "a[href=\"https://jirauat.smedigitalapps.com/jira/plugins/servlet/Wallboard/?dashboardId=10000\"]",
+          "isClickable": false,
+          "destinationStatus": "UNTESTED"
+        },
+        {
+          "linkText": "Maximise",
+          "href": "",
+          "selector": "button",
+          "isClickable": true,
+          "destinationStatus": "UNTESTED"
+        },
+        {
+          "linkText": "button-element",
+          "href": "",
+          "selector": "button",
+          "isClickable": true,
+          "destinationStatus": "UNTESTED"
+        },
+        {
+          "linkText": "Minimise",
+          "href": "#",
+          "selector": "a[href=\"#\"]",
+          "isClickable": false,
+          "destinationStatus": "UNTESTED"
+        },
+        {
+          "linkText": "input-element",
+          "href": "",
+          "selector": "input",
+          "isClickable": false,
+          "destinationStatus": "UNTESTED"
+        },
+        {
+          "linkText": "JIRA User's Guide",
+          "href": "https://confluence.atlassian.com/jirasoftwareserver0912/jira-software-data-center-and-server-9-12-documentation-1346048591.html",
+          "selector": "a[href=\"https://confluence.atlassian.com/jirasoftwareserver0912/jira-software-data-center-and-server-9-12-documentation-1346048591.html\"]",
+          "isClickable": true,
+          "destinationStatus": "SUCCESS",
+          "destinationUrl": "https://confluence.atlassian.com/jirasoftwareserver0912/jira-software-data-center-and-server-9-12-documentation-1346048591.html",
+          "responseTime": 638
+        },
+        {
+          "linkText": "jira.support@sonymusic.com",
+          "href": "mailto:jira.support@sonymusic.com",
+          "selector": "a[href=\"mailto:jira.support@sonymusic.com\"]",
+          "isClickable": true,
+          "destinationStatus": "SUCCESS",
+          "destinationUrl": "https://jirauat.smedigitalapps.com/jira/secure/Dashboard.jspa",
+          "responseTime": 3659,
+          "screenshot": "auth-link-destination-23-1753257744288.png"
+        },
+        {
+          "linkText": "JIRA and Wiki/Confluence access and request policies",
+          "href": "https://wiki.smedigitalapps.com/wiki/display/JIRAPS/JIRA+and+Confluence+access+and+request+policies",
+          "selector": "a[href=\"https://wiki.smedigitalapps.com/wiki/display/JIRAPS/JIRA+and+Confluence+access+and+request+policies\"]",
+          "isClickable": true,
+          "destinationStatus": "SUCCESS",
+          "destinationUrl": "https://wiki.smedigitalapps.com/wiki/spaces/JIRAPS/pages/19497611/JIRA+and+Confluence+access+and+request+policies",
+          "responseTime": 3428
+        },
+        {
+          "linkText": "http://sap.sonymusic.com",
+          "href": "http://sap.sonymusic.com",
+          "selector": "a[href=\"http://sap.sonymusic.com\"]",
+          "isClickable": true,
+          "destinationStatus": "SUCCESS",
+          "destinationUrl": "https://wiki.smedigitalapps.com/wiki/spaces/SAP/pages/18548510/Support",
+          "responseTime": 1890
+        },
+        {
+          "linkText": "Project Management Software",
+          "href": "https://www.atlassian.com/software/jira",
+          "selector": "a[href=\"https://www.atlassian.com/software/jira\"]",
+          "isClickable": true,
+          "destinationStatus": "SUCCESS",
+          "destinationUrl": "https://www.atlassian.com/software/jira",
+          "responseTime": 604
+        },
+        {
+          "linkText": "About Jira",
+          "href": "/jira/secure/AboutPage.jspa/secure/AboutPage.jspa",
+          "selector": "a[href=\"/jira/secure/AboutPage.jspa/secure/AboutPage.jspa\"]",
+          "isClickable": true,
+          "destinationStatus": "SUCCESS",
+          "destinationUrl": "https://jirauat.smedigitalapps.com/jira/login.jsp?permissionViolation=true&os_destination=%2Fsecure%2FAboutPage.jspa%2Fsecure%2FAboutPage.jspa&page_caps=&user_role=",
+          "responseTime": 4522,
+          "screenshot": "auth-link-destination-27-1753257756975.png"
+        },
+        {
+          "linkText": "Report a problem",
+          "href": "/jira/secure/CreateIssue!default.jspa",
+          "selector": "a[href=\"/jira/secure/CreateIssue!default.jspa\"]",
+          "isClickable": true,
+          "destinationStatus": "SUCCESS",
+          "destinationUrl": "https://jirauat.smedigitalapps.com/jira/secure/CreateIssue!default.jspa",
+          "responseTime": 3858,
+          "screenshot": "auth-link-destination-28-1753257765110.png"
+        },
+        {
+          "linkText": "Atlassian",
+          "href": "http://www.atlassian.com/",
+          "selector": "a[href=\"http://www.atlassian.com/\"]",
+          "isClickable": true,
+          "destinationStatus": "SUCCESS",
+          "destinationUrl": "https://www.atlassian.com/",
+          "responseTime": 475
+        },
+        {
+          "linkText": "javascript:;",
+          "href": "javascript:;",
+          "selector": "a[href=\"javascript:;\"]",
+          "isClickable": false,
+          "destinationStatus": "UNTESTED"
+        }
+      ],
+      "pageScreenshot": "auth-page-dashboard-1753257680141.png",
+      "crawlDuration": 99427
+    },
+    {
+      "pageName": "Issue Navigator",
+      "pageUrl": "https://jirauat.smedigitalapps.com/jira/secure/IssueNavigator.jspa",
+      "authRequired": true,
+      "totalLinks": 88,
+      "clickableLinks": 9,
+      "brokenLinks": 1,
+      "workingLinks": 8,
+      "unresponsiveLinks": 0,
+      "authBlockedLinks": 0,
+      "linkResults": [
+        {
+          "linkText": "Log in",
+          "href": "/jira/login.jsp?os_destination=%2Fissues%2F%3Fjql%3D",
+          "selector": "a[href=\"/jira/login.jsp?os_destination=%2Fissues%2F%3Fjql%3D\"]",
+          "isClickable": true,
+          "destinationStatus": "SUCCESS",
+          "destinationUrl": "https://jirauat.smedigitalapps.com/jira/issues/?jql=",
+          "responseTime": 19809,
+          "screenshot": "auth-link-destination-1-1753257801921.png"
+        },
+        {
+          "linkText": "Skip to main content",
+          "href": "#main",
+          "selector": "a[href=\"#main\"]",
+          "isClickable": true,
+          "destinationStatus": "ERROR",
+          "responseTime": 13200,
+          "errorMessage": "locator.click: Target page, context or browser has been closed\nCall log:\n\u001b[2m  - waiting for locator('a[href=\"#main\"]').first()\u001b[22m\n\u001b[2m    - locator resolved to <a href=\"#main\" class=\"aui-skip-link\">Skip to main content</a>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - element is outside of the viewport\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m    - waiting 20ms\u001b[22m\n\u001b[2m    2 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - element is outside of the viewport\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 100ms\u001b[22m\n\u001b[2m    5 × waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m      - element is visible, enabled and stable\u001b[22m\n\u001b[2m      - scrolling into view if needed\u001b[22m\n\u001b[2m      - done scrolling\u001b[22m\n\u001b[2m      - element is outside of the viewport\u001b[22m\n\u001b[2m    - retrying click action\u001b[22m\n\u001b[2m      - waiting 500ms\u001b[22m\n"
+        },
+        {
+          "linkText": "Skip to sidebar",
+          "href": "#sidebar",
+          "selector": "a[href=\"#sidebar\"]",
+          "isClickable": false,
+          "destinationStatus": "UNTESTED"
+        },
+        {
+          "linkText": "Linked Applications",
+          "href": "#app-switcher",
+          "selector": "button[href=\"#app-switcher\"]",
+          "isClickable": true,
+          "destinationStatus": "SUCCESS",
+          "destinationUrl": "https://jirauat.smedigitalapps.com/jira/issues/?jql=",
+          "responseTime": 12615,
+          "screenshot": "auth-link-destination-4-1753257829470.png"
+        },
+        {
+          "linkText": "https://jirauat.smedigitalapps.com/jira/secure/MyJiraHome.jspa",
+          "href": "https://jirauat.smedigitalapps.com/jira/secure/MyJiraHome.jspa",
+          "selector": "a[href=\"https://jirauat.smedigitalapps.com/jira/secure/MyJiraHome.jspa\"]",
+          "isClickable": true,
+          "destinationStatus": "SUCCESS",
+          "destinationUrl": "https://jirauat.smedigitalapps.com/jira/secure/MyJiraHome.jspa",
+          "responseTime": 933
+        },
+        {
+          "linkText": "Dashboards",
+          "href": "/jira/secure/Dashboard.jspa",
+          "selector": "a[href=\"/jira/secure/Dashboard.jspa\"]",
+          "isClickable": true,
+          "destinationStatus": "SUCCESS",
+          "destinationUrl": "https://jirauat.smedigitalapps.com/jira/issues/?jql=",
+          "responseTime": 9148,
+          "screenshot": "auth-link-destination-6-1753257840734.png"
+        },
+        {
+          "linkText": "Issues",
+          "href": "/jira/issues/",
+          "selector": "a[href=\"/jira/issues/\"]",
+          "isClickable": true,
+          "destinationStatus": "SUCCESS",
+          "destinationUrl": "https://jirauat.smedigitalapps.com/jira/issues/?jql=",
+          "responseTime": 14235,
+          "screenshot": "auth-link-destination-7-1753257855613.png"
+        },
+        {
+          "linkText": "input-element",
+          "href": "",
+          "selector": "input",
+          "isClickable": false,
+          "destinationStatus": "UNTESTED"
+        },
+        {
+          "linkText": "Give feedback to Atlassian",
+          "href": "#",
+          "selector": "a[href=\"#\"]",
+          "isClickable": true,
+          "destinationStatus": "SUCCESS",
+          "destinationUrl": "https://jirauat.smedigitalapps.com/jira/issues/?jql=",
+          "responseTime": 14642,
+          "screenshot": "auth-link-destination-9-1753257871437.png"
+        },
+        {
+          "linkText": "Help",
+          "href": "/jira/secure/ViewKeyboardShortcuts!default.jspa",
+          "selector": "a[href=\"/jira/secure/ViewKeyboardShortcuts!default.jspa\"]",
+          "isClickable": true,
+          "destinationStatus": "SUCCESS",
+          "destinationUrl": "https://jirauat.smedigitalapps.com/jira/issues/?jql=",
+          "responseTime": 12808,
+          "screenshot": "auth-link-destination-10-1753257884882.png"
+        },
+        {
+          "linkText": "Keyboard Shortcuts",
+          "href": "/jira/secure/ViewKeyboardShortcuts!default.jspa",
+          "selector": "a[href=\"/jira/secure/ViewKeyboardShortcuts!default.jspa\"]",
+          "isClickable": false,
+          "destinationStatus": "UNTESTED"
+        },
+        {
+          "linkText": "About Jira",
+          "href": "/jira/secure/AboutPage.jspa",
+          "selector": "a[href=\"/jira/secure/AboutPage.jspa\"]",
+          "isClickable": false,
+          "destinationStatus": "UNTESTED"
+        },
+        {
+          "linkText": "Jira Credits",
+          "href": "/jira/secure/credits/AroundTheWorld!default.jspa",
+          "selector": "a[href=\"/jira/secure/credits/AroundTheWorld!default.jspa\"]",
+          "isClickable": false,
+          "destinationStatus": "UNTESTED"
+        },
+        {
+          "linkText": "Log In",
+          "href": "/jira/login.jsp?os_destination=%2Fissues%2F%3Fjql%3D",
+          "selector": "a[href=\"/jira/login.jsp?os_destination=%2Fissues%2F%3Fjql%3D\"]",
+          "isClickable": true,
+          "destinationStatus": "SUCCESS",
+          "destinationUrl": "https://jirauat.smedigitalapps.com/jira/issues/?jql=",
+          "responseTime": 16765,
+          "screenshot": "auth-link-destination-14-1753257903886.png"
+        },
+        {
+          "linkText": "Time to SLA Preferences",
+          "href": "/jira/plugins/servlet/tts/preferences",
+          "selector": "a[href=\"/jira/plugins/servlet/tts/preferences\"]",
+          "isClickable": false,
+          "destinationStatus": "UNTESTED"
+        },
+        {
+          "linkText": "#&returnUrl=/secure/issues",
+          "href": "#&returnUrl=/secure/issues",
+          "selector": "a[href=\"#&returnUrl=/secure/issues\"]",
+          "isClickable": false,
+          "destinationStatus": "UNTESTED"
+        },
+        {
+          "linkText": "( Type 'e' )",
+          "href": "/jira/secure/EditIssue!default.jspa?id={0}&returnUrl=/secure/issues",
+          "selector": "a[href=\"/jira/secure/EditIssue!default.jspa?id={0}&returnUrl=/secure/issues\"]",
+          "isClickable": false,
+          "destinationStatus": "UNTESTED"
+        },
+        {
+          "linkText": "#&returnUrl=/secure/issues",
+          "href": "#&returnUrl=/secure/issues",
+          "selector": "a[href=\"#&returnUrl=/secure/issues\"]",
+          "isClickable": false,
+          "destinationStatus": "UNTESTED"
+        },
+        {
+          "linkText": "( Type 'a' )",
+          "href": "/jira/secure/AssignIssue!default.jspa?id={0}&returnUrl=/secure/issues",
+          "selector": "a[href=\"/jira/secure/AssignIssue!default.jspa?id={0}&returnUrl=/secure/issues\"]",
+          "isClickable": false,
+          "destinationStatus": "UNTESTED"
+        },
+        {
+          "linkText": "( Type 'i' )",
+          "href": "/jira/secure/AssignIssue.jspa?atl_token=A1TC-B0TB-ACDD-Q6T9_cd7a85f4126f530acdd39a03f9210b5fe78525b1_lout&id={0}&&returnUrl=/secure/issues",
+          "selector": "a[href=\"/jira/secure/AssignIssue.jspa?atl_token=A1TC-B0TB-ACDD-Q6T9_cd7a85f4126f530acdd39a03f9210b5fe78525b1_lout&id={0}&&returnUrl=/secure/issues\"]",
+          "isClickable": false,
+          "destinationStatus": "UNTESTED"
+        },
+        {
+          "linkText": "/jira/secure/AddComment!default.jspa?id={0}&returnUrl=/secure/issues",
+          "href": "/jira/secure/AddComment!default.jspa?id={0}&returnUrl=/secure/issues",
+          "selector": "a[href=\"/jira/secure/AddComment!default.jspa?id={0}&returnUrl=/secure/issues\"]",
+          "isClickable": false,
+          "destinationStatus": "UNTESTED"
+        },
+        {
+          "linkText": "/jira&returnUrl=/secure/issues",
+          "href": "/jira&returnUrl=/secure/issues",
+          "selector": "a[href=\"/jira&returnUrl=/secure/issues\"]",
+          "isClickable": false,
+          "destinationStatus": "UNTESTED"
+        },
+        {
+          "linkText": "/jira/secure/CreateWorklog!default.jspa?id={0}&returnUrl=/secure/issues",
+          "href": "/jira/secure/CreateWorklog!default.jspa?id={0}&returnUrl=/secure/issues",
+          "selector": "a[href=\"/jira/secure/CreateWorklog!default.jspa?id={0}&returnUrl=/secure/issues\"]",
+          "isClickable": false,
+          "destinationStatus": "UNTESTED"
+        },
+        {
+          "linkText": "/jira&returnUrl=/secure/issues",
+          "href": "/jira&returnUrl=/secure/issues",
+          "selector": "a[href=\"/jira&returnUrl=/secure/issues\"]",
+          "isClickable": false,
+          "destinationStatus": "UNTESTED"
+        },
+        {
+          "linkText": "/jira&returnUrl=/secure/issues",
+          "href": "/jira&returnUrl=/secure/issues",
+          "selector": "a[href=\"/jira&returnUrl=/secure/issues\"]",
+          "isClickable": false,
+          "destinationStatus": "UNTESTED"
+        },
+        {
+          "linkText": "/jira&returnUrl=/secure/issues",
+          "href": "/jira&returnUrl=/secure/issues",
+          "selector": "a[href=\"/jira&returnUrl=/secure/issues\"]",
+          "isClickable": false,
+          "destinationStatus": "UNTESTED"
+        },
+        {
+          "linkText": "/jira/secure/Tempo.jspa#/reports/logged-time?taskKey=&returnUrl=/secure/issues",
+          "href": "/jira/secure/Tempo.jspa#/reports/logged-time?taskKey=&returnUrl=/secure/issues",
+          "selector": "a[href=\"/jira/secure/Tempo.jspa#/reports/logged-time?taskKey=&returnUrl=/secure/issues\"]",
+          "isClickable": false,
+          "destinationStatus": "UNTESTED"
+        },
+        {
+          "linkText": "/jira/secure/FindOnBoard.jspa?issueId={0}&returnUrl=/secure/issues",
+          "href": "/jira/secure/FindOnBoard.jspa?issueId={0}&returnUrl=/secure/issues",
+          "selector": "a[href=\"/jira/secure/FindOnBoard.jspa?issueId={0}&returnUrl=/secure/issues\"]",
+          "isClickable": false,
+          "destinationStatus": "UNTESTED"
+        },
+        {
+          "linkText": "/jira/secure/RankTop.jspa?issueId={0}&returnUrl=/secure/issues",
+          "href": "/jira/secure/RankTop.jspa?issueId={0}&returnUrl=/secure/issues",
+          "selector": "a[href=\"/jira/secure/RankTop.jspa?issueId={0}&returnUrl=/secure/issues\"]",
+          "isClickable": false,
+          "destinationStatus": "UNTESTED"
+        },
+        {
+          "linkText": "/jira/secure/RankBottom.jspa?issueId={0}&returnUrl=/secure/issues",
+          "href": "/jira/secure/RankBottom.jspa?issueId={0}&returnUrl=/secure/issues",
+          "selector": "a[href=\"/jira/secure/RankBottom.jspa?issueId={0}&returnUrl=/secure/issues\"]",
+          "isClickable": false,
+          "destinationStatus": "UNTESTED"
+        }
+      ],
+      "pageScreenshot": "auth-page-issue-navigator-1753257781994.png",
+      "crawlDuration": 142456
+    },
+    {
+      "pageName": "Create Issue",
+      "pageUrl": "https://jirauat.smedigitalapps.com/jira/secure/CreateIssue!default.jspa",
+      "authRequired": true,
+      "totalLinks": 21,
+      "clickableLinks": 14,
+      "brokenLinks": 0,
+      "workingLinks": 14,
+      "unresponsiveLinks": 0,
+      "authBlockedLinks": 0,
+      "linkResults": [
+        {
+          "linkText": "Log in",
+          "href": "/jira/login.jsp?os_destination=%2Fsecure%2FCreateIssue%21default.jspa",
+          "selector": "a[href=\"/jira/login.jsp?os_destination=%2Fsecure%2FCreateIssue%21default.jspa\"]",
+          "isClickable": true,
+          "destinationStatus": "SUCCESS",
+          "destinationUrl": "https://jirauat.smedigitalapps.com/jira/secure/CreateIssue!default.jspa",
+          "responseTime": 7888,
+          "screenshot": "auth-link-destination-1-1753257930762.png"
+        },
+        {
+          "linkText": "Skip to main content",
+          "href": "#main",
+          "selector": "a[href=\"#main\"]",
+          "isClickable": true,
+          "destinationStatus": "SUCCESS",
+          "destinationUrl": "https://jirauat.smedigitalapps.com/jira/secure/CreateIssue!default.jspa",
+          "responseTime": 7984,
+          "screenshot": "auth-link-destination-2-1753257939373.png"
+        },
+        {
+          "linkText": "Skip to sidebar",
+          "href": "#sidebar",
+          "selector": "a[href=\"#sidebar\"]",
+          "isClickable": false,
+          "destinationStatus": "UNTESTED"
+        },
+        {
+          "linkText": "Linked Applications",
+          "href": "#app-switcher",
+          "selector": "button[href=\"#app-switcher\"]",
+          "isClickable": true,
+          "destinationStatus": "SUCCESS",
+          "destinationUrl": "https://jirauat.smedigitalapps.com/jira/secure/CreateIssue!default.jspa",
+          "responseTime": 3112,
+          "screenshot": "auth-link-destination-4-1753257943644.png"
+        },
+        {
+          "linkText": "https://jirauat.smedigitalapps.com/jira/secure/MyJiraHome.jspa",
+          "href": "https://jirauat.smedigitalapps.com/jira/secure/MyJiraHome.jspa",
+          "selector": "a[href=\"https://jirauat.smedigitalapps.com/jira/secure/MyJiraHome.jspa\"]",
+          "isClickable": true,
+          "destinationStatus": "SUCCESS",
+          "destinationUrl": "https://jirauat.smedigitalapps.com/jira/secure/MyJiraHome.jspa",
+          "responseTime": 760
+        },
+        {
+          "linkText": "Dashboards",
+          "href": "/jira/secure/Dashboard.jspa",
+          "selector": "a[href=\"/jira/secure/Dashboard.jspa\"]",
+          "isClickable": true,
+          "destinationStatus": "SUCCESS",
+          "destinationUrl": "https://jirauat.smedigitalapps.com/jira/secure/CreateIssue!default.jspa",
+          "responseTime": 3114,
+          "screenshot": "auth-link-destination-6-1753257948677.png"
+        },
+        {
+          "linkText": "Issues",
+          "href": "/jira/issues/",
+          "selector": "a[href=\"/jira/issues/\"]",
+          "isClickable": true,
+          "destinationStatus": "SUCCESS",
+          "destinationUrl": "https://jirauat.smedigitalapps.com/jira/secure/CreateIssue!default.jspa",
+          "responseTime": 3095,
+          "screenshot": "auth-link-destination-7-1753257952402.png"
+        },
+        {
+          "linkText": "input-element",
+          "href": "",
+          "selector": "input",
+          "isClickable": false,
+          "destinationStatus": "UNTESTED"
+        },
+        {
+          "linkText": "Give feedback to Atlassian",
+          "href": "#",
+          "selector": "a[href=\"#\"]",
+          "isClickable": true,
+          "destinationStatus": "SUCCESS",
+          "destinationUrl": "https://jirauat.smedigitalapps.com/jira/secure/CreateIssue!default.jspa",
+          "responseTime": 3163,
+          "screenshot": "auth-link-destination-9-1753257956726.png"
+        },
+        {
+          "linkText": "Help",
+          "href": "/jira/secure/ViewKeyboardShortcuts!default.jspa",
+          "selector": "a[href=\"/jira/secure/ViewKeyboardShortcuts!default.jspa\"]",
+          "isClickable": true,
+          "destinationStatus": "SUCCESS",
+          "destinationUrl": "https://jirauat.smedigitalapps.com/jira/secure/CreateIssue!default.jspa",
+          "responseTime": 3126,
+          "screenshot": "auth-link-destination-10-1753257960487.png"
+        },
+        {
+          "linkText": "Keyboard Shortcuts",
+          "href": "/jira/secure/ViewKeyboardShortcuts!default.jspa",
+          "selector": "a[href=\"/jira/secure/ViewKeyboardShortcuts!default.jspa\"]",
+          "isClickable": false,
+          "destinationStatus": "UNTESTED"
+        },
+        {
+          "linkText": "About Jira",
+          "href": "/jira/secure/AboutPage.jspa",
+          "selector": "a[href=\"/jira/secure/AboutPage.jspa\"]",
+          "isClickable": false,
+          "destinationStatus": "UNTESTED"
+        },
+        {
+          "linkText": "Jira Credits",
+          "href": "/jira/secure/credits/AroundTheWorld!default.jspa",
+          "selector": "a[href=\"/jira/secure/credits/AroundTheWorld!default.jspa\"]",
+          "isClickable": false,
+          "destinationStatus": "UNTESTED"
+        },
+        {
+          "linkText": "Log In",
+          "href": "/jira/login.jsp?os_destination=%2Fsecure%2FCreateIssue%21default.jspa",
+          "selector": "a[href=\"/jira/login.jsp?os_destination=%2Fsecure%2FCreateIssue%21default.jspa\"]",
+          "isClickable": true,
+          "destinationStatus": "SUCCESS",
+          "destinationUrl": "https://jirauat.smedigitalapps.com/jira/secure/CreateIssue!default.jspa",
+          "responseTime": 8065,
+          "screenshot": "auth-link-destination-14-1753257970763.png"
+        },
+        {
+          "linkText": "Time to SLA Preferences",
+          "href": "/jira/plugins/servlet/tts/preferences",
+          "selector": "a[href=\"/jira/plugins/servlet/tts/preferences\"]",
+          "isClickable": false,
+          "destinationStatus": "UNTESTED"
+        },
+        {
+          "linkText": "Switch To User",
+          "href": "",
+          "selector": "span",
+          "isClickable": false,
+          "destinationStatus": "UNTESTED"
+        },
+        {
+          "linkText": "log in",
+          "href": "/jira/login.jsp?os_destination=%2Fsecure%2FCreateIssue%21default.jspa",
+          "selector": "a[href=\"/jira/login.jsp?os_destination=%2Fsecure%2FCreateIssue%21default.jspa\"]",
+          "isClickable": true,
+          "destinationStatus": "SUCCESS",
+          "destinationUrl": "https://jirauat.smedigitalapps.com/jira/secure/CreateIssue!default.jspa",
+          "responseTime": 8021,
+          "screenshot": "auth-link-destination-17-1753257980453.png"
+        },
+        {
+          "linkText": "Project Management Software",
+          "href": "https://www.atlassian.com/software/jira",
+          "selector": "a[href=\"https://www.atlassian.com/software/jira\"]",
+          "isClickable": true,
+          "destinationStatus": "SUCCESS",
+          "destinationUrl": "https://www.atlassian.com/software/jira",
+          "responseTime": 640
+        },
+        {
+          "linkText": "About Jira",
+          "href": "/jira/secure/AboutPage.jspa/secure/AboutPage.jspa",
+          "selector": "a[href=\"/jira/secure/AboutPage.jspa/secure/AboutPage.jspa\"]",
+          "isClickable": true,
+          "destinationStatus": "SUCCESS",
+          "destinationUrl": "https://jirauat.smedigitalapps.com/jira/login.jsp?permissionViolation=true&os_destination=%2Fsecure%2FAboutPage.jspa%2Fsecure%2FAboutPage.jspa&page_caps=&user_role=",
+          "responseTime": 3641,
+          "screenshot": "auth-link-destination-19-1753257985863.png"
+        },
+        {
+          "linkText": "Report a problem",
+          "href": "/jira/secure/CreateIssue!default.jspa",
+          "selector": "a[href=\"/jira/secure/CreateIssue!default.jspa\"]",
+          "isClickable": true,
+          "destinationStatus": "SUCCESS",
+          "destinationUrl": "https://jirauat.smedigitalapps.com/jira/secure/CreateIssue!default.jspa",
+          "responseTime": 3287,
+          "screenshot": "auth-link-destination-20-1753257989787.png"
+        },
+        {
+          "linkText": "Atlassian",
+          "href": "http://www.atlassian.com/",
+          "selector": "a[href=\"http://www.atlassian.com/\"]",
+          "isClickable": true,
+          "destinationStatus": "SUCCESS",
+          "destinationUrl": "https://www.atlassian.com/",
+          "responseTime": 486
+        }
+      ],
+      "pageScreenshot": "auth-page-create-issue-1753257922751.png",
+      "crawlDuration": 74835
+    },
+    {
+      "pageName": "Projects",
+      "pageUrl": "https://jirauat.smedigitalapps.com/jira/secure/BrowseProjects.jspa",
+      "authRequired": true,
+      "totalLinks": 0,
+      "clickableLinks": 0,
+      "brokenLinks": 0,
+      "workingLinks": 0,
+      "unresponsiveLinks": 0,
+      "authBlockedLinks": 1,
+      "linkResults": [
+        {
+          "linkText": "Page blocked by authentication",
+          "href": "https://jirauat.smedigitalapps.com/jira/secure/BrowseProjects.jspa",
+          "selector": "page",
+          "isClickable": false,
+          "destinationStatus": "AUTH_REQUIRED"
+        }
+      ],
+      "crawlDuration": 6527
+    },
+    {
+      "pageName": "Profile",
+      "pageUrl": "https://jirauat.smedigitalapps.com/jira/secure/ViewProfile.jspa",
+      "authRequired": true,
+      "totalLinks": 29,
+      "clickableLinks": 14,
+      "brokenLinks": 1,
+      "workingLinks": 12,
+      "unresponsiveLinks": 0,
+      "authBlockedLinks": 0,
+      "linkResults": [
+        {
+          "linkText": "Log in",
+          "href": "/jira/login.jsp?os_destination=%2Fsecure%2FViewProfile.jspa",
+          "selector": "a[href=\"/jira/login.jsp?os_destination=%2Fsecure%2FViewProfile.jspa\"]",
+          "isClickable": true,
+          "destinationStatus": "SUCCESS",
+          "destinationUrl": "https://jirauat.smedigitalapps.com/jira/login.jsp?permissionViolation=true&os_destination=%2Fsecure%2FViewProfile.jspa&page_caps=&user_role=",
+          "responseTime": 8175,
+          "screenshot": "auth-link-destination-1-1753258021112.png"
+        },
+        {
+          "linkText": "Skip to main content",
+          "href": "#main",
+          "selector": "a[href=\"#main\"]",
+          "isClickable": true,
+          "destinationStatus": "SUCCESS",
+          "destinationUrl": "https://jirauat.smedigitalapps.com/jira/login.jsp?permissionViolation=true&os_destination=%2Fsecure%2FViewProfile.jspa&page_caps=&user_role=",
+          "responseTime": 8144,
+          "screenshot": "auth-link-destination-2-1753258029864.png"
+        },
+        {
+          "linkText": "Skip to sidebar",
+          "href": "#sidebar",
+          "selector": "a[href=\"#sidebar\"]",
+          "isClickable": false,
+          "destinationStatus": "UNTESTED"
+        },
+        {
+          "linkText": "Linked Applications",
+          "href": "#app-switcher",
+          "selector": "button[href=\"#app-switcher\"]",
+          "isClickable": true,
+          "destinationStatus": "SUCCESS",
+          "destinationUrl": "https://jirauat.smedigitalapps.com/jira/login.jsp?permissionViolation=true&os_destination=%2Fsecure%2FViewProfile.jspa&page_caps=&user_role=",
+          "responseTime": 3168,
+          "screenshot": "auth-link-destination-4-1753258034185.png"
+        },
+        {
+          "linkText": "https://jirauat.smedigitalapps.com/jira/secure/MyJiraHome.jspa",
+          "href": "https://jirauat.smedigitalapps.com/jira/secure/MyJiraHome.jspa",
+          "selector": "a[href=\"https://jirauat.smedigitalapps.com/jira/secure/MyJiraHome.jspa\"]",
+          "isClickable": true,
+          "destinationStatus": "SUCCESS",
+          "destinationUrl": "https://jirauat.smedigitalapps.com/jira/secure/MyJiraHome.jspa",
+          "responseTime": 925
+        },
+        {
+          "linkText": "Dashboards",
+          "href": "/jira/secure/Dashboard.jspa",
+          "selector": "a[href=\"/jira/secure/Dashboard.jspa\"]",
+          "isClickable": true,
+          "destinationStatus": "SUCCESS",
+          "destinationUrl": "https://jirauat.smedigitalapps.com/jira/login.jsp?permissionViolation=true&os_destination=%2Fsecure%2FViewProfile.jspa&page_caps=&user_role=",
+          "responseTime": 3177,
+          "screenshot": "auth-link-destination-6-1753258039435.png"
+        },
+        {
+          "linkText": "Issues",
+          "href": "/jira/issues/",
+          "selector": "a[href=\"/jira/issues/\"]",
+          "isClickable": true,
+          "destinationStatus": "SUCCESS",
+          "destinationUrl": "https://jirauat.smedigitalapps.com/jira/login.jsp?permissionViolation=true&os_destination=%2Fsecure%2FViewProfile.jspa&page_caps=&user_role=",
+          "responseTime": 3205,
+          "screenshot": "auth-link-destination-7-1753258043264.png"
+        },
+        {
+          "linkText": "input-element",
+          "href": "",
+          "selector": "input",
+          "isClickable": false,
+          "destinationStatus": "UNTESTED"
+        },
+        {
+          "linkText": "Give feedback to Atlassian",
+          "href": "#",
+          "selector": "a[href=\"#\"]",
+          "isClickable": true,
+          "destinationStatus": "SUCCESS",
+          "destinationUrl": "https://jirauat.smedigitalapps.com/jira/login.jsp?permissionViolation=true&os_destination=%2Fsecure%2FViewProfile.jspa&page_caps=&user_role=",
+          "responseTime": 3144,
+          "screenshot": "auth-link-destination-9-1753258047566.png"
+        },
+        {
+          "linkText": "Help",
+          "href": "/jira/secure/ViewKeyboardShortcuts!default.jspa",
+          "selector": "a[href=\"/jira/secure/ViewKeyboardShortcuts!default.jspa\"]",
+          "isClickable": true,
+          "destinationStatus": "SUCCESS",
+          "destinationUrl": "https://jirauat.smedigitalapps.com/jira/login.jsp?permissionViolation=true&os_destination=%2Fsecure%2FViewProfile.jspa&page_caps=&user_role=",
+          "responseTime": 3202,
+          "screenshot": "auth-link-destination-10-1753258051396.png"
+        },
+        {
+          "linkText": "Keyboard Shortcuts",
+          "href": "/jira/secure/ViewKeyboardShortcuts!default.jspa",
+          "selector": "a[href=\"/jira/secure/ViewKeyboardShortcuts!default.jspa\"]",
+          "isClickable": false,
+          "destinationStatus": "UNTESTED"
+        },
+        {
+          "linkText": "About Jira",
+          "href": "/jira/secure/AboutPage.jspa",
+          "selector": "a[href=\"/jira/secure/AboutPage.jspa\"]",
+          "isClickable": false,
+          "destinationStatus": "UNTESTED"
+        },
+        {
+          "linkText": "Jira Credits",
+          "href": "/jira/secure/credits/AroundTheWorld!default.jspa",
+          "selector": "a[href=\"/jira/secure/credits/AroundTheWorld!default.jspa\"]",
+          "isClickable": false,
+          "destinationStatus": "UNTESTED"
+        },
+        {
+          "linkText": "Log In",
+          "href": "/jira/login.jsp?os_destination=%2Fsecure%2FViewProfile.jspa",
+          "selector": "a[href=\"/jira/login.jsp?os_destination=%2Fsecure%2FViewProfile.jspa\"]",
+          "isClickable": false,
+          "destinationStatus": "UNTESTED"
+        },
+        {
+          "linkText": "Time to SLA Preferences",
+          "href": "/jira/plugins/servlet/tts/preferences",
+          "selector": "a[href=\"/jira/plugins/servlet/tts/preferences\"]",
+          "isClickable": false,
+          "destinationStatus": "UNTESTED"
+        },
+        {
+          "linkText": "Switch To User",
+          "href": "",
+          "selector": "span",
+          "isClickable": false,
+          "destinationStatus": "UNTESTED"
+        },
+        {
+          "linkText": "*",
+          "href": "",
+          "selector": "span",
+          "isClickable": false,
+          "destinationStatus": "UNTESTED"
+        },
+        {
+          "linkText": "*",
+          "href": "",
+          "selector": "span",
+          "isClickable": false,
+          "destinationStatus": "UNTESTED"
+        },
+        {
+          "linkText": "button-element",
+          "href": "",
+          "selector": "button",
+          "isClickable": false,
+          "destinationStatus": "UNTESTED"
+        },
+        {
+          "linkText": "input-element",
+          "href": "",
+          "selector": "input",
+          "isClickable": false,
+          "destinationStatus": "UNTESTED"
+        },
+        {
+          "linkText": "Log in",
+          "href": "",
+          "selector": "button",
+          "isClickable": false,
+          "destinationStatus": "UNTESTED"
+        },
+        {
+          "linkText": "Continue",
+          "href": "",
+          "selector": "button",
+          "isClickable": true,
+          "destinationStatus": "UNTESTED"
+        },
+        {
+          "linkText": "Log in with SSO",
+          "href": "",
+          "selector": "button",
+          "isClickable": false,
+          "destinationStatus": "UNTESTED"
+        },
+        {
+          "linkText": "Can't log in?",
+          "href": "/jira/secure/ForgotLoginDetails.jspa",
+          "selector": "a[href=\"/jira/secure/ForgotLoginDetails.jspa\"]",
+          "isClickable": true,
+          "destinationStatus": "ERROR",
+          "responseTime": 1117,
+          "errorMessage": "Element not found on test page"
+        },
+        {
+          "linkText": "Cancel (ESC)",
+          "href": "#",
+          "selector": "a[href=\"#\"]",
+          "isClickable": false,
+          "destinationStatus": "UNTESTED"
+        },
+        {
+          "linkText": "Project Management Software",
+          "href": "https://www.atlassian.com/software/jira",
+          "selector": "a[href=\"https://www.atlassian.com/software/jira\"]",
+          "isClickable": true,
+          "destinationStatus": "SUCCESS",
+          "destinationUrl": "https://www.atlassian.com/software/jira",
+          "responseTime": 496
+        },
+        {
+          "linkText": "About Jira",
+          "href": "/jira/secure/AboutPage.jspa/secure/AboutPage.jspa",
+          "selector": "a[href=\"/jira/secure/AboutPage.jspa/secure/AboutPage.jspa\"]",
+          "isClickable": true,
+          "destinationStatus": "SUCCESS",
+          "destinationUrl": "https://jirauat.smedigitalapps.com/jira/login.jsp?permissionViolation=true&os_destination=%2Fsecure%2FAboutPage.jspa%2Fsecure%2FAboutPage.jspa&page_caps=&user_role=",
+          "responseTime": 3504,
+          "screenshot": "auth-link-destination-27-1753258065611.png"
+        },
+        {
+          "linkText": "Report a problem",
+          "href": "/jira/secure/CreateIssue!default.jspa",
+          "selector": "a[href=\"/jira/secure/CreateIssue!default.jspa\"]",
+          "isClickable": true,
+          "destinationStatus": "SUCCESS",
+          "destinationUrl": "https://jirauat.smedigitalapps.com/jira/secure/CreateIssue!default.jspa",
+          "responseTime": 3377,
+          "screenshot": "auth-link-destination-28-1753258069628.png"
+        },
+        {
+          "linkText": "Atlassian",
+          "href": "http://www.atlassian.com/",
+          "selector": "a[href=\"http://www.atlassian.com/\"]",
+          "isClickable": true,
+          "destinationStatus": "SUCCESS",
+          "destinationUrl": "https://www.atlassian.com/",
+          "responseTime": 321
+        }
+      ],
+      "pageScreenshot": "auth-page-profile-1753258012808.png",
+      "crawlDuration": 66195
+    },
+    {
+      "pageName": "Public Pages",
+      "pageUrl": "https://jirauat.smedigitalapps.com/jira",
+      "authRequired": false,
+      "totalLinks": 31,
+      "clickableLinks": 20,
+      "brokenLinks": 2,
+      "workingLinks": 16,
+      "unresponsiveLinks": 0,
+      "authBlockedLinks": 0,
+      "linkResults": [
+        {
+          "linkText": "Log in",
+          "href": "/jira/login.jsp?os_destination=%2Fdefault.jsp",
+          "selector": "a[href=\"/jira/login.jsp?os_destination=%2Fdefault.jsp\"]",
+          "isClickable": true,
+          "destinationStatus": "ERROR",
+          "responseTime": 1159,
+          "errorMessage": "Element not found on test page"
+        },
+        {
+          "linkText": "Skip to main content",
+          "href": "#main",
+          "selector": "a[href=\"#main\"]",
+          "isClickable": true,
+          "destinationStatus": "SUCCESS",
+          "destinationUrl": "https://jirauat.smedigitalapps.com/jira/secure/Dashboard.jspa",
+          "responseTime": 8158,
+          "screenshot": "auth-link-destination-2-1753258093533.png"
+        },
+        {
+          "linkText": "Skip to sidebar",
+          "href": "#sidebar",
+          "selector": "a[href=\"#sidebar\"]",
+          "isClickable": false,
+          "destinationStatus": "UNTESTED"
+        },
+        {
+          "linkText": "Linked Applications",
+          "href": "#app-switcher",
+          "selector": "button[href=\"#app-switcher\"]",
+          "isClickable": true,
+          "destinationStatus": "SUCCESS",
+          "destinationUrl": "https://jirauat.smedigitalapps.com/jira/secure/Dashboard.jspa",
+          "responseTime": 3302,
+          "screenshot": "auth-link-destination-4-1753258098014.png"
+        },
+        {
+          "linkText": "https://jirauat.smedigitalapps.com/jira/secure/MyJiraHome.jspa",
+          "href": "https://jirauat.smedigitalapps.com/jira/secure/MyJiraHome.jspa",
+          "selector": "a[href=\"https://jirauat.smedigitalapps.com/jira/secure/MyJiraHome.jspa\"]",
+          "isClickable": true,
+          "destinationStatus": "SUCCESS",
+          "destinationUrl": "https://jirauat.smedigitalapps.com/jira/secure/MyJiraHome.jspa",
+          "responseTime": 727
+        },
+        {
+          "linkText": "Dashboards",
+          "href": "/jira/secure/Dashboard.jspa",
+          "selector": "a[href=\"/jira/secure/Dashboard.jspa\"]",
+          "isClickable": true,
+          "destinationStatus": "SUCCESS",
+          "destinationUrl": "https://jirauat.smedigitalapps.com/jira/secure/Dashboard.jspa",
+          "responseTime": 3456,
+          "screenshot": "auth-link-destination-6-1753258103378.png"
+        },
+        {
+          "linkText": "Issues",
+          "href": "/jira/issues/",
+          "selector": "a[href=\"/jira/issues/\"]",
+          "isClickable": true,
+          "destinationStatus": "SUCCESS",
+          "destinationUrl": "https://jirauat.smedigitalapps.com/jira/secure/Dashboard.jspa",
+          "responseTime": 3302,
+          "screenshot": "auth-link-destination-7-1753258107316.png"
+        },
+        {
+          "linkText": "input-element",
+          "href": "",
+          "selector": "input",
+          "isClickable": false,
+          "destinationStatus": "UNTESTED"
+        },
+        {
+          "linkText": "Give feedback to Atlassian",
+          "href": "#",
+          "selector": "a[href=\"#\"]",
+          "isClickable": true,
+          "destinationStatus": "SUCCESS",
+          "destinationUrl": "https://jirauat.smedigitalapps.com/jira/secure/Dashboard.jspa",
+          "responseTime": 3342,
+          "screenshot": "auth-link-destination-9-1753258111829.png"
+        },
+        {
+          "linkText": "Help",
+          "href": "/jira/secure/ViewKeyboardShortcuts!default.jspa",
+          "selector": "a[href=\"/jira/secure/ViewKeyboardShortcuts!default.jspa\"]",
+          "isClickable": true,
+          "destinationStatus": "SUCCESS",
+          "destinationUrl": "https://jirauat.smedigitalapps.com/jira/secure/Dashboard.jspa",
+          "responseTime": 3513,
+          "screenshot": "auth-link-destination-10-1753258115998.png"
+        },
+        {
+          "linkText": "Keyboard Shortcuts",
+          "href": "/jira/secure/ViewKeyboardShortcuts!default.jspa",
+          "selector": "a[href=\"/jira/secure/ViewKeyboardShortcuts!default.jspa\"]",
+          "isClickable": false,
+          "destinationStatus": "UNTESTED"
+        },
+        {
+          "linkText": "About Jira",
+          "href": "/jira/secure/AboutPage.jspa",
+          "selector": "a[href=\"/jira/secure/AboutPage.jspa\"]",
+          "isClickable": false,
+          "destinationStatus": "UNTESTED"
+        },
+        {
+          "linkText": "Jira Credits",
+          "href": "/jira/secure/credits/AroundTheWorld!default.jspa",
+          "selector": "a[href=\"/jira/secure/credits/AroundTheWorld!default.jspa\"]",
+          "isClickable": false,
+          "destinationStatus": "UNTESTED"
+        },
+        {
+          "linkText": "Log In",
+          "href": "/jira/login.jsp?os_destination=%2Fdefault.jsp",
+          "selector": "a[href=\"/jira/login.jsp?os_destination=%2Fdefault.jsp\"]",
+          "isClickable": true,
+          "destinationStatus": "ERROR",
+          "responseTime": 1339,
+          "errorMessage": "Element not found on test page"
+        },
+        {
+          "linkText": "Time to SLA Preferences",
+          "href": "/jira/plugins/servlet/tts/preferences",
+          "selector": "a[href=\"/jira/plugins/servlet/tts/preferences\"]",
+          "isClickable": false,
+          "destinationStatus": "UNTESTED"
+        },
+        {
+          "linkText": "Tools",
+          "href": "#tools-dropdown-items",
+          "selector": "a[href=\"#tools-dropdown-items\"]",
+          "isClickable": true,
+          "destinationStatus": "SUCCESS",
+          "destinationUrl": "https://jirauat.smedigitalapps.com/jira/secure/Dashboard.jspa",
+          "responseTime": 3387,
+          "screenshot": "auth-link-destination-16-1753258124007.png"
+        },
+        {
+          "linkText": "View as wallboard",
+          "href": "https://jirauat.smedigitalapps.com/jira/plugins/servlet/Wallboard/?dashboardId=10000",
+          "selector": "a[href=\"https://jirauat.smedigitalapps.com/jira/plugins/servlet/Wallboard/?dashboardId=10000\"]",
+          "isClickable": false,
+          "destinationStatus": "UNTESTED"
+        },
+        {
+          "linkText": "Maximise",
+          "href": "",
+          "selector": "button",
+          "isClickable": true,
+          "destinationStatus": "UNTESTED"
+        },
+        {
+          "linkText": "button-element",
+          "href": "",
+          "selector": "button",
+          "isClickable": true,
+          "destinationStatus": "UNTESTED"
+        },
+        {
+          "linkText": "Minimise",
+          "href": "#",
+          "selector": "a[href=\"#\"]",
+          "isClickable": false,
+          "destinationStatus": "UNTESTED"
+        },
+        {
+          "linkText": "input-element",
+          "href": "",
+          "selector": "input",
+          "isClickable": false,
+          "destinationStatus": "UNTESTED"
+        },
+        {
+          "linkText": "JIRA User's Guide",
+          "href": "https://confluence.atlassian.com/jirasoftwareserver0912/jira-software-data-center-and-server-9-12-documentation-1346048591.html",
+          "selector": "a[href=\"https://confluence.atlassian.com/jirasoftwareserver0912/jira-software-data-center-and-server-9-12-documentation-1346048591.html\"]",
+          "isClickable": true,
+          "destinationStatus": "SUCCESS",
+          "destinationUrl": "https://confluence.atlassian.com/jirasoftwareserver0912/jira-software-data-center-and-server-9-12-documentation-1346048591.html",
+          "responseTime": 332
+        },
+        {
+          "linkText": "jira.support@sonymusic.com",
+          "href": "mailto:jira.support@sonymusic.com",
+          "selector": "a[href=\"mailto:jira.support@sonymusic.com\"]",
+          "isClickable": true,
+          "destinationStatus": "SUCCESS",
+          "destinationUrl": "https://jirauat.smedigitalapps.com/jira/secure/Dashboard.jspa",
+          "responseTime": 3529,
+          "screenshot": "auth-link-destination-23-1753258131718.png"
+        },
+        {
+          "linkText": "JIRA and Wiki/Confluence access and request policies",
+          "href": "https://wiki.smedigitalapps.com/wiki/display/JIRAPS/JIRA+and+Confluence+access+and+request+policies",
+          "selector": "a[href=\"https://wiki.smedigitalapps.com/wiki/display/JIRAPS/JIRA+and+Confluence+access+and+request+policies\"]",
+          "isClickable": true,
+          "destinationStatus": "SUCCESS",
+          "destinationUrl": "https://wiki.smedigitalapps.com/wiki/spaces/JIRAPS/pages/19497611/JIRA+and+Confluence+access+and+request+policies",
+          "responseTime": 1523
+        },
+        {
+          "linkText": "http://sap.sonymusic.com",
+          "href": "http://sap.sonymusic.com",
+          "selector": "a[href=\"http://sap.sonymusic.com\"]",
+          "isClickable": true,
+          "destinationStatus": "SUCCESS",
+          "destinationUrl": "https://wiki.smedigitalapps.com/wiki/spaces/SAP/pages/18548510/Support",
+          "responseTime": 1548
+        },
+        {
+          "linkText": "Project Management Software",
+          "href": "https://www.atlassian.com/software/jira",
+          "selector": "a[href=\"https://www.atlassian.com/software/jira\"]",
+          "isClickable": true,
+          "destinationStatus": "SUCCESS",
+          "destinationUrl": "https://www.atlassian.com/software/jira",
+          "responseTime": 391
+        },
+        {
+          "linkText": "About Jira",
+          "href": "/jira/secure/AboutPage.jspa/secure/AboutPage.jspa",
+          "selector": "a[href=\"/jira/secure/AboutPage.jspa/secure/AboutPage.jspa\"]",
+          "isClickable": true,
+          "destinationStatus": "SUCCESS",
+          "destinationUrl": "https://jirauat.smedigitalapps.com/jira/login.jsp?permissionViolation=true&os_destination=%2Fsecure%2FAboutPage.jspa%2Fsecure%2FAboutPage.jspa&page_caps=&user_role=",
+          "responseTime": 3992,
+          "screenshot": "auth-link-destination-27-1753258141399.png"
+        },
+        {
+          "linkText": "Report a problem",
+          "href": "/jira/secure/CreateIssue!default.jspa",
+          "selector": "a[href=\"/jira/secure/CreateIssue!default.jspa\"]",
+          "isClickable": true,
+          "destinationStatus": "SUCCESS",
+          "destinationUrl": "https://jirauat.smedigitalapps.com/jira/secure/CreateIssue!default.jspa",
+          "responseTime": 3705,
+          "screenshot": "auth-link-destination-28-1753258146203.png"
+        },
+        {
+          "linkText": "Atlassian",
+          "href": "http://www.atlassian.com/",
+          "selector": "a[href=\"http://www.atlassian.com/\"]",
+          "isClickable": true,
+          "destinationStatus": "SUCCESS",
+          "destinationUrl": "https://www.atlassian.com/",
+          "responseTime": 319
+        },
+        {
+          "linkText": "javascript:;",
+          "href": "javascript:;",
+          "selector": "a[href=\"javascript:;\"]",
+          "isClickable": false,
+          "destinationStatus": "UNTESTED"
+        },
+        {
+          "linkText": "javascript:;",
+          "href": "javascript:;",
+          "selector": "a[href=\"javascript:;\"]",
+          "isClickable": false,
+          "destinationStatus": "UNTESTED"
+        }
+      ],
+      "pageScreenshot": "auth-page-public-pages-1753258083535.png",
+      "crawlDuration": 73849
+    }
+  ],
+  "summary": {
+    "workingLinks": 68,
+    "brokenLinks": 4,
+    "unresponsiveLinks": 0,
+    "nonClickableLinks": 123,
+    "authBlockedLinks": 1
+  },
+  "criticalIssues": [
+    "4 broken links found across 6 pages",
+    "1 links blocked by authentication issues"
+  ],
+  "recommendations": [
+    "Fix broken links - these create poor user experience and may block workflows",
+    "Review authentication requirements for blocked links",
+    "Review non-clickable elements that appear to be links - potential UX improvements"
+  ]
+}

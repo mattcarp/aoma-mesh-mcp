@@ -1,0 +1,98 @@
+{
+  "testSuite": "global-jira-functional",
+  "timestamp": "2025-07-22T17:02:31.305Z",
+  "environment": "UAT",
+  "results": [
+    {
+      "testName": "Dashboard Functionality & Gadget Manipulation",
+      "passed": true,
+      "duration": 84538,
+      "actions": [
+        "Navigate to main dashboard",
+        "Captured initial dashboard state",
+        "Attempt to add dashboard gadget",
+        "Clicked Add Gadget button",
+        "Captured gadget selection dialog",
+        "Test dashboard filter functionality"
+      ],
+      "evidence": [
+        "dashboard-initial-1753203575835.png",
+        "dashboard-add-gadget-1753203578018.png"
+      ],
+      "errors": [],
+      "dataManipulated": true
+    },
+    {
+      "testName": "Administration Panel Access & Configuration",
+      "passed": false,
+      "duration": 47549,
+      "actions": [
+        "Navigate to administration panel",
+        "Attempting to access: ViewApplicationProperties.jspa",
+        "Access denied or redirected",
+        "Attempting to access: UserBrowser.jspa",
+        "Access denied or redirected",
+        "Attempting to access: ViewProjects.jspa",
+        "Access denied or redirected",
+        "Attempting to access: AdminSummary.jspa",
+        "Access denied or redirected"
+      ],
+      "evidence": [],
+      "errors": [],
+      "dataManipulated": false
+    },
+    {
+      "testName": "Reporting Features & Data Export",
+      "passed": false,
+      "duration": 5608,
+      "actions": [
+        "Navigate to reports section",
+        "Captured reports main page"
+      ],
+      "evidence": [
+        "reports-main-1753203691200.png"
+      ],
+      "errors": [],
+      "dataManipulated": false
+    },
+    {
+      "testName": "ITSM Ticket Creation & Workflow Manipulation",
+      "passed": false,
+      "duration": 30002,
+      "actions": [
+        "Navigate to ITSM project"
+      ],
+      "evidence": [],
+      "errors": [
+        "Ticket manipulation test failed: page.goto: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"https://jirauat.smedigitalapps.com/jira/browse/ITSM\", waiting until \"load\"\u001b[22m\n"
+      ],
+      "dataManipulated": false
+    },
+    {
+      "testName": "Filter & Search Data Manipulation",
+      "passed": false,
+      "duration": 30002,
+      "actions": [
+        "Navigate to Issue Navigator"
+      ],
+      "evidence": [],
+      "errors": [
+        "Filter and search test failed: page.goto: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"https://jirauat.smedigitalapps.com/jira/issues/?jql=project%20%3D%20ITSM\", waiting until \"load\"\u001b[22m\n"
+      ],
+      "dataManipulated": false
+    }
+  ],
+  "summary": {
+    "totalTests": 5,
+    "passed": 1,
+    "failed": 4,
+    "dataManipulationTests": 1,
+    "functionalCoverage": [
+      "Dashboard Interaction",
+      "Administration Panel Access",
+      "Reporting & Export",
+      "Ticket Creation & Workflows",
+      "Search & Filter Manipulation"
+    ]
+  }
+}

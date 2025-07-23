@@ -1,0 +1,60 @@
+{
+  "totalAttempts": 5,
+  "successfulAttempts": 0,
+  "failureRate": "100.0%",
+  "avgDuration": 31,
+  "consistentFailure": true,
+  "attempts": [
+    {
+      "attemptNumber": 1,
+      "browser": "chromium",
+      "scenario": "Standard Task Creation",
+      "timestamp": "2025-07-22T19:08:07.365Z",
+      "success": false,
+      "duration": 31765,
+      "failurePoint": "Unexpected error",
+      "errorDetails": "page.goto: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"https://jirauat.smedigitalapps.com/jira/secure/Dashboard.jspa\", waiting until \"networkidle\"\u001b[22m\n"
+    },
+    {
+      "attemptNumber": 2,
+      "browser": "chromium",
+      "scenario": "Bug Report Creation",
+      "timestamp": "2025-07-22T19:09:09.619Z",
+      "success": false,
+      "duration": 31389,
+      "failurePoint": "Unexpected error",
+      "errorDetails": "page.goto: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"https://jirauat.smedigitalapps.com/jira/secure/Dashboard.jspa\", waiting until \"networkidle\"\u001b[22m\n"
+    },
+    {
+      "attemptNumber": 3,
+      "browser": "chromium",
+      "scenario": "Story Creation",
+      "timestamp": "2025-07-22T19:10:11.383Z",
+      "success": false,
+      "duration": 31133,
+      "failurePoint": "Unexpected error",
+      "errorDetails": "page.goto: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"https://jirauat.smedigitalapps.com/jira/secure/Dashboard.jspa\", waiting until \"networkidle\"\u001b[22m\n"
+    },
+    {
+      "attemptNumber": 4,
+      "browser": "chromium",
+      "scenario": "Incident Creation",
+      "timestamp": "2025-07-22T19:11:12.885Z",
+      "success": false,
+      "duration": 31426,
+      "failurePoint": "Unexpected error",
+      "errorDetails": "page.goto: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"https://jirauat.smedigitalapps.com/jira/secure/Dashboard.jspa\", waiting until \"networkidle\"\u001b[22m\n"
+    },
+    {
+      "attemptNumber": 5,
+      "browser": "chromium",
+      "scenario": "Standard Task Retry",
+      "timestamp": "2025-07-22T19:12:14.679Z",
+      "success": false,
+      "duration": 31470,
+      "failurePoint": "Unexpected error",
+      "errorDetails": "page.goto: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"https://jirauat.smedigitalapps.com/jira/secure/Dashboard.jspa\", waiting until \"networkidle\"\u001b[22m\n"
+    }
+  ],
+  "conclusion": "CONFIRMED_CRITICAL"
+}

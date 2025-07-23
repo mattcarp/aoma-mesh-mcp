@@ -1,0 +1,311 @@
+{
+  "reportTime": "2025-07-23T07:45:35.424Z",
+  "vpnStatus": {
+    "connected": true,
+    "vpnType": "Cisco Global Protect",
+    "details": "VPN tunnel interface active with IP assignment"
+  },
+  "overallStats": {
+    "totalTests": 9,
+    "consistentPasses": 3,
+    "consistentFails": 6,
+    "flakyTests": 0,
+    "overallHealth": "CRITICAL (14%)"
+  },
+  "testResults": [
+    {
+      "testName": "Network Connectivity",
+      "category": "Infrastructure",
+      "totalAttempts": 1,
+      "passed": 1,
+      "failed": 0,
+      "successRate": "100%",
+      "isFlaky": false,
+      "isConsistentFail": false,
+      "attempts": [
+        {
+          "attemptNumber": 1,
+          "timestamp": "2025-07-23T07:36:52.589Z",
+          "passed": true,
+          "duration": 1177,
+          "details": "Server responded with status 200"
+        }
+      ],
+      "conclusion": "CONSISTENT_PASS"
+    },
+    {
+      "testName": "Basic Page Access",
+      "category": "Infrastructure",
+      "totalAttempts": 1,
+      "passed": 1,
+      "failed": 0,
+      "successRate": "100%",
+      "isFlaky": false,
+      "isConsistentFail": false,
+      "attempts": [
+        {
+          "attemptNumber": 1,
+          "timestamp": "2025-07-23T07:36:59.799Z",
+          "passed": true,
+          "duration": 5177,
+          "details": "Page title: \"System Dashboard - Sony Music\""
+        }
+      ],
+      "conclusion": "CONSISTENT_PASS"
+    },
+    {
+      "testName": "Login Page Elements",
+      "category": "UI/UX",
+      "totalAttempts": 3,
+      "passed": 0,
+      "failed": 3,
+      "successRate": "0%",
+      "isFlaky": false,
+      "isConsistentFail": true,
+      "attempts": [
+        {
+          "attemptNumber": 1,
+          "timestamp": "2025-07-23T07:37:10.957Z",
+          "passed": false,
+          "duration": 9125,
+          "errorMessage": "Login form elements not found",
+          "details": "Found: 0 username fields, 0 password fields, 2 submit buttons"
+        },
+        {
+          "attemptNumber": 2,
+          "timestamp": "2025-07-23T07:37:28.400Z",
+          "passed": false,
+          "duration": 7406,
+          "errorMessage": "Login form elements not found",
+          "details": "Found: 0 username fields, 0 password fields, 2 submit buttons"
+        },
+        {
+          "attemptNumber": 3,
+          "timestamp": "2025-07-23T07:37:47.939Z",
+          "passed": false,
+          "duration": 9466,
+          "errorMessage": "Login form elements not found",
+          "details": "Found: 0 username fields, 0 password fields, 2 submit buttons"
+        }
+      ],
+      "conclusion": "CONSISTENT_FAIL"
+    },
+    {
+      "testName": "Can't Log In Clickability",
+      "category": "UI/UX",
+      "totalAttempts": 3,
+      "passed": 0,
+      "failed": 3,
+      "successRate": "0%",
+      "isFlaky": false,
+      "isConsistentFail": true,
+      "attempts": [
+        {
+          "attemptNumber": 1,
+          "timestamp": "2025-07-23T07:38:03.920Z",
+          "passed": false,
+          "duration": 13696,
+          "errorMessage": "\"Help\" text exists but is not clickable - UX ISSUE CONFIRMED",
+          "details": "Found \"Help\" via selector \"text=\"Help\"\" - NOT clickable. Screenshot: cant-login-test-debug-1753256283483.png"
+        },
+        {
+          "attemptNumber": 2,
+          "timestamp": "2025-07-23T07:38:20.252Z",
+          "passed": false,
+          "duration": 6015,
+          "errorMessage": "\"Help\" text exists but is not clickable - UX ISSUE CONFIRMED",
+          "details": "Found \"Help\" via selector \"text=\"Help\"\" - NOT clickable. Screenshot: cant-login-test-debug-1753256299791.png"
+        },
+        {
+          "attemptNumber": 3,
+          "timestamp": "2025-07-23T07:38:42.840Z",
+          "passed": false,
+          "duration": 12307,
+          "errorMessage": "\"Help\" text exists but is not clickable - UX ISSUE CONFIRMED",
+          "details": "Found \"Help\" via selector \"text=\"Help\"\" - NOT clickable. Screenshot: cant-login-test-debug-1753256322410.png"
+        }
+      ],
+      "conclusion": "CONSISTENT_FAIL"
+    },
+    {
+      "testName": "Session Authentication",
+      "category": "Authentication",
+      "totalAttempts": 1,
+      "passed": 1,
+      "failed": 0,
+      "successRate": "100%",
+      "isFlaky": false,
+      "isConsistentFail": false,
+      "attempts": [
+        {
+          "attemptNumber": 1,
+          "timestamp": "2025-07-23T07:38:54.545Z",
+          "passed": true,
+          "duration": 9669,
+          "details": "Final URL: https://jirauat.smedigitalapps.com/jira/secure/Dashboard.jspa"
+        }
+      ],
+      "conclusion": "CONSISTENT_PASS"
+    },
+    {
+      "testName": "Dashboard Navigation",
+      "category": "Navigation",
+      "totalAttempts": 3,
+      "passed": 0,
+      "failed": 3,
+      "successRate": "0%",
+      "isFlaky": false,
+      "isConsistentFail": true,
+      "attempts": [
+        {
+          "attemptNumber": 1,
+          "timestamp": "2025-07-23T07:39:07.954Z",
+          "passed": false,
+          "duration": 11361,
+          "errorMessage": "Key navigation elements missing from dashboard",
+          "details": "Found 1/3 key navigation elements (Create: 0, Issues: 1, Projects: 0)"
+        },
+        {
+          "attemptNumber": 2,
+          "timestamp": "2025-07-23T07:39:30.767Z",
+          "passed": false,
+          "duration": 12781,
+          "errorMessage": "Key navigation elements missing from dashboard",
+          "details": "Found 1/3 key navigation elements (Create: 0, Issues: 1, Projects: 0)"
+        },
+        {
+          "attemptNumber": 3,
+          "timestamp": "2025-07-23T07:39:52.187Z",
+          "passed": false,
+          "duration": 11379,
+          "errorMessage": "Key navigation elements missing from dashboard",
+          "details": "Found 1/3 key navigation elements (Create: 0, Issues: 1, Projects: 0)"
+        }
+      ],
+      "conclusion": "CONSISTENT_FAIL"
+    },
+    {
+      "testName": "Create Button Accessibility",
+      "category": "Core Functions",
+      "totalAttempts": 3,
+      "passed": 0,
+      "failed": 3,
+      "successRate": "0%",
+      "isFlaky": false,
+      "isConsistentFail": true,
+      "attempts": [
+        {
+          "attemptNumber": 1,
+          "timestamp": "2025-07-23T07:40:02.832Z",
+          "passed": false,
+          "duration": 8604,
+          "errorMessage": "Create button not found",
+          "details": "Create button is not visible on dashboard"
+        },
+        {
+          "attemptNumber": 2,
+          "timestamp": "2025-07-23T07:40:24.437Z",
+          "passed": false,
+          "duration": 11575,
+          "errorMessage": "Create button not found",
+          "details": "Create button is not visible on dashboard"
+        },
+        {
+          "attemptNumber": 3,
+          "timestamp": "2025-07-23T07:40:47.506Z",
+          "passed": false,
+          "duration": 13033,
+          "errorMessage": "Create button not found",
+          "details": "Create button is not visible on dashboard"
+        }
+      ],
+      "conclusion": "CONSISTENT_FAIL"
+    },
+    {
+      "testName": "Ticket Creation Form",
+      "category": "Core Functions",
+      "totalAttempts": 3,
+      "passed": 0,
+      "failed": 3,
+      "successRate": "0%",
+      "isFlaky": false,
+      "isConsistentFail": true,
+      "attempts": [
+        {
+          "attemptNumber": 1,
+          "timestamp": "2025-07-23T07:41:29.879Z",
+          "passed": false,
+          "duration": 40341,
+          "errorMessage": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('text=Create').first()\u001b[22m\n",
+          "details": "Ticket creation form test failed"
+        },
+        {
+          "attemptNumber": 2,
+          "timestamp": "2025-07-23T07:42:18.397Z",
+          "passed": false,
+          "duration": 38462,
+          "errorMessage": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('text=Create').first()\u001b[22m\n",
+          "details": "Ticket creation form test failed"
+        },
+        {
+          "attemptNumber": 3,
+          "timestamp": "2025-07-23T07:43:09.031Z",
+          "passed": false,
+          "duration": 40594,
+          "errorMessage": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('text=Create').first()\u001b[22m\n",
+          "details": "Ticket creation form test failed"
+        }
+      ],
+      "conclusion": "CONSISTENT_FAIL"
+    },
+    {
+      "testName": "Ticket Submission",
+      "category": "Core Functions",
+      "totalAttempts": 3,
+      "passed": 0,
+      "failed": 3,
+      "successRate": "0%",
+      "isFlaky": false,
+      "isConsistentFail": true,
+      "attempts": [
+        {
+          "attemptNumber": 1,
+          "timestamp": "2025-07-23T07:43:53.631Z",
+          "passed": false,
+          "duration": 42563,
+          "errorMessage": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('text=Create').first()\u001b[22m\n",
+          "details": "Ticket submission test failed"
+        },
+        {
+          "attemptNumber": 2,
+          "timestamp": "2025-07-23T07:44:42.382Z",
+          "passed": false,
+          "duration": 38710,
+          "errorMessage": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('text=Create').first()\u001b[22m\n",
+          "details": "Ticket submission test failed"
+        },
+        {
+          "attemptNumber": 3,
+          "timestamp": "2025-07-23T07:45:33.422Z",
+          "passed": false,
+          "duration": 40992,
+          "errorMessage": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('text=Create').first()\u001b[22m\n",
+          "details": "Ticket submission test failed"
+        }
+      ],
+      "conclusion": "CONSISTENT_FAIL"
+    }
+  ],
+  "recommendations": [
+    "CRITICAL: 6 tests show consistent failure - investigate if real issues or network problems",
+    "UX ISSUES: 2 user interface problems found - needs development attention"
+  ],
+  "nextActions": [
+    "Investigate: Login Page Elements (UI/UX) - consistent failure across 3 attempts",
+    "Investigate: Can't Log In Clickability (UI/UX) - consistent failure across 3 attempts",
+    "Investigate: Dashboard Navigation (Navigation) - consistent failure across 3 attempts",
+    "Investigate: Create Button Accessibility (Core Functions) - consistent failure across 3 attempts",
+    "Investigate: Ticket Creation Form (Core Functions) - consistent failure across 3 attempts",
+    "Investigate: Ticket Submission (Core Functions) - consistent failure across 3 attempts"
+  ]
+}

@@ -1,0 +1,671 @@
+{
+  "testInfo": {
+    "timestamp": "2025-07-22T16:25:08.415Z",
+    "url": "https://jirauat.smedigitalapps.com/jira/issues/?jql=project%20%3D%20ITSM",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36",
+    "viewport": {
+      "width": 1920,
+      "height": 1080
+    }
+  },
+  "metrics": {
+    "pageLoadTime": 9766,
+    "domContentLoaded": null,
+    "firstContentfulPaint": 1892,
+    "largestContentfulPaint": 0,
+    "firstInputDelay": 0,
+    "cumulativeLayoutShift": 0,
+    "timeToFirstByte": null,
+    "resourceCount": 57,
+    "totalResourceSize": 12884230,
+    "slowestResources": [
+      {
+        "name": "https://jirauat.smedigitalapps.com/jira/s/ecb5a5c2e5391623d37850491fa4ba7f-CDN/-xvpyln/10030006/1kd6aui/ec4d936f61dc457c0ffcc1b1de3da8cc/_/download/contextbatch/js/jira.view.issue,atl.general,viewissue.standalone,jira.navigator.kickass,jira.global,jira.navigator,jira.navigator.simple,jira.navigator.advanced,jira.general,-_super/batch.js?_v=bdb80ca&agile_global_admin_condition=true&assets-chaperone-condition-assets-imports-global-view-chaperone-sync-key=true&chaperone-condition-share-request-with-groups-issue-view-chaperone=true&condition-share-request-with-groups=true&feature-flag-condition-assets.imports.global.view=true&feature-flag-condition-assets.imports.global.view.chaperone=true&jag=true&jaguser=true&jira.create.linked.issue=true&locale=en-US&plugins.jquery.migrate.load.disabled=false&richediton=true&s_available=true&s_availableOnIssuePage=true&tempo_is_data_center_license_expiration_showing=false&tempo_is_tempo_privacy_policy_banner_showing%3F=false&tempo_is_tempo_timesheets_license_valid_and_work_on_issues=true&tempo_product_access=true&time_entry_panel=false&timesheets_access=true",
+        "type": "script",
+        "size": 11337630,
+        "duration": 5697.9000000059605,
+        "startTime": 532.5
+      },
+      {
+        "name": "https://jirauat.smedigitalapps.com/jira/s/1a2c5c7fc943226dfc7dc91da871fb10-CDN/-xvpyln/10030006/1kd6aui/966c2fb83b190e87af5a8c19d0c5ad44/_/download/contextbatch/js/_super,-flush-app-header-early-inline-resources,-jira.filter.deletion.warning:styles,-jira.webresources:auto-theme-handler,-jira.webresources:event-deferrer,-jira.webresources:resource-phase-checkpoint-init/batch.js?locale=en-US&plugins.jquery.migrate.load.disabled=false",
+        "type": "script",
+        "size": 322505,
+        "duration": 1824.4000000059605,
+        "startTime": 532.5
+      },
+      {
+        "name": "https://jirauat.smedigitalapps.com/jira/s/b16f82003fd10b3e7183355b2ce65720-CDN/-xvpyln/10030006/1kd6aui/110.3.13/_/download/batch/com.atlassian.jira.jira-tzdetect-plugin:tzdetect-banner-component/com.atlassian.jira.jira-tzdetect-plugin:tzdetect-banner-component.js?locale=en-US",
+        "type": "script",
+        "size": 3131,
+        "duration": 1335.5,
+        "startTime": 532.5
+      },
+      {
+        "name": "https://jirauat.smedigitalapps.com/jira/s/d41d8cd98f00b204e9800998ecf8427e-CDN/-xvpyln/10030006/1kd6aui/1.0/_/download/batch/jira.webresources:calendar-localisation-moment/jira.webresources:calendar-localisation-moment.js",
+        "type": "script",
+        "size": 684,
+        "duration": 1335.2000000178814,
+        "startTime": 532.5
+      },
+      {
+        "name": "https://jirauat.smedigitalapps.com/jira/s/585849e02a08ca466e8f9c3e1eafe3f7-CDN/-xvpyln/10030006/1kd6aui/4145649a03c930056930d1819e9b83d6/_/download/contextbatch/js/atl.global,-_super/batch.js?locale=en-US&plugins.jquery.migrate.load.disabled=false",
+        "type": "script",
+        "size": 8197,
+        "duration": 1322.1000000238419,
+        "startTime": 532.5
+      },
+      {
+        "name": "https://jirauat.smedigitalapps.com/jira/s/d41d8cd98f00b204e9800998ecf8427e-CDN/-xvpyln/10030006/1kd6aui/110.3.13/_/download/batch/com.atlassian.jira.jira-tzdetect-plugin:tzdetect-lib/com.atlassian.jira.jira-tzdetect-plugin:tzdetect-lib.js",
+        "type": "script",
+        "size": 590,
+        "duration": 1321.9000000059605,
+        "startTime": 532.5
+      },
+      {
+        "name": "https://jirauat.smedigitalapps.com/jira/s/903261c14d7d34fc69e5679b2658211a-CDN/-xvpyln/10030006/1kd6aui/ec4d936f61dc457c0ffcc1b1de3da8cc/_/download/contextbatch/css/jira.view.issue,atl.general,viewissue.standalone,jira.navigator.kickass,jira.global,jira.navigator,jira.navigator.simple,jira.navigator.advanced,jira.general,-_super/batch.css?_v=bdb80ca&agile_global_admin_condition=true&assets-chaperone-condition-assets-imports-global-view-chaperone-sync-key=true&chaperone-condition-share-request-with-groups-issue-view-chaperone=true&condition-share-request-with-groups=true&feature-flag-condition-assets.imports.global.view=true&feature-flag-condition-assets.imports.global.view.chaperone=true&jag=true&jaguser=true&jira.create.linked.issue=true&plugins.jquery.migrate.load.disabled=false&richediton=true&s_available=true&s_availableOnIssuePage=true&tempo_is_data_center_license_expiration_showing=false&tempo_is_tempo_privacy_policy_banner_showing%3F=false&tempo_is_tempo_timesheets_license_valid_and_work_on_issues=true&tempo_product_access=true&time_entry_panel=false&timesheets_access=true",
+        "type": "link",
+        "size": 552463,
+        "duration": 1225.4000000059605,
+        "startTime": 532.4000000059605
+      },
+      {
+        "name": "https://jirauat.smedigitalapps.com/jira/s/d41d8cd98f00b204e9800998ecf8427e-CDN/-xvpyln/10030006/1kd6aui/9c10c8a3d20c751f96a47d5566e02c11/_/download/contextbatch/js/jira.webresources:resource-phase-checkpoint-hit,-_super/batch.js?plugins.jquery.migrate.load.disabled=false",
+        "type": "script",
+        "size": 750,
+        "duration": 994.7000000178814,
+        "startTime": 1351.4000000059605
+      },
+      {
+        "name": "https://jirauat.smedigitalapps.com/jira/s/1e117fa628aba44255a8240626c2575f-CDN/-xvpyln/10030006/1kd6aui/966c2fb83b190e87af5a8c19d0c5ad44/_/download/contextbatch/css/_super,-flush-app-header-early-inline-resources,-jira.filter.deletion.warning:styles,-jira.webresources:auto-theme-handler,-jira.webresources:event-deferrer,-jira.webresources:resource-phase-checkpoint-init/batch.css?plugins.jquery.migrate.load.disabled=false",
+        "type": "link",
+        "size": 46672,
+        "duration": 815,
+        "startTime": 532.4000000059605
+      },
+      {
+        "name": "https://jirauat.smedigitalapps.com/jira/s/d41d8cd98f00b204e9800998ecf8427e-CDN/-xvpyln/10030006/1kd6aui/1.0/_/download/batch/jira.webresources:auto-theme-handler/jira.webresources:auto-theme-handler.js",
+        "type": "script",
+        "size": 674,
+        "duration": 639.1000000238419,
+        "startTime": 460.5
+      }
+    ],
+    "networkRequests": [
+      {
+        "url": "https://jirauat.smedigitalapps.com/jira/issues/?jql=project%20%3D%20ITSM",
+        "method": "GET",
+        "status": 200,
+        "responseTime": 401,
+        "responseSize": 0,
+        "resourceType": "document"
+      },
+      {
+        "url": "https://jirauat.smedigitalapps.com/jira/s/de7682e9c8626d7fd7977d08385a76e1-CDN/-xvpyln/10030006/1kd6aui/1.0/_/download/batch/jira.filter.deletion.warning:styles/jira.filter.deletion.warning:styles.css",
+        "method": "GET",
+        "status": 200,
+        "responseTime": 383,
+        "responseSize": 176,
+        "resourceType": "stylesheet"
+      },
+      {
+        "url": "https://jirauat.smedigitalapps.com/jira/s/a91d9688fcbddeffda2b7775b5281fdf-CDN/-xvpyln/10030006/1kd6aui/d97280220bec168e1953579942a13821/_/download/contextbatch/css/jira.global.look-and-feel,-_super/batch.css?plugins.jquery.migrate.load.disabled=false",
+        "method": "GET",
+        "status": 200,
+        "responseTime": 314,
+        "responseSize": 0,
+        "resourceType": "stylesheet"
+      },
+      {
+        "url": "https://jirauat.smedigitalapps.com/jira/s/d41d8cd98f00b204e9800998ecf8427e-CDN/-xvpyln/10030006/1kd6aui/110.3.13/_/download/batch/com.atlassian.jira.jira-tzdetect-plugin:tzdetect-banner-component/com.atlassian.jira.jira-tzdetect-plugin:tzdetect-banner-component.css",
+        "method": "GET",
+        "status": 200,
+        "responseTime": 315,
+        "responseSize": 175,
+        "resourceType": "stylesheet"
+      },
+      {
+        "url": "https://jirauat.smedigitalapps.com/jira/s/1e117fa628aba44255a8240626c2575f-CDN/-xvpyln/10030006/1kd6aui/966c2fb83b190e87af5a8c19d0c5ad44/_/download/contextbatch/css/_super,-flush-app-header-early-inline-resources,-jira.filter.deletion.warning:styles,-jira.webresources:auto-theme-handler,-jira.webresources:event-deferrer,-jira.webresources:resource-phase-checkpoint-init/batch.css?plugins.jquery.migrate.load.disabled=false",
+        "method": "GET",
+        "status": 200,
+        "responseTime": 315,
+        "responseSize": 0,
+        "resourceType": "stylesheet"
+      },
+      {
+        "url": "https://jirauat.smedigitalapps.com/jira/s/903261c14d7d34fc69e5679b2658211a-CDN/-xvpyln/10030006/1kd6aui/ec4d936f61dc457c0ffcc1b1de3da8cc/_/download/contextbatch/css/jira.view.issue,atl.general,viewissue.standalone,jira.navigator.kickass,jira.global,jira.navigator,jira.navigator.simple,jira.navigator.advanced,jira.general,-_super/batch.css?_v=bdb80ca&agile_global_admin_condition=true&assets-chaperone-condition-assets-imports-global-view-chaperone-sync-key=true&chaperone-condition-share-request-with-groups-issue-view-chaperone=true&condition-share-request-with-groups=true&feature-flag-condition-assets.imports.global.view=true&feature-flag-condition-assets.imports.global.view.chaperone=true&jag=true&jaguser=true&jira.create.linked.issue=true&plugins.jquery.migrate.load.disabled=false&richediton=true&s_available=true&s_availableOnIssuePage=true&tempo_is_data_center_license_expiration_showing=false&tempo_is_tempo_privacy_policy_banner_showing%3F=false&tempo_is_tempo_timesheets_license_valid_and_work_on_issues=true&tempo_product_access=true&time_entry_panel=false&timesheets_access=true",
+        "method": "GET",
+        "status": 200,
+        "responseTime": 315,
+        "responseSize": 0,
+        "resourceType": "stylesheet"
+      },
+      {
+        "url": "https://jirauat.smedigitalapps.com/jira/s/d41d8cd98f00b204e9800998ecf8427e-CDN/-xvpyln/10030006/1kd6aui/1.0/_/download/batch/jira.webresources:event-deferrer/jira.webresources:event-deferrer.js",
+        "method": "GET",
+        "status": 200,
+        "responseTime": 633,
+        "responseSize": 0,
+        "resourceType": "script"
+      },
+      {
+        "url": "https://jirauat.smedigitalapps.com/jira/s/d41d8cd98f00b204e9800998ecf8427e-CDN/-xvpyln/10030006/1kd6aui/1.0/_/download/batch/jira.webresources:auto-theme-handler/jira.webresources:auto-theme-handler.js",
+        "method": "GET",
+        "status": 200,
+        "responseTime": 635,
+        "responseSize": 0,
+        "resourceType": "script"
+      },
+      {
+        "url": "https://jirauat.smedigitalapps.com/jira/secure/useravatar?size=small&ownerId=mcarpent&avatarId=19004",
+        "method": "GET",
+        "status": 200,
+        "responseTime": 257,
+        "responseSize": 1481,
+        "resourceType": "image"
+      },
+      {
+        "url": "https://jirauat.smedigitalapps.com/jira/s/-xvpyln/10030006/1kd6aui/_/jira-logo-scaled.png",
+        "method": "GET",
+        "status": 200,
+        "responseTime": 262,
+        "responseSize": 5502,
+        "resourceType": "image"
+      },
+      {
+        "url": "https://jirauat.smedigitalapps.com/jira/s/d41d8cd98f00b204e9800998ecf8427e-CDN/-xvpyln/10030006/1kd6aui/110.3.13/_/download/batch/com.atlassian.jira.jira-tzdetect-plugin:tzdetect-lib/com.atlassian.jira.jira-tzdetect-plugin:tzdetect-lib.js",
+        "method": "GET",
+        "status": 200,
+        "responseTime": 1356,
+        "responseSize": 0,
+        "resourceType": "script"
+      },
+      {
+        "url": "https://jirauat.smedigitalapps.com/jira/s/585849e02a08ca466e8f9c3e1eafe3f7-CDN/-xvpyln/10030006/1kd6aui/4145649a03c930056930d1819e9b83d6/_/download/contextbatch/js/atl.global,-_super/batch.js?locale=en-US&plugins.jquery.migrate.load.disabled=false",
+        "method": "GET",
+        "status": 200,
+        "responseTime": 1356,
+        "responseSize": 0,
+        "resourceType": "script"
+      },
+      {
+        "url": "https://jirauat.smedigitalapps.com/jira/s/b16f82003fd10b3e7183355b2ce65720-CDN/-xvpyln/10030006/1kd6aui/110.3.13/_/download/batch/com.atlassian.jira.jira-tzdetect-plugin:tzdetect-banner-component/com.atlassian.jira.jira-tzdetect-plugin:tzdetect-banner-component.js?locale=en-US",
+        "method": "GET",
+        "status": 200,
+        "responseTime": 1356,
+        "responseSize": 0,
+        "resourceType": "script"
+      },
+      {
+        "url": "https://jirauat.smedigitalapps.com/jira/s/d41d8cd98f00b204e9800998ecf8427e-CDN/-xvpyln/10030006/1kd6aui/1.0/_/download/batch/jira.webresources:calendar-localisation-moment/jira.webresources:calendar-localisation-moment.js",
+        "method": "GET",
+        "status": 200,
+        "responseTime": 1356,
+        "responseSize": 0,
+        "resourceType": "script"
+      },
+      {
+        "url": "https://jirauat.smedigitalapps.com/jira/s/-xvpyln/10030006/1kd6aui/1.0/_/images/icons/sprites/icons_module.png",
+        "method": "GET",
+        "status": 200,
+        "responseTime": 490,
+        "responseSize": 5400,
+        "resourceType": "image"
+      },
+      {
+        "url": "https://jirauat.smedigitalapps.com/jira/s/d41d8cd98f00b204e9800998ecf8427e-CDN/-xvpyln/10030006/1kd6aui/9c10c8a3d20c751f96a47d5566e02c11/_/download/contextbatch/js/jira.webresources:resource-phase-checkpoint-hit,-_super/batch.js?plugins.jquery.migrate.load.disabled=false",
+        "method": "GET",
+        "status": 200,
+        "responseTime": 995,
+        "responseSize": 0,
+        "resourceType": "script"
+      },
+      {
+        "url": "https://jirauat.smedigitalapps.com/jira/s/-xvpyln/10030006/1kd6aui/9.12.6/_/download/resources/com.atlassian.auiplugin:split_aui.splitchunk.51ee36ecdd/assets/adgs-icons.woff",
+        "method": "GET",
+        "status": 200,
+        "responseTime": 493,
+        "responseSize": 0,
+        "resourceType": "font"
+      },
+      {
+        "url": "https://jirauat.smedigitalapps.com/jira/secure/viewavatar?size=xsmall&avatarId=16900&avatarType=issuetype",
+        "method": "GET",
+        "status": 200,
+        "responseTime": 465,
+        "responseSize": 344,
+        "resourceType": "image"
+      },
+      {
+        "url": "https://jirauat.smedigitalapps.com/jira/s/1a2c5c7fc943226dfc7dc91da871fb10-CDN/-xvpyln/10030006/1kd6aui/966c2fb83b190e87af5a8c19d0c5ad44/_/download/contextbatch/js/_super,-flush-app-header-early-inline-resources,-jira.filter.deletion.warning:styles,-jira.webresources:auto-theme-handler,-jira.webresources:event-deferrer,-jira.webresources:resource-phase-checkpoint-init/batch.js?locale=en-US&plugins.jquery.migrate.load.disabled=false",
+        "method": "GET",
+        "status": 200,
+        "responseTime": 1834,
+        "responseSize": 0,
+        "resourceType": "script"
+      },
+      {
+        "url": "https://jirauat.smedigitalapps.com/jira/images/icons/priorities/high.svg",
+        "method": "GET",
+        "status": 200,
+        "responseTime": 546,
+        "responseSize": 176,
+        "resourceType": "image"
+      },
+      {
+        "url": "https://jirauat.smedigitalapps.com/jira/secure/viewavatar?size=xsmall&avatarId=12803&avatarType=issuetype",
+        "method": "GET",
+        "status": 200,
+        "responseTime": 548,
+        "responseSize": 240,
+        "resourceType": "image"
+      },
+      {
+        "url": "https://jirauat.smedigitalapps.com/jira/images/icons/priorities/low.svg",
+        "method": "GET",
+        "status": 200,
+        "responseTime": 548,
+        "responseSize": 183,
+        "resourceType": "image"
+      },
+      {
+        "url": "https://jirauat.smedigitalapps.com/jira/rest/api/1.0/shortcuts/10030006/e10497e3b4514325aab33163bf6f51fb/shortcuts?context=issuenavigation&context=issueaction",
+        "method": "GET",
+        "status": 200,
+        "responseTime": 78,
+        "responseSize": 0,
+        "resourceType": "fetch"
+      },
+      {
+        "url": "https://jirauat.smedigitalapps.com/jira/s/ecb5a5c2e5391623d37850491fa4ba7f-CDN/-xvpyln/10030006/1kd6aui/ec4d936f61dc457c0ffcc1b1de3da8cc/_/download/contextbatch/js/jira.view.issue,atl.general,viewissue.standalone,jira.navigator.kickass,jira.global,jira.navigator,jira.navigator.simple,jira.navigator.advanced,jira.general,-_super/batch.js?_v=bdb80ca&agile_global_admin_condition=true&assets-chaperone-condition-assets-imports-global-view-chaperone-sync-key=true&chaperone-condition-share-request-with-groups-issue-view-chaperone=true&condition-share-request-with-groups=true&feature-flag-condition-assets.imports.global.view=true&feature-flag-condition-assets.imports.global.view.chaperone=true&jag=true&jaguser=true&jira.create.linked.issue=true&locale=en-US&plugins.jquery.migrate.load.disabled=false&richediton=true&s_available=true&s_availableOnIssuePage=true&tempo_is_data_center_license_expiration_showing=false&tempo_is_tempo_privacy_policy_banner_showing%3F=false&tempo_is_tempo_timesheets_license_valid_and_work_on_issues=true&tempo_product_access=true&time_entry_panel=false&timesheets_access=true",
+        "method": "GET",
+        "status": 200,
+        "responseTime": 5783,
+        "responseSize": 0,
+        "resourceType": "script"
+      },
+      {
+        "url": "https://jirauat.smedigitalapps.com/jira/s/-xvpyln/10030006/1kd6aui/1.0/_/images/icons/accept.png",
+        "method": "GET",
+        "status": 200,
+        "responseTime": 180,
+        "responseSize": 798,
+        "resourceType": "image"
+      },
+      {
+        "url": "https://jirauat.smedigitalapps.com/jira/rest/api/2/filter/favourite?expand=subscriptions[-5:]&_=1753201501090",
+        "method": "GET",
+        "status": 200,
+        "responseTime": 374,
+        "responseSize": 0,
+        "resourceType": "xhr"
+      },
+      {
+        "url": "https://jirauat.smedigitalapps.com/jira/rest/issueNav/latest/preferredSearchLayout",
+        "method": "POST",
+        "status": 200,
+        "responseTime": 332,
+        "responseSize": 0,
+        "resourceType": "xhr"
+      },
+      {
+        "url": "https://jirauat.smedigitalapps.com/jira/rest/menu/latest/appswitcher?_=1753201501091",
+        "method": "GET",
+        "status": 200,
+        "responseTime": 92,
+        "responseSize": 0,
+        "resourceType": "xhr"
+      },
+      {
+        "url": "https://jirauat.smedigitalapps.com/jira/rest/scriptrunner-jira/latest/jqlfunctions/docs",
+        "method": "GET",
+        "status": 200,
+        "responseTime": 134,
+        "responseSize": 0,
+        "resourceType": "fetch"
+      },
+      {
+        "url": "https://jirauat.smedigitalapps.com/jira/rest/wrm/2.0/resources",
+        "method": "POST",
+        "status": 200,
+        "responseTime": 138,
+        "responseSize": 0,
+        "resourceType": "fetch"
+      },
+      {
+        "url": "https://jirauat.smedigitalapps.com/jira/rest/scriptrunner/behaviours/latest/validators.json?issueId=1920998",
+        "method": "POST",
+        "status": 200,
+        "responseTime": 74,
+        "responseSize": 0,
+        "resourceType": "fetch"
+      },
+      {
+        "url": "https://jirauat.smedigitalapps.com/jira/rest/scriptrunner/1.0/message?_=1753201501092",
+        "method": "GET",
+        "status": 204,
+        "responseTime": 72,
+        "responseSize": 0,
+        "resourceType": "xhr"
+      },
+      {
+        "url": "https://jirauat.smedigitalapps.com/jira/rest/api/2/myself",
+        "method": "GET",
+        "status": 200,
+        "responseTime": 80,
+        "responseSize": 0,
+        "resourceType": "xhr"
+      },
+      {
+        "url": "https://jirauat.smedigitalapps.com/jira/s/-xvpyln/10030006/1kd6aui/_/jira-favicon-hires.png",
+        "method": "GET",
+        "status": 200,
+        "responseTime": 67,
+        "responseSize": 1398,
+        "resourceType": "other"
+      },
+      {
+        "url": "https://jirauat.smedigitalapps.com/jira/s/d41d8cd98f00b204e9800998ecf8427e-CDN/-xvpyln/10030006/1kd6aui/d6ce5b681d5fc56e9a089eddf2019200/_/download/contextbatch/js/browser-metrics-plugin.contrib,-_super,-jira.view.issue,-jira.global,-viewissue.standalone,-jira.navigator.kickass,-atl.general/batch.js?agile_global_admin_condition=true&assets-chaperone-condition-assets-imports-global-view-chaperone-sync-key=true&chaperone-condition-share-request-with-groups-issue-view-chaperone=true&condition-share-request-with-groups=true&feature-flag-condition-assets.imports.global.view=true&feature-flag-condition-assets.imports.global.view.chaperone=true&jag=true&jaguser=true&jira.create.linked.issue=true&plugins.jquery.migrate.load.disabled=false&richediton=true&s_available=true&s_availableOnIssuePage=true&tempo_is_data_center_license_expiration_showing=false&tempo_is_tempo_privacy_policy_banner_showing%3F=false&tempo_is_tempo_timesheets_license_valid_and_work_on_issues=true&tempo_product_access=true&time_entry_panel=false&timesheets_access=true",
+        "method": "GET",
+        "status": 200,
+        "responseTime": 80,
+        "responseSize": 0,
+        "resourceType": "script"
+      },
+      {
+        "url": "https://jirauat.smedigitalapps.com/jira/s/fe43a57fb1a616a6620b3d72a937a0fa-CDN/-xvpyln/10030006/1kd6aui/d457522beff01f75f87ab73f21c99bd6/_/download/contextbatch/css/com.atlassian.servicedesk.frontend-webpack-plugin:717,-_super/batch.css?plugins.jquery.migrate.load.disabled=false",
+        "method": "GET",
+        "status": 200,
+        "responseTime": 81,
+        "responseSize": 0,
+        "resourceType": "stylesheet"
+      },
+      {
+        "url": "https://jirauat.smedigitalapps.com/jira/s/6e701f9ca397d5beea83c87b548eee63-CDN/-xvpyln/10030006/1kd6aui/47d168f6cef372efe953167e773c964f/_/download/contextbatch/css/com.atlassian.jira.plugins.jira-development-integration-plugin:11,com.atlassian.jira.plugins.jira-development-integration-plugin:14,-_super,-jira.view.issue,-viewissue.standalone,-jira.navigator.kickass,-jira.global,-jira.general,-jira.webresources:calendar-localisation-moment,-atl.general/batch.css?agile_global_admin_condition=true&assets-chaperone-condition-assets-imports-global-view-chaperone-sync-key=true&chaperone-condition-share-request-with-groups-issue-view-chaperone=true&condition-share-request-with-groups=true&feature-flag-condition-assets.imports.global.view=true&feature-flag-condition-assets.imports.global.view.chaperone=true&jag=true&jaguser=true&jira.create.linked.issue=true&plugins.jquery.migrate.load.disabled=false&richediton=true&s_available=true&s_availableOnIssuePage=true&tempo_is_data_center_license_expiration_showing=false&tempo_is_tempo_privacy_policy_banner_showing%3F=false&tempo_is_tempo_timesheets_license_valid_and_work_on_issues=true&tempo_product_access=true&time_entry_panel=false&timesheets_access=true",
+        "method": "GET",
+        "status": 200,
+        "responseTime": 82,
+        "responseSize": 0,
+        "resourceType": "stylesheet"
+      },
+      {
+        "url": "https://jirauat.smedigitalapps.com/jira/rest/api/2/mypermissions",
+        "method": "GET",
+        "status": 200,
+        "responseTime": 87,
+        "responseSize": 0,
+        "resourceType": "xhr"
+      },
+      {
+        "url": "https://jirauat.smedigitalapps.com/jira/s/cb6fc0ca65d951d59f4251b3513f2490-CDN/-xvpyln/10030006/1kd6aui/20.3.6-REL-0001/_/download/resources/com.atlassian.plugins.atlassian-chaperone:hotspot-tour/hotspot-tour.js?batch=false&locale=en-US",
+        "method": "GET",
+        "status": 200,
+        "responseTime": 161,
+        "responseSize": 2335,
+        "resourceType": "script"
+      },
+      {
+        "url": "https://jirauat.smedigitalapps.com/jira/s/e7952b5ab3ece3612a0e3fbba9cf89ad-CDN/-xvpyln/10030006/1kd6aui/47d168f6cef372efe953167e773c964f/_/download/contextbatch/js/com.atlassian.jira.plugins.jira-development-integration-plugin:11,com.atlassian.jira.plugins.jira-development-integration-plugin:14,-_super,-jira.view.issue,-viewissue.standalone,-jira.navigator.kickass,-jira.global,-jira.general,-jira.webresources:calendar-localisation-moment,-atl.general/batch.js?agile_global_admin_condition=true&assets-chaperone-condition-assets-imports-global-view-chaperone-sync-key=true&chaperone-condition-share-request-with-groups-issue-view-chaperone=true&condition-share-request-with-groups=true&feature-flag-condition-assets.imports.global.view=true&feature-flag-condition-assets.imports.global.view.chaperone=true&jag=true&jaguser=true&jira.create.linked.issue=true&locale=en-US&plugins.jquery.migrate.load.disabled=false&richediton=true&s_available=true&s_availableOnIssuePage=true&tempo_is_data_center_license_expiration_showing=false&tempo_is_tempo_privacy_policy_banner_showing%3F=false&tempo_is_tempo_timesheets_license_valid_and_work_on_issues=true&tempo_product_access=true&time_entry_panel=false&timesheets_access=true",
+        "method": "GET",
+        "status": 200,
+        "responseTime": 181,
+        "responseSize": 0,
+        "resourceType": "script"
+      },
+      {
+        "url": "https://jirauat.smedigitalapps.com/jira/s/4ff7922f620b9750d8a4e0bdd9d39a42-CDN/-xvpyln/10030006/1kd6aui/d457522beff01f75f87ab73f21c99bd6/_/download/contextbatch/js/com.atlassian.servicedesk.frontend-webpack-plugin:717,-_super/batch.js?locale=en-US&plugins.jquery.migrate.load.disabled=false",
+        "method": "GET",
+        "status": 200,
+        "responseTime": 209,
+        "responseSize": 0,
+        "resourceType": "script"
+      },
+      {
+        "url": "https://jirauat.smedigitalapps.com/jira/rest/api/2/mypermissions",
+        "method": "GET",
+        "status": 200,
+        "responseTime": 167,
+        "responseSize": 0,
+        "resourceType": "xhr"
+      },
+      {
+        "url": "https://jirauat.smedigitalapps.com/jira/rest/tempo-timesheets/3/private/config/",
+        "method": "GET",
+        "status": 200,
+        "responseTime": 77,
+        "responseSize": 0,
+        "resourceType": "xhr"
+      },
+      {
+        "url": "https://jirauat.smedigitalapps.com/jira/rest/migration/latest/browser-metrics/enabled?_=1753201501093",
+        "method": "GET",
+        "status": 200,
+        "responseTime": 81,
+        "responseSize": 0,
+        "resourceType": "xhr"
+      },
+      {
+        "url": "https://jirauat.smedigitalapps.com/jira/rest/wrm/2.0/resources",
+        "method": "POST",
+        "status": 200,
+        "responseTime": 190,
+        "responseSize": 0,
+        "resourceType": "fetch"
+      },
+      {
+        "url": "https://jirauat.smedigitalapps.com/jira/s/cb6fc0ca65d951d59f4251b3513f2490-CDN/-xvpyln/10030006/1kd6aui/f588c493c585681fcb34e67d32217c2b/_/download/contextbatch/js/com.atlassian.jira.plugins.jira-quicksearch-plugin:6,-_super,-jira.view.issue,-jira.global,-com.atlassian.jira.plugins.jira-development-integration-plugin:11/batch.js?chaperone-condition-share-request-with-groups-issue-view-chaperone=true&condition-share-request-with-groups=true&jag=true&jira.create.linked.issue=true&locale=en-US&plugins.jquery.migrate.load.disabled=false&richediton=true&s_available=true&s_availableOnIssuePage=true&tempo_is_tempo_timesheets_license_valid_and_work_on_issues=true&tempo_product_access=true&time_entry_panel=false",
+        "method": "GET",
+        "status": 200,
+        "responseTime": 75,
+        "responseSize": 0,
+        "resourceType": "script"
+      },
+      {
+        "url": "https://jirauat.smedigitalapps.com/jira/s/cb6fc0ca65d951d59f4251b3513f2490-CDN/-xvpyln/10030006/1kd6aui/fffc55b43f24c7d7e5454135a72760d6/_/download/contextbatch/js/com.atlassian.jira.plugins.jira-quicksearch-plugin:1,-_super/batch.js?locale=en-US&plugins.jquery.migrate.load.disabled=false",
+        "method": "GET",
+        "status": 200,
+        "responseTime": 81,
+        "responseSize": 0,
+        "resourceType": "script"
+      },
+      {
+        "url": "https://jirauat.smedigitalapps.com/jira/rest/analytics/1.0/publish/bulk",
+        "method": "POST",
+        "status": 200,
+        "responseTime": 71,
+        "responseSize": 0,
+        "resourceType": "fetch"
+      },
+      {
+        "url": "https://jirauat.smedigitalapps.com/jira/s/d41d8cd98f00b204e9800998ecf8427e-CDN/-xvpyln/10030006/1kd6aui/8.0.21/_/download/resources/com.atlassian.jira.plugins.jira-editor-plugin:tinymce/tinymce-amd.js?batch=false",
+        "method": "GET",
+        "status": 200,
+        "responseTime": 80,
+        "responseSize": 0,
+        "resourceType": "script"
+      },
+      {
+        "url": "https://jirauat.smedigitalapps.com/jira/s/de7682e9c8626d7fd7977d08385a76e1-CDN/-xvpyln/10030006/1kd6aui/2075083f62dd7e4dbd22028b12bb6baa/_/download/contextbatch/css/jira.webresources:mentions-feature,jira.rich.editor.api,jira.rich.editor,-_super,-jira.view.issue,-jira.global,-viewissue.standalone,-jira.navigator.kickass,-atl.general,-jira.navigator,-jira.general,-com.atlassian.jira.plugins.jira-development-integration-plugin:14,-com.atlassian.jira.plugins.jira-development-integration-plugin:11,-jira.webresources:calendar-localisation-moment/batch.css?agile_global_admin_condition=true&assets-chaperone-condition-assets-imports-global-view-chaperone-sync-key=true&chaperone-condition-share-request-with-groups-issue-view-chaperone=true&condition-share-request-with-groups=true&feature-flag-condition-assets.imports.global.view=true&feature-flag-condition-assets.imports.global.view.chaperone=true&jag=true&jaguser=true&jira.create.linked.issue=true&plugins.jquery.migrate.load.disabled=false&richediton=true&s_available=true&s_availableOnIssuePage=true&tempo_is_data_center_license_expiration_showing=false&tempo_is_tempo_privacy_policy_banner_showing%3F=false&tempo_is_tempo_timesheets_license_valid_and_work_on_issues=true&tempo_product_access=true&time_entry_panel=false&timesheets_access=true",
+        "method": "GET",
+        "status": 200,
+        "responseTime": 89,
+        "responseSize": 0,
+        "resourceType": "stylesheet"
+      },
+      {
+        "url": "https://jirauat.smedigitalapps.com/jira/s/005057c542a58d38a73d5296f796daef-CDN/-xvpyln/10030006/1kd6aui/2075083f62dd7e4dbd22028b12bb6baa/_/download/contextbatch/js/jira.webresources:mentions-feature,jira.rich.editor.api,jira.rich.editor,-_super,-jira.view.issue,-jira.global,-viewissue.standalone,-jira.navigator.kickass,-atl.general,-jira.navigator,-jira.general,-com.atlassian.jira.plugins.jira-development-integration-plugin:14,-com.atlassian.jira.plugins.jira-development-integration-plugin:11,-jira.webresources:calendar-localisation-moment/batch.js?agile_global_admin_condition=true&assets-chaperone-condition-assets-imports-global-view-chaperone-sync-key=true&chaperone-condition-share-request-with-groups-issue-view-chaperone=true&condition-share-request-with-groups=true&feature-flag-condition-assets.imports.global.view=true&feature-flag-condition-assets.imports.global.view.chaperone=true&jag=true&jaguser=true&jira.create.linked.issue=true&locale=en-US&plugins.jquery.migrate.load.disabled=false&richediton=true&s_available=true&s_availableOnIssuePage=true&tempo_is_data_center_license_expiration_showing=false&tempo_is_tempo_privacy_policy_banner_showing%3F=false&tempo_is_tempo_timesheets_license_valid_and_work_on_issues=true&tempo_product_access=true&time_entry_panel=false&timesheets_access=true",
+        "method": "GET",
+        "status": 200,
+        "responseTime": 154,
+        "responseSize": 0,
+        "resourceType": "script"
+      },
+      {
+        "url": "https://jirauat.smedigitalapps.com/jira/s/d41d8cd98f00b204e9800998ecf8427e-CDN/-xvpyln/10030006/1kd6aui/8.0.21/_/download/resources/com.atlassian.jira.plugins.jira-editor-plugin:tinymce/icons.js?batch=false",
+        "method": "GET",
+        "status": 200,
+        "responseTime": 160,
+        "responseSize": 0,
+        "resourceType": "script"
+      },
+      {
+        "url": "https://jirauat.smedigitalapps.com/jira/s/d41d8cd98f00b204e9800998ecf8427e-CDN/-xvpyln/10030006/1kd6aui/717d8b810edb60e18a8983e097ffb444/_/download/contextbatch/js/jira.webresources:header-dimensions,-_super/batch.js?plugins.jquery.migrate.load.disabled=false",
+        "method": "GET",
+        "status": 200,
+        "responseTime": 161,
+        "responseSize": 0,
+        "resourceType": "script"
+      },
+      {
+        "url": "https://jirauat.smedigitalapps.com/jira/s/d41d8cd98f00b204e9800998ecf8427e-CDN/-xvpyln/10030006/1kd6aui/8.0.21/_/download/resources/com.atlassian.jira.plugins.jira-editor-plugin:tinymce/tinymce.js?batch=false",
+        "method": "GET",
+        "status": 200,
+        "responseTime": 226,
+        "responseSize": 0,
+        "resourceType": "script"
+      },
+      {
+        "url": "https://jirauat.smedigitalapps.com/jira/s/d41d8cd98f00b204e9800998ecf8427e-CDN/-xvpyln/10030006/1kd6aui/8.0.21/_/download/resources/com.atlassian.jira.plugins.jira-editor-plugin:tinymce/themes/silver/theme.js?batch=false",
+        "method": "GET",
+        "status": 200,
+        "responseTime": 265,
+        "responseSize": 0,
+        "resourceType": "script"
+      },
+      {
+        "url": "https://jirauat.smedigitalapps.com/jira/rest/wrm/2.0/resources",
+        "method": "POST",
+        "status": 200,
+        "responseTime": 194,
+        "responseSize": 0,
+        "resourceType": "fetch"
+      },
+      {
+        "url": "https://jirauat.smedigitalapps.com/jira/s/21394a6daed7559109e0703d9d655e72-CDN/-xvpyln/10030006/1kd6aui/be9ce96ca7e42a2d9d27d8952af68d25/_/download/contextbatch/js/themeSwitcher,-_super,-jira.view.issue/batch.js?chaperone-condition-share-request-with-groups-issue-view-chaperone=true&condition-share-request-with-groups=true&jag=true&jira.create.linked.issue=true&locale=en-US&plugins.jquery.migrate.load.disabled=false&richediton=true&s_available=true&s_availableOnIssuePage=true&tempo_is_tempo_timesheets_license_valid_and_work_on_issues=true&tempo_product_access=true&time_entry_panel=false",
+        "method": "GET",
+        "status": 200,
+        "responseTime": 92,
+        "responseSize": 0,
+        "resourceType": "script"
+      },
+      {
+        "url": "https://jirauat.smedigitalapps.com/jira/rest/api/2/mypreferences?key=com.atlassian.jira.theme.switcher.discovery",
+        "method": "GET",
+        "status": 200,
+        "responseTime": 65,
+        "responseSize": 0,
+        "resourceType": "fetch"
+      }
+    ],
+    "javaScriptExecutionTime": 17019.300000041723,
+    "renderingTime": 65.89999997615814
+  },
+  "analysis": {
+    "overallScore": 75,
+    "bottlenecks": [
+      "Slow page load time: 9766ms (target: <3000ms)",
+      "Large total resource size: 12MB",
+      "High JavaScript execution time: 17019ms",
+      "7 resources taking >1s to load"
+    ],
+    "recommendations": [
+      "Compress images, minify CSS/JS, and enable gzip compression",
+      "Optimize JavaScript by code splitting and removing unused code",
+      "Optimize script loading by using async/defer attributes and code splitting"
+    ],
+    "performanceGrade": "C"
+  },
+  "coreWebVitals": {
+    "lcp": {
+      "value": 0,
+      "rating": "good"
+    },
+    "fid": {
+      "value": 0,
+      "rating": "good"
+    },
+    "cls": {
+      "value": 0,
+      "rating": "good"
+    }
+  },
+  "detailedBreakdown": {
+    "loadingPhases": [
+      {
+        "phase": "DNS Lookup",
+        "duration": 0.800000011920929
+      },
+      {
+        "phase": "TCP Connection",
+        "duration": 299.19999998807907
+      },
+      {
+        "phase": "Request/Response",
+        "duration": 1044
+      },
+      {
+        "phase": "DOM Processing",
+        "duration": null
+      },
+      {
+        "phase": "Load Event",
+        "duration": 1.199999988079071
+      }
+    ],
+    "criticalResources": [
+      {
+        "name": "https://jirauat.smedigitalapps.com/jira/s/ecb5a5c2e5391623d37850491fa4ba7f-CDN/-xvpyln/10030006/1kd6aui/ec4d936f61dc457c0ffcc1b1de3da8cc/_/download/contextbatch/js/jira.view.issue,atl.general,viewissue.standalone,jira.navigator.kickass,jira.global,jira.navigator,jira.navigator.simple,jira.navigator.advanced,jira.general,-_super/batch.js?_v=bdb80ca&agile_global_admin_condition=true&assets-chaperone-condition-assets-imports-global-view-chaperone-sync-key=true&chaperone-condition-share-request-with-groups-issue-view-chaperone=true&condition-share-request-with-groups=true&feature-flag-condition-assets.imports.global.view=true&feature-flag-condition-assets.imports.global.view.chaperone=true&jag=true&jaguser=true&jira.create.linked.issue=true&locale=en-US&plugins.jquery.migrate.load.disabled=false&richediton=true&s_available=true&s_availableOnIssuePage=true&tempo_is_data_center_license_expiration_showing=false&tempo_is_tempo_privacy_policy_banner_showing%3F=false&tempo_is_tempo_timesheets_license_valid_and_work_on_issues=true&tempo_product_access=true&time_entry_panel=false&timesheets_access=true",
+        "type": "script",
+        "size": 11337630,
+        "duration": 5697.9000000059605,
+        "startTime": 532.5
+      },
+      {
+        "name": "https://jirauat.smedigitalapps.com/jira/s/1a2c5c7fc943226dfc7dc91da871fb10-CDN/-xvpyln/10030006/1kd6aui/966c2fb83b190e87af5a8c19d0c5ad44/_/download/contextbatch/js/_super,-flush-app-header-early-inline-resources,-jira.filter.deletion.warning:styles,-jira.webresources:auto-theme-handler,-jira.webresources:event-deferrer,-jira.webresources:resource-phase-checkpoint-init/batch.js?locale=en-US&plugins.jquery.migrate.load.disabled=false",
+        "type": "script",
+        "size": 322505,
+        "duration": 1824.4000000059605,
+        "startTime": 532.5
+      },
+      {
+        "name": "https://jirauat.smedigitalapps.com/jira/s/b16f82003fd10b3e7183355b2ce65720-CDN/-xvpyln/10030006/1kd6aui/110.3.13/_/download/batch/com.atlassian.jira.jira-tzdetect-plugin:tzdetect-banner-component/com.atlassian.jira.jira-tzdetect-plugin:tzdetect-banner-component.js?locale=en-US",
+        "type": "script",
+        "size": 3131,
+        "duration": 1335.5,
+        "startTime": 532.5
+      },
+      {
+        "name": "https://jirauat.smedigitalapps.com/jira/s/d41d8cd98f00b204e9800998ecf8427e-CDN/-xvpyln/10030006/1kd6aui/1.0/_/download/batch/jira.webresources:calendar-localisation-moment/jira.webresources:calendar-localisation-moment.js",
+        "type": "script",
+        "size": 684,
+        "duration": 1335.2000000178814,
+        "startTime": 532.5
+      },
+      {
+        "name": "https://jirauat.smedigitalapps.com/jira/s/585849e02a08ca466e8f9c3e1eafe3f7-CDN/-xvpyln/10030006/1kd6aui/4145649a03c930056930d1819e9b83d6/_/download/contextbatch/js/atl.global,-_super/batch.js?locale=en-US&plugins.jquery.migrate.load.disabled=false",
+        "type": "script",
+        "size": 8197,
+        "duration": 1322.1000000238419,
+        "startTime": 532.5
+      }
+    ],
+    "performanceTimeline": {
+      "navigationStart": 0,
+      "unloadEventStart": 0,
+      "redirectStart": 0,
+      "fetchStart": 4.200000017881393,
+      "domainLookupStart": 6.800000011920929,
+      "domainLookupEnd": 7.600000023841858,
+      "connectStart": 7.600000023841858,
+      "connectEnd": 306.80000001192093,
+      "requestStart": 306.90000000596046,
+      "responseStart": 451.2000000178814,
+      "responseEnd": 1350.9000000059605,
+      "domLoading": null,
+      "domContentLoadedEventStart": 7782.700000017881,
+      "domContentLoadedEventEnd": 7783.100000023842,
+      "domComplete": 7847.800000011921,
+      "loadEventStart": 7847.800000011921,
+      "loadEventEnd": 7849
+    }
+  }
+}

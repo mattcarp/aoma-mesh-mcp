@@ -1,0 +1,105 @@
+{
+  "reportTime": "2025-07-22T19:22:56.112Z",
+  "overallHealth": "COMPLETE FAILURE (0%)",
+  "categories": [
+    {
+      "name": "Connectivity",
+      "totalAttempts": 1,
+      "passed": 0,
+      "failed": 1,
+      "successRate": "0%",
+      "lastTested": "2025-07-22T19:21:10.847Z",
+      "status": "CRITICAL_FAIL"
+    },
+    {
+      "name": "Access",
+      "totalAttempts": 1,
+      "passed": 0,
+      "failed": 1,
+      "successRate": "0%",
+      "lastTested": "2025-07-22T19:21:33.599Z",
+      "status": "CRITICAL_FAIL"
+    },
+    {
+      "name": "Authentication",
+      "totalAttempts": 1,
+      "passed": 0,
+      "failed": 1,
+      "successRate": "0%",
+      "lastTested": "2025-07-22T19:21:54.438Z",
+      "status": "CRITICAL_FAIL"
+    },
+    {
+      "name": "Navigation",
+      "totalAttempts": 1,
+      "passed": 0,
+      "failed": 1,
+      "successRate": "0%",
+      "lastTested": "2025-07-22T19:22:25.271Z",
+      "status": "CRITICAL_FAIL"
+    },
+    {
+      "name": "Core Functionality",
+      "totalAttempts": 1,
+      "passed": 0,
+      "failed": 1,
+      "successRate": "0%",
+      "lastTested": "2025-07-22T19:22:56.111Z",
+      "status": "CRITICAL_FAIL"
+    }
+  ],
+  "recentTests": [
+    {
+      "testName": "Network Connectivity",
+      "category": "Connectivity",
+      "timestamp": "2025-07-22T19:21:10.847Z",
+      "passed": false,
+      "duration": 10530,
+      "errorMessage": "fetch failed",
+      "details": "fetch failed"
+    },
+    {
+      "testName": "Basic Page Access",
+      "category": "Access",
+      "timestamp": "2025-07-22T19:21:33.599Z",
+      "passed": false,
+      "duration": 22750,
+      "errorMessage": "page.goto: Timeout 20000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"https://jirauat.smedigitalapps.com/jira/secure/Dashboard.jspa\", waiting until \"domcontentloaded\"\u001b[22m\n",
+      "details": "page.goto: Timeout 20000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"https://jirauat.smedigitalapps.com/jira/secure/Dashboard.jspa\", waiting until \"domcontentloaded\"\u001b[22m\n"
+    },
+    {
+      "testName": "Session Authentication",
+      "category": "Authentication",
+      "timestamp": "2025-07-22T19:21:54.438Z",
+      "passed": false,
+      "duration": 20839,
+      "errorMessage": "page.goto: Timeout 20000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"https://jirauat.smedigitalapps.com/jira/secure/Dashboard.jspa\", waiting until \"domcontentloaded\"\u001b[22m\n",
+      "details": "page.goto: Timeout 20000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"https://jirauat.smedigitalapps.com/jira/secure/Dashboard.jspa\", waiting until \"domcontentloaded\"\u001b[22m\n"
+    },
+    {
+      "testName": "Dashboard Navigation",
+      "category": "Navigation",
+      "timestamp": "2025-07-22T19:22:25.271Z",
+      "passed": false,
+      "duration": 30833,
+      "errorMessage": "page.goto: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"https://jirauat.smedigitalapps.com/jira/secure/Dashboard.jspa\", waiting until \"networkidle\"\u001b[22m\n",
+      "details": "page.goto: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"https://jirauat.smedigitalapps.com/jira/secure/Dashboard.jspa\", waiting until \"networkidle\"\u001b[22m\n"
+    },
+    {
+      "testName": "Ticket Creation",
+      "category": "Core Functionality",
+      "timestamp": "2025-07-22T19:22:56.111Z",
+      "passed": false,
+      "duration": 30840,
+      "errorMessage": "page.goto: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"https://jirauat.smedigitalapps.com/jira/secure/Dashboard.jspa\", waiting until \"networkidle\"\u001b[22m\n",
+      "details": "page.goto: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"https://jirauat.smedigitalapps.com/jira/secure/Dashboard.jspa\", waiting until \"networkidle\"\u001b[22m\n"
+    }
+  ],
+  "recommendations": [
+    "URGENT: Connectivity completely non-functional - immediate attention required",
+    "URGENT: Access completely non-functional - immediate attention required",
+    "URGENT: Authentication completely non-functional - immediate attention required",
+    "URGENT: Navigation completely non-functional - immediate attention required",
+    "URGENT: Core Functionality completely non-functional - immediate attention required"
+  ]
+}
