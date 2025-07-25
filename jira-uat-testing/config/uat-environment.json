@@ -1,0 +1,97 @@
+{
+  "environment": {
+    "name": "Jira UAT - Upgrade Testing",
+    "description": "Pre-UAT environment for Jira 9.12 LTS → 10.3 LTS upgrade validation",
+    "baseUrl": "https://jirauat.smedigitalapps.com",
+    "version": {
+      "current": "9.12.x LTS",
+      "target": "10.3.x LTS",
+      "upgradeType": "major_platform_upgrade"
+    },
+    "dataSnapshot": {
+      "date": "2024-06-12",
+      "type": "production_data",
+      "scope": "full_instance"
+    }
+  },
+  "testingWindow": {
+    "startDate": "2024-07-25",
+    "endDate": "2024-08-01",
+    "timezone": "UTC",
+    "availableHours": "24/7"
+  },
+  "targetProjects": {
+    "primary": {
+      "key": "ITSM",
+      "name": "IT Service Management",
+      "type": "service_desk",
+      "priority": "critical",
+      "customizations": [
+        "workflows",
+        "fields",
+        "automation",
+        "sla_configs"
+      ]
+    },
+    "secondary": {
+      "key": "DPSA",
+      "name": "Data Protection and Security Assessment",
+      "type": "business_project",
+      "priority": "critical",
+      "customizations": [
+        "workflows",
+        "security_fields",
+        "compliance_automation",
+        "audit_trails"
+      ]
+    },
+    "additional": [
+      {
+        "pattern": "IT-*",
+        "description": "IT-related projects"
+      },
+      {
+        "pattern": "SD-*",
+        "description": "Service desk projects"
+      },
+      {
+        "pattern": "DPSA-*",
+        "description": "Data protection and security projects"
+      }
+    ]
+  },
+  "platformChanges": {
+    "major": [
+      {
+        "component": "java_runtime",
+        "change": "Java 8/11 → Java 17",
+        "impact": "high",
+        "testRequired": true
+      },
+      {
+        "component": "platform",
+        "change": "Platform 6 → Platform 7",
+        "impact": "high",
+        "testRequired": true
+      },
+      {
+        "component": "webhooks",
+        "change": "Synchronous → Asynchronous",
+        "impact": "medium",
+        "testRequired": true
+      }
+    ]
+  },
+  "testingApproach": {
+    "methodology": "aoma_mesh_enhanced",
+    "automation": {
+      "framework": "playwright",
+      "coverage": "comprehensive"
+    },
+    "intelligence": {
+      "server": "aoma-mesh-mcp",
+      "knowledgeBase": "jira_documentation",
+      "adaptiveScenarios": true
+    }
+  }
+}

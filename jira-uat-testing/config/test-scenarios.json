@@ -1,0 +1,95 @@
+{
+  "testScenarios": {
+    "itsm_core_workflows": {
+      "priority": "critical",
+      "description": "Core ITSM project functionality validation",
+      "scenarios": [
+        {
+          "id": "ITSM-001",
+          "name": "Incident Creation and Lifecycle",
+          "steps": [
+            "Create new incident ticket",
+            "Assign to service desk agent",
+            "Update status through workflow",
+            "Add comments and attachments",
+            "Escalate to L2 support",
+            "Resolve and close incident"
+          ],
+          "expectedOutcome": "Complete incident lifecycle without errors"
+        },
+        {
+          "id": "ITSM-002",
+          "name": "Change Request Process",
+          "steps": [
+            "Submit change request",
+            "Route to Change Advisory Board",
+            "Approval workflow execution",
+            "Implementation scheduling",
+            "Post-implementation review"
+          ],
+          "expectedOutcome": "CAB approval process functions correctly"
+        }
+      ]
+    },
+    "platform_compatibility": {
+      "priority": "critical",
+      "description": "Core platform functionality after major upgrade",
+      "scenarios": [
+        {
+          "id": "PLAT-001",
+          "name": "Java 17 Runtime Compatibility",
+          "steps": [
+            "Verify application startup",
+            "Check memory usage patterns",
+            "Validate garbage collection",
+            "Test plugin compatibility"
+          ],
+          "expectedOutcome": "Stable operation on Java 17"
+        }
+      ]
+    },
+    "dpsa_ticket_workflows": {
+      "priority": "critical",
+      "description": "DPSA ticket functionality and compliance validation",
+      "scenarios": [
+        {
+          "id": "DPSA-001",
+          "name": "DPSA Ticket Creation and Assignment",
+          "steps": [
+            "Create new DPSA ticket",
+            "Assign security/compliance fields",
+            "Route to appropriate reviewer",
+            "Update status through approval workflow",
+            "Add compliance documentation",
+            "Complete assessment lifecycle"
+          ],
+          "expectedOutcome": "DPSA tickets process without workflow disruption"
+        },
+        {
+          "id": "DPSA-002",
+          "name": "Security Assessment Workflow",
+          "steps": [
+            "Initiate security assessment ticket",
+            "Populate risk assessment fields",
+            "Route through approval chain",
+            "Document findings and recommendations",
+            "Close with compliance status"
+          ],
+          "expectedOutcome": "Security assessment workflow maintains integrity"
+        },
+        {
+          "id": "DPSA-003",
+          "name": "Data Protection Compliance Tracking",
+          "steps": [
+            "Create data protection ticket",
+            "Set compliance deadlines and SLAs",
+            "Track through review stages",
+            "Validate audit trail generation",
+            "Ensure reporting compliance"
+          ],
+          "expectedOutcome": "Data protection tracking functions correctly"
+        }
+      ]
+    }
+  }
+}

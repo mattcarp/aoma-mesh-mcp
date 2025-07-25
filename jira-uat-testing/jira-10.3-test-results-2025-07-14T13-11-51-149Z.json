@@ -1,0 +1,41 @@
+{
+  "testSuite": "JIRA 10.3 Upgrade Validation",
+  "timestamp": "2025-07-14T13-11-51-149Z",
+  "totalTests": 1,
+  "passedTests": 0,
+  "failedTests": 1,
+  "testResults": [
+    {
+      "testName": "Administration Panel Access",
+      "category": "Administration",
+      "status": "fail",
+      "duration": 6599,
+      "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: > \u001b[32m0\u001b[39m\nReceived:   \u001b[31m0\u001b[39m"
+    }
+  ],
+  "performanceMetrics": {
+    "admin": {
+      "pageLoadTime": null,
+      "networkRequests": 42,
+      "resourceSize": 3981802,
+      "jsErrors": 0
+    }
+  },
+  "summary": {
+    "coreFeatures": [],
+    "searchNavigation": [],
+    "projectManagement": [],
+    "administration": [
+      {
+        "testName": "Administration Panel Access",
+        "category": "Administration",
+        "status": "fail",
+        "duration": 6599,
+        "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeGreaterThan\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nExpected: > \u001b[32m0\u001b[39m\nReceived:   \u001b[31m0\u001b[39m"
+      }
+    ],
+    "reporting": [],
+    "userExperience": [],
+    "apiIntegration": []
+  }
+}

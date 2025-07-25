@@ -1,0 +1,34 @@
+{
+  "testSuite": "JIRA 10.3 Upgrade Validation",
+  "timestamp": "2025-07-21T21-23-14-376Z",
+  "totalTests": 1,
+  "passedTests": 0,
+  "failedTests": 1,
+  "testResults": [
+    {
+      "testName": "Issue Navigator & Search",
+      "category": "Search & Navigation",
+      "status": "fail",
+      "duration": 16809,
+      "error": "Error: page.evaluate: Target page, context or browser has been closed"
+    }
+  ],
+  "performanceMetrics": {},
+  "summary": {
+    "coreFeatures": [],
+    "searchNavigation": [
+      {
+        "testName": "Issue Navigator & Search",
+        "category": "Search & Navigation",
+        "status": "fail",
+        "duration": 16809,
+        "error": "Error: page.evaluate: Target page, context or browser has been closed"
+      }
+    ],
+    "projectManagement": [],
+    "administration": [],
+    "reporting": [],
+    "userExperience": [],
+    "apiIntegration": []
+  }
+}
