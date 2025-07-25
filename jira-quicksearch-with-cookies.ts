@@ -16,7 +16,7 @@ async function scrapeJiraQuickSearchWithCookies() {
         
         // Navigate to the working QuickSearch URL
         console.log('Navigating to QuickSearch...');
-        await page.goto('https://jira.smedigitalapps.com/jira/secure/QuickSearch.jspa?searchString=dpsa');
+        await page.goto('https://jirauat.smedigitalapps.com/jira/secure/QuickSearch.jspa?searchString=dpsa');
         
         // Wait for results to load
         await page.waitForSelector('body', { timeout: 10000 });

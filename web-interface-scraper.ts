@@ -13,7 +13,7 @@ async function webInterfaceScraper() {
   
   try {
     console.log('📍 Going to JIRA dashboard...');
-    await page.goto('https://jira.smedigitalapps.com/jira');
+    await page.goto('https://jirauat.smedigitalapps.com/jira');
     await page.waitForTimeout(3000);
     
     console.log('🔍 Looking for ticket content in the interface...');
@@ -53,7 +53,7 @@ async function webInterfaceScraper() {
       try {
         console.log(`\n🔍 Trying ${target.name}...`);
         
-        await page.goto(`https://jira.smedigitalapps.com/jira${target.url}`);
+        await page.goto(`https://jirauat.smedigitalapps.com/jira${target.url}`);
         await page.waitForTimeout(3000);
         
         const title = await page.title();
@@ -127,7 +127,7 @@ async function webInterfaceScraper() {
               try {
                 console.log(`   📖 Getting details for ${ticket.key}...`);
                 
-                await page.goto(`https://jira.smedigitalapps.com/jira/browse/${ticket.key}`);
+                await page.goto(`https://jirauat.smedigitalapps.com/jira/browse/${ticket.key}`);
                 await page.waitForTimeout(2000);
                 
                 // Extract ticket details from the page

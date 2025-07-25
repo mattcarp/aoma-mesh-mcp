@@ -16,7 +16,7 @@ async function loginWithWorkAccount() {
   const password = process.env.JIRA_PASSWORD;
   
   try {
-    await page.goto('https://jira.smedigitalapps.com/jira/secure/Dashboard.jspa');
+    await page.goto('https://jirauat.smedigitalapps.com/jira/secure/Dashboard.jspa');
     await page.waitForTimeout(3000);
     
     // Try using the workaccount field
@@ -60,7 +60,7 @@ async function loginWithWorkAccount() {
       
       // Test API access
       console.log('🧪 Testing API access...');
-      await page.goto('https://jira.smedigitalapps.com/jira/rest/api/2/search?jql=ORDER BY created DESC&maxResults=3&fields=key,summary');
+      await page.goto('https://jirauat.smedigitalapps.com/jira/rest/api/2/search?jql=ORDER BY created DESC&maxResults=3&fields=key,summary');
       
       const content = await page.content();
       if (content.includes('"startAt"')) {

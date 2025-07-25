@@ -10,7 +10,7 @@ config();
 async function testJiraConnection() {
   const username = process.env.JIRA_USERNAME;
   const password = process.env.JIRA_PASSWORD;
-  const baseUrl = process.env.JIRA_BASE_URL || 'https://jira.smedigitalapps.com';
+  const baseUrl = process.env.JIRA_BASE_URL || 'https://jirauat.smedigitalapps.com';
 
   const auth = Buffer.from(`${username}:${password}`).toString('base64');
   
@@ -58,7 +58,7 @@ async function testJiraConnection() {
 async function fetchRecentTickets(maxResults = 10) {
   const username = process.env.JIRA_USERNAME;
   const password = process.env.JIRA_PASSWORD;
-  const baseUrl = process.env.JIRA_BASE_URL || 'https://jira.smedigitalapps.com';
+  const baseUrl = process.env.JIRA_BASE_URL || 'https://jirauat.smedigitalapps.com';
 
   const auth = Buffer.from(`${username}:${password}`).toString('base64');
   

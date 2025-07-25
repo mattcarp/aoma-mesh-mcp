@@ -14,7 +14,7 @@ async function autoExtractCookies() {
   try {
     // Go to JIRA and wait for it to load
     console.log('📍 Loading JIRA...');
-    await page.goto('https://jira.smedigitalapps.com/jira');
+    await page.goto('https://jirauat.smedigitalapps.com/jira');
     await page.waitForTimeout(5000); // Give time for any redirects/loading
     
     console.log('🔍 Current URL:', page.url());
@@ -54,7 +54,7 @@ async function autoExtractCookies() {
       try {
         console.log(`   Testing: ${endpoint}`);
         
-        const response = await fetch(`https://jira.smedigitalapps.com/jira${endpoint}`, {
+        const response = await fetch(`https://jirauat.smedigitalapps.com/jira${endpoint}`, {
           headers: {
             'Cookie': cookieHeader,
             'Accept': 'application/json'
@@ -93,7 +93,7 @@ async function autoExtractCookies() {
       workingEndpoint,
       bestResult,
       timestamp: new Date().toISOString(),
-      baseUrl: 'https://jira.smedigitalapps.com/jira'
+      baseUrl: 'https://jirauat.smedigitalapps.com/jira'
     };
     
     const fs = await import('fs');

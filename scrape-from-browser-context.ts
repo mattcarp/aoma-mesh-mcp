@@ -20,7 +20,7 @@ async function scrapeWithContext() {
     if (!jiraPage) {
         // Open new page in existing context
         jiraPage = await context.newPage();
-        await jiraPage.goto('https://jira.smedigitalapps.com/jira/issues/?jql=project%20%3D%20DPSA');
+        await jiraPage.goto('https://jirauat.smedigitalapps.com/jira/issues/?jql=project%20%3D%20DPSA');
     }
     
     await jiraPage.waitForTimeout(3000);

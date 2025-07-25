@@ -2,7 +2,7 @@
   "environments": {
     "production": {
       "name": "PRODUCTION",
-      "jiraUrl": "https://jira.smedigitalapps.com",
+      "jiraUrl": "https://jirauat.smedigitalapps.com",
       "supabaseUrl": "https://kfxetwuuzljhybfgmpuc.supabase.co",
       "warning": "⚠️ PRODUCTION ENVIRONMENT - Real business data!",
       "requiresConfirmation": true,

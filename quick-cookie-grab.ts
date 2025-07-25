@@ -13,12 +13,12 @@ async function quickCookieGrab() {
     console.log('🔍 Checking current JIRA session...');
     
     // Go directly to JIRA
-    await page.goto('https://jira.smedigitalapps.com/jira');
+    await page.goto('https://jirauat.smedigitalapps.com/jira');
     await page.waitForTimeout(3000);
     
     // Immediately test API access
     console.log('🧪 Testing API access...');
-    await page.goto('https://jira.smedigitalapps.com/jira/rest/api/2/search?jql=ORDER BY created DESC&maxResults=3&fields=key,summary');
+    await page.goto('https://jirauat.smedigitalapps.com/jira/rest/api/2/search?jql=ORDER BY created DESC&maxResults=3&fields=key,summary');
     
     const content = await page.content();
     
@@ -26,7 +26,7 @@ async function quickCookieGrab() {
       console.log('✅ API access working! Extracting cookies...');
       
       // Go back to main page to get all cookies
-      await page.goto('https://jira.smedigitalapps.com/jira');
+      await page.goto('https://jirauat.smedigitalapps.com/jira');
       await page.waitForTimeout(1000);
       
       const cookies = await page.context().cookies();
@@ -42,7 +42,7 @@ async function quickCookieGrab() {
       console.log(`🍪 Extracted ${jiraCookies.length} cookies`);
       
       // Test with extracted cookies
-      const response = await fetch('https://jira.smedigitalapps.com/jira/rest/api/2/search?jql=ORDER BY created DESC&maxResults=5&fields=key,summary,created', {
+      const response = await fetch('https://jirauat.smedigitalapps.com/jira/rest/api/2/search?jql=ORDER BY created DESC&maxResults=5&fields=key,summary,created', {
         headers: {
           'Cookie': cookieHeader,
           'Accept': 'application/json'
@@ -65,7 +65,7 @@ async function quickCookieGrab() {
           cookies: jiraCookies,
           totalTickets: data.total,
           timestamp: new Date().toISOString(),
-          baseUrl: 'https://jira.smedigitalapps.com/jira'
+          baseUrl: 'https://jirauat.smedigitalapps.com/jira'
         };
         
         fs.writeFileSync('jira-working-session.json', JSON.stringify(sessionData, null, 2));

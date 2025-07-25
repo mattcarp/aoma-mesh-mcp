@@ -8,7 +8,7 @@ async function browseAllIssues() {
     try {
         // Go to all issues
         console.log('Going to all issues...');
-        await page.goto('https://jira.smedigitalapps.com/jira/issues/');
+        await page.goto('https://jirauat.smedigitalapps.com/jira/issues/');
         await page.waitForTimeout(3000);
         
         // Try different JQL queries
@@ -22,7 +22,7 @@ async function browseAllIssues() {
         
         for (const query of queries) {
             console.log(`Trying JQL: ${query}`);
-            const url = `https://jira.smedigitalapps.com/jira/issues/?jql=${encodeURIComponent(query)}`;
+            const url = `https://jirauat.smedigitalapps.com/jira/issues/?jql=${encodeURIComponent(query)}`;
             await page.goto(url);
             await page.waitForTimeout(2000);
             
@@ -45,7 +45,7 @@ async function browseAllIssues() {
                 const issueData = [];
                 for (const issueKey of issues.slice(0, 5)) {
                     console.log(`Scraping ${issueKey}...`);
-                    await page.goto(`https://jira.smedigitalapps.com/jira/browse/${issueKey}`);
+                    await page.goto(`https://jirauat.smedigitalapps.com/jira/browse/${issueKey}`);
                     await page.waitForTimeout(2000);
                     
                     const details = await page.evaluate(() => ({

@@ -13,7 +13,7 @@ async function bulkScrapeDPSA() {
     
     try {
         const allTickets = [];
-        const startUrl = 'https://jira.smedigitalapps.com/jira/issues/?jql=project%20%3D%20DPSA';
+        const startUrl = 'https://jirauat.smedigitalapps.com/jira/issues/?jql=project%20%3D%20DPSA';
         
         // Load initial data we extracted
         const initialTickets = JSON.parse(fs.readFileSync('dpsa-tickets-from-screenshot.json', 'utf8'));

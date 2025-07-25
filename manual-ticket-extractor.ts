@@ -7,7 +7,7 @@ async function extractFromManualBrowser() {
     
     try {
         console.log('🔄 Please manually navigate to your JIRA page and log in...');
-        console.log('Then go to: https://jira.smedigitalapps.com/jira/issues/?jql=project%20%3D%20DPSA');
+        console.log('Then go to: https://jirauat.smedigitalapps.com/jira/issues/?jql=project%20%3D%20DPSA');
         console.log('⏳ Waiting 30 seconds for you to set up...');
         
         await page.waitForTimeout(30000);

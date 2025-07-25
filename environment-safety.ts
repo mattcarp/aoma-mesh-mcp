@@ -9,7 +9,7 @@ export interface JiraEnvironment {
 export const JIRA_ENVIRONMENTS = {
     PRODUCTION: {
         name: 'PRODUCTION',
-        url: 'https://jira.smedigitalapps.com',
+        url: 'https://jirauat.smedigitalapps.com',
         isProduction: true,
         warning: '⚠️  DANGER: This is PRODUCTION JIRA - Real business data!',
         color: '\x1b[41m' // Red background

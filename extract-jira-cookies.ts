@@ -14,7 +14,7 @@ async function extractCookies() {
   
   try {
     // Go to JIRA
-    await page.goto('https://jira.smedigitalapps.com/jira');
+    await page.goto('https://jirauat.smedigitalapps.com/jira');
     console.log('📍 Opened JIRA in browser');
     
     console.log('\n⏸️ MANUAL STEP REQUIRED:');
@@ -50,7 +50,7 @@ async function extractCookies() {
     // Test API call with cookies
     console.log('\n🧪 Testing API with extracted cookies...');
     
-    const response = await fetch('https://jira.smedigitalapps.com/jira/rest/api/2/search?jql=ORDER BY created DESC&maxResults=3&fields=key,summary', {
+    const response = await fetch('https://jirauat.smedigitalapps.com/jira/rest/api/2/search?jql=ORDER BY created DESC&maxResults=3&fields=key,summary', {
       headers: {
         'Cookie': cookieHeader,
         'Accept': 'application/json'

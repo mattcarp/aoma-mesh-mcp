@@ -14,11 +14,11 @@ async function testJiraAPI() {
   
   try {
     // First check if we can access JIRA
-    await page.goto('https://jira.smedigitalapps.com/jira');
+    await page.goto('https://jirauat.smedigitalapps.com/jira');
     console.log('📍 JIRA URL:', page.url());
     
     // Test the API endpoint that worked in your browser
-    const apiUrl = 'https://jira.smedigitalapps.com/jira/rest/api/2/search?jql=key=ITSM-55362&maxResults=1';
+    const apiUrl = 'https://jirauat.smedigitalapps.com/jira/rest/api/2/search?jql=key=ITSM-55362&maxResults=1';
     console.log('\n🔍 Testing API endpoint...');
     
     await page.goto(apiUrl);
@@ -46,7 +46,7 @@ async function testJiraAPI() {
       
       // Test a broader search
       console.log('\n🔍 Testing broader search...');
-      const broadUrl = 'https://jira.smedigitalapps.com/jira/rest/api/2/search?jql=ORDER BY created DESC&maxResults=5&fields=key,summary,created,status';
+      const broadUrl = 'https://jirauat.smedigitalapps.com/jira/rest/api/2/search?jql=ORDER BY created DESC&maxResults=5&fields=key,summary,created,status';
       await page.goto(broadUrl);
       const broadContent = await page.content();
       

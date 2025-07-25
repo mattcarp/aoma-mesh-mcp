@@ -13,7 +13,7 @@ async function scrapeCurrentJiraView() {
     
     try {
         // Go to the exact URL you're viewing
-        await page.goto('https://jira.smedigitalapps.com/jira/issues/?jql=project%20%3D%20DPSA');
+        await page.goto('https://jirauat.smedigitalapps.com/jira/issues/?jql=project%20%3D%20DPSA');
         await page.waitForTimeout(3000);
         
         // Extract all visible tickets

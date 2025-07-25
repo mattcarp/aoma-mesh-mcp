@@ -66,7 +66,7 @@ class JiraScraper {
     });
 
     // Initialize JIRA credentials
-    this.jiraBaseUrl = process.env.JIRA_BASE_URL || 'https://jira.smedigitalapps.com';
+    this.jiraBaseUrl = process.env.JIRA_BASE_URL || 'https://jirauat.smedigitalapps.com';
     
     const jiraUsername = process.env.JIRA_USERNAME || process.env.JIRA_EMAIL;
     const jiraPassword = process.env.JIRA_PASSWORD;

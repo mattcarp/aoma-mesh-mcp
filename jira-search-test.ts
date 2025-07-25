@@ -10,7 +10,7 @@ async function testJiraQueries() {
   const page = await browser.newPage();
   
   try {
-    await page.goto('https://jira.smedigitalapps.com/jira');
+    await page.goto('https://jirauat.smedigitalapps.com/jira');
     
     const queries = [
       '',  // Empty JQL (should return all)
@@ -26,8 +26,8 @@ async function testJiraQueries() {
       console.log(`\n🔍 Test ${i+1}: "${jql || 'empty'}"`);
       
       const url = jql 
-        ? `https://jira.smedigitalapps.com/jira/rest/api/2/search?jql=${encodeURIComponent(jql)}&maxResults=3&fields=key,summary,created`
-        : `https://jira.smedigitalapps.com/jira/rest/api/2/search?maxResults=3&fields=key,summary,created`;
+        ? `https://jirauat.smedigitalapps.com/jira/rest/api/2/search?jql=${encodeURIComponent(jql)}&maxResults=3&fields=key,summary,created`
+        : `https://jirauat.smedigitalapps.com/jira/rest/api/2/search?maxResults=3&fields=key,summary,created`;
       
       try {
         await page.goto(url);

@@ -1,0 +1,8 @@
+{
+  "timestamp": "2025-07-23T17:59:57.307Z",
+  "testName": "CRITICAL_TICKET_CREATION_RETEST",
+  "attempts": [],
+  "overallStatus": "ERROR",
+  "escalationRequired": true,
+  "error": "locator.isVisible: Error: strict mode violation: locator('text=Dashboard') resolved to 2 elements:\n    1) <a resolved=\"\" role=\"button\" accesskey=\"d\" id=\"home_link\" aria-haspopup=\"true\" aria-expanded=\"false\" data-aui-extra-classes=\"\" elementtiming=\"app-header\" aria-controls=\"home_link-content\" href=\"/jira/secure/Dashboard.jspa\" title=\"View and manage your dashboards\" class=\"aui-nav-link aui-dropdown2-trigger jira-dropdown2-ajax aui-dropdown2-ajax--interactive\">Dashboards</a> aka getByRole('button', { name: ' Dashboards' })\n    2) <h1>System Dashboard</h1> aka getByRole('heading', { name: 'System Dashboard' })\n\nCall log:\n\u001b[2m    - checking visibility of locator('text=Dashboard')\u001b[22m\n"
+}

@@ -7,7 +7,7 @@ async function authenticateAndSearch() {
     
     try {
         console.log('Navigating to JIRA login...');
-        await page.goto('https://jira.smedigitalapps.com/jira/login.jsp');
+        await page.goto('https://jirauat.smedigitalapps.com/jira/login.jsp');
         
         // Wait for the username field to be visible
         await page.waitForSelector('input[type="text"]', { timeout: 10000 });
@@ -40,7 +40,7 @@ async function authenticateAndSearch() {
         
         // Navigate to the search URL
         console.log('Navigating to search...');
-        await page.goto('https://jira.smedigitalapps.com/jira/secure/QuickSearch.jspa?searchString=dpsa');
+        await page.goto('https://jirauat.smedigitalapps.com/jira/secure/QuickSearch.jspa?searchString=dpsa');
         
         // Wait for search results
         await page.waitForTimeout(3000);
@@ -57,7 +57,7 @@ async function authenticateAndSearch() {
                 if (href && text) {
                     issues.push({
                         key: text,
-                        href: href.startsWith('/') ? `https://jira.smedigitalapps.com${href}` : href
+                        href: href.startsWith('/') ? `https://jirauat.smedigitalapps.com${href}` : href
                     });
                 }
             });

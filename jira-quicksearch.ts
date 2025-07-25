@@ -7,7 +7,7 @@ async function scrapeJiraQuickSearch() {
     try {
         // Login first
         console.log('Logging in...');
-        await page.goto('https://jira.smedigitalapps.com/jira/login.jsp');
+        await page.goto('https://jirauat.smedigitalapps.com/jira/login.jsp');
         
         await page.fill('#login-form-username', process.env.JIRA_USERNAME || '');
         await page.fill('#login-form-password', process.env.JIRA_PASSWORD || '');
@@ -18,7 +18,7 @@ async function scrapeJiraQuickSearch() {
         
         // Navigate to the working QuickSearch URL
         console.log('Navigating to QuickSearch...');
-        await page.goto('https://jira.smedigitalapps.com/jira/secure/QuickSearch.jspa?searchString=dpsa');
+        await page.goto('https://jirauat.smedigitalapps.com/jira/secure/QuickSearch.jspa?searchString=dpsa');
         
         // Wait for results to load
         await page.waitForSelector('body', { timeout: 10000 });

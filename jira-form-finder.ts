@@ -10,7 +10,7 @@ async function findJiraForm() {
   const page = await browser.newPage();
   
   try {
-    await page.goto('https://jira.smedigitalapps.com/jira/secure/Dashboard.jspa');
+    await page.goto('https://jirauat.smedigitalapps.com/jira/secure/Dashboard.jspa');
     await page.waitForTimeout(3000);
     
     console.log('🔍 Looking for login elements...');

@@ -7,11 +7,11 @@ async function manualAuthAndSearch() {
     
     try {
         console.log('Opening JIRA login page...');
-        await page.goto('https://jira.smedigitalapps.com/jira/login.jsp');
+        await page.goto('https://jirauat.smedigitalapps.com/jira/login.jsp');
         
         // Wait for manual login
         console.log('Please log in manually in the browser...');
-        console.log('Then navigate to: https://jira.smedigitalapps.com/jira/secure/QuickSearch.jspa?searchString=dpsa');
+        console.log('Then navigate to: https://jirauat.smedigitalapps.com/jira/secure/QuickSearch.jspa?searchString=dpsa');
         console.log('Press Enter in this terminal when you see the search results...');
         
         // Wait for user to press Enter
@@ -46,7 +46,7 @@ async function manualAuthAndSearch() {
                     results.push({
                         type: 'issue_link',
                         key: text,
-                        href: href.startsWith('/') ? `https://jira.smedigitalapps.com${href}` : href
+                        href: href.startsWith('/') ? `https://jirauat.smedigitalapps.com${href}` : href
                     });
                 }
             });
@@ -88,7 +88,7 @@ async function manualAuthAndSearch() {
         
         for (const term of searchTerms) {
             console.log(`\n--- Searching for: ${term} ---`);
-            await page.goto(`https://jira.smedigitalapps.com/jira/secure/QuickSearch.jspa?searchString=${term}`);
+            await page.goto(`https://jirauat.smedigitalapps.com/jira/secure/QuickSearch.jspa?searchString=${term}`);
             await page.waitForTimeout(2000);
             
             const termResults = await page.evaluate(() => {
@@ -100,7 +100,7 @@ async function manualAuthAndSearch() {
                     if (href && text) {
                         issues.push({
                             key: text,
-                            href: href.startsWith('/') ? `https://jira.smedigitalapps.com${href}` : href
+                            href: href.startsWith('/') ? `https://jirauat.smedigitalapps.com${href}` : href
                         });
                     }
                 });

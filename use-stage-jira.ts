@@ -3,7 +3,7 @@ import { createClient } from '@supabase/supabase-js';
 async function checkStageEnvironment() {
     console.log('🔄 SWITCHING TO JIRA UPGRADE TESTING ENVIRONMENT');
     console.log('');
-    console.log('❌ Production JIRA: https://jira.smedigitalapps.com');
+    console.log('❌ Production JIRA: https://jirauat.smedigitalapps.com');
     console.log('✅ UAT/Stage JIRA: https://jirauat.smedigitalapps.com');
     console.log('');
     

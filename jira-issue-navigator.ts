@@ -16,7 +16,7 @@ async function scrapeJiraIssueNavigator() {
         
         // Navigate to the JQL search URL
         console.log('Navigating to Issue Navigator...');
-        await page.goto('https://jira.smedigitalapps.com/jira/issues/?jql=text%20~%20%22dpsa%22');
+        await page.goto('https://jirauat.smedigitalapps.com/jira/issues/?jql=text%20~%20%22dpsa%22');
         
         // Wait for results to load
         await page.waitForSelector('body', { timeout: 10000 });
@@ -61,7 +61,7 @@ async function scrapeJiraIssueNavigator() {
                     results.push({
                         type: 'issue_link',
                         key: text,
-                        href: href.startsWith('/') ? `https://jira.smedigitalapps.com${href}` : href
+                        href: href.startsWith('/') ? `https://jirauat.smedigitalapps.com${href}` : href
                     });
                 }
             });

@@ -6,7 +6,7 @@ async function scrapeDPSATickets() {
     const page = await browser.newPage();
     
     try {
-        await page.goto('https://jira.smedigitalapps.com/jira/issues/?jql=project%20%3D%20DPSA');
+        await page.goto('https://jirauat.smedigitalapps.com/jira/issues/?jql=project%20%3D%20DPSA');
         await page.waitForTimeout(5000);
         
         // Get all table content

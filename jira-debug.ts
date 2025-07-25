@@ -17,7 +17,7 @@ async function debugJiraLogin() {
   try {
     // Go to JIRA
     console.log('📍 Going to JIRA...');
-    await page.goto('https://jira.smedigitalapps.com/jira');
+    await page.goto('https://jirauat.smedigitalapps.com/jira');
     
     // Wait and take screenshot
     await page.waitForTimeout(3000);

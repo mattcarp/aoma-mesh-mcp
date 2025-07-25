@@ -13,7 +13,7 @@ async function issuePickerScraper() {
   
   try {
     // Navigate to Issue Navigator to get proper session
-    await page.goto('https://jira.smedigitalapps.com/jira/secure/IssueNavigator.jspa');
+    await page.goto('https://jirauat.smedigitalapps.com/jira/secure/IssueNavigator.jspa');
     await page.waitForTimeout(3000);
     
     console.log('✅ On Issue Navigator page');
@@ -45,7 +45,7 @@ async function issuePickerScraper() {
       console.log(`\n🔍 Searching for: "${term}"`);
       
       try {
-        const response = await fetch(`https://jira.smedigitalapps.com/jira/rest/api/2/issue/picker?query=${encodeURIComponent(term)}&currentJQL=&showSubTasks=true&showSubTaskParent=true`, {
+        const response = await fetch(`https://jirauat.smedigitalapps.com/jira/rest/api/2/issue/picker?query=${encodeURIComponent(term)}&currentJQL=&showSubTasks=true&showSubTaskParent=true`, {
           headers: {
             'Cookie': cookieHeader,
             'Accept': 'application/json'
@@ -104,7 +104,7 @@ async function issuePickerScraper() {
         const ticket = uniqueTickets[i];
         
         try {
-          const response = await fetch(`https://jira.smedigitalapps.com/jira/rest/api/2/issue/${ticket.key}?fields=key,summary,description,created,updated,status,priority,project`, {
+          const response = await fetch(`https://jirauat.smedigitalapps.com/jira/rest/api/2/issue/${ticket.key}?fields=key,summary,description,created,updated,status,priority,project`, {
             headers: {
               'Cookie': cookieHeader,
               'Accept': 'application/json'
@@ -143,7 +143,7 @@ async function issuePickerScraper() {
           console.log(`\n🔍 Searching project ${projectKey}...`);
           
           try {
-            const response = await fetch(`https://jira.smedigitalapps.com/jira/rest/api/2/search?jql=project=${projectKey} ORDER BY created DESC&maxResults=10&fields=key,summary,created`, {
+            const response = await fetch(`https://jirauat.smedigitalapps.com/jira/rest/api/2/search?jql=project=${projectKey} ORDER BY created DESC&maxResults=10&fields=key,summary,created`, {
               headers: {
                 'Cookie': cookieHeader,
                 'Accept': 'application/json'

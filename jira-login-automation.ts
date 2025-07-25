@@ -20,7 +20,7 @@ async function loginToJira() {
   try {
     // Go to JIRA dashboard
     console.log('📍 Going to JIRA dashboard...');
-    await page.goto('https://jira.smedigitalapps.com/jira/secure/Dashboard.jspa');
+    await page.goto('https://jirauat.smedigitalapps.com/jira/secure/Dashboard.jspa');
     
     // Wait for page to load
     await page.waitForTimeout(3000);
@@ -70,7 +70,7 @@ async function loginToJira() {
     
     // Test if we can access the API now
     console.log('🧪 Testing API access...');
-    await page.goto('https://jira.smedigitalapps.com/jira/rest/api/2/search?jql=ORDER BY created DESC&maxResults=3&fields=key,summary');
+    await page.goto('https://jirauat.smedigitalapps.com/jira/rest/api/2/search?jql=ORDER BY created DESC&maxResults=3&fields=key,summary');
     
     const content = await page.content();
     if (content.includes('"startAt"')) {

@@ -962,7 +962,7 @@ export const UAT_CONFIG: JiraConfig = {
 };
 
 export const PROD_CONFIG: JiraConfig = {
-    baseUrl: 'https://jira.smedigitalapps.com',
+    baseUrl: 'https://jirauat.smedigitalapps.com',
     credentials: {
         username: 'mcarpent',
         email: 'matt.carpenter.ext@sonymusic.com',

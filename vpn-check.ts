@@ -54,7 +54,7 @@ export async function checkVPNConnection(): Promise<VPNStatus> {
         console.log('🌐 Testing connectivity to JIRA servers...');
         
         const jiraTests = [
-            { name: 'Production JIRA', url: 'https://jira.smedigitalapps.com' },
+            { name: 'Production JIRA', url: 'https://jirauat.smedigitalapps.com' },
             { name: 'UAT JIRA', url: 'https://jirauat.smedigitalapps.com' }
         ];
         
@@ -124,7 +124,7 @@ export function displayVPNStatus(status: VPNStatus) {
         console.log('\n🚨 REQUIRED ACTIONS:');
         console.log('1. Connect to Palo Alto Networks GlobalProtect VPN');
         console.log('2. Verify you have access to Sony Music internal network');
-        console.log('3. Test access: https://jira.smedigitalapps.com');
+        console.log('3. Test access: https://jirauat.smedigitalapps.com');
         console.log('4. Contact IT if connection issues persist');
     }
     

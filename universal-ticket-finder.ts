@@ -13,7 +13,7 @@ async function universalTicketFinder() {
   
   try {
     // Go to your dashboard
-    await page.goto('https://jira.smedigitalapps.com/jira/secure/Dashboard.jspa');
+    await page.goto('https://jirauat.smedigitalapps.com/jira/secure/Dashboard.jspa');
     await page.waitForTimeout(5000);
     
     console.log('📖 Page loaded, analyzing content...');
@@ -137,7 +137,7 @@ async function universalTicketFinder() {
         try {
           console.log(`   📖 Testing ${ticketKey}...`);
           
-          await page.goto(`https://jira.smedigitalapps.com/jira/browse/${ticketKey}`);
+          await page.goto(`https://jirauat.smedigitalapps.com/jira/browse/${ticketKey}`);
           await page.waitForTimeout(2000);
           
           const pageTitle = await page.title();
