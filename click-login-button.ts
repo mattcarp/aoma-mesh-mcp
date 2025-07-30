@@ -45,13 +45,14 @@ async function clickLoginButton() {
         console.log(`   Found ${loginButtonFound.count} "Log In" elements: ${loginButtonFound.texts.join(', ')}`);
         
         if (loginButtonFound.found) {
-            console.log('   🔗 Clicking "Log In" button...');
+            console.log('   🔗 Clicking specific navigation "Log In" button...');
             try {
-                await page.getByText('Log In').click();
-                console.log('   ✅ "Log In" button clicked!');
+                // Target the specific navigation login link (not the skip link)
+                await page.click('a.aui-nav-link.login-link[href*="login.jsp"]');
+                console.log('   ✅ Navigation "Log In" button clicked!');
                 await page.waitForTimeout(3000);
             } catch (e) {
-                console.log('   ❌ Could not click "Log In" button:', e.message);
+                console.log('   ❌ Could not click navigation "Log In" button:', e.message);
             }
         } else {
             console.log('   ❌ "Log In" button not found in header');
@@ -65,15 +66,18 @@ async function clickLoginButton() {
         while (!isLoggedIn && loginStep <= maxSteps) {
             console.log(`\n🔍 Step ${loginStep}: Checking login progress...`);
             
+            // Wait for page to stabilize after navigation
+            await page.waitForLoadState('networkidle', { timeout: 10000 }).catch(() => {});
+            
             const currentState = await page.evaluate(() => {
                 const url = window.location.href;
                 const title = document.title;
-                const bodyText = document.body.textContent?.toLowerCase() || '';
+                const bodyText = document.body?.textContent?.toLowerCase() || '';
                 
                 // Check for login form elements
-                const usernameField = document.querySelector('input[placeholder="Username"]');
-                const emailField = document.querySelector('input[type="email"]');
-                const passwordField = document.querySelector('input[type="password"]');
+                const usernameField = document.querySelector('input[placeholder="Username"]:not([disabled])');
+                const emailField = document.querySelector('input[type="email"]:not([disabled]), input[name="loginfmt"]:not([disabled]), input[placeholder*="example.com"]:not([disabled])');
+                const passwordField = document.querySelector('input[type="password"]:not([disabled])');
                 
                 // Check for successful login
                 const hasJiraInterface = document.querySelector('.aui-nav, .navigator-content') !== null;
@@ -113,16 +117,16 @@ async function clickLoginButton() {
                 break;
             }
             
-            // Handle login steps
-            if (currentState.needsUsername) {
+            // Handle login steps - prioritize email fields for Microsoft SSO
+            if (currentState.needsEmail) {
+                console.log('   📧 Entering email...');
+                await page.locator('input[type="email"], input[name="loginfmt"], input[placeholder*="example.com"]').first().fill('matt.carpenter.ext@sonymusic.com');
+                await page.locator('button').filter({ hasText: 'Next' }).click();
+                
+            } else if (currentState.needsUsername) {
                 console.log('   🔤 Entering username...');
                 await page.locator('input[placeholder="Username"]').fill('mcarpent');
                 await page.locator('button').filter({ hasText: 'Continue' }).click();
-                
-            } else if (currentState.needsEmail) {
-                console.log('   📧 Entering email...');
-                await page.locator('input[type="email"]').fill('matt.carpenter.ext@sonymusic.com');
-                await page.locator('button').filter({ hasText: 'Next' }).click();
                 
             } else if (currentState.needsPassword) {
                 console.log('   🔒 Entering password...');

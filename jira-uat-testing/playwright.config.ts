@@ -26,7 +26,7 @@ export default defineConfig({
     // Setup project - runs authentication once
     { 
       name: 'setup', 
-      testMatch: /.*\.setup\.ts/,
+      testMatch: /auth\.setup\.ts$/,  // Only use the working auth.setup.ts
       timeout: 180 * 1000, // 3 minutes for login
     },
     
@@ -36,13 +36,12 @@ export default defineConfig({
       use: {
         ...devices['Desktop Chrome'],
         // Use the authentication state from setup
-        storageState: 'playwright/.auth/jira-user.json',
+        storageState: 'playwright/.auth/jira-uat-user.json',
         // JIRA UAT environment
-        baseURL: 'https://jirauat.smedigitalapps.com/jira',
+        baseURL: 'https://jirauat.smedigitalapps.com',
         ignoreHTTPSErrors: true,
       },
-      // Temporarily remove setup dependency to test saved session directly
-      // dependencies: ['setup'],
+      dependencies: ['setup'], // Always run setup first
     },
   ],
   

@@ -1,0 +1,18 @@
+{
+  "testSuite": "JIRA 10.3 Upgrade Validation",
+  "timestamp": "2025-07-29T15-27-54-991Z",
+  "totalTests": 0,
+  "passedTests": 0,
+  "failedTests": 0,
+  "testResults": [],
+  "performanceMetrics": {},
+  "summary": {
+    "coreFeatures": [],
+    "searchNavigation": [],
+    "projectManagement": [],
+    "administration": [],
+    "reporting": [],
+    "userExperience": [],
+    "apiIntegration": []
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "jira-auth": {
+      "command": "node",
+      "args": ["jira-auth-mcp-server.js"],
+      "env": {
+        "JIRA_BASE_URL": "https://jirauat.smedigitalapps.com",
+        "SESSION_STORAGE_PATH": "./current-session.json",
+        "NODE_ENV": "development"
+      }
+    }
+  }
+} 

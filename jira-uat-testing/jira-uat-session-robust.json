@@ -1,0 +1,43 @@
+{
+  "cookies": [
+    {
+      "name": "JSESSIONID",
+      "value": "8A1A3B28BA007EAAB114E181B5D59460",
+      "domain": "jirauat.smedigitalapps.com",
+      "path": "/jira",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "atlassian.xsrf.token",
+      "value": "A1TC-B0TB-ACDD-Q6T9_43f4cfba50c7ca1cb1e79fa4bfc484641188e075_lout",
+      "domain": "jirauat.smedigitalapps.com",
+      "path": "/jira",
+      "expires": -1,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    }
+  ],
+  "origins": [
+    {
+      "origin": "https://jirauat.smedigitalapps.com",
+      "localStorage": [
+        {
+          "name": "loglevel",
+          "value": "WARN"
+        },
+        {
+          "name": "atst.healthcheck.sensors.page-protocols",
+          "value": "fq2h82"
+        },
+        {
+          "name": "atlassian-analytics.jira.lock",
+          "value": "null"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "testSuite": "JIRA 10.3 Upgrade Validation",
+  "timestamp": "2025-07-29T15-27-25-492Z",
+  "totalTests": 1,
+  "passedTests": 0,
+  "failedTests": 1,
+  "testResults": [
+    {
+      "testName": "Issue Navigator & Search",
+      "category": "Search & Navigation",
+      "status": "fail",
+      "duration": 29280,
+      "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeTruthy\u001b[2m()\u001b[22m\n\nReceived: \u001b[31mfalse\u001b[39m"
+    }
+  ],
+  "performanceMetrics": {
+    "issue-navigator": {
+      "pageLoadTime": null,
+      "networkRequests": 28,
+      "resourceSize": 10855874,
+      "jsErrors": 0
+    }
+  },
+  "summary": {
+    "coreFeatures": [],
+    "searchNavigation": [
+      {
+        "testName": "Issue Navigator & Search",
+        "category": "Search & Navigation",
+        "status": "fail",
+        "duration": 29280,
+        "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeTruthy\u001b[2m()\u001b[22m\n\nReceived: \u001b[31mfalse\u001b[39m"
+      }
+    ],
+    "projectManagement": [],
+    "administration": [],
+    "reporting": [],
+    "userExperience": [],
+    "apiIntegration": []
+  }
+}

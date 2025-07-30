@@ -1,0 +1,47 @@
+{
+  "cookies": [
+    {
+      "name": "JSESSIONID",
+      "value": "B6A4DFFF41216E2685F9A1965982ADFF",
+      "domain": "jirauat.smedigitalapps.com",
+      "path": "/jira",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "atlassian.xsrf.token",
+      "value": "A1TC-B0TB-ACDD-Q6T9_c4f2a6d56848172185b6575660c451a994a76caa_lout",
+      "domain": "jirauat.smedigitalapps.com",
+      "path": "/jira",
+      "expires": -1,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    }
+  ],
+  "origins": [
+    {
+      "origin": "https://jirauat.smedigitalapps.com",
+      "localStorage": [
+        {
+          "name": "jira-app-header-skeleton-dimensions",
+          "value": "{\"headerDimensions\":[{\"x\":10,\"y\":7,\"width\":28,\"height\":40,\"top\":7,\"right\":38,\"bottom\":47,\"left\":10},{\"x\":68,\"y\":12,\"width\":172,\"height\":30,\"top\":12,\"right\":240,\"bottom\":42,\"left\":68},{\"x\":270,\"y\":7,\"width\":93.609375,\"height\":40,\"top\":7,\"right\":363.609375,\"bottom\":47,\"left\":270},{\"x\":381.609375,\"y\":7,\"width\":56.859375,\"height\":40,\"top\":7,\"right\":438.46875,\"bottom\":47,\"left\":381.609375},{\"x\":1148.6328125,\"y\":15,\"width\":24,\"height\":24,\"top\":15,\"right\":1172.6328125,\"bottom\":39,\"left\":1148.6328125},{\"x\":1188.6328125,\"y\":15,\"width\":24,\"height\":24,\"top\":15,\"right\":1212.6328125,\"bottom\":39,\"left\":1188.6328125},{\"x\":1220.6328125,\"y\":7,\"width\":59.3671875,\"height\":40,\"top\":7,\"right\":1280,\"bottom\":47,\"left\":1220.6328125}],\"headerWidth\":1290}"
+        },
+        {
+          "name": "loglevel",
+          "value": "WARN"
+        },
+        {
+          "name": "atst.healthcheck.sensors.page-protocols",
+          "value": "-1oo5mj"
+        },
+        {
+          "name": "atlassian-analytics.jira.lock",
+          "value": "null"
+        }
+      ]
+    }
+  ]
+}

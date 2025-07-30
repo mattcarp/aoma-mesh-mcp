@@ -1,0 +1,34 @@
+{
+  "testSuite": "JIRA 10.3 Upgrade Validation",
+  "timestamp": "2025-07-29T15-26-53-276Z",
+  "totalTests": 1,
+  "passedTests": 0,
+  "failedTests": 1,
+  "testResults": [
+    {
+      "testName": "Dashboard Core Functionality",
+      "category": "Core Features",
+      "status": "fail",
+      "duration": 1192,
+      "error": "Error: page.goto: Target page, context or browser has been closed\nCall log:\n\u001b[2m  - navigating to \"https://jirauat.smedigitalapps.com/jira/dashboard.jspa\", waiting until \"networkidle\"\u001b[22m\n"
+    }
+  ],
+  "performanceMetrics": {},
+  "summary": {
+    "coreFeatures": [
+      {
+        "testName": "Dashboard Core Functionality",
+        "category": "Core Features",
+        "status": "fail",
+        "duration": 1192,
+        "error": "Error: page.goto: Target page, context or browser has been closed\nCall log:\n\u001b[2m  - navigating to \"https://jirauat.smedigitalapps.com/jira/dashboard.jspa\", waiting until \"networkidle\"\u001b[22m\n"
+      }
+    ],
+    "searchNavigation": [],
+    "projectManagement": [],
+    "administration": [],
+    "reporting": [],
+    "userExperience": [],
+    "apiIntegration": []
+  }
+}

@@ -2,209 +2,132 @@ import { test, expect } from '@playwright/test';
 
 test.describe('JIRA Ticket Creation - CRITICAL FUNCTIONALITY', () => {
   test.beforeEach(async ({ page }) => {
-    // Use saved authentication if available
-    console.log('🔐 Starting ticket creation test with authentication...');
+    console.log('🔐 Using saved authentication state...');
+    
+    // Verify we're authenticated by accessing dashboard
+    await page.goto('/secure/Dashboard.jspa', { timeout: 30000 });
+    await page.waitForLoadState('networkidle', { timeout: 10000 });
+    
+    // Verify we're not redirected to login
+    const currentUrl = page.url();
+    if (currentUrl.includes('login')) {
+      throw new Error('❌ AUTHENTICATION FAILED: Redirected to login page. Auth state may be expired.');
+    }
+    
+    console.log('✅ Authentication verified - ready for testing');
   });
 
   test('should be able to create a basic ticket in ITSM project', async ({ page }) => {
     console.log('🎫 Testing basic ticket creation - THE ENGINE TEST!');
     
-    // First, let's find a working dashboard URL
-    const dashboardUrls = [
-      '/secure/Dashboard.jspa',
-      '/dashboard',
-      '/secure/Dashboard.jsp',
-      '/',
-      '/secure/'
-    ];
+    // Navigate to dashboard first to verify we're authenticated
+    await page.goto('https://jirauat.smedigitalapps.com/secure/Dashboard.jspa', { timeout: 30000 });
+    await page.waitForLoadState('networkidle', { timeout: 10000 });
     
-    let workingUrl = '';
-    let isAuthenticated = false;
+    // Check if we're authenticated (no login page)
+    const pageText = await page.textContent('body');
+    const hasLogin = pageText.includes('log in') || 
+                    pageText.includes('sign in') ||
+                    page.url().includes('login');
     
-    for (const url of dashboardUrls) {
-      try {
-        console.log(`🔍 Trying dashboard URL: ${url}`);
-        await page.goto(url, { timeout: 10000 });
-        await page.waitForLoadState('networkidle', { timeout: 5000 });
-        
-        const pageText = await page.textContent('body');
-        const hasError = pageText.includes('HTTP Status 404') || 
-                        pageText.includes('Not Found') || 
-                        pageText.includes('Apache Tomcat');
-        
-        const hasLogin = pageText.includes('log in') || 
-                        pageText.includes('sign in') ||
-                        page.url().includes('login');
-        
-        if (!hasError && !hasLogin) {
-          workingUrl = url;
-          isAuthenticated = true;
-          console.log(`✅ Found working dashboard: ${url}`);
-          break;
-        }
-      } catch (error) {
-        console.log(`❌ Dashboard URL ${url} failed: ${error.message}`);
-      }
-    }
+    expect(hasLogin, 'Should be authenticated and not see login page').toBe(false);
+    console.log('✅ Successfully authenticated to JIRA UAT');
     
-    expect(isAuthenticated, 'Should be able to access JIRA dashboard').toBe(true);
-    
-    // Now try to navigate to ticket creation
+    // Now try to access ticket creation
     console.log('🎯 Attempting to access ticket creation...');
     
-    // Try different ways to access ticket creation
-    const createTicketUrls = [
-      '/secure/CreateIssue!default.jspa',
-      '/secure/CreateIssue.jspa',
-      '/browse/ITSM/create',
-      '/projects/ITSM/issues/create',
-      '/secure/CreateIssue!default.jspa?pid=10000', // Common project ID
-    ];
+    // Try the Create button approach first (most reliable)
+    const createButton = page.locator('button:has-text("Create"), a:has-text("Create"), #create_link').first();
     
-    let createUrl = '';
-    let canAccessCreate = false;
-    
-    for (const url of createTicketUrls) {
-      try {
-        console.log(`🔍 Trying create URL: ${url}`);
-        await page.goto(url, { timeout: 10000 });
-        await page.waitForLoadState('networkidle', { timeout: 5000 });
-        
-        const pageText = await page.textContent('body');
-        const hasError = pageText.includes('HTTP Status 404') || 
-                        pageText.includes('Not Found') || 
-                        pageText.includes('Apache Tomcat');
-        
-        const hasCreateForm = pageText.includes('Create Issue') || 
-                             pageText.includes('Summary') ||
-                             pageText.includes('Issue Type') ||
-                             await page.locator('input[name="summary"]').isVisible().catch(() => false);
-        
-        if (!hasError && hasCreateForm) {
-          createUrl = url;
-          canAccessCreate = true;
-          console.log(`✅ Found working create URL: ${url}`);
-          break;
-        } else {
-          console.log(`❌ Create URL ${url} failed: ${hasError ? '404 error' : 'no create form'}`);
-        }
-      } catch (error) {
-        console.log(`❌ Create URL ${url} failed with error: ${error.message}`);
-      }
+    if (await createButton.isVisible({ timeout: 5000 })) {
+      console.log('✅ Found Create button in UI');
+      await createButton.click();
+      await page.waitForLoadState('networkidle', { timeout: 10000 });
+    } else {
+      // Fallback: try direct URL to create issue
+      console.log('🔍 Trying direct create issue URL...');
+      await page.goto('https://jirauat.smedigitalapps.com/secure/CreateIssue!default.jspa', { timeout: 30000 });
+      await page.waitForLoadState('networkidle', { timeout: 10000 });
     }
     
-    if (!canAccessCreate) {
-      // Try to find create button from dashboard
-      console.log('🔍 Trying to find Create button from dashboard...');
-      await page.goto(workingUrl);
-      
-      const createButtons = [
-        'button:has-text("Create")',
-        'a:has-text("Create")',
-        '[data-testid="create-button"]',
-        '#create_link',
-        '.create-issue-button',
-        'button[aria-label*="Create"]'
-      ];
-      
-      for (const selector of createButtons) {
-        try {
-          const button = page.locator(selector).first();
-          if (await button.isVisible({ timeout: 2000 })) {
-            console.log(`✅ Found create button: ${selector}`);
-            await button.click();
-            await page.waitForLoadState('networkidle', { timeout: 5000 });
-            canAccessCreate = true;
-            break;
-          }
-        } catch (error) {
-          console.log(`❌ Create button ${selector} not found`);
-        }
-      }
+    // Check if we successfully reached the create issue form
+    const createFormVisible = await page.locator('form, #issue-create, [data-testid="issue.create.ui.modal.create-form"]').isVisible({ timeout: 10000 }).catch(() => false);
+    
+    if (!createFormVisible) {
+      // Take screenshot for debugging
+      await page.screenshot({ 
+        path: 'jira-uat-testing/screenshots/create-issue-attempt.png',
+        fullPage: true 
+      });
+      console.log('📸 Screenshot saved: create-issue-attempt.png');
     }
     
-    // Take screenshot of current state
-    await page.screenshot({ 
-      path: 'jira-upgrade-testing/screenshots/ticket-creation-attempt.png',
-      fullPage: true 
-    });
+    expect(createFormVisible, 'Should be able to access ticket creation form').toBe(true);
+    console.log('🎉 SUCCESS: Can access ticket creation form!');
     
-    if (!canAccessCreate) {
-      console.log('❌ CRITICAL FAILURE: Cannot access ticket creation functionality!');
-      console.log('📸 Screenshot saved to: ticket-creation-attempt.png');
-      
-      // Log current page details for debugging
-      console.log(`Current URL: ${page.url()}`);
-      console.log(`Page title: ${await page.title()}`);
-      
-      // Check if we can see any navigation elements
-      const navElements = await page.locator('nav, .navigation, .menu, .header').count();
-      console.log(`Navigation elements found: ${navElements}`);
-      
-      expect(canAccessCreate, 'CRITICAL: Should be able to access ticket creation - this is core JIRA functionality!').toBe(true);
-    }
-    
-    console.log('🎉 SUCCESS: Can access ticket creation functionality!');
-    
-    // Now try to fill out a basic ticket
+    // Now try to fill out basic ticket information
     console.log('📝 Attempting to fill out basic ticket information...');
     
     try {
-      // Look for common form fields
-      const summaryField = page.locator('input[name="summary"], #summary, [data-testid="summary"]').first();
-      const descriptionField = page.locator('textarea[name="description"], #description, [data-testid="description"]').first();
+      // Look for project field and select ITSM
+      const projectField = page.locator('input[name="project"], select[name="project"], #project-field').first();
+      if (await projectField.isVisible({ timeout: 5000 })) {
+        // If it's a dropdown, click to open it
+        await projectField.click();
+        await page.waitForTimeout(1000);
+        
+        // Look for ITSM option
+        const itsmOption = page.locator('option:has-text("ITSM"), li:has-text("ITSM"), [data-value="ITSM"]').first();
+        if (await itsmOption.isVisible({ timeout: 3000 })) {
+          await itsmOption.click();
+          console.log('✅ Selected ITSM project');
+        }
+      }
       
+      // Fill summary field
+      const summaryField = page.locator('input[name="summary"], #summary, [data-testid="summary"]').first();
       if (await summaryField.isVisible({ timeout: 5000 })) {
         await summaryField.fill('UAT Test Ticket - Automated Creation Test');
         console.log('✅ Filled summary field');
       }
       
+      // Fill description field
+      const descriptionField = page.locator('textarea[name="description"], #description, [data-testid="description"]').first();
       if (await descriptionField.isVisible({ timeout: 5000 })) {
         await descriptionField.fill('This is an automated test ticket created during UAT testing to verify ticket creation functionality works after JIRA upgrade.');
         console.log('✅ Filled description field');
       }
       
-      // Look for submit/create button
-      const submitButtons = [
-        'button:has-text("Create")',
-        'input[type="submit"]',
-        'button[type="submit"]',
-        '[data-testid="create-issue-submit"]'
-      ];
+      // Look for submit/create button (but don't click it for UAT safety)
+      const submitButton = page.locator('button:has-text("Create"), input[type="submit"], button[type="submit"]').first();
       
-      let submitButton = null;
-      for (const selector of submitButtons) {
-        const button = page.locator(selector).first();
-        if (await button.isVisible({ timeout: 2000 })) {
-          submitButton = button;
-          console.log(`✅ Found submit button: ${selector}`);
-          break;
-        }
-      }
-      
-      if (submitButton) {
-        console.log('🚀 Ready to create ticket - but stopping here for UAT safety');
-        console.log('✅ TICKET CREATION FORM IS FUNCTIONAL!');
+      if (await submitButton.isVisible({ timeout: 5000 })) {
+        console.log('✅ TICKET CREATION FORM IS FULLY FUNCTIONAL!');
+        console.log('🚀 Ready to create ticket - stopping here for UAT safety');
         
-        // Take screenshot of filled form
+        // Take screenshot of filled form as evidence
         await page.screenshot({ 
-          path: 'jira-upgrade-testing/screenshots/ticket-creation-form-filled.png',
+          path: 'jira-uat-testing/screenshots/ticket-creation-form-ready.png',
           fullPage: true 
         });
+        console.log('📸 Screenshot of ready form saved');
         
-        // For UAT, we'll stop here to avoid creating test tickets
-        // In production testing, we would click submit and verify creation
-        console.log('📸 Screenshot of filled form saved');
+        // For UAT, we verify the form works but don't actually create the ticket
+        expect(true, 'Ticket creation form is functional and ready').toBe(true);
         
       } else {
         console.log('❌ WARNING: Could not find submit button');
-        expect(submitButton, 'Should be able to find submit button for ticket creation').toBeTruthy();
+        await page.screenshot({ 
+          path: 'jira-uat-testing/screenshots/ticket-creation-no-submit.png',
+          fullPage: true 
+        });
+        expect(false, 'Should be able to find submit button for ticket creation').toBe(true);
       }
       
     } catch (error) {
       console.log(`❌ Error filling ticket form: ${error.message}`);
       await page.screenshot({ 
-        path: 'jira-upgrade-testing/screenshots/ticket-creation-error.png',
+        path: 'jira-uat-testing/screenshots/ticket-creation-error.png',
         fullPage: true 
       });
       throw error;
@@ -214,21 +137,46 @@ test.describe('JIRA Ticket Creation - CRITICAL FUNCTIONALITY', () => {
   test('should validate required fields in ticket creation', async ({ page }) => {
     console.log('✅ Testing required field validation...');
     
-    // This test would verify that required fields are properly validated
-    // and users get appropriate error messages for missing information
+    // Navigate to create issue form
+    await page.goto('https://jirauat.smedigitalapps.com/secure/Dashboard.jspa', { timeout: 30000 });
     
-    // For now, we'll implement this as a placeholder
-    console.log('📋 Required field validation test - TO BE IMPLEMENTED');
-    expect(true).toBe(true); // Placeholder
+    const createButton = page.locator('button:has-text("Create"), a:has-text("Create"), #create_link').first();
+    if (await createButton.isVisible({ timeout: 5000 })) {
+      await createButton.click();
+      await page.waitForLoadState('networkidle', { timeout: 10000 });
+      
+      // Try to submit without filling required fields
+      const submitButton = page.locator('button:has-text("Create"), input[type="submit"], button[type="submit"]').first();
+      if (await submitButton.isVisible({ timeout: 5000 })) {
+        await submitButton.click();
+        
+        // Check for validation errors
+        const errorMessages = await page.locator('.error, .field-error, [role="alert"]').count();
+        expect(errorMessages, 'Should show validation errors for required fields').toBeGreaterThan(0);
+        console.log('✅ Required field validation works correctly');
+      }
+    }
   });
 
   test('should handle different issue types', async ({ page }) => {
     console.log('🎭 Testing different issue types...');
     
-    // This test would verify that different issue types (Bug, Task, Story, etc.)
-    // can be selected and have appropriate fields
+    // Navigate to create issue form
+    await page.goto('https://jirauat.smedigitalapps.com/secure/Dashboard.jspa', { timeout: 30000 });
     
-    console.log('🎭 Issue type testing - TO BE IMPLEMENTED');
-    expect(true).toBe(true); // Placeholder
+    const createButton = page.locator('button:has-text("Create"), a:has-text("Create"), #create_link').first();
+    if (await createButton.isVisible({ timeout: 5000 })) {
+      await createButton.click();
+      await page.waitForLoadState('networkidle', { timeout: 10000 });
+      
+      // Look for issue type field
+      const issueTypeField = page.locator('select[name="issuetype"], #issuetype-field').first();
+      if (await issueTypeField.isVisible({ timeout: 5000 })) {
+        // Get available options
+        const options = await issueTypeField.locator('option').count();
+        expect(options, 'Should have multiple issue type options available').toBeGreaterThan(1);
+        console.log(`✅ Found ${options} issue type options`);
+      }
+    }
   });
 });

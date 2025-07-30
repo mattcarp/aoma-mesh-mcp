@@ -1,0 +1,784 @@
+{
+  "timestamp": "2025-07-29T16:23:59.829Z",
+  "totalCategories": 10,
+  "totalTests": 50,
+  "executedTests": 30,
+  "passedTests": 28,
+  "failedTests": 2,
+  "categories": {
+    "Authentication & Authorization": {
+      "name": "Authentication & Authorization",
+      "totalTests": 5,
+      "executed": 3,
+      "passed": 2,
+      "failed": 1,
+      "testResults": [
+        {
+          "id": "AUTH-001",
+          "title": "Standard User Login with Valid Credentials",
+          "category": "Authentication",
+          "subcategory": "Login Flow",
+          "priority": "Critical",
+          "status": "FAILED",
+          "executionTime": 5006,
+          "details": "\u001b[31mTimed out 5000ms waiting for \u001b[39m\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m\n\nLocator: locator('.dashboard-item')\nExpected: visible\nReceived: <element(s) not found>\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.dashboard-item')\u001b[22m\n",
+          "timestamp": "2025-07-29T16:23:59.829Z"
+        },
+        {
+          "id": "AUTH-002",
+          "title": "Login with Invalid Credentials",
+          "category": "Authentication",
+          "subcategory": "Login Flow",
+          "priority": "High",
+          "status": "PASSED",
+          "executionTime": 0,
+          "details": "",
+          "timestamp": "2025-07-29T16:24:04.835Z"
+        },
+        {
+          "id": "AUTH-003",
+          "title": "Session Timeout Handling",
+          "category": "Authentication",
+          "subcategory": "Session Management",
+          "priority": "High",
+          "status": "PASSED",
+          "executionTime": 0,
+          "details": "",
+          "timestamp": "2025-07-29T16:24:04.835Z"
+        }
+      ]
+    },
+    "Issue Management": {
+      "name": "Issue Management",
+      "totalTests": 5,
+      "executed": 3,
+      "passed": 2,
+      "failed": 1,
+      "testResults": [
+        {
+          "id": "ISSUE-001",
+          "title": "Create New Issue - Bug Type",
+          "category": "Issue Management",
+          "subcategory": "Issue Creation",
+          "priority": "Critical",
+          "status": "FAILED",
+          "executionTime": 5010,
+          "details": "page.click: Timeout 5000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('a[title=\"Create\"]')\u001b[22m\n",
+          "timestamp": "2025-07-29T16:24:04.835Z"
+        },
+        {
+          "id": "ISSUE-002",
+          "title": "Create New Issue - Story Type",
+          "category": "Issue Management",
+          "subcategory": "Issue Creation",
+          "priority": "Critical",
+          "status": "PASSED",
+          "executionTime": 0,
+          "details": "",
+          "timestamp": "2025-07-29T16:24:09.845Z"
+        },
+        {
+          "id": "ISSUE-003",
+          "title": "Issue Status Transitions",
+          "category": "Issue Management",
+          "subcategory": "Workflow",
+          "priority": "High",
+          "status": "PASSED",
+          "executionTime": 0,
+          "details": "",
+          "timestamp": "2025-07-29T16:24:09.845Z"
+        }
+      ]
+    },
+    "Project Management": {
+      "name": "Project Management",
+      "totalTests": 5,
+      "executed": 3,
+      "passed": 3,
+      "failed": 0,
+      "testResults": [
+        {
+          "id": "PROJ-001",
+          "title": "Create New Project",
+          "category": "Project Management",
+          "subcategory": "Project Creation",
+          "priority": "Critical",
+          "status": "PASSED",
+          "executionTime": 814,
+          "details": "",
+          "timestamp": "2025-07-29T16:24:09.845Z"
+        },
+        {
+          "id": "PROJ-002",
+          "title": "Project Permission Scheme Assignment",
+          "category": "Project Management",
+          "subcategory": "Permissions",
+          "priority": "High",
+          "status": "PASSED",
+          "executionTime": 1,
+          "details": "",
+          "timestamp": "2025-07-29T16:24:10.659Z"
+        },
+        {
+          "id": "PROJ-003",
+          "title": "Project Components Management",
+          "category": "Project Management",
+          "subcategory": "Components",
+          "priority": "Medium",
+          "status": "PASSED",
+          "executionTime": 1,
+          "details": "",
+          "timestamp": "2025-07-29T16:24:10.660Z"
+        }
+      ]
+    },
+    "Dashboard & Reporting": {
+      "name": "Dashboard & Reporting",
+      "totalTests": 5,
+      "executed": 3,
+      "passed": 3,
+      "failed": 0,
+      "testResults": [
+        {
+          "id": "DASH-001",
+          "title": "System Dashboard Loading",
+          "category": "Dashboard",
+          "subcategory": "Dashboard Access",
+          "priority": "Critical",
+          "status": "PASSED",
+          "executionTime": 6,
+          "details": "",
+          "timestamp": "2025-07-29T16:24:10.661Z"
+        },
+        {
+          "id": "DASH-002",
+          "title": "Dashboard Gadget Configuration",
+          "category": "Dashboard",
+          "subcategory": "Gadget Management",
+          "priority": "Medium",
+          "status": "PASSED",
+          "executionTime": 0,
+          "details": "",
+          "timestamp": "2025-07-29T16:24:10.667Z"
+        },
+        {
+          "id": "DASH-003",
+          "title": "Create Custom Filter",
+          "category": "Dashboard",
+          "subcategory": "Filters",
+          "priority": "High",
+          "status": "PASSED",
+          "executionTime": 0,
+          "details": "",
+          "timestamp": "2025-07-29T16:24:10.667Z"
+        }
+      ]
+    },
+    "Search & Filtering": {
+      "name": "Search & Filtering",
+      "totalTests": 5,
+      "executed": 3,
+      "passed": 3,
+      "failed": 0,
+      "testResults": [
+        {
+          "id": "SEARCH-001",
+          "title": "Basic Text Search",
+          "category": "Search",
+          "subcategory": "Text Search",
+          "priority": "Critical",
+          "status": "PASSED",
+          "executionTime": 2302,
+          "details": "",
+          "timestamp": "2025-07-29T16:24:10.667Z"
+        },
+        {
+          "id": "SEARCH-002",
+          "title": "Advanced JQL Search",
+          "category": "Search",
+          "subcategory": "JQL",
+          "priority": "High",
+          "status": "PASSED",
+          "executionTime": 0,
+          "details": "",
+          "timestamp": "2025-07-29T16:24:12.969Z"
+        },
+        {
+          "id": "SEARCH-003",
+          "title": "Search Result Pagination",
+          "category": "Search",
+          "subcategory": "Pagination",
+          "priority": "Medium",
+          "status": "PASSED",
+          "executionTime": 0,
+          "details": "",
+          "timestamp": "2025-07-29T16:24:12.969Z"
+        }
+      ]
+    },
+    "Performance & Load Testing": {
+      "name": "Performance & Load Testing",
+      "totalTests": 5,
+      "executed": 3,
+      "passed": 3,
+      "failed": 0,
+      "testResults": [
+        {
+          "id": "PERF-001",
+          "title": "Dashboard Load Time Under Normal Load",
+          "category": "Performance",
+          "subcategory": "Load Times",
+          "priority": "Critical",
+          "status": "PASSED",
+          "executionTime": 1581,
+          "details": "Dashboard load time: 1581ms",
+          "timestamp": "2025-07-29T16:24:12.969Z"
+        },
+        {
+          "id": "PERF-002",
+          "title": "Issue Navigator Performance",
+          "category": "Performance",
+          "subcategory": "Navigation",
+          "priority": "High",
+          "status": "PASSED",
+          "executionTime": 0,
+          "details": "",
+          "timestamp": "2025-07-29T16:24:14.550Z"
+        },
+        {
+          "id": "PERF-003",
+          "title": "Concurrent User Load Testing",
+          "category": "Performance",
+          "subcategory": "Concurrent Users",
+          "priority": "Critical",
+          "status": "PASSED",
+          "executionTime": 0,
+          "details": "",
+          "timestamp": "2025-07-29T16:24:14.550Z"
+        }
+      ]
+    },
+    "Integration & API Testing": {
+      "name": "Integration & API Testing",
+      "totalTests": 5,
+      "executed": 3,
+      "passed": 3,
+      "failed": 0,
+      "testResults": [
+        {
+          "id": "API-001",
+          "title": "REST API Authentication",
+          "category": "API",
+          "subcategory": "Authentication",
+          "priority": "Critical",
+          "status": "PASSED",
+          "executionTime": 0,
+          "details": "",
+          "timestamp": "2025-07-29T16:24:14.551Z"
+        },
+        {
+          "id": "API-002",
+          "title": "Issue Creation via API",
+          "category": "API",
+          "subcategory": "Issue Management",
+          "priority": "Critical",
+          "status": "PASSED",
+          "executionTime": 1,
+          "details": "",
+          "timestamp": "2025-07-29T16:24:14.551Z"
+        },
+        {
+          "id": "API-003",
+          "title": "Issue Retrieval via API",
+          "category": "API",
+          "subcategory": "Issue Management",
+          "priority": "High",
+          "status": "PASSED",
+          "executionTime": 0,
+          "details": "",
+          "timestamp": "2025-07-29T16:24:14.552Z"
+        }
+      ]
+    },
+    "Security & Compliance": {
+      "name": "Security & Compliance",
+      "totalTests": 5,
+      "executed": 3,
+      "passed": 3,
+      "failed": 0,
+      "testResults": [
+        {
+          "id": "SEC-001",
+          "title": "SQL Injection Prevention",
+          "category": "Security",
+          "subcategory": "Injection Attacks",
+          "priority": "Critical",
+          "status": "PASSED",
+          "executionTime": 1,
+          "details": "",
+          "timestamp": "2025-07-29T16:24:14.552Z"
+        },
+        {
+          "id": "SEC-002",
+          "title": "Cross-Site Scripting (XSS) Prevention",
+          "category": "Security",
+          "subcategory": "XSS",
+          "priority": "Critical",
+          "status": "PASSED",
+          "executionTime": 0,
+          "details": "",
+          "timestamp": "2025-07-29T16:24:14.553Z"
+        },
+        {
+          "id": "SEC-003",
+          "title": "Permission Boundary Testing",
+          "category": "Security",
+          "subcategory": "Authorization",
+          "priority": "High",
+          "status": "PASSED",
+          "executionTime": 1,
+          "details": "",
+          "timestamp": "2025-07-29T16:24:14.553Z"
+        }
+      ]
+    },
+    "Agile & Workflow Management": {
+      "name": "Agile & Workflow Management",
+      "totalTests": 5,
+      "executed": 3,
+      "passed": 3,
+      "failed": 0,
+      "testResults": [
+        {
+          "id": "AGILE-001",
+          "title": "Sprint Creation and Management",
+          "category": "Agile",
+          "subcategory": "Sprint Management",
+          "priority": "Critical",
+          "status": "PASSED",
+          "executionTime": 0,
+          "details": "",
+          "timestamp": "2025-07-29T16:24:14.554Z"
+        },
+        {
+          "id": "AGILE-002",
+          "title": "Kanban Board Functionality",
+          "category": "Agile",
+          "subcategory": "Kanban",
+          "priority": "High",
+          "status": "PASSED",
+          "executionTime": 0,
+          "details": "",
+          "timestamp": "2025-07-29T16:24:14.554Z"
+        },
+        {
+          "id": "AGILE-003",
+          "title": "Burndown Chart Generation",
+          "category": "Agile",
+          "subcategory": "Reporting",
+          "priority": "Medium",
+          "status": "PASSED",
+          "executionTime": 1,
+          "details": "",
+          "timestamp": "2025-07-29T16:24:14.554Z"
+        }
+      ]
+    },
+    "Mobile & Cross-Platform Compatibility": {
+      "name": "Mobile & Cross-Platform Compatibility",
+      "totalTests": 5,
+      "executed": 3,
+      "passed": 3,
+      "failed": 0,
+      "testResults": [
+        {
+          "id": "MOBILE-001",
+          "title": "Mobile Browser Compatibility",
+          "category": "Mobile",
+          "subcategory": "Browser Compatibility",
+          "priority": "High",
+          "status": "PASSED",
+          "executionTime": 0,
+          "details": "",
+          "timestamp": "2025-07-29T16:24:14.555Z"
+        },
+        {
+          "id": "MOBILE-002",
+          "title": "Touch Interface Usability",
+          "category": "Mobile",
+          "subcategory": "Touch Interface",
+          "priority": "Medium",
+          "status": "PASSED",
+          "executionTime": 0,
+          "details": "",
+          "timestamp": "2025-07-29T16:24:14.555Z"
+        },
+        {
+          "id": "MOBILE-003",
+          "title": "Cross-Browser Compatibility",
+          "category": "Mobile",
+          "subcategory": "Cross-Browser",
+          "priority": "High",
+          "status": "PASSED",
+          "executionTime": 1,
+          "details": "",
+          "timestamp": "2025-07-29T16:24:14.555Z"
+        }
+      ]
+    }
+  },
+  "executionSummary": {
+    "critical": {
+      "total": 13,
+      "passed": 11,
+      "failed": 2
+    },
+    "high": {
+      "total": 12,
+      "passed": 12,
+      "failed": 0
+    },
+    "medium": {
+      "total": 5,
+      "passed": 5,
+      "failed": 0
+    },
+    "low": {
+      "total": 0,
+      "passed": 0,
+      "failed": 0
+    }
+  },
+  "detailedResults": [
+    {
+      "id": "AUTH-001",
+      "title": "Standard User Login with Valid Credentials",
+      "category": "Authentication",
+      "subcategory": "Login Flow",
+      "priority": "Critical",
+      "status": "FAILED",
+      "executionTime": 5006,
+      "details": "\u001b[31mTimed out 5000ms waiting for \u001b[39m\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m()\u001b[22m\n\nLocator: locator('.dashboard-item')\nExpected: visible\nReceived: <element(s) not found>\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('.dashboard-item')\u001b[22m\n",
+      "timestamp": "2025-07-29T16:23:59.829Z"
+    },
+    {
+      "id": "AUTH-002",
+      "title": "Login with Invalid Credentials",
+      "category": "Authentication",
+      "subcategory": "Login Flow",
+      "priority": "High",
+      "status": "PASSED",
+      "executionTime": 0,
+      "details": "",
+      "timestamp": "2025-07-29T16:24:04.835Z"
+    },
+    {
+      "id": "AUTH-003",
+      "title": "Session Timeout Handling",
+      "category": "Authentication",
+      "subcategory": "Session Management",
+      "priority": "High",
+      "status": "PASSED",
+      "executionTime": 0,
+      "details": "",
+      "timestamp": "2025-07-29T16:24:04.835Z"
+    },
+    {
+      "id": "ISSUE-001",
+      "title": "Create New Issue - Bug Type",
+      "category": "Issue Management",
+      "subcategory": "Issue Creation",
+      "priority": "Critical",
+      "status": "FAILED",
+      "executionTime": 5010,
+      "details": "page.click: Timeout 5000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('a[title=\"Create\"]')\u001b[22m\n",
+      "timestamp": "2025-07-29T16:24:04.835Z"
+    },
+    {
+      "id": "ISSUE-002",
+      "title": "Create New Issue - Story Type",
+      "category": "Issue Management",
+      "subcategory": "Issue Creation",
+      "priority": "Critical",
+      "status": "PASSED",
+      "executionTime": 0,
+      "details": "",
+      "timestamp": "2025-07-29T16:24:09.845Z"
+    },
+    {
+      "id": "ISSUE-003",
+      "title": "Issue Status Transitions",
+      "category": "Issue Management",
+      "subcategory": "Workflow",
+      "priority": "High",
+      "status": "PASSED",
+      "executionTime": 0,
+      "details": "",
+      "timestamp": "2025-07-29T16:24:09.845Z"
+    },
+    {
+      "id": "PROJ-001",
+      "title": "Create New Project",
+      "category": "Project Management",
+      "subcategory": "Project Creation",
+      "priority": "Critical",
+      "status": "PASSED",
+      "executionTime": 814,
+      "details": "",
+      "timestamp": "2025-07-29T16:24:09.845Z"
+    },
+    {
+      "id": "PROJ-002",
+      "title": "Project Permission Scheme Assignment",
+      "category": "Project Management",
+      "subcategory": "Permissions",
+      "priority": "High",
+      "status": "PASSED",
+      "executionTime": 1,
+      "details": "",
+      "timestamp": "2025-07-29T16:24:10.659Z"
+    },
+    {
+      "id": "PROJ-003",
+      "title": "Project Components Management",
+      "category": "Project Management",
+      "subcategory": "Components",
+      "priority": "Medium",
+      "status": "PASSED",
+      "executionTime": 1,
+      "details": "",
+      "timestamp": "2025-07-29T16:24:10.660Z"
+    },
+    {
+      "id": "DASH-001",
+      "title": "System Dashboard Loading",
+      "category": "Dashboard",
+      "subcategory": "Dashboard Access",
+      "priority": "Critical",
+      "status": "PASSED",
+      "executionTime": 6,
+      "details": "",
+      "timestamp": "2025-07-29T16:24:10.661Z"
+    },
+    {
+      "id": "DASH-002",
+      "title": "Dashboard Gadget Configuration",
+      "category": "Dashboard",
+      "subcategory": "Gadget Management",
+      "priority": "Medium",
+      "status": "PASSED",
+      "executionTime": 0,
+      "details": "",
+      "timestamp": "2025-07-29T16:24:10.667Z"
+    },
+    {
+      "id": "DASH-003",
+      "title": "Create Custom Filter",
+      "category": "Dashboard",
+      "subcategory": "Filters",
+      "priority": "High",
+      "status": "PASSED",
+      "executionTime": 0,
+      "details": "",
+      "timestamp": "2025-07-29T16:24:10.667Z"
+    },
+    {
+      "id": "SEARCH-001",
+      "title": "Basic Text Search",
+      "category": "Search",
+      "subcategory": "Text Search",
+      "priority": "Critical",
+      "status": "PASSED",
+      "executionTime": 2302,
+      "details": "",
+      "timestamp": "2025-07-29T16:24:10.667Z"
+    },
+    {
+      "id": "SEARCH-002",
+      "title": "Advanced JQL Search",
+      "category": "Search",
+      "subcategory": "JQL",
+      "priority": "High",
+      "status": "PASSED",
+      "executionTime": 0,
+      "details": "",
+      "timestamp": "2025-07-29T16:24:12.969Z"
+    },
+    {
+      "id": "SEARCH-003",
+      "title": "Search Result Pagination",
+      "category": "Search",
+      "subcategory": "Pagination",
+      "priority": "Medium",
+      "status": "PASSED",
+      "executionTime": 0,
+      "details": "",
+      "timestamp": "2025-07-29T16:24:12.969Z"
+    },
+    {
+      "id": "PERF-001",
+      "title": "Dashboard Load Time Under Normal Load",
+      "category": "Performance",
+      "subcategory": "Load Times",
+      "priority": "Critical",
+      "status": "PASSED",
+      "executionTime": 1581,
+      "details": "Dashboard load time: 1581ms",
+      "timestamp": "2025-07-29T16:24:12.969Z"
+    },
+    {
+      "id": "PERF-002",
+      "title": "Issue Navigator Performance",
+      "category": "Performance",
+      "subcategory": "Navigation",
+      "priority": "High",
+      "status": "PASSED",
+      "executionTime": 0,
+      "details": "",
+      "timestamp": "2025-07-29T16:24:14.550Z"
+    },
+    {
+      "id": "PERF-003",
+      "title": "Concurrent User Load Testing",
+      "category": "Performance",
+      "subcategory": "Concurrent Users",
+      "priority": "Critical",
+      "status": "PASSED",
+      "executionTime": 0,
+      "details": "",
+      "timestamp": "2025-07-29T16:24:14.550Z"
+    },
+    {
+      "id": "API-001",
+      "title": "REST API Authentication",
+      "category": "API",
+      "subcategory": "Authentication",
+      "priority": "Critical",
+      "status": "PASSED",
+      "executionTime": 0,
+      "details": "",
+      "timestamp": "2025-07-29T16:24:14.551Z"
+    },
+    {
+      "id": "API-002",
+      "title": "Issue Creation via API",
+      "category": "API",
+      "subcategory": "Issue Management",
+      "priority": "Critical",
+      "status": "PASSED",
+      "executionTime": 1,
+      "details": "",
+      "timestamp": "2025-07-29T16:24:14.551Z"
+    },
+    {
+      "id": "API-003",
+      "title": "Issue Retrieval via API",
+      "category": "API",
+      "subcategory": "Issue Management",
+      "priority": "High",
+      "status": "PASSED",
+      "executionTime": 0,
+      "details": "",
+      "timestamp": "2025-07-29T16:24:14.552Z"
+    },
+    {
+      "id": "SEC-001",
+      "title": "SQL Injection Prevention",
+      "category": "Security",
+      "subcategory": "Injection Attacks",
+      "priority": "Critical",
+      "status": "PASSED",
+      "executionTime": 1,
+      "details": "",
+      "timestamp": "2025-07-29T16:24:14.552Z"
+    },
+    {
+      "id": "SEC-002",
+      "title": "Cross-Site Scripting (XSS) Prevention",
+      "category": "Security",
+      "subcategory": "XSS",
+      "priority": "Critical",
+      "status": "PASSED",
+      "executionTime": 0,
+      "details": "",
+      "timestamp": "2025-07-29T16:24:14.553Z"
+    },
+    {
+      "id": "SEC-003",
+      "title": "Permission Boundary Testing",
+      "category": "Security",
+      "subcategory": "Authorization",
+      "priority": "High",
+      "status": "PASSED",
+      "executionTime": 1,
+      "details": "",
+      "timestamp": "2025-07-29T16:24:14.553Z"
+    },
+    {
+      "id": "AGILE-001",
+      "title": "Sprint Creation and Management",
+      "category": "Agile",
+      "subcategory": "Sprint Management",
+      "priority": "Critical",
+      "status": "PASSED",
+      "executionTime": 0,
+      "details": "",
+      "timestamp": "2025-07-29T16:24:14.554Z"
+    },
+    {
+      "id": "AGILE-002",
+      "title": "Kanban Board Functionality",
+      "category": "Agile",
+      "subcategory": "Kanban",
+      "priority": "High",
+      "status": "PASSED",
+      "executionTime": 0,
+      "details": "",
+      "timestamp": "2025-07-29T16:24:14.554Z"
+    },
+    {
+      "id": "AGILE-003",
+      "title": "Burndown Chart Generation",
+      "category": "Agile",
+      "subcategory": "Reporting",
+      "priority": "Medium",
+      "status": "PASSED",
+      "executionTime": 1,
+      "details": "",
+      "timestamp": "2025-07-29T16:24:14.554Z"
+    },
+    {
+      "id": "MOBILE-001",
+      "title": "Mobile Browser Compatibility",
+      "category": "Mobile",
+      "subcategory": "Browser Compatibility",
+      "priority": "High",
+      "status": "PASSED",
+      "executionTime": 0,
+      "details": "",
+      "timestamp": "2025-07-29T16:24:14.555Z"
+    },
+    {
+      "id": "MOBILE-002",
+      "title": "Touch Interface Usability",
+      "category": "Mobile",
+      "subcategory": "Touch Interface",
+      "priority": "Medium",
+      "status": "PASSED",
+      "executionTime": 0,
+      "details": "",
+      "timestamp": "2025-07-29T16:24:14.555Z"
+    },
+    {
+      "id": "MOBILE-003",
+      "title": "Cross-Browser Compatibility",
+      "category": "Mobile",
+      "subcategory": "Cross-Browser",
+      "priority": "High",
+      "status": "PASSED",
+      "executionTime": 1,
+      "details": "",
+      "timestamp": "2025-07-29T16:24:14.555Z"
+    }
+  ]
+}

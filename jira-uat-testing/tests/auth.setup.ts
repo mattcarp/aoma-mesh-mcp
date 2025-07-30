@@ -1,7 +1,7 @@
 import { test as setup, expect } from '@playwright/test';
 import path from 'path';
 
-const authFile = path.join(__dirname, '../playwright/.auth/jira-user.json');
+const authFile = path.join(__dirname, '../playwright/.auth/jira-uat-user.json');
 
 setup('authenticate to JIRA', async ({ page }) => {
   console.log('🔐 Setting up JIRA authentication...');

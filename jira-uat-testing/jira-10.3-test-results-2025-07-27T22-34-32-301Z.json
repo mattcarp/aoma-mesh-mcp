@@ -1,0 +1,62 @@
+{
+  "testSuite": "JIRA 10.3 Upgrade Validation",
+  "timestamp": "2025-07-27T22-34-32-301Z",
+  "totalTests": 2,
+  "passedTests": 1,
+  "failedTests": 1,
+  "testResults": [
+    {
+      "testName": "Reports & Dashboard Analytics",
+      "category": "Reporting",
+      "status": "pass",
+      "duration": 5890,
+      "details": "Found 2 dashboard elements"
+    },
+    {
+      "testName": "User Profile & Settings",
+      "category": "User Experience",
+      "status": "fail",
+      "duration": 3919,
+      "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeTruthy\u001b[2m()\u001b[22m\n\nReceived: \u001b[31mfalse\u001b[39m"
+    }
+  ],
+  "performanceMetrics": {
+    "reports": {
+      "pageLoadTime": null,
+      "networkRequests": 32,
+      "resourceSize": 5916967,
+      "jsErrors": 0
+    },
+    "profile": {
+      "pageLoadTime": null,
+      "networkRequests": 27,
+      "resourceSize": 3879136,
+      "jsErrors": 0
+    }
+  },
+  "summary": {
+    "coreFeatures": [],
+    "searchNavigation": [],
+    "projectManagement": [],
+    "administration": [],
+    "reporting": [
+      {
+        "testName": "Reports & Dashboard Analytics",
+        "category": "Reporting",
+        "status": "pass",
+        "duration": 5890,
+        "details": "Found 2 dashboard elements"
+      }
+    ],
+    "userExperience": [
+      {
+        "testName": "User Profile & Settings",
+        "category": "User Experience",
+        "status": "fail",
+        "duration": 3919,
+        "error": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBeTruthy\u001b[2m()\u001b[22m\n\nReceived: \u001b[31mfalse\u001b[39m"
+      }
+    ],
+    "apiIntegration": []
+  }
+}

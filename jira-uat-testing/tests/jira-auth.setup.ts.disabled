@@ -1,0 +1,180 @@
+import { test as setup, expect } from '@playwright/test';
+
+const authFile = 'playwright/.auth/jira-uat-user.json';
+
+setup('authenticate to JIRA UAT', async ({ page }) => {
+  console.log('🔐 Setting up JIRA UAT authentication...');
+  
+  // Navigate to JIRA UAT and let it redirect to proper login
+  await page.goto('https://jirauat.smedigitalapps.com', { timeout: 30000 });
+  console.log('🌐 Navigated to JIRA UAT');
+  
+  // Wait for page to load and take screenshot to see what we're dealing with
+  await page.waitForLoadState('networkidle', { timeout: 15000 });
+  await page.screenshot({ 
+    path: 'jira-uat-testing/screenshots/login-page-structure.png',
+    fullPage: true 
+  });
+  
+  // Check if we're already on a login page or need to find login
+  const currentUrl = page.url();
+  console.log(`🔍 Current URL: ${currentUrl}`);
+  
+  // Try multiple approaches to find and fill login fields
+  console.log('🔍 Looking for login fields...');
+  
+  // Wait for ANY input field that could be username
+  const possibleUsernameSelectors = [
+    'input[name="os_username"]',
+    'input[name="username"]', 
+    'input[id="username"]',
+    'input[type="text"]',
+    'input[placeholder*="username" i]',
+    'input[placeholder*="user" i]',
+    'input[autocomplete="username"]'
+  ];
+  
+  let usernameField = null;
+  for (const selector of possibleUsernameSelectors) {
+    try {
+      await page.waitForSelector(selector, { timeout: 3000 });
+      usernameField = page.locator(selector).first();
+      if (await usernameField.isVisible()) {
+        console.log(`✅ Found username field with selector: ${selector}`);
+        break;
+      }
+    } catch (e) {
+      console.log(`❌ Username selector ${selector} not found`);
+    }
+  }
+  
+  if (!usernameField) {
+    throw new Error('❌ Could not find username field with any known selector');
+  }
+  
+  // Fill username
+  await usernameField.fill('mcarpent');
+  console.log('✅ Filled username: mcarpent');
+  
+  // Find password field
+  const possiblePasswordSelectors = [
+    'input[name="os_password"]',
+    'input[name="password"]',
+    'input[id="password"]',
+    'input[type="password"]',
+    'input[placeholder*="password" i]',
+    'input[autocomplete="current-password"]'
+  ];
+  
+  let passwordField = null;
+  for (const selector of possiblePasswordSelectors) {
+    try {
+      passwordField = page.locator(selector).first();
+      if (await passwordField.isVisible({ timeout: 2000 })) {
+        console.log(`✅ Found password field with selector: ${selector}`);
+        break;
+      }
+    } catch (e) {
+      console.log(`❌ Password selector ${selector} not found`);
+    }
+  }
+  
+  if (!passwordField) {
+    throw new Error('❌ Could not find password field with any known selector');
+  }
+  
+  await passwordField.fill('Dooley1_Jude2');
+  console.log('✅ Filled password');
+  
+  // Find and click login button
+  const possibleLoginButtonSelectors = [
+    'input[name="os_cookie"]',
+    'input[type="submit"]',
+    'button[type="submit"]',
+    'button:has-text("Log in")',
+    'button:has-text("Sign in")',
+    'button:has-text("Login")',
+    'input[value*="Log" i]',
+    'input[value*="Sign" i]'
+  ];
+  
+  let loginButton = null;
+  for (const selector of possibleLoginButtonSelectors) {
+    try {
+      loginButton = page.locator(selector).first();
+      if (await loginButton.isVisible({ timeout: 2000 })) {
+        console.log(`✅ Found login button with selector: ${selector}`);
+        break;
+      }
+    } catch (e) {
+      console.log(`❌ Login button selector ${selector} not found`);
+    }
+  }
+  
+  if (!loginButton) {
+    throw new Error('❌ Could not find login button with any known selector');
+  }
+  await loginButton.click();
+  console.log('🔑 Clicked login button');
+  
+  // Wait for successful login (redirect to dashboard or main page)
+  await page.waitForURL('**/secure/**', { timeout: 30000 });
+  console.log('✅ Successfully logged in - redirected to secure area');
+  
+  // Wait for dashboard to fully load and verify authentication
+  await page.waitForLoadState('networkidle', { timeout: 30000 });
+  
+  // Verify we can access a protected page (dashboard)
+  await page.goto('https://jirauat.smedigitalapps.com/secure/Dashboard.jspa', { timeout: 30000 });
+  await page.waitForLoadState('networkidle', { timeout: 10000 });
+  
+  // Check that we're not redirected back to login
+  const dashboardUrl = page.url();
+  expect(dashboardUrl).not.toContain('login');
+  expect(dashboardUrl).toContain('secure');
+  console.log('✅ Authentication verified - can access protected pages');
+  
+  // Check for JIRA-specific authenticated elements
+  const authenticatedElements = [
+    'button:has-text("Create")',
+    'a:has-text("Create")', 
+    '#create_link',
+    '[data-test-id="global.pages.create"]',
+    '.aui-nav-link:has-text("Create")'
+  ];
+  
+  let foundAuthElement = false;
+  for (const selector of authenticatedElements) {
+    if (await page.locator(selector).isVisible({ timeout: 3000 }).catch(() => false)) {
+      console.log(`✅ Found authenticated element: ${selector}`);
+      foundAuthElement = true;
+      break;
+    }
+  }
+  
+  if (!foundAuthElement) {
+    console.log('⚠️  Warning: Could not find typical authenticated elements, but login URL check passed');
+  }
+  
+  // Save the authentication state to file
+  await page.context().storageState({ path: authFile });
+  console.log(`💾 Authentication state saved to: ${authFile}`);
+  
+  console.log('🎉 JIRA UAT authentication setup complete!');
+});
+
+setup('verify JIRA UAT authentication works', async ({ page }) => {
+  console.log('🔍 Verifying saved authentication state...');
+  
+  // This setup will automatically use the saved auth state
+  // Try to access a protected page directly
+  await page.goto('https://jirauat.smedigitalapps.com/secure/Dashboard.jspa', { timeout: 30000 });
+  await page.waitForLoadState('networkidle', { timeout: 10000 });
+  
+  // Verify we're not redirected to login
+  const verifyUrl = page.url();
+  expect(verifyUrl).not.toContain('login');
+  expect(verifyUrl).toContain('secure');
+  
+  console.log('✅ Saved authentication state works correctly!');
+});
