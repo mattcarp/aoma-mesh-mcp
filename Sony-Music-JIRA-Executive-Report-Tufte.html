@@ -31,10 +31,10 @@
         
         body {
             font-family: 'Baskerville', 'Times New Roman', serif;
-            line-height: 1.4;
+            line-height: 1.5;
             color: var(--text-primary);
             background: var(--surface-white);
-            font-size: 13px;
+            font-size: 16px;
         }
         
         .container {
@@ -101,33 +101,35 @@
         
         .metric-dense:hover {
             background: var(--accent-minimal);
+            border: 2px solid var(--data-medium);
+            transform: translateY(-1px);
         }
         
         .metric-value-large {
-            font-size: 24px;
+            font-size: 36px;
             font-weight: 700;
             line-height: 1;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
         
         .metric-value-medium {
-            font-size: 18px;
+            font-size: 28px;
             font-weight: 600;
             line-height: 1;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
         
         .metric-label {
-            font-size: 10px;
+            font-size: 14px;
             color: var(--text-secondary);
             font-weight: 500;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            margin-bottom: 2px;
+            margin-bottom: 4px;
         }
         
         .metric-context {
-            font-size: 9px;
+            font-size: 12px;
             color: var(--text-tertiary);
         }
         
@@ -147,10 +149,12 @@
         
         .sparkline-card:hover {
             background: var(--accent-minimal);
+            border: 2px solid var(--data-medium);
+            transform: translateY(-1px);
         }
         
         .sparkline-title {
-            font-size: 11px;
+            font-size: 14px;
             font-weight: 600;
             margin-bottom: 8px;
             color: var(--text-primary);
@@ -166,7 +170,7 @@
         .sparkline-stats {
             display: flex;
             justify-content: space-between;
-            font-size: 9px;
+            font-size: 12px;
             color: var(--text-secondary);
         }
         
@@ -176,15 +180,15 @@
             border-collapse: collapse;
             border: 1px solid var(--line-subtle);
             margin-bottom: 24px;
-            font-size: 12px;
+            font-size: 14px;
         }
         
         .findings-table th {
             background: var(--surface-minimal);
-            padding: 8px 12px;
+            padding: 12px 16px;
             text-align: left;
             font-weight: 600;
-            font-size: 10px;
+            font-size: 13px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             border-bottom: 1px solid var(--line-subtle);
@@ -196,7 +200,7 @@
         }
         
         .findings-table td {
-            padding: 8px 12px;
+            padding: 12px 16px;
             border-bottom: 1px solid var(--line-subtle);
             border-right: 1px solid var(--line-subtle);
             vertical-align: top;
@@ -212,10 +216,10 @@
         }
         
         .finding-severity {
-            font-size: 10px;
+            font-size: 11px;
             font-weight: 600;
-            padding: 2px 6px;
-            border-radius: 3px;
+            padding: 4px 8px;
+            border-radius: 4px;
             text-transform: uppercase;
         }
         
@@ -242,7 +246,7 @@
         }
         
         .evidence-title {
-            font-size: 12px;
+            font-size: 16px;
             font-weight: 600;
             margin-bottom: 12px;
             border-bottom: 1px solid var(--line-subtle);
@@ -252,12 +256,12 @@
         .evidence-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 8px;
+            gap: 12px;
         }
         
         .evidence-item {
-            font-size: 10px;
-            padding: 6px;
+            font-size: 12px;
+            padding: 10px;
             border: 1px solid var(--line-subtle);
             cursor: pointer;
         }
@@ -303,7 +307,7 @@
         }
         
         .modal-title {
-            font-size: 14px;
+            font-size: 18px;
             font-weight: 600;
         }
         
@@ -325,9 +329,9 @@
         }
         
         .detail-list li {
-            padding: 6px 0;
+            padding: 8px 0;
             border-bottom: 1px solid var(--line-subtle);
-            font-size: 11px;
+            font-size: 14px;
         }
         
         .detail-list li:last-child {
@@ -604,6 +608,7 @@
     <script>
         // Working JavaScript for drilldowns
         function showDetail(type) {
+            console.log('showDetail called with type:', type);
             let title = '';
             let content = '';
             
@@ -611,7 +616,7 @@
                 case 'total-tests':
                     title = 'Total Tests Executed: 243';
                     content = `
-                        <h4 style="font-size: 12px; font-weight: 600; margin-bottom: 8px;">Test Execution Breakdown</h4>
+                        <h4 style="font-size: 16px; font-weight: 600; margin-bottom: 8px;">Test Execution Breakdown</h4>
                         <ul class="detail-list">
                             <li><strong>Comprehensive UI Coverage:</strong> 83 tests (98.8% success)</li>
                             <li><strong>Enterprise Suite:</strong> 30 tests (93.3% success)</li>
@@ -620,7 +625,7 @@
                             <li><strong>Authentication Suites:</strong> 10 tests (90% success)</li>
                             <li><strong>Other Test Suites:</strong> 70 tests (varying success rates)</li>
                         </ul>
-                        <div style="margin-top: 12px; font-size: 11px;">
+                        <div style="margin-top: 12px; font-size: 14px;">
                             <strong>Execution Details:</strong><br>
                             • Duration: 180 minutes (3 hours)<br>
                             • Test Suites: 26 total<br>
@@ -634,18 +639,18 @@
                 case 'failed-tests':
                     title = 'Failed Tests Analysis: 64 Total';
                     content = `
-                        <h4 style="font-size: 12px; font-weight: 600; margin-bottom: 8px;">Failure Attribution</h4>
+                        <h4 style="font-size: 16px; font-weight: 600; margin-bottom: 8px;">Failure Attribution</h4>
                         <ul class="detail-list">
                             <li><strong>Authentication Issues:</strong> 38 failures (59.4%)</li>
                             <li><strong>Legitimate Platform Issues:</strong> 26 failures (40.6%)</li>
                         </ul>
-                        <h4 style="font-size: 12px; font-weight: 600; margin: 12px 0 8px 0;">Platform Issues Breakdown</h4>
+                        <h4 style="font-size: 16px; font-weight: 600; margin: 12px 0 8px 0;">Platform Issues Breakdown</h4>
                         <ul class="detail-list">
                             <li><strong>Performance Issues:</strong> 12 failures (load times >15s)</li>
                             <li><strong>Workflow Validation:</strong> 8 failures (ITSM processes)</li>
                             <li><strong>Data Persistence:</strong> 6 failures (saving issues)</li>
                         </ul>
-                        <div style="margin-top: 12px; font-size: 11px; background: #f8f2f2; padding: 8px;">
+                        <div style="margin-top: 12px; font-size: 14px; background: #f8f2f2; padding: 8px;">
                             <strong>Critical Note:</strong> 26 legitimate platform failures represent genuine defects requiring resolution before production deployment.
                         </div>
                     `;
