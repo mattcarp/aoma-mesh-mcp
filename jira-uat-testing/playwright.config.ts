@@ -27,7 +27,7 @@ export default defineConfig({
     { 
       name: 'setup', 
       testMatch: /auth\.setup\.ts$/,  // Only use the working auth.setup.ts
-      timeout: 180 * 1000, // 3 minutes for login
+      timeout: 360 * 1000, // 6 minutes for manual login + 2FA
     },
     
     // Chrome tests with authentication

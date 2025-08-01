@@ -12,35 +12,71 @@ setup('authenticate to JIRA', async ({ page }) => {
   // Navigate to JIRA login
   await page.goto(`${JIRA_BASE_URL}/secure/Dashboard.jspa`);
   
+  // Check if we need to click the login button first
+  const loginButton = page.locator('text="Log In"').first();
+  if (await loginButton.isVisible()) {
+    console.log('🔗 Clicking Log In button...');
+    await loginButton.click();
+    
+    // Wait for login page to load
+    await page.waitForLoadState('networkidle');
+  }
+  
   console.log('👀 Please complete login manually in the browser...');
   console.log('🔑 Including any 2FA if required');
   console.log('⏳ Waiting for authentication to complete...');
   
-  // Wait for successful authentication with proper detection
+  // Wait for successful authentication with CORRECT detection
   await page.waitForFunction(
     () => {
-      // More robust authentication detection
-      const title = document.title;
-      const url = window.location.href;
+      // Check 1: No login form elements exist
+      const hasLoginForm = document.querySelector('input[name="username"], input[type="password"], .login-form') !== null;
       
-      // Check multiple indicators of successful authentication
-      return !title.toLowerCase().includes('log') && 
-             !title.toLowerCase().includes('sign') &&
-             (url.includes('Dashboard.jspa') || 
-              url.includes('/secure/') ||
-              url.includes('/projects/')) &&
-             // Additional check: look for JIRA-specific elements
-             (document.querySelector('#header-details-user-fullname') !== null ||
-              document.querySelector('.aui-dropdown2-trigger-arrowless') !== null ||
-              document.querySelector('[data-test-id="global.header.user-menu"]') !== null);
+      // Check 2: User menu/profile is present  
+      const hasUserMenu = document.querySelector('#header-details-user-fullname, .user-menu, [data-test-id="global.header.user-menu"]') !== null;
+      
+      // Check 3: No "Login" widget in dashboard - use text content check
+      const gadgets = document.querySelectorAll('.gadget, .dashboard-item');
+      let hasLoginWidget = false;
+      for (let gadget of gadgets) {
+        const text = gadget.textContent || '';
+        if (text.includes('Login') || text.includes('Username') || text.includes('Password')) {
+          hasLoginWidget = true;
+          break;
+        }
+      }
+      
+      // Check 4: Page title doesn't contain login keywords
+      const title = document.title.toLowerCase();
+      const hasLoginInTitle = title.includes('log in') || title.includes('sign in') || title.includes('login');
+      
+      // ALL conditions must be met for successful authentication
+      return !hasLoginForm && hasUserMenu && !hasLoginWidget && !hasLoginInTitle;
     },
-    { timeout: 300000 } // 5 minutes for manual login
+    { timeout: 300000, polling: 1000 } // 5 minutes for manual login, check every second
   );
   
   console.log('✅ Authentication detected! Verifying session...');
   
-  // Instead of testing ITSM project (which may require specific permissions),
-  // let's verify authentication with areas all logged-in users can access
+  // Take screenshot to verify authentication state
+  await page.screenshot({ path: 'auth-verification.png', fullPage: true });
+  
+  // Double-check: ensure no login widgets are visible on the page
+  const loginWidgetExists = await page.evaluate(() => {
+    const gadgets = document.querySelectorAll('.gadget, .dashboard-item');
+    for (let gadget of gadgets) {
+      const text = gadget.textContent || '';
+      if (text.includes('Login') || text.includes('Username') || text.includes('Password')) {
+        return true;
+      }
+    }
+    return false;
+  });
+  
+  if (loginWidgetExists) {
+    console.log('❌ Login widgets still present on dashboard');
+    throw new Error('Authentication incomplete - login widgets still visible');
+  }
   
   // Go back to dashboard to ensure we have a stable authenticated state
   await page.goto(`${JIRA_BASE_URL}/secure/Dashboard.jspa`);

@@ -1,231 +1,112 @@
-const { chromium } = require('@playwright/test');
-const fs = require('fs');
-
+#!/usr/bin/env ts-node
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const playwright_1 = require("playwright");
+const dotenv_1 = require("dotenv");
+const path = require("path");
+const fs = require("fs");
+(0, dotenv_1.config)({ path: path.join(__dirname, '../.env') });
 async function ssoLogin() {
-  console.log('🔐 JIRA UAT SSO LOGIN');
-  console.log('=====================');
-  
-  const browser = await chromium.launch({ 
-    headless: false,
-    args: ['--start-maximized']
-  });
-  
-  try {
-    const context = await browser.newContext({
-      ignoreHTTPSErrors: true,
-      viewport: null
+    console.log('🔐 SSO LOGIN FLOW');
+    console.log('=================');
+    const browser = await playwright_1.chromium.launch({
+        headless: false,
+        args: ['--start-maximized']
     });
-    
-    const page = await context.newPage();
-    
-    console.log('🌐 Opening JIRA UAT...');
-    await page.goto('https://jirauat.smedigitalapps.com/jira/secure/Dashboard.jspa', {
-      timeout: 30000
-    });
-    
-    await page.waitForLoadState('networkidle');
-    
-    console.log('📍 Current URL:', page.url());
-    
-    // Take screenshot of initial page
-    await page.screenshot({ 
-      path: 'sso-step-1-initial.png', 
-      fullPage: true 
-    });
-    
-    // Check if we need to click "Log in with SSO"
-    const ssoButton = page.locator('#use-sso-button');
-    const ssoButtonExists = await ssoButton.count() > 0;
-    
-    if (ssoButtonExists) {
-      console.log('🔍 Found SSO button, clicking...');
-      await ssoButton.click();
-      await page.waitForLoadState('networkidle', { timeout: 30000 });
-      
-      await page.screenshot({ 
-        path: 'sso-step-2-after-sso-click.png', 
-        fullPage: true 
-      });
-      
-      console.log('📍 URL after SSO click:', page.url());
+    try {
+        const context = await browser.newContext({
+            ignoreHTTPSErrors: true,
+            viewport: null
+        });
+        const page = await context.newPage();
+        const username = process.env.JIRA_UAT_USERNAME;
+        const password = process.env.JIRA_UAT_PWD;
+        const email = process.env.JIRA_UAT_EMAIL;
+        console.log(`Using username: ${username}`);
+        console.log(`Using email: ${email}`);
+        // Go to JIRA
+        console.log('🌐 Going to JIRA UAT...');
+        await page.goto('https://jirauat.smedigitalapps.com/jira/secure/Dashboard.jspa');
+        await page.waitForLoadState('networkidle');
+        // Click Log In
+        console.log('🔗 Clicking Log In...');
+        await page.locator('text="Log In"').click();
+        await page.waitForLoadState('networkidle');
+        await page.screenshot({ path: 'sso-1-login-form.png', fullPage: true });
+        // Fill username in first form
+        console.log('👤 Filling username...');
+        await page.locator('input[placeholder="Username"]').fill(username);
+        // Click Continue
+        console.log('🔗 Clicking Continue...');
+        await page.locator('button:has-text("Continue")').click();
+        await page.waitForLoadState('networkidle');
+        await page.waitForTimeout(3000);
+        await page.screenshot({ path: 'sso-2-after-continue.png', fullPage: true });
+        // Check if we're on Microsoft SSO page
+        const currentUrl = page.url();
+        if (currentUrl.includes('microsoft') || currentUrl.includes('login.microsoftonline')) {
+            console.log('🔄 Detected Microsoft SSO flow');
+            // Look for email field or Next button
+            const nextButton = page.locator('input[type="submit"][value="Next"], button:has-text("Next")');
+            if (await nextButton.isVisible()) {
+                console.log('🔗 Clicking Next on SSO page...');
+                await nextButton.click();
+                await page.waitForLoadState('networkidle');
+                await page.waitForTimeout(3000);
+                await page.screenshot({ path: 'sso-3-after-next.png', fullPage: true });
+            }
+            // Fill password if password field appears
+            const passwordField = page.locator('input[type="password"]');
+            if (await passwordField.isVisible()) {
+                console.log('🔐 Filling password in SSO...');
+                await passwordField.fill(password);
+                await page.screenshot({ path: 'sso-4-password-filled.png', fullPage: true });
+                // Click Sign in
+                const signInButton = page.locator('input[type="submit"][value="Sign in"], button:has-text("Sign in")');
+                if (await signInButton.isVisible()) {
+                    console.log('🔗 Clicking Sign in...');
+                    await signInButton.click();
+                    await page.waitForLoadState('networkidle');
+                    await page.waitForTimeout(5000);
+                }
+            }
+        }
+        else {
+            // Regular password flow
+            console.log('🔐 Regular password flow...');
+            await page.locator('input[type="password"]').fill(password);
+            await page.locator('button:has-text("Log in")').click();
+            await page.waitForLoadState('networkidle');
+            await page.waitForTimeout(5000);
+        }
+        await page.screenshot({ path: 'sso-5-final.png', fullPage: true });
+        // Check final authentication state
+        const finalUrl = page.url();
+        const finalTitle = await page.title();
+        console.log(`📍 Final URL: ${finalUrl}`);
+        console.log(`📄 Final title: ${finalTitle}`);
+        if (finalUrl.includes('Dashboard') && !finalUrl.includes('login')) {
+            console.log('🎉 SUCCESS! SSO Authentication completed!');
+            // Save authentication state
+            const authDir = path.join(__dirname, 'playwright/.auth');
+            if (!fs.existsSync(authDir)) {
+                fs.mkdirSync(authDir, { recursive: true });
+            }
+            const storageState = await context.storageState();
+            const authFile = path.join(authDir, 'jira-uat-user.json');
+            fs.writeFileSync(authFile, JSON.stringify(storageState, null, 2));
+            console.log('💾 Authentication state saved!');
+            console.log('✅ Ready to run tests!');
+        }
+        else {
+            console.log('❌ May need additional steps or 2FA');
+        }
     }
-    
-    // Check if there's a regular login button to click first
-    const loginButton = page.locator('#login-button, button:has-text("Log in")');
-    const loginButtonExists = await loginButton.count() > 0;
-    
-    if (loginButtonExists) {
-      console.log('🔍 Found login button, clicking...');
-      await loginButton.click();
-      await page.waitForLoadState('networkidle', { timeout: 30000 });
-      
-      await page.screenshot({ 
-        path: 'sso-step-3-after-login-click.png', 
-        fullPage: true 
-      });
-      
-      console.log('📍 URL after login click:', page.url());
+    catch (error) {
+        console.error('💥 Error:', error);
     }
-    
-    // Now look for username/password fields (might appear after SSO redirect)
-    console.log('🔍 Looking for login fields...');
-    
-    const usernameSelectors = [
-      'input[name="username"]',
-      'input[name="os_username"]',
-      'input[type="email"]',
-      'input[placeholder*="username"]',
-      'input[placeholder*="Username"]',
-      'input[placeholder*="email"]',
-      'input[placeholder*="Email"]'
-    ];
-    
-    let usernameField = null;
-    for (const selector of usernameSelectors) {
-      const field = page.locator(selector);
-      if (await field.count() > 0) {
-        usernameField = field;
-        console.log(`✅ Found username field: ${selector}`);
-        break;
-      }
+    finally {
+        await browser.close();
     }
-    
-    const passwordSelectors = [
-      'input[name="password"]',
-      'input[name="os_password"]',
-      'input[type="password"]'
-    ];
-    
-    let passwordField = null;
-    for (const selector of passwordSelectors) {
-      const field = page.locator(selector);
-      if (await field.count() > 0) {
-        passwordField = field;
-        console.log(`✅ Found password field: ${selector}`);
-        break;
-      }
-    }
-    
-    if (usernameField && passwordField) {
-      console.log('🔐 Filling credentials...');
-      await usernameField.fill('mcarpent');
-      await passwordField.fill('Dooley1_Jude2');
-      
-      // Submit
-      const submitButton = page.locator('button[type="submit"], input[type="submit"], button:has-text("Log in"), button:has-text("Sign in")');
-      if (await submitButton.count() > 0) {
-        await submitButton.click();
-        console.log('✅ Submitted login form');
-      } else {
-        await page.keyboard.press('Enter');
-        console.log('✅ Pressed Enter to submit');
-      }
-      
-      await page.waitForLoadState('networkidle', { timeout: 30000 });
-      
-      await page.screenshot({ 
-        path: 'sso-step-4-after-credentials.png', 
-        fullPage: true 
-      });
-      
-    } else {
-      console.log('ℹ️ No username/password fields found - this might be pure SSO');
-      console.log('📱 Please complete login manually in the browser...');
-      console.log('⏳ Waiting 60 seconds for manual login...');
-      
-      // Wait for manual login completion
-      await page.waitForFunction(
-        () => {
-          const url = window.location.href;
-          return url.includes('Dashboard') && !url.includes('login');
-        },
-        { timeout: 60000 }
-      );
-    }
-    
-    // Check for 2FA
-    console.log('🔍 Checking for 2FA...');
-    const twoFASelectors = [
-      'input[name*="code"]',
-      'input[placeholder*="code"]',
-      'input[type="text"][maxlength="6"]'
-    ];
-    
-    let needs2FA = false;
-    for (const selector of twoFASelectors) {
-      const field = page.locator(selector);
-      if (await field.count() > 0) {
-        needs2FA = true;
-        console.log('📱 2FA required! Complete on your phone...');
-        console.log('⏳ Waiting for 2FA completion...');
-        
-        await page.waitForFunction(
-          () => {
-            const url = window.location.href;
-            return url.includes('Dashboard') && !url.includes('login');
-          },
-          { timeout: 60000 }
-        );
-        break;
-      }
-    }
-    
-    // Final screenshot and session save
-    await page.screenshot({ 
-      path: 'sso-step-5-final.png', 
-      fullPage: true 
-    });
-    
-    const finalUrl = page.url();
-    console.log(`📍 Final URL: ${finalUrl}`);
-    
-    if (finalUrl.includes('Dashboard') && !finalUrl.includes('login')) {
-      console.log('🎉 SUCCESS: SSO Login completed!');
-      
-      // Save session
-      await context.storageState({ 
-        path: 'jira-uat-session-sso.json' 
-      });
-      
-      console.log('💾 Session saved to: jira-uat-session-sso.json');
-      
-      // Copy to standard location
-      const sessionData = fs.readFileSync('jira-uat-session-sso.json');
-      fs.writeFileSync('playwright/.auth/jira-uat-user.json', sessionData);
-      
-      console.log('💾 Also copied to: playwright/.auth/jira-uat-user.json');
-      console.log('🚀 Ready to run automated tests!');
-      
-      return true;
-    } else {
-      console.log('❌ Login may have failed');
-      console.log('💡 Check screenshots for details');
-      return false;
-    }
-    
-  } catch (error) {
-    console.error('❌ Error:', error.message);
-    return false;
-  } finally {
-    console.log('⏳ Keeping browser open for 15 seconds...');
-    await new Promise(resolve => setTimeout(resolve, 15000));
-    await browser.close();
-  }
 }
-
-ssoLogin()
-  .then(success => {
-    if (success) {
-      console.log('\n🎉 SSO LOGIN COMPLETE!');
-      console.log('✅ JIRA UAT authentication working');
-      console.log('🚀 Run tests with: npx playwright test --headed');
-    } else {
-      console.log('\n❌ SSO login failed');
-      console.log('💡 Check screenshots and try again');
-    }
-    process.exit(success ? 0 : 1);
-  })
-  .catch(error => {
-    console.error('Fatal error:', error);
-    process.exit(1);
-  });
+ssoLogin();
