@@ -6,9 +6,9 @@
  */
 
 import { Tool, CallToolResult } from '@modelcontextprotocol/sdk/types.js';
-import { ToolExecutor, ToolExecutionContext } from './tool.interface';
-import { createLogger } from '../../utils/logger';
-import { withErrorHandling, withTimeout } from '../../utils/errors';
+import { ToolExecutor, ToolExecutionContext } from './tool.interface.js';
+import { createLogger } from '../../utils/logger.js';
+import { withErrorHandling, withTimeout } from '../../utils/errors.js';
 
 const logger = createLogger('ToolRegistry');
 

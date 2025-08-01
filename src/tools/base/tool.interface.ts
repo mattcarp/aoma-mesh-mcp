@@ -6,7 +6,7 @@
  */
 
 import { Tool, CallToolResult } from '@modelcontextprotocol/sdk/types.js';
-import { Logger } from '../../utils/logger';
+import { Logger } from '../../utils/logger.js';
 
 export interface ToolExecutionContext {
   logger: Logger;
