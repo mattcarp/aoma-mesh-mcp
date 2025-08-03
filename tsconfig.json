@@ -52,10 +52,10 @@
     "src/enhanced-aoma-mesh-server.ts",
     "src/betabase-test-agent.ts",
     "src/visual-intelligence-agent.ts",
-    "src/tools/outlook-search.tool.ts",
-    "src/tools/server-capabilities.tool.ts", 
-    "src/tools/swarm-analysis.tool.ts",
-    "src/tools/system-health.tool.ts"
+    "src/streaming/**/*",
+    "src/tools/**/*",
+    "src/services/**/*",
+    "src/server/**/*"
   ],
   "ts-node": {
     "esm": true

@@ -24,8 +24,8 @@ RUN npm ci --prefer-offline --no-audit
 # Copy source code
 COPY . .
 
-# Build the application (use regular TypeScript build, not lambda)
-RUN npm run clean && npx tsc
+# Build the application with Railway-specific config
+RUN npm run clean && npx tsc --project tsconfig.railway.json
 
 # Remove dev dependencies
 RUN npm ci --only=production --prefer-offline --no-audit && \
