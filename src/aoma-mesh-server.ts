@@ -2713,26 +2713,42 @@ Please provide a comprehensive synthesis using 2025 swarm intelligence patterns.
     try {
       await this.initialize();
       
-      // Check if preferred port is available, find alternative if not
       // Railway sets PORT env var, use it if available
       let httpPort = this.env.PORT || this.env.HTTP_PORT;
-      if (!(await this.checkPortAvailability(httpPort))) {
-        this.logWarn(`Port ${httpPort} is busy, finding alternative...`);
-        httpPort = await this.findAvailablePort(httpPort + 1);
-        this.logInfo(`Using alternate port: ${httpPort}`);
+      
+      // Skip port availability check in production (Railway manages ports)
+      if (this.env.NODE_ENV !== 'production') {
+        if (!(await this.checkPortAvailability(httpPort))) {
+          this.logWarn(`Port ${httpPort} is busy, finding alternative...`);
+          httpPort = await this.findAvailablePort(httpPort + 1);
+          this.logInfo(`Using alternate port: ${httpPort}`);
+        }
       }
       
       // Start HTTP server for web applications (tk-ui, etc.)
-      const httpServer = this.httpApp.listen(httpPort, () => {
+      const httpServer = this.httpApp.listen(httpPort, '0.0.0.0', () => {
         this.logInfo('🌐 HTTP endpoints available', {
           port: httpPort,
+          host: '0.0.0.0',
           endpoints: ['/health', '/rpc', '/tools/:toolName', '/metrics'],
         });
       });
+      
+      // Add error handling for HTTP server
+      httpServer.on('error', (error) => {
+        this.logError('HTTP server error', { error: this.getErrorMessage(error), port: httpPort });
+        throw error;
+      });
 
-      // Start stdio transport for Claude Desktop
-      const transport = new StdioServerTransport();
-      await this.server.connect(transport);
+      // Start stdio transport only in development (not Railway)
+      let transport = null;
+      const transports = ['http'];
+      
+      if (this.env.NODE_ENV !== 'production') {
+        transport = new StdioServerTransport();
+        await this.server.connect(transport);
+        transports.push('stdio');
+      }
       
       this.logInfo('🚀 AOMA Mesh MCP Server running', {
         version: this.env.MCP_SERVER_VERSION,
@@ -2740,7 +2756,7 @@ Please provide a comprehensive synthesis using 2025 swarm intelligence patterns.
         resources: this.getResourceDefinitions().length,
         environment: this.env.NODE_ENV,
         httpPort: httpPort,
-        transports: ['stdio', 'http'],
+        transports: transports,
       });
 
       // Enhanced graceful shutdown handling
@@ -2756,7 +2772,7 @@ Please provide a comprehensive synthesis using 2025 swarm intelligence patterns.
             });
           });
           
-          // Close stdio transport
+          // Close stdio transport if it exists
           if (transport) {
             transport.close();
             this.logInfo('MCP transport closed');
