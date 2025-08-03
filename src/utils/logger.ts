@@ -15,17 +15,17 @@ export interface LogEntry {
   timestamp: string;
   level: LogLevel;
   message: string;
-  metadata?: LogMetadata;
-  context?: string;
+  metadata?: LogMetadata | undefined;
+  context?: string | undefined;
 }
 
 export class Logger {
   private readonly logLevel: LogLevel;
   private readonly context?: string;
 
-  constructor(logLevel: LogLevel = 'info', context?: string) {
+  constructor(logLevel: LogLevel = 'info', context?: string | undefined) {
     this.logLevel = logLevel;
-    this.context = context;
+    this.context = context || undefined;
   }
 
   /**
@@ -102,7 +102,7 @@ export class Logger {
       level,
       message,
       metadata: metadata ? this.sanitize(metadata) : undefined,
-      context: this.context,
+      context: this.context || undefined,
     };
 
     const output = this.formatOutput(entry);

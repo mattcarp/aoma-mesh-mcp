@@ -96,6 +96,7 @@ const EnvSchema = z.object({
   MAX_RETRIES: z.coerce.number().int().min(1).max(10).default(3),
   TIMEOUT_MS: z.coerce.number().int().min(5000).max(300000).default(120000),
   HTTP_PORT: z.coerce.number().int().min(1024).max(65535).default(3333),
+  PORT: z.coerce.number().int().min(1024).max(65535).optional(), // Railway's PORT env var
 });
 
 type Environment = z.infer<typeof EnvSchema>;
@@ -1142,11 +1143,9 @@ this.env.MCP_SERVER_VERSION = versionWithTimestamp;
       case 'swarm_context_engineering':
         return await this.swarmContextEngineering(args);
       case 'generate_failure_heatmap':
-        return await this.generateFailureHeatmap(args);
       case 'analyze_performance_metrics':
-        return await this.analyzePerformanceMetrics(args);
       case 'build_predictive_model':
-        return await this.buildPredictiveModel(args);
+        throw new McpError(ErrorCode.MethodNotFound, `Tool ${name} not yet implemented`);
       default:
         throw new McpError(ErrorCode.MethodNotFound, `Unknown tool: ${name}`);
     }
@@ -1829,7 +1828,7 @@ Please provide:
     
     try {
       // SOTA: Use fast HEAD request instead of database query
-      const supabaseUrl = this.env.NEXT_PUBLIC_SUPABASE_URL || this.env.SUPABASE_URL;
+      const supabaseUrl = this.env.NEXT_PUBLIC_SUPABASE_URL;
       const response = await fetch(`${supabaseUrl}/rest/v1/`, {
         method: 'HEAD',
         signal: controller.signal,
@@ -2715,7 +2714,8 @@ Please provide a comprehensive synthesis using 2025 swarm intelligence patterns.
       await this.initialize();
       
       // Check if preferred port is available, find alternative if not
-      let httpPort = this.env.HTTP_PORT;
+      // Railway sets PORT env var, use it if available
+      let httpPort = this.env.PORT || this.env.HTTP_PORT;
       if (!(await this.checkPortAvailability(httpPort))) {
         this.logWarn(`Port ${httpPort} is busy, finding alternative...`);
         httpPort = await this.findAvailablePort(httpPort + 1);
