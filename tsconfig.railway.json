@@ -20,7 +20,9 @@
   },
   "include": [
     "src/aoma-mesh-server.ts",
-    "src/health-check.ts"
+    "src/health-check.ts",
+    "src/simple-railway-test.ts",
+    "src/http-bridge.ts"
   ],
   "exclude": [
     "node_modules",

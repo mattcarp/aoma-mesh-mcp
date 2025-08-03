@@ -1,0 +1,13 @@
+node_modules/
+.git/
+*.log
+.env.local
+.env.*.local
+jira-upgrade-testing/
+testsprite_tests/
+infrastructure/
+docs/
+examples/
+copilot/
+.claude/
+.kiro/

@@ -198,6 +198,10 @@ npm test
 3. **Resource Limits**: Agents have built-in execution limits
 4. **Input Validation**: All tool inputs are validated using Zod schemas
 
+## Documentation
+
+- **[Upgrade Specification](docs/UPGRADE_SPEC.md)** - Detailed roadmap for Phase 2 enhancements including LangChain orchestration, structured memory, and Railway deployment improvements
+
 ## Troubleshooting
 
 ### Common Issues
