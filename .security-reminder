@@ -1,0 +1,35 @@
+# 🚨 CRITICAL SECURITY REMINDER 🚨
+
+## NEVER COMMIT API KEYS OR SECRETS TO GITHUB
+
+This is a **CARDINAL SIN** in software development. No exceptions, no excuses.
+
+### What Happened:
+- API keys were accidentally committed in example files
+- GitHub push protection blocked deployment (rightfully so)
+- Had to rewrite git history and create clean branch
+
+### Why This is Unacceptable:
+- **Security Risk**: Exposed OpenAI API keys, Supabase keys
+- **Professional Standards**: Amateur-hour mistake
+- **Repository Compromise**: Forced history rewriting
+- **Time Waste**: Hours spent fixing preventable issue
+
+### NEVER AGAIN RULES:
+1. **Always use placeholder values** in example files (e.g., `your-api-key-here`)
+2. **Double-check all commits** before pushing
+3. **Use .env files** for real keys (already in .gitignore)
+4. **Implement pre-commit hooks** to scan for secrets
+5. **Review diffs carefully** before any git operations
+
+### Pre-commit Hook Task Added:
+- Install and configure pre-commit hooks with secret scanning
+- Use tools like `detect-secrets` or `git-secrets`
+- Block commits containing API keys, tokens, passwords
+
+## REMINDER: 
+**Professional developers NEVER commit secrets. Period.**
+
+Date: 2025-08-03
+Project: aoma-mesh-mcp
+Branch: railway-deployment-final
