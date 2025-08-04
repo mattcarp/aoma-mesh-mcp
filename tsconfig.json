@@ -29,8 +29,11 @@
   },
   "include": [
     "src/index.ts",
-    "src/aoma-mesh-server.ts",
-    "src/health-check.ts"
+    "src/aoma-mesh-server.ts", 
+    "src/health-check.ts",
+    "src/http-bridge.ts",
+    "src/types/**/*",
+    "src/utils/**/*"
   ],
   "exclude": [
     "node_modules",

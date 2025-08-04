@@ -1,9 +1,0 @@
-{
-  "AOMAMeshMCPLambdaStack": {
-    "FunctionUrl": "https://ochwh4pvfaigb65koqxgf33ruy0rxnhy.lambda-url.us-east-2.on.aws/",
-    "HealthCheckUrl": "https://ochwh4pvfaigb65koqxgf33ruy0rxnhy.lambda-url.us-east-2.on.aws/health",
-    "LambdaFunctionArn": "arn:aws:lambda:us-east-2:145023127572:function:aoma-mesh-mcp-server",
-    "LambdaFunctionName": "aoma-mesh-mcp-server",
-    "MCPEndpointUrl": "https://ochwh4pvfaigb65koqxgf33ruy0rxnhy.lambda-url.us-east-2.on.aws/rpc"
-  }
-}

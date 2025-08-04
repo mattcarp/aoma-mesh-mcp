@@ -22,8 +22,6 @@ This is the AOMA Mesh MCP Server - a Model Context Protocol (MCP) server that pr
 - `npm run test:coverage` - Generate test coverage reports
 
 ### Deployment
-- `npm run build:lambda` - Build and package for AWS Lambda deployment
-- `npm run deploy:lambda` - Deploy to AWS Lambda via CDK
 - `npm run health-check` - Check server health status
 
 ## Architecture
@@ -32,7 +30,7 @@ This is the AOMA Mesh MCP Server - a Model Context Protocol (MCP) server that pr
 - **Main Server**: `src/aoma-mesh-server.ts` - Primary MCP server implementation with both stdio and HTTP transports
 - **Entry Points**: 
   - `src/index.ts` - Standard MCP export
-  - `src/lambda-handler.ts` - AWS Lambda wrapper
+  - `src/aoma-mesh-server.ts` - Main server with HTTP endpoints
   - `src/http-bridge.ts` - HTTP-only server for web apps
 
 ### Key Components
@@ -72,7 +70,7 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
 
 ### Deployment Options
 1. **Claude Desktop**: Direct stdio transport via MCP configuration
-2. **AWS Lambda**: Serverless deployment with CDK infrastructure
+2. **Railway**: Cloud deployment with HTTP endpoints
 3. **HTTP Server**: Standalone HTTP server for web application integration
 4. **Development**: Local development with file watching
 

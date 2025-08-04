@@ -2,7 +2,7 @@
 
 **Sony Music's AI-Powered Development Assistant with Business Intelligence**
 
-[![Deploy to AWS Lambda](https://img.shields.io/badge/AWS-Lambda-orange)](https://aws.amazon.com/lambda/)
+[![Deploy to Railway](https://img.shields.io/badge/Railway-Deploy-purple)](https://railway.app/)
 [![MCP Protocol](https://img.shields.io/badge/MCP-2.0-blue)](https://modelcontextprotocol.io/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.3-blue)](https://www.typescriptlang.org/)
 
