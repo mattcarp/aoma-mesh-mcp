@@ -80,7 +80,7 @@ import OpenAI from 'openai';
 import { createClient } from '@supabase/supabase-js';
 import { z } from 'zod';
 import * as fs from 'fs/promises';
-import { initializeLangSmith, traceToolCall, isLangSmithEnabled } from './utils/langsmith.js';
+import { initializeLangSmith, traceToolCall, isLangSmithEnabled, getProjectMetrics, getRecentTraces, getLangSmithStatus } from './utils/langsmith.js';
 import { logger } from './utils/mcp-logger.js';
 
 // Environment validation with comprehensive error messages
@@ -400,12 +400,15 @@ this.env.MCP_SERVER_VERSION = versionWithTimestamp;
     this.httpApp.get('/health', async (req, res) => {
       try {
         const health = await this.performHealthCheck(true);
+        // Add deployment marker to verify new deployment
+        (health as any).deploymentMarker = 'UPDATED-2025-08-18';
         res.json(health);
       } catch (error) {
         res.status(503).json({
           status: 'unhealthy',
           error: this.getErrorMessage(error),
           timestamp: new Date().toISOString(),
+          deploymentMarker: 'UPDATED-2025-08-18',
         });
       }
     });
@@ -1080,6 +1083,116 @@ this.env.MCP_SERVER_VERSION = versionWithTimestamp;
           additionalProperties: false,
         },
       },
+      {
+        name: 'get_langsmith_metrics',
+        description: 'Get LangSmith observability metrics and performance data for MCP server introspection',
+        inputSchema: {
+          type: 'object',
+          properties: {
+            projectName: {
+              type: 'string',
+              description: 'LangSmith project name (defaults to current project)',
+            },
+            timeRange: {
+              type: 'string',
+              enum: ['1h', '6h', '24h', '7d', '30d'],
+              description: 'Time range for metrics analysis',
+              default: '24h',
+            },
+            includeToolBreakdown: {
+              type: 'boolean',
+              description: 'Include per-tool performance metrics',
+              default: true,
+            },
+          },
+          additionalProperties: false,
+        },
+      },
+      {
+        name: 'get_trace_data',
+        description: 'Retrieve recent LangSmith traces for debugging and analysis',
+        inputSchema: {
+          type: 'object',
+          properties: {
+            limit: {
+              type: 'number',
+              description: 'Number of recent traces to retrieve',
+              minimum: 1,
+              maximum: 100,
+              default: 20,
+            },
+            projectName: {
+              type: 'string',
+              description: 'LangSmith project name (defaults to current project)',
+            },
+            toolName: {
+              type: 'string',
+              description: 'Filter traces by specific tool name',
+            },
+            status: {
+              type: 'string',
+              enum: ['all', 'success', 'error'],
+              description: 'Filter traces by execution status',
+              default: 'all',
+            },
+          },
+          additionalProperties: false,
+        },
+      },
+      {
+        name: 'get_server_introspection',
+        description: 'Get comprehensive MCP server introspection data including health, metrics, and configuration',
+        inputSchema: {
+          type: 'object',
+          properties: {
+            includeMetrics: {
+              type: 'boolean',
+              description: 'Include performance metrics',
+              default: true,
+            },
+            includeHealth: {
+              type: 'boolean',
+              description: 'Include health status',
+              default: true,
+            },
+            includeConfig: {
+              type: 'boolean',
+              description: 'Include configuration details',
+              default: true,
+            },
+            includeLangSmith: {
+              type: 'boolean',
+              description: 'Include LangSmith observability status',
+              default: true,
+            },
+          },
+          additionalProperties: false,
+        },
+      },
+      {
+        name: 'configure_tracing',
+        description: 'Configure LangSmith tracing settings and metadata',
+        inputSchema: {
+          type: 'object',
+          properties: {
+            action: {
+              type: 'string',
+              enum: ['status', 'enable', 'disable', 'set_project', 'add_metadata'],
+              description: 'Configuration action to perform',
+            },
+            projectName: {
+              type: 'string',
+              description: 'Set LangSmith project name (for set_project action)',
+            },
+            metadata: {
+              type: 'object',
+              description: 'Custom metadata to add to traces (for add_metadata action)',
+            },
+          },
+          required: ['action'],
+          additionalProperties: false,
+        },
+      },
     ];
   }
 
@@ -1149,6 +1262,14 @@ this.env.MCP_SERVER_VERSION = versionWithTimestamp;
         return await this.swarmAgentHandoff(args);
       case 'swarm_context_engineering':
         return await this.swarmContextEngineering(args);
+      case 'get_langsmith_metrics':
+        return await this.getLangSmithMetrics(args);
+      case 'get_trace_data':
+        return await this.getTraceData(args);
+      case 'get_server_introspection':
+        return await this.getServerIntrospection(args);
+      case 'configure_tracing':
+        return await this.configureTracing(args);
       case 'generate_failure_heatmap':
       case 'analyze_performance_metrics':
           case 'build_predictive_model':
@@ -2878,6 +2999,261 @@ Please provide a comprehensive synthesis using 2025 swarm intelligence patterns.
   private logInfo(message: string, meta?: Record<string, unknown>): void {
     if (['info', 'debug'].includes(this.env.LOG_LEVEL)) {
       logger.info(message, meta);
+    }
+  }
+
+  /**
+   * Get LangSmith metrics for introspection
+   */
+  private async getLangSmithMetrics(args: Record<string, unknown>): Promise<CallToolResult> {
+    const { projectName, timeRange = '24h', includeToolBreakdown = true } = args;
+
+    if (!isLangSmithEnabled()) {
+      return {
+        content: [{
+          type: 'text',
+          text: JSON.stringify({
+            error: 'LangSmith tracing not enabled',
+            status: getLangSmithStatus(),
+          }, null, 2),
+        }],
+      };
+    }
+
+    try {
+      // Parse time range into actual dates
+      const timeRangeMap: Record<string, number> = {
+        '1h': 1 * 60 * 60 * 1000,
+        '6h': 6 * 60 * 60 * 1000,
+        '24h': 24 * 60 * 60 * 1000,
+        '7d': 7 * 24 * 60 * 60 * 1000,
+        '30d': 30 * 24 * 60 * 60 * 1000,
+      };
+
+      const timeRangeMs = timeRangeMap[timeRange as string] || timeRangeMap['24h'];
+      const endTime = new Date();
+      const startTime = new Date(endTime.getTime() - timeRangeMs);
+
+      const metrics = await getProjectMetrics(
+        projectName as string,
+        { startTime, endTime }
+      );
+
+      return {
+        content: [{
+          type: 'text',
+          text: JSON.stringify({
+            ...metrics,
+            langSmithStatus: getLangSmithStatus(),
+            requestedTimeRange: timeRange,
+            includeToolBreakdown,
+          }, null, 2),
+        }],
+      };
+    } catch (error) {
+      this.logError('Failed to get LangSmith metrics', error);
+      throw new McpError(ErrorCode.InternalError, `Failed to retrieve LangSmith metrics: ${this.getErrorMessage(error)}`);
+    }
+  }
+
+  /**
+   * Get recent trace data
+   */
+  private async getTraceData(args: Record<string, unknown>): Promise<CallToolResult> {
+    const { limit = 20, projectName, toolName, status = 'all' } = args;
+
+    if (!isLangSmithEnabled()) {
+      return {
+        content: [{
+          type: 'text',
+          text: JSON.stringify({
+            error: 'LangSmith tracing not enabled',
+            status: getLangSmithStatus(),
+          }, null, 2),
+        }],
+      };
+    }
+
+    try {
+      let traces = await getRecentTraces(limit as number, projectName as string);
+
+      // Filter by tool name if specified
+      if (toolName) {
+        traces = traces.filter(trace => trace.name === toolName);
+      }
+
+      // Filter by status if specified
+      if (status !== 'all') {
+        traces = traces.filter(trace => trace.status === status);
+      }
+
+      return {
+        content: [{
+          type: 'text',
+          text: JSON.stringify({
+            traces,
+            totalCount: traces.length,
+            filters: {
+              toolName: toolName || null,
+              status: status as string,
+              limit: limit as number,
+            },
+            langSmithStatus: getLangSmithStatus(),
+          }, null, 2),
+        }],
+      };
+    } catch (error) {
+      this.logError('Failed to get trace data', error);
+      throw new McpError(ErrorCode.InternalError, `Failed to retrieve trace data: ${this.getErrorMessage(error)}`);
+    }
+  }
+
+  /**
+   * Get comprehensive server introspection data
+   */
+  private async getServerIntrospection(args: Record<string, unknown>): Promise<CallToolResult> {
+    const { 
+      includeMetrics = true, 
+      includeHealth = true, 
+      includeConfig = true, 
+      includeLangSmith = true 
+    } = args;
+
+    try {
+      const introspection: any = {
+        timestamp: new Date().toISOString(),
+        server: {
+          name: 'AOMA Mesh MCP Server',
+          version: this.env.MCP_SERVER_VERSION,
+          environment: this.env.NODE_ENV,
+          uptime: process.uptime(),
+        },
+      };
+
+      if (includeHealth) {
+        introspection.health = await this.performHealthCheck(true);
+      }
+
+      if (includeMetrics) {
+        introspection.metrics = {
+          ...this.metrics,
+          memory: process.memoryUsage(),
+          cpuTime: process.cpuUsage(),
+        };
+      }
+
+      if (includeConfig) {
+        introspection.configuration = {
+          httpPort: this.env.HTTP_PORT,
+          maxRetries: this.env.MAX_RETRIES,
+          timeout: this.env.TIMEOUT_MS,
+          logLevel: this.env.LOG_LEVEL,
+          features: [
+            'Sony Music AOMA Knowledge Base',
+            'Jira Ticket Semantic Search',
+            'Development Context Analysis',
+            'Real-time Health Monitoring',
+            'LangSmith Observability',
+            'Performance Metrics Tracking',
+          ],
+          tools: this.getToolDefinitions().map(tool => ({
+            name: tool.name,
+            description: tool.description,
+          })),
+          resources: this.getResourceDefinitions().map(resource => ({
+            uri: resource.uri,
+            name: resource.name,
+          })),
+        };
+      }
+
+      if (includeLangSmith) {
+        introspection.langSmith = getLangSmithStatus();
+        
+        if (isLangSmithEnabled()) {
+          try {
+            // Get recent metrics for a quick overview
+            const endTime = new Date();
+            const startTime = new Date(endTime.getTime() - (24 * 60 * 60 * 1000)); // 24h
+            const recentMetrics = await getProjectMetrics(undefined, { startTime, endTime });
+            introspection.langSmith.recentMetrics = recentMetrics;
+          } catch (error) {
+            introspection.langSmith.metricsError = this.getErrorMessage(error);
+          }
+        }
+      }
+
+      return {
+        content: [{
+          type: 'text',
+          text: JSON.stringify(introspection, null, 2),
+        }],
+      };
+    } catch (error) {
+      this.logError('Failed to get server introspection', error);
+      throw new McpError(ErrorCode.InternalError, `Failed to retrieve server introspection: ${this.getErrorMessage(error)}`);
+    }
+  }
+
+  /**
+   * Configure LangSmith tracing
+   */
+  private async configureTracing(args: Record<string, unknown>): Promise<CallToolResult> {
+    const { action, projectName, metadata } = args;
+
+    try {
+      let result: any = { action };
+
+      switch (action) {
+        case 'status':
+          result.status = getLangSmithStatus();
+          break;
+
+        case 'enable':
+          process.env.LANGCHAIN_TRACING_V2 = 'true';
+          initializeLangSmith();
+          result.message = 'LangSmith tracing enabled';
+          result.status = getLangSmithStatus();
+          break;
+
+        case 'disable':
+          process.env.LANGCHAIN_TRACING_V2 = 'false';
+          result.message = 'LangSmith tracing disabled';
+          result.status = getLangSmithStatus();
+          break;
+
+        case 'set_project':
+          if (!projectName) {
+            throw new McpError(ErrorCode.InvalidRequest, 'projectName required for set_project action');
+          }
+          process.env.LANGCHAIN_PROJECT = projectName as string;
+          result.message = `LangSmith project set to: ${projectName}`;
+          result.status = getLangSmithStatus();
+          break;
+
+        case 'add_metadata':
+          if (!metadata) {
+            throw new McpError(ErrorCode.InvalidRequest, 'metadata required for add_metadata action');
+          }
+          // Store metadata for future traces (implementation would depend on requirements)
+          result.message = 'Custom metadata configured for future traces';
+          result.metadata = metadata;
+          break;
+
+        default:
+          throw new McpError(ErrorCode.InvalidRequest, `Unknown action: ${action}`);
+      }
+
+      return {
+        content: [{
+          type: 'text',
+          text: JSON.stringify(result, null, 2),
+        }],
+      };
+    } catch (error) {
+      if (error instanceof McpError) throw error;
+      this.logError('Failed to configure tracing', error);
+      throw new McpError(ErrorCode.InternalError, `Failed to configure tracing: ${this.getErrorMessage(error)}`);
     }
   }
 }

@@ -42,7 +42,7 @@ USER mcpuser
 # Environment variables for Railway
 ENV NODE_ENV=production
 ENV HOST=0.0.0.0
-ENV MCP_SERVER_VERSION=2.0.0-railway
+# MCP_SERVER_VERSION will be set dynamically by the application
 # Railway will set PORT dynamically, but default to 3333 for local testing
 ENV PORT=3333
 

@@ -235,3 +235,156 @@ export function getLangSmithClient(): Client | null {
 export function isLangSmithEnabled(): boolean {
   return langsmithClient !== null;
 }
+
+/**
+ * Get LangSmith project metrics
+ */
+export async function getProjectMetrics(
+  projectName?: string,
+  timeRange: { startTime?: Date; endTime?: Date } = {}
+): Promise<any> {
+  if (!langsmithClient) {
+    throw new Error('LangSmith client not initialized');
+  }
+
+  try {
+    const project = projectName || process.env.LANGCHAIN_PROJECT || 'aoma-mesh-mcp';
+    
+    const runs = await langsmithClient.listRuns({
+      projectName: project,
+      startTime: timeRange.startTime,
+      endTime: timeRange.endTime,
+      limit: 100,
+    });
+
+    const metrics = {
+      project: project,
+      timeRange: {
+        startTime: timeRange.startTime?.toISOString(),
+        endTime: timeRange.endTime?.toISOString(),
+      },
+      totalRuns: 0,
+      successfulRuns: 0,
+      failedRuns: 0,
+      averageDuration: 0,
+      toolMetrics: {} as Record<string, any>,
+      recentActivity: [] as any[],
+    };
+
+    let totalDuration = 0;
+    const toolStats: Record<string, { count: number; successes: number; totalDuration: number }> = {};
+
+    for await (const run of runs) {
+      metrics.totalRuns++;
+      
+      const duration = run.end_time && run.start_time 
+        ? new Date(run.end_time).getTime() - new Date(run.start_time).getTime()
+        : 0;
+      
+      totalDuration += duration;
+
+      if (run.error) {
+        metrics.failedRuns++;
+      } else {
+        metrics.successfulRuns++;
+      }
+
+      const toolName = run.name || 'unknown';
+      if (!toolStats[toolName]) {
+        toolStats[toolName] = { count: 0, successes: 0, totalDuration: 0 };
+      }
+      
+      toolStats[toolName].count++;
+      toolStats[toolName].totalDuration += duration;
+      
+      if (!run.error) {
+        toolStats[toolName].successes++;
+      }
+
+      if (metrics.recentActivity.length < 10) {
+        metrics.recentActivity.push({
+          name: run.name,
+          startTime: run.start_time,
+          duration: duration,
+          success: !run.error,
+          error: run.error || null,
+        });
+      }
+    }
+
+    metrics.averageDuration = metrics.totalRuns > 0 ? totalDuration / metrics.totalRuns : 0;
+    
+    Object.entries(toolStats).forEach(([tool, stats]) => {
+      metrics.toolMetrics[tool] = {
+        totalCalls: stats.count,
+        successRate: stats.count > 0 ? (stats.successes / stats.count) * 100 : 0,
+        averageDuration: stats.count > 0 ? stats.totalDuration / stats.count : 0,
+        failureCount: stats.count - stats.successes,
+      };
+    });
+
+    return metrics;
+  } catch (error) {
+    logger.error('[LangSmith] Failed to get project metrics', error);
+    throw error;
+  }
+}
+
+/**
+ * Get recent traces from LangSmith
+ */
+export async function getRecentTraces(
+  limit: number = 20,
+  projectName?: string
+): Promise<any[]> {
+  if (!langsmithClient) {
+    throw new Error('LangSmith client not initialized');
+  }
+
+  try {
+    const project = projectName || process.env.LANGCHAIN_PROJECT || 'aoma-mesh-mcp';
+    
+    const runs = await langsmithClient.listRuns({
+      projectName: project,
+      limit,
+    });
+
+    const traces = [];
+    for await (const run of runs) {
+      traces.push({
+        id: run.id,
+        name: run.name,
+        runType: run.run_type,
+        startTime: run.start_time,
+        endTime: run.end_time,
+        duration: run.end_time && run.start_time 
+          ? new Date(run.end_time).getTime() - new Date(run.start_time).getTime()
+          : null,
+        status: run.error ? 'error' : 'success',
+        error: run.error || null,
+        inputs: run.inputs,
+        outputs: run.outputs,
+        metadata: run.extra?.metadata || {},
+      });
+    }
+
+    return traces;
+  } catch (error) {
+    logger.error('[LangSmith] Failed to get recent traces', error);
+    throw error;
+  }
+}
+
+/**
+ * Get LangSmith configuration and status
+ */
+export function getLangSmithStatus(): any {
+  return {
+    enabled: isLangSmithEnabled(),
+    project: process.env.LANGCHAIN_PROJECT || 'aoma-mesh-mcp',
+    endpoint: process.env.LANGCHAIN_ENDPOINT || 'https://api.smith.langchain.com',
+    tracingEnabled: process.env.LANGCHAIN_TRACING_V2 === 'true',
+    hasApiKey: !!process.env.LANGCHAIN_API_KEY,
+    clientInitialized: langsmithClient !== null,
+  };
+}
