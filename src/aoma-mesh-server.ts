@@ -21,7 +21,7 @@ function findProjectRoot(startDir: string): string {
     currentDir = path.dirname(currentDir);
   }
   // Fallback if pnpm-workspace.yaml is not found
-  console.warn("pnpm-workspace.yaml not found. Falling back to relative path for project root. This might be unreliable.");
+  // console.warn("pnpm-workspace.yaml not found. Falling back to relative path for project root. This might be unreliable.");
   return path.resolve(__dirnameFromMeta, '../../../'); // Original fallback
 }
 
@@ -80,6 +80,8 @@ import OpenAI from 'openai';
 import { createClient } from '@supabase/supabase-js';
 import { z } from 'zod';
 import * as fs from 'fs/promises';
+import { initializeLangSmith, traceToolCall, isLangSmithEnabled } from './utils/langsmith.js';
+import { logger } from './utils/mcp-logger.js';
 
 // Environment validation with comprehensive error messages
 const EnvSchema = z.object({
@@ -1117,16 +1119,21 @@ this.env.MCP_SERVER_VERSION = versionWithTimestamp;
    * Execute tool calls with comprehensive validation
    */
   private async callTool(name: string, args: Record<string, unknown>): Promise<CallToolResult> {
-    switch (name) {
-      case 'query_aoma_knowledge':
-        return await this.queryAOMAKnowledge(args as unknown as AOMAQueryRequest);
-      case 'search_jira_tickets':
-        return await this.searchJiraTickets(args as unknown as JiraSearchRequest);
-      case 'get_jira_ticket_count':
-        return await this.getJiraTicketCount(args as unknown as JiraCountRequest);
-      case 'search_git_commits':
-        return await this.searchGitCommits(args as unknown as GitSearchRequest);
-      case 'search_code_files':
+    // Wrap tool execution with LangSmith tracing
+    return await traceToolCall(
+      name,
+      args,
+      async () => {
+        switch (name) {
+          case 'query_aoma_knowledge':
+            return await this.queryAOMAKnowledge(args as unknown as AOMAQueryRequest);
+          case 'search_jira_tickets':
+            return await this.searchJiraTickets(args as unknown as JiraSearchRequest);
+          case 'get_jira_ticket_count':
+            return await this.getJiraTicketCount(args as unknown as JiraCountRequest);
+          case 'search_git_commits':
+            return await this.searchGitCommits(args as unknown as GitSearchRequest);
+          case 'search_code_files':
         return await this.searchCodeFiles(args as unknown as CodeSearchRequest);
       case 'search_outlook_emails':
         return await this.searchOutlookEmails(args as unknown as OutlookEmailSearchRequest);
@@ -1144,11 +1151,18 @@ this.env.MCP_SERVER_VERSION = versionWithTimestamp;
         return await this.swarmContextEngineering(args);
       case 'generate_failure_heatmap':
       case 'analyze_performance_metrics':
-      case 'build_predictive_model':
-        throw new McpError(ErrorCode.MethodNotFound, `Tool ${name} not yet implemented`);
-      default:
-        throw new McpError(ErrorCode.MethodNotFound, `Unknown tool: ${name}`);
-    }
+          case 'build_predictive_model':
+            throw new McpError(ErrorCode.MethodNotFound, `Tool ${name} not yet implemented`);
+          default:
+            throw new McpError(ErrorCode.MethodNotFound, `Unknown tool: ${name}`);
+        }
+      },
+      // Metadata for LangSmith tracing
+      {
+        tool: name,
+        timestamp: new Date().toISOString(),
+      }
+    );
   }
 
   /**
@@ -2090,6 +2104,14 @@ Generated: ${new Date().toISOString()}
     });
     
     try {
+      // Initialize LangSmith tracing
+      initializeLangSmith();
+      if (isLangSmithEnabled()) {
+        this.logInfo('LangSmith tracing enabled', {
+          project: process.env.LANGCHAIN_PROJECT || 'default',
+        });
+      }
+      
       // Perform initial health check
       const health = await this.performHealthCheck(false);
       
@@ -2844,18 +2866,18 @@ Please provide a comprehensive synthesis using 2025 swarm intelligence patterns.
   }
 
   private logError(message: string, error?: unknown): void {
-    console.error(`[ERROR] ${message}`, error);
+    logger.error(message, error);
   }
 
   private logWarn(message: string, error?: unknown): void {
     if (!['error'].includes(this.env.LOG_LEVEL)) {
-      console.error(`[WARN] ${message}`, error);
+      logger.warn(message, error);
     }
   }
 
   private logInfo(message: string, meta?: Record<string, unknown>): void {
     if (['info', 'debug'].includes(this.env.LOG_LEVEL)) {
-      console.error(`[INFO] ${message}`, meta ? JSON.stringify(meta) : '');
+      logger.info(message, meta);
     }
   }
 }
@@ -2863,8 +2885,20 @@ Please provide a comprehensive synthesis using 2025 swarm intelligence patterns.
 // Start server if run directly
 if (import.meta.url === `file://${process.argv[1]}`) {
   const server = new AOMAMeshServer();
-  server.start().catch((error) => {
-    console.error('❌ AOMA Mesh MCP Server startup failed:', error);
+  
+  // Graceful shutdown handler
+  const shutdown = async (signal: string) => {
+    logger.info(`Received ${signal}, shutting down gracefully...`);
+    await logger.flush();
+    process.exit(0);
+  };
+
+  process.on('SIGINT', () => shutdown('SIGINT'));
+  process.on('SIGTERM', () => shutdown('SIGTERM'));
+  
+  server.start().catch(async (error) => {
+    logger.error('AOMA Mesh MCP Server startup failed', error);
+    await logger.flush();
     process.exit(1);
   });
 }

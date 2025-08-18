@@ -6,14 +6,14 @@ const BASE = process.env.RAILWAY_BASE_URL || 'https://luminous-dedication-produc
 const EXPECTED = [
   'get_system_health',
   'get_server_capabilities',
-  'development_context',
-  'aoma_knowledge',
-  'code_search',
-  'git_search',
-  'jira_search',
-  'jira_count',
-  'outlook_search',
-  'swarm_analysis'
+  'analyze_development_context',
+  'query_aoma_knowledge',
+  'search_code_files',
+  'search_git_commits',
+  'search_jira_tickets',
+  'get_jira_ticket_count',
+  'search_outlook_emails',
+  'swarm_analyze_cross_vector'
 ];
 
 (async () => {
@@ -48,10 +48,27 @@ const EXPECTED = [
       process.exit(1);
     }
 
-    const tools = json?.result?.tools ?? json?.result?.capabilities?.tools ?? json?.result?.data?.tools ?? [];
-    if (!Array.isArray(tools) || tools.length === 0) {
-      console.error('[remote-tools] No tools found in response');
+    // The /rpc endpoint returns MCP CallToolResult with content[0].text containing JSON
+    const capsText = json?.result?.content?.[0]?.text;
+    if (typeof capsText !== 'string' || capsText.length === 0) {
+      console.error('[remote-tools] Capabilities payload missing in result.content[0].text');
       // console.error(JSON.stringify(json, null, 2));
+      process.exit(1);
+    }
+
+    let caps: any;
+    try {
+      caps = JSON.parse(capsText);
+    } catch {
+      console.error('[remote-tools] Capabilities text is not valid JSON');
+      // console.error(capsText);
+      process.exit(1);
+    }
+
+    const tools = caps?.tools?.list ?? [];
+    if (!Array.isArray(tools) || tools.length === 0) {
+      console.error('[remote-tools] No tools found in capabilities');
+      // console.error(JSON.stringify(caps, null, 2));
       process.exit(1);
     }
 

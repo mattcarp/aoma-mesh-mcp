@@ -97,6 +97,25 @@ npm run dev
 npm run start
 ```
 
+### LangSmith Demo (Simulation)
+
+The demo showcases what LangSmith tracing would surface without making any external API calls.
+
+```bash
+# Run the simulation (recommended)
+pnpm run demo:langsmith
+
+# Optionally include the ROI section
+AOMA_LANGSMITH_DEMO_INCLUDE_ROI=true pnpm run demo:langsmith
+```
+
+Notes:
+- The demo is safe to run offline and does not require credentials.
+- To enable real LangSmith tracing in the server, set:
+  - `LANGCHAIN_TRACING_V2=true`
+  - `LANGCHAIN_API_KEY=your_langsmith_api_key`
+  - `LANGCHAIN_PROJECT=aoma-mesh-mcp`
+
 ### MCP Client Configuration
 
 Add to your MCP client configuration:
