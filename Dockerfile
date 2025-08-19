@@ -1,87 +1,68 @@
-# Multi-stage Dockerfile for AWS Fargate deployment
-# SOTA Performance, Security, and Size Optimization
-# Updated for MCP Server 2.0.0_SOTA with NO FALLBACK policy
+# Railway-optimized Dockerfile for AOMA Mesh MCP Server
+# Simplified for Railway's container environment
 
-# ⚠️ CRITICAL: Force x86_64 architecture for AWS Fargate compatibility
-# This prevents "Exec format error" on ARM64 build machines
+FROM node:20-alpine
 
-# Stage 1: Build stage
-FROM --platform=linux/x86_64 node:20-alpine AS builder
+# Build argument to force rebuild - Updated 2025-08-19 with fixed dependencies
+ARG BUILD_DATE=2025-08-19-fixed
+ENV BUILD_DATE=$BUILD_DATE
 
 # Set working directory
 WORKDIR /app
 
-# Install build dependencies for native modules
+# Install build dependencies
 RUN apk add --no-cache \
     python3 \
     make \
     g++ \
     git \
-    curl
+    curl \
+    dumb-init
 
 # Copy package files for dependency installation
-COPY package*.json ./
+COPY package.json ./
 
-# Install all dependencies (including dev deps for building)
-RUN npm ci --prefer-offline --no-audit
+# Clear npm cache and install fresh dependencies
+RUN npm cache clean --force && \
+    npm install --no-audit
 
-# Copy source code and pre-built files
+# Copy source code
 COPY . .
-COPY dist ./dist
 
-# Remove dev dependencies and clean up
-RUN npm ci --only=production --prefer-offline --no-audit && \
-    npm cache clean --force && \
-    rm -rf /tmp/* /var/cache/apk/*
+# Build the application with Railway-specific config
+RUN npm run clean && npx tsc --project tsconfig.railway.json
 
-# Stage 2: Production stage  
-FROM --platform=linux/x86_64 node:20-alpine AS production
+# Remove dev dependencies and install production only
+RUN npm prune --production && \
+    npm cache clean --force
 
-# Create non-root user for security
+# Create non-root user
 RUN addgroup -g 1001 -S mcpuser && \
-    adduser -S mcpuser -u 1001
-
-# Set working directory
-WORKDIR /app
-
-# Install runtime dependencies only
-RUN apk add --no-cache \
-    dumb-init \
-    curl \
-    ca-certificates
-
-# Copy built application from builder stage
-COPY --from=builder --chown=mcpuser:mcpuser /app/dist ./dist
-COPY --from=builder --chown=mcpuser:mcpuser /app/node_modules ./node_modules
-COPY --from=builder --chown=mcpuser:mcpuser /app/package.json ./package.json
-COPY --from=builder --chown=mcpuser:mcpuser /app/simple-server.js ./simple-server.js
-
-# Create necessary directories with proper permissions
-RUN mkdir -p /app/logs && \
+    adduser -S mcpuser -u 1001 && \
     chown -R mcpuser:mcpuser /app
 
 # Switch to non-root user
 USER mcpuser
 
-# SOTA Environment Configuration for MCP Server
+# Environment variables for Railway
 ENV NODE_ENV=production
-ENV PORT=3333
 ENV HOST=0.0.0.0
-ENV MCP_SERVER_VERSION=2.0.0_SOTA
+# MCP_SERVER_VERSION will be set dynamically by the application
+# Railway will set PORT dynamically, but default to 3333 for local testing
+ENV PORT=3333
 
-# Performance Optimizations
-ENV NODE_OPTIONS="--max-old-space-size=1536 --optimize-for-size"
-ENV UV_THREADPOOL_SIZE=16
+# Performance optimizations
+ENV NODE_OPTIONS="--max-old-space-size=1536"
 
-# SOTA Health Check (fast, 500ms timeout)
+# Health check
 HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
     CMD curl -f http://localhost:3333/health || exit 1
 
-# Expose MCP server port
+# Expose port
 EXPOSE 3333
 
-# Use dumb-init to handle signals properly in containers
+# Use dumb-init for proper signal handling
 ENTRYPOINT ["dumb-init", "--"]
 
-# Start the AOMA Mesh MCP Server (not simple-server.js)
+# Start the server
 CMD ["node", "dist/aoma-mesh-server.js"]
