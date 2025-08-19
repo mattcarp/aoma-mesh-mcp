@@ -1287,7 +1287,7 @@ this.env.MCP_SERVER_VERSION = versionWithTimestamp;
   }
 
   /**
-   * Query AOMA knowledge base with enhanced error handling
+   * Query AOMA knowledge base with enhanced error handling and validation
    */
   private async queryAOMAKnowledge(request: AOMAQueryRequest): Promise<CallToolResult> {
     const { query, strategy = 'focused', context, maxResults = 10 } = request;
@@ -1297,10 +1297,19 @@ this.env.MCP_SERVER_VERSION = versionWithTimestamp;
     }
 
     try {
-      // Enhanced query with context if provided
-      const enhancedQuery = context ? `Context: ${context}\n\nQuery: ${query}` : query;
+      // Pre-process query for better knowledge base search
+      const preprocessedQuery = this.preprocessAOMAQuery(query);
+      
+      // Enhanced query with explicit knowledge base search instruction
+      const enhancedQuery = `SEARCH REQUEST: Please search the AOMA knowledge base for the following information:
+
+${context ? `Context: ${context}\n\n` : ''}Query: ${preprocessedQuery}
+
+Remember: You MUST use file_search to find this information in the attached knowledge base before responding.`;
       
       this.logInfo('AOMA knowledge query started', { 
+        originalQuery: query,
+        preprocessedQuery,
         queryLength: query.length, 
         strategy, 
         hasContext: !!context 
@@ -1321,6 +1330,9 @@ this.env.MCP_SERVER_VERSION = versionWithTimestamp;
 
       const response = await this.pollRunCompletion(thread.id, run.id);
 
+      // Validate response for knowledge base usage
+      const validationResult = this.validateAOMAResponse(response, query);
+      
       // Clean up thread to prevent quota issues
       try {
         await this.openaiClient.beta.threads.del(thread.id);
@@ -1328,18 +1340,24 @@ this.env.MCP_SERVER_VERSION = versionWithTimestamp;
         this.logWarn('Failed to cleanup thread', cleanupError);
       }
 
+      // Add warning if response might be hallucinated
+      const finalResponse = validationResult.isValid ? response : 
+        `${response}\n\n⚠️ WARNING: This response may not be from the AOMA knowledge base. Confidence: ${validationResult.confidence}`;
+
       return {
         content: [{
           type: 'text',
           text: JSON.stringify({
             query,
             strategy,
-            response,
+            response: finalResponse,
             metadata: {
               hasContext: !!context,
               threadId: thread.id,
               timestamp: new Date().toISOString(),
               version: this.env.MCP_SERVER_VERSION,
+              validation: validationResult,
+              preprocessedQuery,
             },
           }, null, 2),
         }],
@@ -1349,6 +1367,111 @@ this.env.MCP_SERVER_VERSION = versionWithTimestamp;
       throw error instanceof McpError ? error :
         new McpError(ErrorCode.InternalError, `AOMA knowledge query failed: ${this.getErrorMessage(error)}`);
     }
+  }
+
+  /**
+   * Preprocess AOMA query for better knowledge base search
+   */
+  private preprocessAOMAQuery(query: string): string {
+    // Expand common AOMA acronyms for better search
+    const acronymExpansions: Record<string, string> = {
+      'USM': 'USM (Unified Session Manager)',
+      'AOMA': 'AOMA (Asset and Offering Management Application)',
+      'MDS': 'MDS (Metadata Service)',
+      'CDN': 'CDN (Content Delivery Network)',
+      'SSO': 'SSO (Single Sign-On)',
+      'JWT': 'JWT (JSON Web Token)',
+      'API': 'API (Application Programming Interface)',
+      'ITSM': 'ITSM (IT Service Management)',
+      'QC': 'QC (Quality Control)',
+    };
+
+    let processedQuery = query;
+    
+    // Replace standalone acronyms with expanded forms
+    Object.entries(acronymExpansions).forEach(([acronym, expansion]) => {
+      const regex = new RegExp(`\\b${acronym}\\b`, 'gi');
+      if (regex.test(processedQuery) && !processedQuery.includes(expansion)) {
+        processedQuery = processedQuery.replace(regex, expansion);
+      }
+    });
+
+    // Add search keywords for better file_search results
+    if (!processedQuery.toLowerCase().includes('what is') && 
+        !processedQuery.toLowerCase().includes('explain') &&
+        !processedQuery.toLowerCase().includes('describe')) {
+      processedQuery = `What is ${processedQuery}`;
+    }
+
+    return processedQuery;
+  }
+
+  /**
+   * Validate AOMA response to check if it's from knowledge base
+   */
+  private validateAOMAResponse(response: string, originalQuery: string): { 
+    isValid: boolean; 
+    confidence: number; 
+    issues: string[] 
+  } {
+    const issues: string[] = [];
+    let confidence = 1.0;
+
+    // Check for explicit "not found" statements
+    if (response.includes('not found in the AOMA knowledge base') ||
+        response.includes('This information was not found')) {
+      return { isValid: true, confidence: 1.0, issues: ['Information not in knowledge base'] };
+    }
+
+    // Check for citations or file references
+    const hasCitations = response.includes('according to') ||
+                        response.includes('as documented in') ||
+                        response.includes('per the') ||
+                        response.includes('documentation states') ||
+                        response.includes('.md') ||
+                        response.includes('.txt') ||
+                        response.includes('file:');
+
+    if (!hasCitations) {
+      issues.push('No explicit citations or file references found');
+      confidence -= 0.3;
+    }
+
+    // Check for overly generic or theoretical language (hallucination indicators)
+    const hallucinationPhrases = [
+      'typically', 'generally', 'usually', 'commonly',
+      'it is likely', 'it appears', 'presumably',
+      'in theory', 'conceptually', 'hypothetically'
+    ];
+
+    const genericCount = hallucinationPhrases.filter(phrase => 
+      response.toLowerCase().includes(phrase)
+    ).length;
+
+    if (genericCount > 2) {
+      issues.push('Response contains generic/theoretical language');
+      confidence -= 0.2 * genericCount;
+    }
+
+    // Check if response contains specific AOMA terminology
+    const aomaTerms = ['AOMA', 'Sony Music', 'asset', 'metadata', 'ingestion', 'workflow'];
+    const hasAOMAContext = aomaTerms.some(term => 
+      response.toLowerCase().includes(term.toLowerCase())
+    );
+
+    if (!hasAOMAContext) {
+      issues.push('Response lacks AOMA-specific context');
+      confidence -= 0.2;
+    }
+
+    // Ensure confidence is between 0 and 1
+    confidence = Math.max(0, Math.min(1, confidence));
+
+    return {
+      isValid: confidence > 0.5,
+      confidence,
+      issues
+    };
   }
 
   /**
@@ -2113,17 +2236,27 @@ Please provide:
   }
 
   /**
-   * Get strategy-specific prompts
+   * Get strategy-specific prompts with knowledge base enforcement
    */
   private getStrategyPrompt(strategy: string): string {
+    const baseInstruction = `CRITICAL INSTRUCTIONS:
+1. You MUST search and use ONLY information from the attached knowledge base files.
+2. Use the file_search tool to find relevant documentation before responding.
+3. If you cannot find specific information in the knowledge base, explicitly state: "This information was not found in the AOMA knowledge base."
+4. Include file references or document names when citing information.
+5. Do NOT generate, guess, or infer information that is not explicitly in the documentation.
+6. For acronyms, search for both the acronym and potential full forms in the knowledge base.
+
+RESPONSE STRATEGY: `;
+
     switch (strategy) {
       case 'comprehensive':
-        return 'Provide a comprehensive, detailed analysis covering all relevant aspects. Include background context, multiple approaches, and potential implications.';
+        return baseInstruction + 'Provide a comprehensive, detailed analysis using only documented information. Include all relevant sections from the knowledge base, with proper citations.';
       case 'rapid':
-        return 'Provide a concise, direct answer focusing on the most critical information. Prioritize actionable insights and immediate next steps.';
+        return baseInstruction + 'Provide a concise, direct answer using only documented facts. Focus on the most critical information found in the knowledge base.';
       case 'focused':
       default:
-        return 'Provide a focused, well-structured response that directly addresses the query with relevant details and practical guidance.';
+        return baseInstruction + 'Provide a focused, well-structured response using only information from the knowledge base. Include relevant documentation references.';
     }
   }
 

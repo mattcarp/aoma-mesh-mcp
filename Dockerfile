@@ -3,9 +3,11 @@
 
 FROM node:20-alpine
 
-# Build argument to force rebuild - Updated 2025-08-19 with fixed dependencies
-ARG BUILD_DATE=2025-08-19-fixed
+# Build argument to force rebuild - Updated with npm 11 and fixed deps
+ARG CACHEBUST=1
+ARG BUILD_DATE=2025-08-19-npm11
 ENV BUILD_DATE=$BUILD_DATE
+ENV CACHEBUST=$CACHEBUST
 
 # Set working directory
 WORKDIR /app
@@ -19,12 +21,15 @@ RUN apk add --no-cache \
     curl \
     dumb-init
 
+# Update npm to latest version first
+RUN npm install -g npm@latest
+
 # Copy package files for dependency installation
 COPY package.json ./
 
-# Clear npm cache and install fresh dependencies
+# Clear npm cache and install fresh dependencies with latest npm
 RUN npm cache clean --force && \
-    npm install --no-audit
+    npm install --no-audit --legacy-peer-deps
 
 # Copy source code
 COPY . .
