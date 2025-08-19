@@ -3,6 +3,10 @@
 
 FROM node:20-alpine
 
+# Build argument to force rebuild - Updated 2025-08-19  
+ARG BUILD_DATE=2025-08-19
+ENV BUILD_DATE=$BUILD_DATE
+
 # Set working directory
 WORKDIR /app
 
