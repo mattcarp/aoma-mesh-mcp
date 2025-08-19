@@ -1,0 +1,71 @@
+{
+  "timestamp": "2025-08-19T07:09:09.211Z",
+  "summary": {
+    "total": 6,
+    "passed": 2,
+    "failed": 4,
+    "successRate": "33.3%"
+  },
+  "results": [
+    {
+      "testCase": "USM Acronym Test",
+      "passed": false,
+      "keywordScore": 0,
+      "noHallucination": false,
+      "confidence": 1,
+      "foundProblematic": [
+        "Universal Supply Model"
+      ],
+      "response": "In the context of Sony Music’s AOMA (Asset and Offering Management Application), **USM** typically stands for **Universal Supply Model**.\n\nThe Universal Supply Model (USM) is a standardized framework ..."
+    },
+    {
+      "testCase": "USM Detailed Query",
+      "passed": false,
+      "keywordScore": 0,
+      "noHallucination": false,
+      "confidence": 1,
+      "foundProblematic": [
+        "typically"
+      ],
+      "response": "Certainly! In the context of AOMA (Asset and Offering Management Application), **USM** typically refers to the **Universal Service Manager** architecture, which is a core component for managing digita..."
+    },
+    {
+      "testCase": "Non-existent Concept Test",
+      "passed": false,
+      "keywordScore": 0,
+      "noHallucination": true,
+      "confidence": 1,
+      "foundProblematic": [],
+      "response": "After searching the provided documentation, there is no reference to an \"XYZ protocol\" in the context of AOMA (Asset and Offering Management Application) within Sony Music’s systems. The term does not..."
+    },
+    {
+      "testCase": "AOMA Architecture Test",
+      "passed": false,
+      "keywordScore": 1,
+      "noHallucination": false,
+      "confidence": 1,
+      "foundProblematic": [
+        "typically"
+      ],
+      "response": "The AOMA (Asset and Offering Management Application) system architecture is designed to support Sony Music’s digital asset management needs, ensuring robust handling, processing, and distribution of d..."
+    },
+    {
+      "testCase": "Cover Hot Swap Test",
+      "passed": true,
+      "keywordScore": 0.6666666666666666,
+      "noHallucination": true,
+      "confidence": 1,
+      "foundProblematic": [],
+      "response": "**Cover hot swap** in AOMA refers to the process of updating or replacing the cover artwork (such as album covers or single artwork) for an asset (e.g., a music release) without disrupting the asset’s..."
+    },
+    {
+      "testCase": "Troubleshooting Test",
+      "passed": true,
+      "keywordScore": 1,
+      "noHallucination": true,
+      "confidence": 1,
+      "foundProblematic": [],
+      "response": "Troubleshooting asset processing failures in AOMA involves a systematic approach to identify, diagnose, and resolve issues that prevent assets from being ingested, processed, or made available as inte..."
+    }
+  ]
+}

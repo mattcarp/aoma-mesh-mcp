@@ -400,15 +400,12 @@ this.env.MCP_SERVER_VERSION = versionWithTimestamp;
     this.httpApp.get('/health', async (req, res) => {
       try {
         const health = await this.performHealthCheck(true);
-        // Add deployment marker to verify new deployment
-        (health as any).deploymentMarker = 'UPDATED-2025-08-18';
         res.json(health);
       } catch (error) {
         res.status(503).json({
           status: 'unhealthy',
           error: this.getErrorMessage(error),
           timestamp: new Date().toISOString(),
-          deploymentMarker: 'UPDATED-2025-08-18',
         });
       }
     });
