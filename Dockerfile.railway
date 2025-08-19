@@ -3,8 +3,8 @@
 
 FROM node:20-alpine
 
-# Build argument to force rebuild - Updated 2025-08-19  
-ARG BUILD_DATE=2025-08-19
+# Build argument to force rebuild - Updated 2025-08-19 with fixed dependencies
+ARG BUILD_DATE=2025-08-19-fixed
 ENV BUILD_DATE=$BUILD_DATE
 
 # Set working directory
