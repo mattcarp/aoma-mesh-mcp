@@ -253,7 +253,7 @@ export async function getProjectMetrics(
     const runs = await langsmithClient.listRuns({
       projectName: project,
       startTime: timeRange.startTime,
-      endTime: timeRange.endTime,
+      // endTime is not supported by ListRunsParams, filter will be applied after fetching
       limit: 100,
     });
 
@@ -275,6 +275,13 @@ export async function getProjectMetrics(
     const toolStats: Record<string, { count: number; successes: number; totalDuration: number }> = {};
 
     for await (const run of runs) {
+      // Filter by endTime if provided
+      if (timeRange.endTime && run.start_time) {
+        const runStartTime = new Date(run.start_time);
+        if (runStartTime > timeRange.endTime) {
+          continue;
+        }
+      }
       metrics.totalRuns++;
       
       const duration = run.end_time && run.start_time 
