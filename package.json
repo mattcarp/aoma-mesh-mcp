@@ -44,7 +44,7 @@
     "@langchain/community": "^0.3.28",
     "@langchain/core": "^0.3.29",
     "@langchain/langgraph": "^0.2.60",
-    "@langchain/openai": "^0.3.19",
+    "@langchain/openai": "^0.6.9",
     "@modelcontextprotocol/sdk": "^1.0.4",
     "@supabase/supabase-js": "^2.47.20",
     "cors": "^2.8.5",
