@@ -41,8 +41,8 @@
     "upgrade": "pnpm update && pnpm audit fix"
   },
   "dependencies": {
-    "@langchain/community": "^0.3.28",
-    "@langchain/core": "^0.3.29",
+    "@langchain/community": "^0.3.53",
+    "@langchain/core": "^0.3.68",
     "@langchain/langgraph": "^0.2.60",
     "@langchain/openai": "^0.6.9",
     "@modelcontextprotocol/sdk": "^1.0.4",
