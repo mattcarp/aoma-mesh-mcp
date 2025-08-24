@@ -34,12 +34,12 @@ RUN npm cache clean --force && \
 # Copy source code
 COPY . .
 
-# Build the application with Railway-specific config
-RUN npm run clean && npx tsc --project tsconfig.railway.json
+# Skip build step - we'll use tsx to run directly
+# RUN npm run clean && npx tsc --project tsconfig.railway.json
 
-# Remove dev dependencies and install production only
-RUN npm prune --production && \
-    npm cache clean --force
+# Keep all dependencies for tsx to work
+# RUN npm prune --production && \
+#     npm cache clean --force
 
 # Create non-root user
 RUN addgroup -g 1001 -S mcpuser && \
@@ -69,5 +69,5 @@ EXPOSE 3333
 # Use dumb-init for proper signal handling
 ENTRYPOINT ["dumb-init", "--"]
 
-# Start the server
-CMD ["node", "dist/aoma-mesh-server.js"]
+# Start the server with tsx for direct TypeScript execution
+CMD ["npx", "tsx", "src/aoma-mesh-server.ts"]
