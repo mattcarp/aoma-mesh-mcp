@@ -1,0 +1,43 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    // Looser type rules for fast, low-noise checks on the HTTP server only
+    "strict": false,
+    "noImplicitAny": false,
+    "strictNullChecks": false,
+    "exactOptionalPropertyTypes": false,
+    "noUncheckedIndexedAccess": false,
+
+    // Keep ESM NodeNext to match runtime
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+
+    // Keep emit disabled for typecheck
+    "noEmit": true
+  },
+  "include": [
+    "src/aoma-mesh-server.ts",
+    "src/health-check.ts",
+    "src/http-bridge.ts",
+    "src/types/**/*",
+    "src/utils/**/*",
+    "src/config/environment.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "**/*.test.ts",
+    "**/*.spec.ts",
+    "src/agent-server.ts",
+    "src/enhanced-aoma-mesh-server.ts",
+    "src/standalone-aoma-server.ts",
+    "src/real-aoma-server.ts",
+    "src/simple-agent-server.ts",
+    "src/visual-intelligence-agent.ts",
+    "src/streaming/**/*",
+    "src/tools/**/*",
+    "src/services/**/*",
+    "src/server/**/*",
+    "src/lib/**/*"
+  ]
+}

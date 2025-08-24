@@ -227,3 +227,4 @@ LANGCHAIN_API_KEY = <key>           # Only with LangChain
 ❓ **Phase 5 Gate**: Only proceed if native mode demonstrably insufficient
 
 This approach delivers value fast, defers complexity, and keeps the system maintainable.
+1

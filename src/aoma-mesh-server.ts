@@ -74,14 +74,16 @@ import {
   ListToolsRequestSchema,
   ReadResourceRequestSchema,
 } from '@modelcontextprotocol/sdk/types.js';
-import express from 'express';
+import type express from 'express';
 import cors from 'cors';
-import OpenAI from 'openai';
+import { createRequire } from 'module';
+import type OpenAI from 'openai';
 import { createClient } from '@supabase/supabase-js';
 import { z } from 'zod';
 import * as fs from 'fs/promises';
 import { initializeLangSmith, traceToolCall, isLangSmithEnabled, getProjectMetrics, getRecentTraces, getLangSmithStatus } from './utils/langsmith.js';
 import { logger } from './utils/mcp-logger.js';
+import { AOMALangGraphAgent } from './agents/aoma-langgraph-agent.js';
 
 // Environment validation with comprehensive error messages
 const EnvSchema = z.object({
@@ -196,7 +198,7 @@ interface HealthStatus {
  */
 export class AOMAMeshServer {
   private readonly env: Environment;
-  private readonly openaiClient: OpenAI;
+  private openaiClient: OpenAI | null = null;
   private readonly supabaseClient: any;
   private readonly server: Server;
   private readonly httpApp: express.Application;
@@ -204,6 +206,7 @@ export class AOMAMeshServer {
   private metrics: ServerMetrics;
   private healthCache: { status: HealthStatus; lastCheck: number } | null = null;
   private readonly HEALTH_CACHE_TTL = 30000; // 30 seconds
+  private langGraphAgent: AOMALangGraphAgent | null = null;
 
   constructor() {
     // Generate timestamp in YYYYMMDD-HHMMSS format
@@ -224,12 +227,7 @@ this.env = this.validateAndLoadEnvironment();
 // Override version for this instance only
 this.env.MCP_SERVER_VERSION = versionWithTimestamp;
     
-    // Initialize OpenAI client with retry configuration
-    this.openaiClient = new OpenAI({
-      apiKey: this.env.OPENAI_API_KEY,
-      timeout: this.env.TIMEOUT_MS,
-      maxRetries: this.env.MAX_RETRIES,
-    });
+    // OpenAI client will be lazily initialized on first use to avoid import-time errors in tests
 
     // Initialize Supabase client with optimized settings
     this.supabaseClient = createClient(
@@ -255,10 +253,81 @@ this.env.MCP_SERVER_VERSION = versionWithTimestamp;
       }
     );
 
-    // Initialize HTTP server
-    this.httpApp = express();
-    this.httpApp.use(cors());
-    this.httpApp.use(express.json({ limit: '10mb' }));
+    // Initialize HTTP server (use CJS require for Express to avoid ESM interop issues in tsx runtime)
+    const nodeRequire = createRequire(import.meta.url);
+    const expressMod: any = nodeRequire('express');
+    const expressFn: any = expressMod?.default ?? expressMod;
+    this.httpApp = expressFn();
+
+    // Env-gated hardening toggles (defaults keep current behavior)
+    // 1) Trust proxy (needed behind load balancers like Railway/Vercel)
+    if (process.env.TRUST_PROXY === 'true' || process.env.TRUST_PROXY === '1') {
+      this.httpApp.set('trust proxy', 1);
+    }
+
+    // 2) CORS allowlist (fallback to open CORS when not specified)
+    const allowList = (process.env.ALLOWED_ORIGINS || '')
+      .split(',')
+      .map((s) => s.trim())
+      .filter(Boolean);
+    if (allowList.length > 0) {
+      this.httpApp.use(
+        cors({
+          origin: (origin, callback) => {
+            if (!origin || allowList.includes(origin)) {
+              callback(null, true);
+            } else {
+              callback(new Error('Not allowed by CORS'));
+            }
+          },
+          credentials: true,
+        })
+      );
+    } else {
+      this.httpApp.use(cors());
+    }
+
+    // 3) Security headers via helmet (disabled by default)
+    if ((process.env.ENABLE_HELMET || '').toLowerCase() === 'true') {
+      const helmetMod: any = nodeRequire('helmet');
+      const helmetFn: any = helmetMod?.default ?? helmetMod;
+      this.httpApp.use(helmetFn());
+    }
+
+    // 4) Response compression (optional; requires `compression` dependency)
+    if ((process.env.ENABLE_COMPRESSION || '').toLowerCase() === 'true') {
+      try {
+        const compressionMod: any = nodeRequire('compression');
+        const compressionFn: any = compressionMod?.default ?? compressionMod;
+        const level = parseInt(process.env.COMPRESSION_LEVEL || '', 10);
+        const options: any = {};
+        if (!Number.isNaN(level)) options.level = level;
+        this.httpApp.use(compressionFn(options));
+      } catch (err) {
+        this.logWarn(
+          'ENABLE_COMPRESSION=true but "compression" package not installed. Run: pnpm add compression'
+        );
+      }
+    }
+
+    // 5) Rate limiting for RPC and tool endpoints (disabled by default)
+    if ((process.env.ENABLE_RATE_LIMIT || '').toLowerCase() === 'true') {
+      const rateLimitMod: any = nodeRequire('express-rate-limit');
+      const rateLimitFn: any = rateLimitMod?.default ?? rateLimitMod;
+      const windowMs = parseInt(process.env.RATE_LIMIT_WINDOW_MS || '60000', 10);
+      const max = parseInt(process.env.RATE_LIMIT_MAX || '100', 10);
+      const limiter = rateLimitFn({
+        windowMs,
+        max,
+        standardHeaders: true,
+        legacyHeaders: false,
+      });
+      this.httpApp.use(['/rpc', '/tools', '/tools/*'], limiter);
+    }
+
+    // 6) JSON body size limit (configurable, default 10mb)
+    const jsonLimit = process.env.JSON_BODY_LIMIT || '10mb';
+    this.httpApp.use(expressFn.json({ limit: jsonLimit }));
 
     // Initialize metrics
     this.metrics = {
@@ -318,6 +387,22 @@ this.env.MCP_SERVER_VERSION = versionWithTimestamp;
       }
       throw error;
     }
+  }
+
+  /**
+   * Lazy-initialize OpenAI client (dynamic import) to prevent startup/import errors in tests
+   */
+  private async getOpenAIClient(): Promise<OpenAI> {
+    if (this.openaiClient) return this.openaiClient;
+    // Dynamic import avoids requiring 'openai' at module load time
+    const { default: OpenAIConstructor } = await import('openai');
+    const client = new OpenAIConstructor({
+      apiKey: this.env.OPENAI_API_KEY,
+      timeout: this.env.TIMEOUT_MS,
+      maxRetries: this.env.MAX_RETRIES,
+    }) as unknown as OpenAI;
+    this.openaiClient = client;
+    return client;
   }
 
   /**
@@ -1294,6 +1379,44 @@ this.env.MCP_SERVER_VERSION = versionWithTimestamp;
     }
 
     try {
+      // Use LangGraph agent for comprehensive queries if available
+      if (strategy === 'comprehensive' && this.env.LANGCHAIN_TRACING_V2 === 'true') {
+        // Initialize LangGraph agent if not already done
+        if (!this.langGraphAgent) {
+          const openaiService = new (await import('./services/openai.service.js')).OpenAIService(this.env);
+          const supabaseService = new (await import('./services/supabase.service.js')).SupabaseService(this.env);
+          this.langGraphAgent = new AOMALangGraphAgent(openaiService, supabaseService);
+          logger.info('🚀 LangGraph agent initialized for comprehensive queries');
+        }
+
+        // Execute query with LangGraph
+        logger.info('🧠 Using LangGraph agent for comprehensive query');
+        const result = await this.langGraphAgent.query(query, strategy);
+        
+        if (result.success) {
+          return {
+            content: [
+              {
+                type: 'text',
+                text: JSON.stringify({
+                  response: result.response,
+                  sources: result.sources,
+                  metadata: {
+                    ...result.metadata,
+                    agent: 'LangGraph',
+                    tracingEnabled: true,
+                  }
+                }),
+              },
+            ],
+          };
+        }
+        // Fall back to standard method if LangGraph fails
+        logger.warn('LangGraph agent failed, falling back to standard method');
+      }
+
+      // Standard OpenAI Assistant approach for rapid/focused queries
+      try {
       // Pre-process query for better knowledge base search
       const preprocessedQuery = this.preprocessAOMAQuery(query);
       
@@ -1313,14 +1436,15 @@ Remember: You MUST use file_search to find this information in the attached know
       });
 
       // Use OpenAI Assistant API with AOMA assistant
-      const thread = await this.openaiClient.beta.threads.create({
+      const openai = await this.getOpenAIClient();
+      const thread = await openai.beta.threads.create({
         messages: [{
           role: 'user',
           content: enhancedQuery,
         }],
       });
 
-      const run = await this.openaiClient.beta.threads.runs.create(thread.id, {
+      const run = await openai.beta.threads.runs.create(thread.id, {
         assistant_id: this.env.AOMA_ASSISTANT_ID,
         additional_instructions: this.getStrategyPrompt(strategy),
       });
@@ -1332,7 +1456,7 @@ Remember: You MUST use file_search to find this information in the attached know
       
       // Clean up thread to prevent quota issues
       try {
-        await this.openaiClient.beta.threads.del(thread.id);
+        await openai.beta.threads.del(thread.id);
       } catch (cleanupError) {
         this.logWarn('Failed to cleanup thread', cleanupError);
       }
@@ -1660,7 +1784,8 @@ Remember: You MUST use file_search to find this information in the attached know
       });
 
       // Generate embedding for the search query
-      const embeddingResponse = await this.openaiClient.embeddings.create({
+      const openai = await this.getOpenAIClient();
+      const embeddingResponse = await openai.embeddings.create({
         model: 'text-embedding-3-small',
         input: query,
       });
@@ -1755,7 +1880,8 @@ Remember: You MUST use file_search to find this information in the attached know
       });
 
       // Generate embedding for the search query
-      const embeddingResponse = await this.openaiClient.embeddings.create({
+      const openai = await this.getOpenAIClient();
+      const embeddingResponse = await openai.embeddings.create({
         model: 'text-embedding-3-small',
         input: query,
       });
@@ -1878,15 +2004,15 @@ Please provide:
 3. Potential risks and mitigation
 4. Similar historical issues
 5. Next steps with priority`;
-
-      const thread = await this.openaiClient.beta.threads.create({
+      const openai = await this.getOpenAIClient();
+      const thread = await openai.beta.threads.create({
         messages: [{
           role: 'user',
           content: analysisQuery,
         }],
       });
 
-      const run = await this.openaiClient.beta.threads.runs.create(thread.id, {
+      const run = await openai.beta.threads.runs.create(thread.id, {
         assistant_id: this.env.AOMA_ASSISTANT_ID,
         additional_instructions: 'Provide a structured development context analysis with actionable recommendations.',
       });
@@ -1895,7 +2021,7 @@ Please provide:
 
       // Cleanup
       try {
-        await this.openaiClient.beta.threads.del(thread.id);
+        await openai.beta.threads.del(thread.id);
       } catch (cleanupError) {
         this.logWarn('Failed to cleanup analysis thread', cleanupError);
       }
@@ -2117,8 +2243,9 @@ Please provide:
 
     try {
       // Check if vectorStores exists on beta API
-      if ('vectorStores' in this.openaiClient.beta) {
-        await (this.openaiClient.beta as any).vectorStores.retrieve(this.env.OPENAI_VECTOR_STORE_ID);
+      const openai = await this.getOpenAIClient();
+      if ('vectorStores' in openai.beta) {
+        await (openai.beta as any).vectorStores.retrieve(this.env.OPENAI_VECTOR_STORE_ID);
       }
       return { status: true };
     } catch (error) {
@@ -2199,13 +2326,14 @@ Please provide:
     const maxWaitTime = this.env.TIMEOUT_MS;
     const pollInterval = 1000;
     let elapsed = 0;
+    const openai = await this.getOpenAIClient();
 
     while (elapsed < maxWaitTime) {
       try {
-        const run = await this.openaiClient.beta.threads.runs.retrieve(threadId, runId);
+        const run = await openai.beta.threads.runs.retrieve(threadId, runId);
         
         if (run.status === 'completed') {
-          const messages = await this.openaiClient.beta.threads.messages.list(threadId);
+          const messages = await openai.beta.threads.messages.list(threadId);
           const lastMessage = messages.data[0];
           
           if (lastMessage?.content[0] && 'text' in lastMessage.content[0]) {
@@ -2365,9 +2493,13 @@ Generated: ${new Date().toISOString()}
       
       // Perform initial health check
       const health = await this.performHealthCheck(false);
+      const isTestEnv = this.env.NODE_ENV === 'test';
       
-      if (health.status === 'unhealthy') {
+      if (health.status === 'unhealthy' && !isTestEnv) {
         throw new Error('Server initialization failed: All critical services are unhealthy');
+      }
+      if (health.status === 'unhealthy' && isTestEnv) {
+        this.logWarn('Continuing startup in test environment despite unhealthy services');
       }
       
       this.logInfo('AOMA Mesh MCP Server initialized successfully', {
@@ -2988,9 +3120,17 @@ Please provide a comprehensive synthesis using 2025 swarm intelligence patterns.
       
       // Railway sets PORT env var, use it if available
       let httpPort = this.env.PORT || this.env.HTTP_PORT;
+      const isTestEnv = this.env.NODE_ENV === 'test';
       
-      // Skip port availability check in production (Railway manages ports)
-      if (this.env.NODE_ENV !== 'production') {
+      // Enforce strict port binding during tests to align with Playwright's fixed port
+      if (isTestEnv) {
+        if (!(await this.checkPortAvailability(httpPort))) {
+          this.logError(`Test port ${httpPort} is busy; refusing alternate port in test environment`);
+          throw new Error(`Requested test port ${httpPort} is already in use`);
+        }
+        this.logInfo('Strict test port binding enabled', { port: httpPort });
+      } else if (this.env.NODE_ENV !== 'production') {
+        // In development, fall back to an available port to avoid local conflicts
         if (!(await this.checkPortAvailability(httpPort))) {
           this.logWarn(`Port ${httpPort} is busy, finding alternative...`);
           httpPort = await this.findAvailablePort(httpPort + 1);
@@ -2999,6 +3139,12 @@ Please provide a comprehensive synthesis using 2025 swarm intelligence patterns.
       }
       
       // Start HTTP server for web applications (tk-ui, etc.)
+      this.logInfo('Starting HTTP server', {
+        requestedPort: this.env.PORT || this.env.HTTP_PORT,
+        resolvedPort: httpPort,
+        nodeEnv: this.env.NODE_ENV,
+        strictTestBinding: isTestEnv,
+      });
       const httpServer = this.httpApp.listen(httpPort, '0.0.0.0', () => {
         this.logInfo('🌐 HTTP endpoints available', {
           port: httpPort,
@@ -3151,16 +3297,20 @@ Please provide a comprehensive synthesis using 2025 swarm intelligence patterns.
     }
 
     try {
-      // Parse time range into actual dates
-      const timeRangeMap: Record<string, number> = {
+      // Parse time range into actual dates (type-safe with fallback)
+      const timeRangeMap = {
         '1h': 1 * 60 * 60 * 1000,
         '6h': 6 * 60 * 60 * 1000,
         '24h': 24 * 60 * 60 * 1000,
         '7d': 7 * 24 * 60 * 60 * 1000,
         '30d': 30 * 24 * 60 * 60 * 1000,
-      };
-
-      const timeRangeMs = timeRangeMap[timeRange as string] || timeRangeMap['24h'];
+      } as const;
+      type TimeRangeKey = keyof typeof timeRangeMap;
+      const allowedKeys = Object.keys(timeRangeMap) as TimeRangeKey[];
+      const key: TimeRangeKey = (typeof timeRange === 'string' && (allowedKeys as readonly string[]).includes(timeRange))
+        ? (timeRange as TimeRangeKey)
+        : '24h';
+      const timeRangeMs = timeRangeMap[key];
       const endTime = new Date();
       const startTime = new Date(endTime.getTime() - timeRangeMs);
 

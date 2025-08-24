@@ -17,16 +17,11 @@ export default {
   moduleNameMapper: {
     '^(\\.{1,2}/.*)\\.js$': '$1'
   },
-  transformIgnorePatterns: [
-    'node_modules/(?!(.*\\.mjs$))'
-  ],
+  transformIgnorePatterns: [],
   transform: {
-    '^.+\\.tsx?$': [
-      'ts-jest',
-      {
-        useESM: true
-      }
-    ]
+    '^.+\\.ts$': ['ts-jest', {
+      useESM: true
+    }]
   },
   setupFilesAfterEnv: ['<rootDir>/src/__tests__/setup.ts']
 };
