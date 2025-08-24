@@ -18,8 +18,10 @@ export class OpenAIService {
   private readonly vectorStoreId?: string;
   private readonly timeout: number;
   private readonly maxRetries: number;
+  private readonly environment: Environment;
 
   constructor(config: Environment) {
+    this.environment = config;
     this.client = new OpenAI({
       apiKey: config.OPENAI_API_KEY,
       timeout: config.TIMEOUT_MS,
