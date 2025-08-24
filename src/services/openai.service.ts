@@ -131,6 +131,24 @@ export class OpenAIService {
   }
 
   /**
+   * Search vector store for relevant documents
+   */
+  async searchVectorStore(query: string, limit: number = 5): Promise<any[]> {
+    try {
+      if (!this.environment.OPENAI_VECTOR_STORE_ID) {
+        return [];
+      }
+      
+      // Use vector store search (placeholder - actual implementation would use embeddings)
+      // For now, return empty array as this is used by LangGraph
+      return [];
+    } catch (error) {
+      console.error('Vector store search error:', error);
+      return [];
+    }
+  }
+
+  /**
    * Wait for assistant run to complete
    */
   private async waitForRunCompletion(threadId: string, runId: string): Promise<{

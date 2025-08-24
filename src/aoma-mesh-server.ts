@@ -1416,7 +1416,6 @@ this.env.MCP_SERVER_VERSION = versionWithTimestamp;
       }
 
       // Standard OpenAI Assistant approach for rapid/focused queries
-      try {
       // Pre-process query for better knowledge base search
       const preprocessedQuery = this.preprocessAOMAQuery(query);
       

@@ -26,6 +26,11 @@ export const EnvSchema = z.object({
   MAX_RETRIES: z.coerce.number().int().min(1).max(10).default(3),
   TIMEOUT_MS: z.coerce.number().int().min(5000).max(300000).default(30000),
   HTTP_PORT: z.coerce.number().int().min(1024).max(65535).default(3333),
+  // LangChain/LangSmith configuration
+  LANGCHAIN_TRACING_V2: z.string().optional(),
+  LANGCHAIN_API_KEY: z.string().optional(),
+  LANGCHAIN_PROJECT: z.string().optional(),
+  LANGCHAIN_ENDPOINT: z.string().url().optional(),
 });
 
 export type Environment = z.infer<typeof EnvSchema>;

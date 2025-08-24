@@ -5,7 +5,7 @@
  * parallel tool execution, and result synthesis.
  */
 
-import { StateGraph, Annotation, END } from '@langchain/langgraph';
+import { StateGraph, Annotation, END, START } from '@langchain/langgraph';
 import { ChatOpenAI } from '@langchain/openai';
 import { HumanMessage, AIMessage, SystemMessage, BaseMessage } from '@langchain/core/messages';
 import { DynamicStructuredTool } from '@langchain/core/tools';
@@ -213,10 +213,10 @@ export class AOMALangGraphAgent {
     workflow.addNode('synthesize_results', this.synthesizeResults.bind(this));
 
     // Define edges
-    workflow.addEdge('__start__', 'analyze_query');
+    workflow.addEdge(START, 'analyze_query');
     workflow.addConditionalEdges(
       'analyze_query',
-      (state) => {
+      (state: typeof AgentState.State) => {
         // Decide whether to execute tools or go straight to synthesis
         const hasToolCalls = state.metadata?.toolsToCall?.length > 0;
         return hasToolCalls ? 'execute_tools' : 'synthesize_results';

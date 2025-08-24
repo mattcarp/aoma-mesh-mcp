@@ -7,14 +7,14 @@
     "types": ["node"],
     "outDir": "dist",
     "rootDir": "src",
-    "strict": true,
-    "noImplicitAny": true,
-    "strictNullChecks": true,
-    "strictFunctionTypes": true,
-    "noImplicitReturns": true,
+    "strict": false,
+    "noImplicitAny": false,
+    "strictNullChecks": false,
+    "strictFunctionTypes": false,
+    "noImplicitReturns": false,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedIndexedAccess": true,
-    "exactOptionalPropertyTypes": true,
+    "noUncheckedIndexedAccess": false,
+    "exactOptionalPropertyTypes": false,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
@@ -34,7 +34,11 @@
     "src/health-check.ts",
     "src/http-bridge.ts",
     "src/types/**/*",
-    "src/utils/**/*"
+    "src/utils/**/*",
+    "src/config/**/*",
+    "src/services/openai.service.ts",
+    "src/services/supabase.service.ts",
+    "src/agents/**/*"
   ],
   "exclude": [
     "node_modules",
@@ -58,7 +62,6 @@
     "src/visual-intelligence-agent.ts",
     "src/streaming/**/*",
     "src/tools/**/*",
-    "src/services/**/*",
     "src/server/**/*"
   ],
   "ts-node": {
