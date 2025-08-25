@@ -15,7 +15,7 @@ const REQUIRED_ENV_VARS = [
  * Optional environment variables with defaults
  */
 const OPTIONAL_ENV_VARS = {
-  OPENAI_MODEL_NAME: 'gpt-4o',
+  OPENAI_MODEL_NAME: 'gpt-5',
   NEXT_PUBLIC_SUPABASE_URL: '',
   SUPABASE_SERVICE_ROLE_KEY: '',
   LANGCHAIN_TRACING_V2: 'false',

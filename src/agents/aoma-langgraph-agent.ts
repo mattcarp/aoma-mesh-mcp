@@ -185,7 +185,7 @@ export class AOMALangGraphAgent {
   constructor(
     openaiService: OpenAIService,
     supabaseService: SupabaseService,
-    modelName: string = 'gpt-4o-mini'
+    modelName: string = 'gpt-5'
   ) {
     this.openaiService = openaiService;
     this.supabaseService = supabaseService;
@@ -250,7 +250,7 @@ export class AOMALangGraphAgent {
     For simple queries, use only the most relevant tool.`;
 
     const result = await traceLLMCall(
-      'gpt-4o-mini',
+      'gpt-5',
       [systemPrompt, state.query],
       async () => {
         const response = await this.model.invoke([
@@ -367,7 +367,7 @@ export class AOMALangGraphAgent {
     const toolResultsText = JSON.stringify(state.toolResults, null, 2);
     
     const result = await traceLLMCall(
-      'gpt-4o-mini',
+      'gpt-5',
       [systemPrompt, state.query, toolResultsText],
       async () => {
         const response = await this.model.invoke([

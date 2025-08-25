@@ -65,14 +65,19 @@ const EXPECTED = [
       process.exit(1);
     }
 
-    const tools = caps?.tools?.list ?? [];
-    if (!Array.isArray(tools) || tools.length === 0) {
+    // Support both shapes:
+    // 1) { tools: { total: number, list: Tool[] } }
+    // 2) { tools: Tool[] }
+    const toolsArray = Array.isArray(caps?.tools)
+      ? caps.tools
+      : (Array.isArray(caps?.tools?.list) ? caps.tools.list : []);
+    if (!Array.isArray(toolsArray) || toolsArray.length === 0) {
       console.error('[remote-tools] No tools found in capabilities');
       // console.error(JSON.stringify(caps, null, 2));
       process.exit(1);
     }
 
-    const names = tools.map((t: any) => t?.name).filter(Boolean);
+    const names = toolsArray.map((t: any) => t?.name).filter(Boolean);
     const missing = EXPECTED.filter(n => !names.includes(n));
 
     console.log(`[remote-tools] available=${names.length}`);
