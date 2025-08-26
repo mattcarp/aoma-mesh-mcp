@@ -1,0 +1,94 @@
+AOMA Mesh MCP Hardening & HTTP MCP Compliance PRD
+
+1. Overview
+- Purpose: Elevate aoma-mesh-mcp to production-grade MCP compliance and security while preserving strong observability (LangSmith) and dev velocity.
+- Scope: Transport, HTTP security, request lifecycle (cancellation), observability/metrics, bridge reliability, and code structure.
+
+2. Goals (Outcomes)
+- Provide a first-class MCP-over-HTTP transport (SSE) for production use.
+- Gate all HTTP endpoints with API key auth and hardened defaults.
+- Make long-running requests cancellable and observable.
+- Improve the HTTP bridge with official SDK client semantics and reliable process control.
+- Export Prometheus metrics while keeping JSON metrics for programmatic access.
+- Introduce request correlation IDs and propagate into LangSmith traces.
+- Refactor monolithic server file into focused modules to meet code-size guidelines.
+- Add Playwright E2E coverage for critical paths using real data.
+
+3. Non-Goals
+- Changing tool semantics or business logic.
+- Migrating away from existing observability (LangSmith).
+- Vendor lock-in to specific APMs beyond Prometheus-compatible metrics.
+
+4. Requirements & Acceptance Criteria
+
+4.1 HTTP MCP Transport (SSE)
+- Add SSE transport endpoint (e.g., /mcp/sse) using @modelcontextprotocol SDK SSE server transport.
+- Works in production with existing Express app and security middleware.
+- Acceptance: Claude/Cursor connects over SSE; tools/resources list and calls succeed; no auth bypass.
+
+4.2 Authentication & Security Defaults
+- Require X-API-Key header for /rpc, /tools/*, /mcp/sse.
+- Config: HTTP_API_KEY (required in production). Return 401 on missing/invalid key.
+- Enable Helmet and rate limiting by default in production; enforce ALLOWED_ORIGINS allowlist for CORS.
+- Acceptance: Requests without valid API key are blocked. CORS denies disallowed origins.
+
+4.3 Cancellation Support
+- Thread AbortSignal from HTTP requests (req.on('aborted')) to tool execution and I/O (OpenAI/Supabase).
+- Ensure polling (e.g., pollRunCompletion) observes abort and exits quickly with a cancellation error.
+- Acceptance: Aborting the client request cancels server work within TIMEOUT_MS granularity.
+
+4.4 HTTP Bridge Reliability
+- Replace ad-hoc stdio parsing with official SDK client transport.
+- Fix spawn target: dev uses pnpm tsx src/aoma-mesh-server.ts; prod uses built JS from dist/.
+- Add restart/backoff policy, timeouts, and health checks.
+- Acceptance: Bridge forwards tools/call reliably; restarts on crashes with backoff; no message loss.
+
+4.5 Metrics & Observability
+- Provide Prometheus text exposition at /metrics; keep current JSON at /metrics.json.
+- Add per-tool counters and latency histograms; label by status (success/error) and tool name.
+- Generate/accept X-Request-ID; include in logs and append to LangSmith trace metadata.
+- Acceptance: Metrics scrapeable by Prometheus; request IDs visible in logs/traces.
+
+4.6 Code Structure Refactor
+- Split src/aoma-mesh-server.ts into:
+  - src/transport/ (stdio/sse init, graceful shutdown)
+  - src/http/ (routes, auth, CORS, rate limit, metrics)
+  - src/mcp/ (request handlers: tools/resources)
+  - src/tools/ (jira, git, code, outlook, swarm) – keep stable APIs
+  - src/observability/ (langsmith, metrics registry, request-id)
+- Keep files <= 200 lines where practical.
+- Acceptance: Build/tests pass; functionality unchanged.
+
+4.7 E2E Tests (Playwright)
+- Cover: auth enforcement (401), tools/list and tools/call via /mcp/sse and /rpc, cancellation behavior, Prometheus metrics format.
+- Use real data; avoid mocks. Parameterize secrets via env at runtime (never commit .env files).
+- Acceptance: CI passes E2E on main tasks; no mocks.
+
+5. Implementation Plan (Milestones)
+- P0 (Security & Transport): SSE transport, API key auth, secure defaults in prod.
+- P1 (Bridge & Cancellation): Bridge via SDK client; cancellation across long-running ops.
+- P2 (Observability & Structure): Prometheus metrics, request IDs; refactor code structure.
+- P2 (Testing): Playwright E2E for critical paths.
+
+6. Risks & Mitigations
+- Risk: SSE transport integration complexity → pilot behind feature flag; fall back to stdio in non-prod.
+- Risk: Auth rollout breaks existing integrations → staged rollout, dual-mode grace period.
+- Risk: Refactor churn → incremental refactor with high test coverage and strict linting.
+
+7. Dependencies
+- @modelcontextprotocol/sdk SSE server transport.
+- prom-client (or similar) for metrics exposition.
+- Existing LangSmith utilities in src/utils/langsmith.ts.
+
+8. Success Metrics
+- 0 critical security issues (open endpoints without auth) in prod.
+- 95th percentile tool call latency tracked per tool.
+- < 1% cancelled requests continue executing server-side.
+- E2E coverage for SSE + auth flows.
+
+9. Appendix: Current State Summary
+- Stdio transport only in dev; production relies on custom HTTP endpoints.
+- /rpc and /tools/* lack auth by default; CORS defaults permissive.
+- Bridge uses ad-hoc stdio parsing; fragile spawn path.
+- No cancellation propagation; JSON metrics only; no request correlation.
+- Monolithic server file (~3.5k lines).

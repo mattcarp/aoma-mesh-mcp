@@ -1,0 +1,577 @@
+{
+  "railwayMetrics": {
+    "server": "Railway (Current)",
+    "url": "https://aoma-mesh-mcp-production.up.railway.app",
+    "results": [
+      {
+        "endpoint": "/health",
+        "method": "GET",
+        "responseTime": 1137.640625,
+        "status": 404,
+        "timestamp": "2025-08-26T09:36:35.223Z"
+      },
+      {
+        "endpoint": "/health",
+        "method": "GET",
+        "responseTime": 158.76983299999984,
+        "status": 404,
+        "timestamp": "2025-08-26T09:36:35.486Z"
+      },
+      {
+        "endpoint": "/health",
+        "method": "GET",
+        "responseTime": 333.63470899999993,
+        "status": 404,
+        "timestamp": "2025-08-26T09:36:35.922Z"
+      },
+      {
+        "endpoint": "/health",
+        "method": "GET",
+        "responseTime": 219.52895799999988,
+        "status": 404,
+        "timestamp": "2025-08-26T09:36:36.251Z"
+      },
+      {
+        "endpoint": "/health",
+        "method": "GET",
+        "responseTime": 195.31012499999997,
+        "status": 404,
+        "timestamp": "2025-08-26T09:36:36.548Z"
+      },
+      {
+        "endpoint": "/health",
+        "method": "GET",
+        "responseTime": 162.97587499999963,
+        "status": 404,
+        "timestamp": "2025-08-26T09:36:36.811Z"
+      },
+      {
+        "endpoint": "/health",
+        "method": "GET",
+        "responseTime": 150.05000000000018,
+        "status": 404,
+        "timestamp": "2025-08-26T09:36:37.063Z"
+      },
+      {
+        "endpoint": "/health",
+        "method": "GET",
+        "responseTime": 157.442,
+        "status": 404,
+        "timestamp": "2025-08-26T09:36:37.322Z"
+      },
+      {
+        "endpoint": "/health",
+        "method": "GET",
+        "responseTime": 152.52220799999986,
+        "status": 404,
+        "timestamp": "2025-08-26T09:36:37.576Z"
+      },
+      {
+        "endpoint": "/health",
+        "method": "GET",
+        "responseTime": 234.94595799999934,
+        "status": 404,
+        "timestamp": "2025-08-26T09:36:37.914Z"
+      },
+      {
+        "endpoint": "/health",
+        "method": "GET",
+        "responseTime": 149.71979100000044,
+        "status": 404,
+        "timestamp": "2025-08-26T09:36:38.164Z"
+      },
+      {
+        "endpoint": "/health",
+        "method": "GET",
+        "responseTime": 159.43387500000063,
+        "status": 404,
+        "timestamp": "2025-08-26T09:36:38.425Z"
+      },
+      {
+        "endpoint": "/health",
+        "method": "GET",
+        "responseTime": 171.63595799999985,
+        "status": 404,
+        "timestamp": "2025-08-26T09:36:38.699Z"
+      },
+      {
+        "endpoint": "/health",
+        "method": "GET",
+        "responseTime": 158.33116699999937,
+        "status": 404,
+        "timestamp": "2025-08-26T09:36:38.960Z"
+      },
+      {
+        "endpoint": "/health",
+        "method": "GET",
+        "responseTime": 163.9034159999992,
+        "status": 404,
+        "timestamp": "2025-08-26T09:36:39.225Z"
+      },
+      {
+        "endpoint": "/health",
+        "method": "GET",
+        "responseTime": 155.17433299999993,
+        "status": 404,
+        "timestamp": "2025-08-26T09:36:39.482Z"
+      },
+      {
+        "endpoint": "/health",
+        "method": "GET",
+        "responseTime": 161.29812500000025,
+        "status": 404,
+        "timestamp": "2025-08-26T09:36:39.743Z"
+      },
+      {
+        "endpoint": "/health",
+        "method": "GET",
+        "responseTime": 164.8442500000001,
+        "status": 404,
+        "timestamp": "2025-08-26T09:36:40.009Z"
+      },
+      {
+        "endpoint": "/health",
+        "method": "GET",
+        "responseTime": 179.41470899999968,
+        "status": 404,
+        "timestamp": "2025-08-26T09:36:40.295Z"
+      },
+      {
+        "endpoint": "/health",
+        "method": "GET",
+        "responseTime": 150.7534169999999,
+        "status": 404,
+        "timestamp": "2025-08-26T09:36:40.570Z"
+      },
+      {
+        "endpoint": "/metrics",
+        "method": "GET",
+        "responseTime": 183.45120899999984,
+        "status": 404,
+        "timestamp": "2025-08-26T09:36:40.882Z"
+      },
+      {
+        "endpoint": "/metrics",
+        "method": "GET",
+        "responseTime": 185.10750000000007,
+        "status": 404,
+        "timestamp": "2025-08-26T09:36:41.180Z"
+      },
+      {
+        "endpoint": "/metrics",
+        "method": "GET",
+        "responseTime": 155.82250000000022,
+        "status": 404,
+        "timestamp": "2025-08-26T09:36:41.437Z"
+      },
+      {
+        "endpoint": "/metrics",
+        "method": "GET",
+        "responseTime": 155.58333399999992,
+        "status": 404,
+        "timestamp": "2025-08-26T09:36:41.694Z"
+      },
+      {
+        "endpoint": "/metrics",
+        "method": "GET",
+        "responseTime": 151.59045799999876,
+        "status": 404,
+        "timestamp": "2025-08-26T09:36:41.948Z"
+      },
+      {
+        "endpoint": "/metrics",
+        "method": "GET",
+        "responseTime": 156.75658300000032,
+        "status": 404,
+        "timestamp": "2025-08-26T09:36:42.221Z"
+      },
+      {
+        "endpoint": "/metrics",
+        "method": "GET",
+        "responseTime": 157.37487500000134,
+        "status": 404,
+        "timestamp": "2025-08-26T09:36:42.480Z"
+      },
+      {
+        "endpoint": "/metrics",
+        "method": "GET",
+        "responseTime": 147.35495900000024,
+        "status": 404,
+        "timestamp": "2025-08-26T09:36:42.729Z"
+      },
+      {
+        "endpoint": "/metrics",
+        "method": "GET",
+        "responseTime": 158.00266699999884,
+        "status": 404,
+        "timestamp": "2025-08-26T09:36:42.988Z"
+      },
+      {
+        "endpoint": "/metrics",
+        "method": "GET",
+        "responseTime": 149.66404200000034,
+        "status": 404,
+        "timestamp": "2025-08-26T09:36:43.239Z"
+      },
+      {
+        "endpoint": "/metrics",
+        "method": "GET",
+        "responseTime": 151.13408399999935,
+        "status": 404,
+        "timestamp": "2025-08-26T09:36:43.492Z"
+      },
+      {
+        "endpoint": "/metrics",
+        "method": "GET",
+        "responseTime": 154.34812500000044,
+        "status": 404,
+        "timestamp": "2025-08-26T09:36:43.746Z"
+      },
+      {
+        "endpoint": "/metrics",
+        "method": "GET",
+        "responseTime": 156.8043749999997,
+        "status": 404,
+        "timestamp": "2025-08-26T09:36:44.003Z"
+      },
+      {
+        "endpoint": "/metrics",
+        "method": "GET",
+        "responseTime": 156.66645900000003,
+        "status": 404,
+        "timestamp": "2025-08-26T09:36:44.261Z"
+      },
+      {
+        "endpoint": "/metrics",
+        "method": "GET",
+        "responseTime": 156.68083299999853,
+        "status": 404,
+        "timestamp": "2025-08-26T09:36:44.519Z"
+      },
+      {
+        "endpoint": "/metrics",
+        "method": "GET",
+        "responseTime": 157.88004199999887,
+        "status": 404,
+        "timestamp": "2025-08-26T09:36:44.778Z"
+      },
+      {
+        "endpoint": "/metrics",
+        "method": "GET",
+        "responseTime": 162.86633400000028,
+        "status": 404,
+        "timestamp": "2025-08-26T09:36:45.041Z"
+      },
+      {
+        "endpoint": "/metrics",
+        "method": "GET",
+        "responseTime": 153.54000000000087,
+        "status": 404,
+        "timestamp": "2025-08-26T09:36:45.296Z"
+      },
+      {
+        "endpoint": "/metrics",
+        "method": "GET",
+        "responseTime": 187.36416699999972,
+        "status": 404,
+        "timestamp": "2025-08-26T09:36:45.584Z"
+      },
+      {
+        "endpoint": "/metrics",
+        "method": "GET",
+        "responseTime": 158.50595900000008,
+        "status": 404,
+        "timestamp": "2025-08-26T09:36:45.846Z"
+      },
+      {
+        "endpoint": "/rpc",
+        "method": "POST",
+        "responseTime": 165.9897089999995,
+        "status": 404,
+        "timestamp": "2025-08-26T09:36:46.115Z"
+      },
+      {
+        "endpoint": "/rpc",
+        "method": "POST",
+        "responseTime": 157.06283299999996,
+        "status": 404,
+        "timestamp": "2025-08-26T09:36:46.373Z"
+      },
+      {
+        "endpoint": "/rpc",
+        "method": "POST",
+        "responseTime": 157.8977500000001,
+        "status": 404,
+        "timestamp": "2025-08-26T09:36:46.632Z"
+      },
+      {
+        "endpoint": "/rpc",
+        "method": "POST",
+        "responseTime": 148.71562500000073,
+        "status": 404,
+        "timestamp": "2025-08-26T09:36:46.881Z"
+      },
+      {
+        "endpoint": "/rpc",
+        "method": "POST",
+        "responseTime": 157.78508300000067,
+        "status": 404,
+        "timestamp": "2025-08-26T09:36:47.140Z"
+      },
+      {
+        "endpoint": "/rpc",
+        "method": "POST",
+        "responseTime": 154.37016699999913,
+        "status": 404,
+        "timestamp": "2025-08-26T09:36:47.395Z"
+      },
+      {
+        "endpoint": "/rpc",
+        "method": "POST",
+        "responseTime": 201.71066599999904,
+        "status": 404,
+        "timestamp": "2025-08-26T09:36:47.697Z"
+      },
+      {
+        "endpoint": "/rpc",
+        "method": "POST",
+        "responseTime": 165.95008299999972,
+        "status": 404,
+        "timestamp": "2025-08-26T09:36:47.964Z"
+      },
+      {
+        "endpoint": "/rpc",
+        "method": "POST",
+        "responseTime": 156.0331670000014,
+        "status": 404,
+        "timestamp": "2025-08-26T09:36:48.223Z"
+      },
+      {
+        "endpoint": "/rpc",
+        "method": "POST",
+        "responseTime": 158.20716700000048,
+        "status": 404,
+        "timestamp": "2025-08-26T09:36:48.482Z"
+      },
+      {
+        "endpoint": "/rpc",
+        "method": "POST",
+        "responseTime": 162.26879200000076,
+        "status": 404,
+        "timestamp": "2025-08-26T09:36:48.752Z"
+      },
+      {
+        "endpoint": "/rpc",
+        "method": "POST",
+        "responseTime": 157.0493750000005,
+        "status": 404,
+        "timestamp": "2025-08-26T09:36:49.010Z"
+      },
+      {
+        "endpoint": "/rpc",
+        "method": "POST",
+        "responseTime": 166.77466699999968,
+        "status": 404,
+        "timestamp": "2025-08-26T09:36:49.278Z"
+      },
+      {
+        "endpoint": "/rpc",
+        "method": "POST",
+        "responseTime": 151.3679170000014,
+        "status": 404,
+        "timestamp": "2025-08-26T09:36:49.529Z"
+      },
+      {
+        "endpoint": "/rpc",
+        "method": "POST",
+        "responseTime": 166.86712500000067,
+        "status": 404,
+        "timestamp": "2025-08-26T09:36:49.797Z"
+      },
+      {
+        "endpoint": "/rpc",
+        "method": "POST",
+        "responseTime": 149.02179199999955,
+        "status": 404,
+        "timestamp": "2025-08-26T09:36:50.047Z"
+      },
+      {
+        "endpoint": "/rpc",
+        "method": "POST",
+        "responseTime": 158.679666,
+        "status": 404,
+        "timestamp": "2025-08-26T09:36:50.307Z"
+      },
+      {
+        "endpoint": "/rpc",
+        "method": "POST",
+        "responseTime": 183.54566700000214,
+        "status": 404,
+        "timestamp": "2025-08-26T09:36:50.595Z"
+      },
+      {
+        "endpoint": "/rpc",
+        "method": "POST",
+        "responseTime": 152.14904200000092,
+        "status": 404,
+        "timestamp": "2025-08-26T09:36:50.848Z"
+      },
+      {
+        "endpoint": "/rpc",
+        "method": "POST",
+        "responseTime": 154.12099999999919,
+        "status": 404,
+        "timestamp": "2025-08-26T09:36:51.102Z"
+      },
+      {
+        "endpoint": "/rpc",
+        "method": "POST",
+        "responseTime": 151.0395000000026,
+        "status": 404,
+        "timestamp": "2025-08-26T09:36:51.355Z"
+      },
+      {
+        "endpoint": "/rpc",
+        "method": "POST",
+        "responseTime": 172.06095899999855,
+        "status": 404,
+        "timestamp": "2025-08-26T09:36:51.628Z"
+      },
+      {
+        "endpoint": "/rpc",
+        "method": "POST",
+        "responseTime": 150.02687499999956,
+        "status": 404,
+        "timestamp": "2025-08-26T09:36:51.880Z"
+      },
+      {
+        "endpoint": "/rpc",
+        "method": "POST",
+        "responseTime": 155.89566700000069,
+        "status": 404,
+        "timestamp": "2025-08-26T09:36:52.136Z"
+      },
+      {
+        "endpoint": "/rpc",
+        "method": "POST",
+        "responseTime": 165.2196249999979,
+        "status": 404,
+        "timestamp": "2025-08-26T09:36:52.403Z"
+      },
+      {
+        "endpoint": "/rpc",
+        "method": "POST",
+        "responseTime": 156.97762499999953,
+        "status": 404,
+        "timestamp": "2025-08-26T09:36:52.662Z"
+      },
+      {
+        "endpoint": "/rpc",
+        "method": "POST",
+        "responseTime": 178.41920800000298,
+        "status": 404,
+        "timestamp": "2025-08-26T09:36:52.974Z"
+      },
+      {
+        "endpoint": "/rpc",
+        "method": "POST",
+        "responseTime": 165.62370799999917,
+        "status": 404,
+        "timestamp": "2025-08-26T09:36:53.241Z"
+      },
+      {
+        "endpoint": "/rpc",
+        "method": "POST",
+        "responseTime": 158.04716700000063,
+        "status": 404,
+        "timestamp": "2025-08-26T09:36:53.502Z"
+      },
+      {
+        "endpoint": "/rpc",
+        "method": "POST",
+        "responseTime": 199.66799999999785,
+        "status": 404,
+        "timestamp": "2025-08-26T09:36:53.807Z"
+      },
+      {
+        "endpoint": "/rpc",
+        "method": "POST",
+        "responseTime": 157.1641660000023,
+        "status": 404,
+        "timestamp": "2025-08-26T09:36:54.065Z"
+      },
+      {
+        "endpoint": "/rpc",
+        "method": "POST",
+        "responseTime": 153.9468339999985,
+        "status": 404,
+        "timestamp": "2025-08-26T09:36:54.320Z"
+      },
+      {
+        "endpoint": "/rpc",
+        "method": "POST",
+        "responseTime": 149.7463749999988,
+        "status": 404,
+        "timestamp": "2025-08-26T09:36:54.570Z"
+      },
+      {
+        "endpoint": "/rpc",
+        "method": "POST",
+        "responseTime": 149.21349999999802,
+        "status": 404,
+        "timestamp": "2025-08-26T09:36:54.820Z"
+      },
+      {
+        "endpoint": "/rpc",
+        "method": "POST",
+        "responseTime": 169.03350000000137,
+        "status": 404,
+        "timestamp": "2025-08-26T09:36:55.091Z"
+      },
+      {
+        "endpoint": "/rpc",
+        "method": "POST",
+        "responseTime": 157.95216699999946,
+        "status": 404,
+        "timestamp": "2025-08-26T09:36:55.349Z"
+      },
+      {
+        "endpoint": "/rpc",
+        "method": "POST",
+        "responseTime": 156.25741600000038,
+        "status": 404,
+        "timestamp": "2025-08-26T09:36:55.608Z"
+      },
+      {
+        "endpoint": "/rpc",
+        "method": "POST",
+        "responseTime": 170.1987079999999,
+        "status": 404,
+        "timestamp": "2025-08-26T09:36:55.880Z"
+      },
+      {
+        "endpoint": "/rpc",
+        "method": "POST",
+        "responseTime": 152.5012080000015,
+        "status": 404,
+        "timestamp": "2025-08-26T09:36:56.132Z"
+      },
+      {
+        "endpoint": "/rpc",
+        "method": "POST",
+        "responseTime": 171.49558400000024,
+        "status": 404,
+        "timestamp": "2025-08-26T09:36:56.405Z"
+      }
+    ],
+    "summary": {
+      "avgResponseTime": 177.24853652500002,
+      "p50": 157.8977500000001,
+      "p95": 219.52895799999988,
+      "p99": 1137.640625,
+      "min": 147.35495900000024,
+      "max": 1137.640625
+    }
+  },
+  "renderMetrics": null
+}

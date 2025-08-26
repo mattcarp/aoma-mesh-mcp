@@ -1,0 +1,98 @@
+services:
+  # AOMA Mesh MCP Server - Private Service (internal only)
+  - type: pserv
+    name: aoma-mesh-mcp
+    runtime: docker
+    plan: starter  # $7/month - no cold starts
+    region: oregon  # Change to match your client app region
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    
+    # Health check for service monitoring
+    healthCheckPath: /health
+    
+    # Private service settings
+    numInstances: 1
+    
+    # Environment variables
+    envVars:
+      # Core MCP Configuration
+      - key: NODE_ENV
+        value: production
+      
+      - key: PORT
+        value: 10000  # Internal port for private service
+      
+      - key: MCP_NAME
+        value: aoma-mesh-mcp
+      
+      - key: MCP_VERSION
+        value: 0.1.0
+      
+      # API Keys (set via Render dashboard - do not commit values!)
+      - key: OPENAI_API_KEY
+        sync: false
+      
+      - key: SUPABASE_URL
+        sync: false
+      
+      - key: SUPABASE_ANON_KEY
+        sync: false
+      
+      - key: PERPLEXITY_API_KEY
+        sync: false
+      
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      
+      # LangSmith Configuration
+      - key: LANGCHAIN_TRACING_V2
+        value: true
+      
+      - key: LANGCHAIN_API_KEY
+        sync: false
+      
+      - key: LANGCHAIN_PROJECT
+        value: aoma-mesh-mcp-render
+      
+      - key: LANGCHAIN_ENDPOINT
+        value: https://api.smith.langchain.com
+      
+      # AOMA Configuration
+      - key: AOMA_API_URL
+        sync: false
+      
+      - key: AOMA_API_KEY
+        sync: false
+      
+      - key: JIRA_BASE_URL
+        sync: false
+      
+      - key: JIRA_EMAIL
+        sync: false
+      
+      - key: JIRA_API_TOKEN
+        sync: false
+      
+      - key: JIRA_PROJECT_KEY
+        sync: false
+      
+      - key: OUTLOOK_CLIENT_ID
+        sync: false
+      
+      - key: OUTLOOK_CLIENT_SECRET
+        sync: false
+      
+      - key: OUTLOOK_TENANT_ID
+        sync: false
+      
+      - key: OUTLOOK_USER_EMAIL
+        sync: false
+      
+      # Optional: API Key for securing the MCP endpoints
+      - key: MCP_API_KEY
+        generateValue: true  # Render will generate a secure key
+        
+      # Monitoring
+      - key: LOG_LEVEL
+        value: info

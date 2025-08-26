@@ -1,0 +1,34 @@
+name: Test Email
+
+on:
+  workflow_dispatch:
+    inputs:
+      to:
+        description: "Recipient email address"
+        required: false
+        default: "matt@mattcarpenter.com"
+      subject:
+        description: "Email subject"
+        required: false
+        default: "Test email from AOMA Mesh CI"
+      body:
+        description: "Email body"
+        required: false
+        default: "This is a test email sent by the AOMA Mesh CI email-test workflow."
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send test email via SMTP
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: ${{ secrets.SMTP_SERVER }}
+          server_port: ${{ secrets.SMTP_PORT }}
+          username: ${{ secrets.SMTP_USERNAME }}
+          password: ${{ secrets.SMTP_PASSWORD }}
+          subject: ${{ github.event.inputs.subject }}
+          to: ${{ github.event.inputs.to }}
+          from: ${{ secrets.SMTP_FROM }}
+          content_type: text/plain
+          body: ${{ github.event.inputs.body }}
