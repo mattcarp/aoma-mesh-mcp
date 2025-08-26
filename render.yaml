@@ -8,9 +8,6 @@ services:
     dockerfilePath: ./Dockerfile
     dockerContext: .
     
-    # Health check for service monitoring
-    healthCheckPath: /health
-    
     # Private service settings
     numInstances: 1
     
