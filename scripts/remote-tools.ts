@@ -1,6 +1,5 @@
 #!/usr/bin/env tsx
 /* eslint-disable n/no-process-exit */
-import fetch from 'node-fetch';
 
 const BASE = process.env.RAILWAY_BASE_URL || 'https://luminous-dedication-production.up.railway.app';
 const EXPECTED = [

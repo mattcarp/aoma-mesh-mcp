@@ -5,7 +5,7 @@
  * Tests both local and Railway deployment endpoints
  */
 
-import fetch from 'node-fetch';
+
 
 async function testEndpoint(url, name) {
     console.log(`\n🧪 Testing ${name}: ${url}`);

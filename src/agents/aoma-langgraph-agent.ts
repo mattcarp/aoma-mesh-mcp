@@ -5,7 +5,7 @@
  * parallel tool execution, and result synthesis.
  */
 
-import { StateGraph, Annotation, END, START } from '@langchain/langgraph';
+import { StateGraph, END, START } from '@langchain/langgraph';
 import { ChatOpenAI } from '@langchain/openai';
 import { HumanMessage, AIMessage, SystemMessage, BaseMessage } from '@langchain/core/messages';
 import { DynamicStructuredTool } from '@langchain/core/tools';
@@ -15,18 +15,42 @@ import { OpenAIService } from '../services/openai.service.js';
 import { logger } from '../utils/mcp-logger.js';
 import { traceLLMCall, traceToolCall } from '../utils/langsmith.js';
 
-// Define the state for our agent
-const AgentState = Annotation.Root({
-  messages: Annotation<BaseMessage[]>({
-    reducer: (x, y) => x.concat(y),
-  }),
-  query: Annotation<string>(),
-  strategy: Annotation<'rapid' | 'focused' | 'comprehensive'>(),
-  toolResults: Annotation<Record<string, any>>(),
-  finalAnswer: Annotation<string>(),
-  sources: Annotation<string[]>(),
-  metadata: Annotation<Record<string, any>>(),
-});
+// Define the state for our agent (using older LangGraph API)
+interface AgentStateType {
+  messages: BaseMessage[];
+  query: string;
+  strategy: 'rapid' | 'focused' | 'comprehensive';
+  toolResults: Record<string, any>;
+  finalAnswer: string;
+  sources: string[];
+  metadata: Record<string, any>;
+}
+
+// Create state channels for LangGraph v0.2
+const agentStateChannels = {
+  messages: {
+    reducer: (x: BaseMessage[], y: BaseMessage[]) => x.concat(y),
+    default: () => [] as BaseMessage[],
+  },
+  query: {
+    default: () => '',
+  },
+  strategy: {
+    default: () => 'rapid' as const,
+  },
+  toolResults: {
+    default: () => ({}),
+  },
+  finalAnswer: {
+    default: () => '',
+  },
+  sources: {
+    default: () => [] as string[],
+  },
+  metadata: {
+    default: () => ({}),
+  },
+};
 
 // Tool definitions for LangGraph
 const createTools = (openaiService: OpenAIService, supabaseService: SupabaseService) => {
@@ -205,7 +229,9 @@ export class AOMALangGraphAgent {
   }
 
   private buildGraph() {
-    const workflow = new StateGraph(AgentState);
+    const workflow = new StateGraph<AgentStateType>({
+      channels: agentStateChannels,
+    });
 
     // Define nodes
     workflow.addNode('analyze_query', this.analyzeQuery.bind(this));
