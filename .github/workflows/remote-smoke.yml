@@ -42,26 +42,25 @@ jobs:
       - name: Remote Tools
         run: pnpm run remote:tools
 
-      # Email notification disabled until SMTP secrets are configured
-      # - name: Send failure email
-      #   if: failure()
-      #   uses: dawidd6/action-send-mail@v3
-      #   with:
-      #     server_address: ${{ secrets.SMTP_SERVER }}
-      #     server_port: ${{ secrets.SMTP_PORT }}
-      #     username: ${{ secrets.SMTP_USERNAME }}
-      #     password: ${{ secrets.SMTP_PASSWORD }}
-      #     subject: "AOMA Mesh Remote Smoke FAILED - ${{ github.repository }} @ ${{ github.ref_name }}"
-      #     to: "matt@mattcarpenter.com"
-      #     from: ${{ secrets.SMTP_FROM }}
-      #     html_body: true
-      #     body: |
-      #       <h3>AOMA Mesh Remote Smoke Checks FAILED</h3>
-      #       <ul>
-      #         <li>Repo: ${{ github.repository }}</li>
-      #         <li>Branch: ${{ github.ref_name }}</li>
-      #         <li>Workflow: ${{ github.workflow }}</li>
-      #         <li>Run: <a href="https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}">View Logs</a></li>
-      #         <li>Production URL: ${{ env.RAILWAY_BASE_URL }}</li>
-      #         <li>Timestamp (UTC): ${{ github.run_started_at }}</li>
-      #       </ul>
+      - name: Send failure email
+        if: failure()
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: ${{ secrets.SMTP_SERVER }}
+          server_port: ${{ secrets.SMTP_PORT }}
+          username: ${{ secrets.SMTP_USERNAME }}
+          password: ${{ secrets.SMTP_PASSWORD }}
+          subject: "AOMA Mesh Remote Smoke FAILED - ${{ github.repository }} @ ${{ github.ref_name }}"
+          to: "matt@mattcarpenter.com"
+          from: ${{ secrets.SMTP_FROM }}
+          html_body: true
+          body: |
+            <h3>AOMA Mesh Remote Smoke Checks FAILED</h3>
+            <ul>
+              <li>Repo: ${{ github.repository }}</li>
+              <li>Branch: ${{ github.ref_name }}</li>
+              <li>Workflow: ${{ github.workflow }}</li>
+              <li>Run: <a href="https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}">View Logs</a></li>
+              <li>Production URL: ${{ env.RAILWAY_BASE_URL }}</li>
+              <li>Timestamp (UTC): ${{ github.run_started_at }}</li>
+            </ul>
