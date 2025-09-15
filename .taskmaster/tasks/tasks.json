@@ -1,0 +1,113 @@
+{
+  "master": {
+    "tasks": [
+      {
+        "id": 1,
+        "title": "Integrate SSE MCP Transport Endpoint",
+        "description": "Add a Server-Sent Events (SSE) endpoint for MCP transport using the @modelcontextprotocol SDK, ensuring compatibility with the existing Express app and security middleware.",
+        "details": "Implement a new Express route at /mcp/sse using the SSE server transport from @modelcontextprotocol/sdk. Ensure the endpoint is protected by existing security middleware. Pseudocode: \n\n```js\nconst { createSSETransport } = require('@modelcontextprotocol/sdk');\napp.get('/mcp/sse', apiKeyAuthMiddleware, (req, res) => {\n  createSSETransport(req, res);\n});\n```\nEnsure the endpoint works in production and supports Claude/Cursor connections.",
+        "testStrategy": "Test with Claude/Cursor clients to ensure successful connection and tool/resource listing/calls. Attempt unauthorized access to verify no auth bypass.",
+        "priority": "high",
+        "dependencies": [],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 2,
+        "title": "Implement API Key Authentication and Secure HTTP Defaults",
+        "description": "Require X-API-Key header for all sensitive endpoints and enforce secure HTTP defaults in production.",
+        "details": "Add middleware to check for a valid X-API-Key header on /rpc, /tools/*, and /mcp/sse. Read HTTP_API_KEY from config and return 401 on missing/invalid keys. Enable Helmet for HTTP headers, rate limiting, and restrict CORS to ALLOWED_ORIGINS in production. Pseudocode:\n\n```js\nconst helmet = require('helmet');\nconst rateLimit = require('express-rate-limit');\napp.use(helmet());\napp.use(rateLimit({ windowMs: 15*60*1000, max: 100 }));\napp.use(cors({ origin: allowedOrigins }));\n```\n",
+        "testStrategy": "Send requests without/with invalid API key and verify 401 response. Test CORS with allowed and disallowed origins.",
+        "priority": "high",
+        "dependencies": [
+          1
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 3,
+        "title": "Propagate Cancellation via AbortSignal",
+        "description": "Ensure long-running HTTP requests can be cancelled and propagate cancellation to tool execution and I/O.",
+        "details": "Thread req.on('aborted') to an AbortSignal passed to all downstream tool execution and I/O (OpenAI, Supabase, etc). Update polling functions (e.g., pollRunCompletion) to observe abort and exit with a cancellation error. Pseudocode:\n\n```js\napp.post('/tools/call', (req, res) => {\n  const abortController = new AbortController();\n  req.on('aborted', () => abortController.abort());\n  toolCall({ signal: abortController.signal });\n});\n```\n",
+        "testStrategy": "Initiate a long-running request, abort the client, and verify server-side work is cancelled within TIMEOUT_MS.",
+        "priority": "high",
+        "dependencies": [
+          2
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 4,
+        "title": "Refactor HTTP Bridge to Use SDK Client Transport",
+        "description": "Replace ad-hoc stdio parsing in the HTTP bridge with the official SDK client transport and improve process control.",
+        "details": "Swap out custom stdio parsing for the SDK client transport. Update spawn logic: use 'pnpm tsx src/aoma-mesh-server.ts' in dev and built JS from dist/ in prod. Add restart/backoff policy, timeouts, and health checks. Pseudocode:\n\n```js\nconst { createClientTransport } = require('@modelcontextprotocol/sdk');\nconst bridge = createClientTransport({ ... });\n// Add process monitoring and restart logic\n```\n",
+        "testStrategy": "Simulate bridge crashes and verify restart/backoff. Ensure no message loss and reliable forwarding of tools/call.",
+        "priority": "high",
+        "dependencies": [
+          3
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 5,
+        "title": "Expose Prometheus and JSON Metrics Endpoints",
+        "description": "Provide Prometheus metrics at /metrics and maintain JSON metrics at /metrics.json, including per-tool counters and latency histograms.",
+        "details": "Integrate prom-client to expose Prometheus metrics at /metrics. Add per-tool counters and latency histograms labeled by status and tool name. Maintain /metrics.json for programmatic access. Pseudocode:\n\n```js\nconst client = require('prom-client');\nconst toolCounter = new client.Counter({ ... });\nconst latencyHistogram = new client.Histogram({ ... });\napp.get('/metrics', (req, res) => res.send(client.register.metrics()));\napp.get('/metrics.json', (req, res) => res.json(getJsonMetrics()));\n```\n",
+        "testStrategy": "Scrape /metrics with Prometheus and verify correct format. Check /metrics.json for parity. Confirm counters and histograms update as expected.",
+        "priority": "medium",
+        "dependencies": [
+          4
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 6,
+        "title": "Implement Request Correlation IDs and LangSmith Trace Propagation",
+        "description": "Generate or accept X-Request-ID for each request, include in logs, and propagate into LangSmith trace metadata.",
+        "details": "On each incoming request, check for X-Request-ID or generate a UUID. Attach to request context, logs, and pass to LangSmith trace metadata. Pseudocode:\n\n```js\napp.use((req, res, next) => {\n  req.requestId = req.headers['x-request-id'] || uuidv4();\n  next();\n});\n// Pass req.requestId to logging and LangSmith utilities\n```\n",
+        "testStrategy": "Send requests with and without X-Request-ID, verify propagation in logs and LangSmith traces.",
+        "priority": "medium",
+        "dependencies": [
+          5
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 7,
+        "title": "Refactor Codebase into Modular Structure",
+        "description": "Split monolithic src/aoma-mesh-server.ts into focused modules as per PRD structure, keeping files <= 200 lines where practical.",
+        "details": "Create directories: src/transport/, src/http/, src/mcp/, src/tools/, src/observability/. Move relevant logic into these modules. Ensure stable APIs for tools. Update imports and exports accordingly. Maintain code-size guidelines.",
+        "testStrategy": "Run full test suite and verify no regressions. Check that all modules are under 200 lines where feasible.",
+        "priority": "medium",
+        "dependencies": [
+          6
+        ],
+        "status": "pending",
+        "subtasks": []
+      },
+      {
+        "id": 8,
+        "title": "Implement Playwright E2E Tests for Critical Paths",
+        "description": "Add Playwright end-to-end tests covering auth enforcement, tools/list and tools/call via /mcp/sse and /rpc, cancellation, and Prometheus metrics.",
+        "details": "Write Playwright tests using real data. Parameterize secrets via environment variables at runtime. Cover: 401 on missing/invalid API key, tools/list and tools/call via both endpoints, cancellation propagation, and /metrics format. Do not commit .env files.",
+        "testStrategy": "Run E2E tests in CI and verify all critical paths pass without mocks.",
+        "priority": "medium",
+        "dependencies": [
+          7
+        ],
+        "status": "pending",
+        "subtasks": []
+      }
+    ],
+    "metadata": {
+      "created": "2025-09-13T17:18:59.465Z",
+      "updated": "2025-09-13T17:22:13.100Z",
+      "description": "Tasks for master context"
+    }
+  }
+}

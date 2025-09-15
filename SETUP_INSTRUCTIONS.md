@@ -109,3 +109,19 @@ Please suggest Claude Code IDE improvements for my current AOMA development cont
 Your AOMA-enhanced MCP server is fully operational and ready to supercharge your government operations development workflow!
 
 **Next Level:** When you're ready, we can integrate with your full LangGraph agent ecosystem for even more sophisticated multi-agent workflows.
+
+## 🌐 Optional: Enable SSE MCP Transport
+
+To enable the SSE transport endpoint in the main server, add the following variables to your `.env.local` in the project root:
+
+```
+# Enable SSE transport endpoint alongside stdio/http
+ENABLE_SSE_TRANSPORT=false
+
+# Path where the SSE endpoint will be exposed in Express
+SSE_ENDPOINT_PATH=/mcp/sse
+
+# Comma-separated list of allowed origins specifically for SSE
+# Example: https://studio.chat,https://myapp.local
+SSE_CORS_ORIGINS=
+```

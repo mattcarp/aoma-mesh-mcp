@@ -43,7 +43,8 @@ export async function createRunTree(
   name: string,
   runType: 'tool' | 'chain' | 'llm' | 'retriever' = 'tool',
   inputs: Record<string, any> = {},
-  metadata: Record<string, any> = {}
+  metadata: Record<string, any> = {},
+  correlationId?: string
 ): Promise<RunTree | null> {
   if (!langsmithClient) {
     return null;
@@ -60,6 +61,7 @@ export async function createRunTree(
         ...metadata,
         server: 'aoma-mesh-mcp',
         version: process.env.MCP_SERVER_VERSION || '1.0.0',
+        correlationId,
       },
       project_name: projectName,
       client: langsmithClient,
@@ -80,13 +82,15 @@ export async function traceToolCall<T>(
   toolName: string,
   args: Record<string, any>,
   fn: () => Promise<T>,
-  metadata: Record<string, any> = {}
+  metadata: Record<string, any> = {},
+  correlationId?: string
 ): Promise<T> {
   const runTree = await createRunTree(
     toolName,
     'tool',
     { args },
-    { tool: toolName, ...metadata }
+    { tool: toolName, ...metadata },
+    correlationId
   );
 
   const startTime = Date.now();
@@ -130,13 +134,15 @@ export async function traceLLMCall<T>(
   model: string,
   messages: any[],
   fn: () => Promise<T>,
-  metadata: Record<string, any> = {}
+  metadata: Record<string, any> = {},
+  correlationId?: string
 ): Promise<T> {
   const runTree = await createRunTree(
     `${model} Call`,
     'llm',
     { messages },
-    { model, ...metadata }
+    { model, ...metadata },
+    correlationId
   );
 
   const startTime = Date.now();
@@ -178,14 +184,16 @@ export async function traceLLMCall<T>(
 export function createTracedFunction<T extends (...args: any[]) => Promise<any>>(
   name: string,
   fn: T,
-  runType: 'tool' | 'chain' | 'llm' | 'retriever' = 'chain'
+  runType: 'tool' | 'chain' | 'llm' | 'retriever' = 'chain',
+  correlationId?: string
 ): T {
   return (async (...args: Parameters<T>) => {
     const runTree = await createRunTree(
       name,
       runType,
       { args },
-      { function: name }
+      { function: name },
+      correlationId
     );
 
     const startTime = Date.now();

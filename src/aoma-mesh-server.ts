@@ -68,6 +68,7 @@ import {
 } from '@modelcontextprotocol/sdk/types.js';
 import { Server } from '@modelcontextprotocol/sdk/server/index.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
+import { SSEServerTransport } from '@modelcontextprotocol/sdk/server/sse.js';
 import {
   CallToolRequestSchema,
   ListResourcesRequestSchema,
@@ -84,6 +85,8 @@ import * as fs from 'fs/promises';
 import { initializeLangSmith, traceToolCall, isLangSmithEnabled, getProjectMetrics, getRecentTraces, getLangSmithStatus } from './utils/langsmith.js';
 import { logger } from './utils/mcp-logger.js';
 import { AOMALangGraphAgent } from './agents/aoma-langgraph-agent.js';
+import { Registry, collectDefaultMetrics, Counter, Histogram } from 'prom-client';
+import { v4 as uuidv4 } from 'uuid';
 
 // Environment validation with comprehensive error messages
 const EnvSchema = z.object({
@@ -101,6 +104,14 @@ const EnvSchema = z.object({
   TIMEOUT_MS: z.coerce.number().int().min(5000).max(300000).default(120000),
   HTTP_PORT: z.coerce.number().int().min(1024).max(65535).default(3333),
   PORT: z.coerce.number().int().min(1024).max(65535).optional(), // Railway's PORT env var
+  // SSE transport configuration
+  ENABLE_SSE_TRANSPORT: z.coerce.boolean().default(false),
+  SSE_ENDPOINT_PATH: z.string().default('/mcp/sse'),
+  SSE_CORS_ORIGINS: z.string().optional(),
+  ENABLE_PROMETHEUS_METRICS: z.coerce.boolean().default(false),
+  PROMETHEUS_ENDPOINT_PATH: z.string().default('/metrics/prometheus'),
+  PROMETHEUS_METRICS_PREFIX: z.string().default('aoma_mesh_'),
+  REQUEST_CORRELATION_HEADER: z.string().default('x-correlation-id'),
 });
 
 type Environment = z.infer<typeof EnvSchema>;
@@ -193,6 +204,19 @@ interface HealthStatus {
   timestamp: string;
 }
 
+interface PrometheusMetrics {
+  requestTotal: Counter<string>;
+  requestSuccess: Counter<string>;
+  requestFailure: Counter<string>;
+  requestDuration: Histogram<string>;
+  toolCallsTotal: Counter<string>;
+  toolCallDuration: Histogram<string>;
+}
+
+interface RequestContext {
+  correlationId: string;
+}
+
 /**
  * Production-ready AOMA Mesh MCP Server
  */
@@ -207,6 +231,11 @@ export class AOMAMeshServer {
   private healthCache: { status: HealthStatus; lastCheck: number } | null = null;
   private readonly HEALTH_CACHE_TTL = 30000; // 30 seconds
   private langGraphAgent: AOMALangGraphAgent | null = null;
+  private sseTransport: SSEServerTransport | null = null;
+  private prometheusMetrics: PrometheusMetrics | null = null;
+  private prometheusRegistry: Registry | null = null;
+  private stopDefaultMetrics: (() => void) | null = null;
+  private currentCorrelationId: string | undefined;
 
   constructor() {
     // Generate timestamp in YYYYMMDD-HHMMSS format
@@ -322,12 +351,31 @@ this.env.MCP_SERVER_VERSION = versionWithTimestamp;
         standardHeaders: true,
         legacyHeaders: false,
       });
-      this.httpApp.use(['/rpc', '/tools', '/tools/*'], limiter);
+      const ssePath = (this.env.SSE_ENDPOINT_PATH ?? process.env.SSE_ENDPOINT_PATH) || '/mcp/sse';
+      this.httpApp.use(['/rpc', '/tools', '/tools/*', ssePath], limiter);
     }
 
     // 6) JSON body size limit (configurable, default 10mb)
     const jsonLimit = process.env.JSON_BODY_LIMIT || '10mb';
     this.httpApp.use(expressFn.json({ limit: jsonLimit }));
+
+    // Correlation ID middleware
+    this.httpApp.use((req: any, res: any, next: any) => {
+      try {
+        const headerName = (this.env.REQUEST_CORRELATION_HEADER ?? process.env.REQUEST_CORRELATION_HEADER) || 'x-correlation-id';
+        let correlationId = req.headers?.[headerName] as string | undefined;
+        if (!correlationId) {
+          correlationId = uuidv4();
+        }
+        res.setHeader(headerName, correlationId);
+        res.locals = res.locals || {};
+        res.locals.correlationId = correlationId;
+        (req as any).correlationId = correlationId;
+      } catch (e) {
+        // Do not block requests on correlation ID errors
+      }
+      next();
+    });
 
     // Initialize metrics
     this.metrics = {
@@ -342,6 +390,8 @@ this.env.MCP_SERVER_VERSION = versionWithTimestamp;
 
     this.setupRequestHandlers();
     this.setupHttpEndpoints();
+    this.setupSSETransport();
+    this.setupPrometheusMetrics();
   }
 
   /**
@@ -483,21 +533,37 @@ this.env.MCP_SERVER_VERSION = versionWithTimestamp;
   private setupHttpEndpoints(): void {
     // Health check endpoint
     this.httpApp.get('/health', async (req, res) => {
+      const started = Date.now();
       try {
         const health = await this.performHealthCheck(true);
         res.json(health);
+        const duration = (Date.now() - started) / 1000;
+        if (this.prometheusMetrics) {
+          const labels = { method: 'GET', endpoint: '/health', status: '200' } as any;
+          this.prometheusMetrics.requestTotal.inc(labels);
+          this.prometheusMetrics.requestSuccess.inc(labels);
+          this.prometheusMetrics.requestDuration.observe(labels, duration);
+        }
       } catch (error) {
         res.status(503).json({
           status: 'unhealthy',
           error: this.getErrorMessage(error),
           timestamp: new Date().toISOString(),
         });
+        const duration = (Date.now() - started) / 1000;
+        if (this.prometheusMetrics) {
+          const labels = { method: 'GET', endpoint: '/health', status: '503' } as any;
+          this.prometheusMetrics.requestTotal.inc(labels);
+          this.prometheusMetrics.requestFailure.inc(labels);
+          this.prometheusMetrics.requestDuration.observe(labels, duration);
+        }
       }
     });
 
     // Tool execution endpoint
-    this.httpApp.post('/rpc', async (req, res) => {
+    this.httpApp.post('/rpc', async (req: any, res: any) => {
       const startTime = Date.now();
+      this.currentCorrelationId = res?.locals?.correlationId;
       
       try {
         const { method, params } = req.body;
@@ -507,6 +573,13 @@ this.env.MCP_SERVER_VERSION = versionWithTimestamp;
             error: 'Invalid method',
             message: 'Only tools/call method is supported',
           });
+          if (this.prometheusMetrics) {
+            const duration = (Date.now() - startTime) / 1000;
+            const labels = { method: 'POST', endpoint: '/rpc', status: '400' } as any;
+            this.prometheusMetrics.requestTotal.inc(labels);
+            this.prometheusMetrics.requestFailure.inc(labels);
+            this.prometheusMetrics.requestDuration.observe(labels, duration);
+          }
           return;
         }
 
@@ -525,6 +598,13 @@ this.env.MCP_SERVER_VERSION = versionWithTimestamp;
           id: req.body.id || 1,
           result,
         });
+        if (this.prometheusMetrics) {
+          const duration = (Date.now() - startTime) / 1000;
+          const labels = { method: 'POST', endpoint: '/rpc', status: '200' } as any;
+          this.prometheusMetrics.requestTotal.inc(labels);
+          this.prometheusMetrics.requestSuccess.inc(labels);
+          this.prometheusMetrics.requestDuration.observe(labels, duration);
+        }
         
       } catch (error) {
         this.metrics.failedRequests++;
@@ -543,12 +623,20 @@ this.env.MCP_SERVER_VERSION = versionWithTimestamp;
             message: this.getErrorMessage(error),
           },
         });
+        if (this.prometheusMetrics) {
+          const duration = (Date.now() - startTime) / 1000;
+          const labels = { method: 'POST', endpoint: '/rpc', status: '500' } as any;
+          this.prometheusMetrics.requestTotal.inc(labels);
+          this.prometheusMetrics.requestFailure.inc(labels);
+          this.prometheusMetrics.requestDuration.observe(labels, duration);
+        }
       }
     });
 
     // Direct tool endpoints for easier integration
-    this.httpApp.post('/tools/:toolName', async (req, res) => {
+    this.httpApp.post('/tools/:toolName', async (req: any, res: any) => {
       const startTime = Date.now();
+      this.currentCorrelationId = res?.locals?.correlationId;
       const { toolName } = req.params;
       
       try {
@@ -561,6 +649,13 @@ this.env.MCP_SERVER_VERSION = versionWithTimestamp;
         this.updateResponseMetrics(Date.now() - startTime);
         
         res.json(result);
+        if (this.prometheusMetrics) {
+          const duration = (Date.now() - startTime) / 1000;
+          const labels = { method: 'POST', endpoint: '/tools/:toolName', status: '200' } as any;
+          this.prometheusMetrics.requestTotal.inc(labels);
+          this.prometheusMetrics.requestSuccess.inc(labels);
+          this.prometheusMetrics.requestDuration.observe(labels, duration);
+        }
         
       } catch (error) {
         this.metrics.failedRequests++;
@@ -575,17 +670,173 @@ this.env.MCP_SERVER_VERSION = versionWithTimestamp;
           error: this.getErrorMessage(error),
           timestamp: new Date().toISOString(),
         });
+        if (this.prometheusMetrics) {
+          const duration = (Date.now() - startTime) / 1000;
+          const labels = { method: 'POST', endpoint: '/tools/:toolName', status: '500' } as any;
+          this.prometheusMetrics.requestTotal.inc(labels);
+          this.prometheusMetrics.requestFailure.inc(labels);
+          this.prometheusMetrics.requestDuration.observe(labels, duration);
+        }
       }
     });
 
     // Metrics endpoint
-    this.httpApp.get('/metrics', (req, res) => {
-      res.json({
-        ...this.metrics,
-        uptime: Date.now() - this.startTime,
-        timestamp: new Date().toISOString(),
-      });
+    this.httpApp.get('/metrics', (req: any, res: any) => {
+      const started = Date.now();
+      try {
+        res.json({
+          ...this.metrics,
+          uptime: Date.now() - this.startTime,
+          timestamp: new Date().toISOString(),
+          correlationId: res?.locals?.correlationId,
+        });
+        const duration = (Date.now() - started) / 1000;
+        if (this.prometheusMetrics) {
+          const labels = { method: 'GET', endpoint: '/metrics', status: '200' } as any;
+          this.prometheusMetrics.requestTotal.inc(labels);
+          this.prometheusMetrics.requestSuccess.inc(labels);
+          this.prometheusMetrics.requestDuration.observe(labels, duration);
+        }
+      } catch (error) {
+        const duration = (Date.now() - started) / 1000;
+        if (this.prometheusMetrics) {
+          const labels = { method: 'GET', endpoint: '/metrics', status: '500' } as any;
+          this.prometheusMetrics.requestTotal.inc(labels);
+          this.prometheusMetrics.requestFailure.inc(labels);
+          this.prometheusMetrics.requestDuration.observe(labels, duration);
+        }
+        throw error;
+      }
     });
+
+    // Prometheus exposition endpoint
+    this.httpApp.get(this.env.PROMETHEUS_ENDPOINT_PATH || '/metrics/prometheus', async (_req, res) => {
+      if (!this.env.ENABLE_PROMETHEUS_METRICS || !this.prometheusRegistry) {
+        res.status(404).json({ error: 'Prometheus metrics disabled' });
+        return;
+      }
+      try {
+        res.setHeader('Content-Type', 'text/plain; version=0.0.4; charset=utf-8');
+        const body = await this.prometheusRegistry.metrics();
+        res.send(body);
+      } catch (error) {
+        this.logWarn('Failed to serve Prometheus metrics', { error: this.getErrorMessage(error) });
+        res.status(500).json({ error: 'Failed to render metrics' });
+      }
+    });
+  }
+
+  /**
+   * Initialize SSE MCP transport if enabled via environment
+   */
+  private setupSSETransport(): void {
+    try {
+      if (!this.env.ENABLE_SSE_TRANSPORT) {
+        return;
+      }
+
+      const endpointPath = (this.env.SSE_ENDPOINT_PATH ?? process.env.SSE_ENDPOINT_PATH) || '/mcp/sse';
+
+      // Optional SSE-specific CORS
+      if (this.env.SSE_CORS_ORIGINS) {
+        const origins = this.env.SSE_CORS_ORIGINS.split(',').map(o => o.trim()).filter(Boolean);
+        if (origins.length > 0) {
+          this.httpApp.use(
+            endpointPath,
+            cors({
+              origin: (origin, callback) => {
+                if (!origin || origins.includes(origin)) {
+                  callback(null, true);
+                } else {
+                  callback(new Error('Not allowed by CORS'));
+                }
+              },
+              credentials: true,
+            })
+          );
+        }
+      }
+
+      // Create and connect SSE transport
+      this.sseTransport = new SSEServerTransport({
+        path: endpointPath,
+        expressApp: this.httpApp,
+      } as any);
+
+      // Connect SSE transport to MCP server
+      // Note: connect is async; we intentionally do not await here to avoid blocking constructor
+      Promise.resolve(this.server.connect(this.sseTransport)).then(() => {
+        this.logInfo('SSE transport initialized', { endpoint: endpointPath });
+      }).catch(err => {
+        this.logError('Failed to initialize SSE transport', err);
+      });
+    } catch (error) {
+      this.logError('Error during SSE transport setup', error);
+    }
+  }
+
+  private setupPrometheusMetrics(): void {
+    try {
+      if (!this.env.ENABLE_PROMETHEUS_METRICS) {
+        return;
+      }
+
+      this.prometheusRegistry = new Registry();
+      this.stopDefaultMetrics = collectDefaultMetrics({
+        register: this.prometheusRegistry,
+        prefix: (this.env.PROMETHEUS_METRICS_PREFIX ?? process.env.PROMETHEUS_METRICS_PREFIX) || 'aoma_mesh_',
+      });
+
+      const reqLabels = ['method', 'endpoint', 'status'] as const;
+      const toolLabels = ['tool_name', 'status'] as const;
+
+      this.prometheusMetrics = {
+        requestTotal: new Counter({
+          name: `${this.env.PROMETHEUS_METRICS_PREFIX}http_requests_total`,
+          help: 'Total HTTP requests',
+          labelNames: reqLabels as unknown as string[],
+          registers: [this.prometheusRegistry],
+        }),
+        requestSuccess: new Counter({
+          name: `${this.env.PROMETHEUS_METRICS_PREFIX}http_requests_success_total`,
+          help: 'Successful HTTP responses',
+          labelNames: reqLabels as unknown as string[],
+          registers: [this.prometheusRegistry],
+        }),
+        requestFailure: new Counter({
+          name: `${this.env.PROMETHEUS_METRICS_PREFIX}http_requests_failure_total`,
+          help: 'Failed HTTP responses',
+          labelNames: reqLabels as unknown as string[],
+          registers: [this.prometheusRegistry],
+        }),
+        requestDuration: new Histogram({
+          name: `${this.env.PROMETHEUS_METRICS_PREFIX}http_request_duration_seconds`,
+          help: 'HTTP request duration (s)',
+          labelNames: reqLabels as unknown as string[],
+          buckets: [0.05, 0.1, 0.2, 0.5, 1, 2, 5, 10],
+          registers: [this.prometheusRegistry],
+        }),
+        toolCallsTotal: new Counter({
+          name: `${this.env.PROMETHEUS_METRICS_PREFIX}tool_calls_total`,
+          help: 'Total tool calls',
+          labelNames: toolLabels as unknown as string[],
+          registers: [this.prometheusRegistry],
+        }),
+        toolCallDuration: new Histogram({
+          name: `${this.env.PROMETHEUS_METRICS_PREFIX}tool_call_duration_seconds`,
+          help: 'Tool call duration (s)',
+          labelNames: toolLabels as unknown as string[],
+          buckets: [0.05, 0.1, 0.2, 0.5, 1, 2, 5, 10],
+          registers: [this.prometheusRegistry],
+        }),
+      };
+
+      this.logInfo('Prometheus metrics initialized', {
+        endpoint: this.env.PROMETHEUS_ENDPOINT_PATH || '/metrics/prometheus',
+      });
+    } catch (error) {
+      this.logWarn('Prometheus init failed', { error: this.getErrorMessage(error) });
+    }
   }
 
   /**
@@ -1314,12 +1565,15 @@ this.env.MCP_SERVER_VERSION = versionWithTimestamp;
    * Execute tool calls with comprehensive validation
    */
   private async callTool(name: string, args: Record<string, unknown>): Promise<CallToolResult> {
-    // Wrap tool execution with LangSmith tracing
-    return await traceToolCall(
-      name,
-      args,
-      async () => {
-        switch (name) {
+    const correlationId = (this as any)?.currentCorrelationId || undefined;
+    // Wrap tool execution with LangSmith tracing and Prometheus metrics
+    const start = Date.now();
+    try {
+      const result = await traceToolCall(
+        name,
+        args,
+        async () => {
+          switch (name) {
           case 'query_aoma_knowledge':
             return await this.queryAOMAKnowledge(args as unknown as AOMAQueryRequest);
           case 'search_jira_tickets':
@@ -1360,12 +1614,30 @@ this.env.MCP_SERVER_VERSION = versionWithTimestamp;
             throw new McpError(ErrorCode.MethodNotFound, `Unknown tool: ${name}`);
         }
       },
-      // Metadata for LangSmith tracing
       {
         tool: name,
         timestamp: new Date().toISOString(),
-      }
+      },
+      correlationId
     );
+      // Success metrics
+      if (this.prometheusMetrics) {
+        const duration = (Date.now() - start) / 1000;
+        const labels = { tool_name: name, status: 'success' } as any;
+        this.prometheusMetrics.toolCallsTotal.inc(labels);
+        this.prometheusMetrics.toolCallDuration.observe(labels, duration);
+      }
+      return result;
+    } catch (error) {
+      // Failure metrics
+      if (this.prometheusMetrics) {
+        const duration = (Date.now() - start) / 1000;
+        const labels = { tool_name: name, status: 'failure' } as any;
+        this.prometheusMetrics.toolCallsTotal.inc(labels);
+        this.prometheusMetrics.toolCallDuration.observe(labels, duration);
+      }
+      throw error;
+    }
   }
 
   /**
@@ -3148,7 +3420,14 @@ Please provide a comprehensive synthesis using 2025 swarm intelligence patterns.
         this.logInfo('🌐 HTTP endpoints available', {
           port: httpPort,
           host: '0.0.0.0',
-          endpoints: ['/health', '/rpc', '/tools/:toolName', '/metrics'],
+          endpoints: [
+            '/health',
+            '/rpc',
+            '/tools/:toolName',
+            '/metrics',
+            this.env.ENABLE_SSE_TRANSPORT ? (this.env.SSE_ENDPOINT_PATH || '/mcp/sse') : undefined,
+            this.env.ENABLE_PROMETHEUS_METRICS ? (this.env.PROMETHEUS_ENDPOINT_PATH || '/metrics/prometheus') : undefined,
+          ].filter(Boolean),
         });
       });
       
@@ -3168,6 +3447,10 @@ Please provide a comprehensive synthesis using 2025 swarm intelligence patterns.
         transports.push('stdio');
       }
       
+      if (this.env.ENABLE_SSE_TRANSPORT) {
+        transports.push('sse');
+      }
+
       this.logInfo('🚀 AOMA Mesh MCP Server running', {
         version: this.env.MCP_SERVER_VERSION,
         tools: this.getToolDefinitions().length,
@@ -3175,6 +3458,7 @@ Please provide a comprehensive synthesis using 2025 swarm intelligence patterns.
         environment: this.env.NODE_ENV,
         httpPort: httpPort,
         transports: transports,
+        sse: this.env.ENABLE_SSE_TRANSPORT ? { endpoint: this.env.SSE_ENDPOINT_PATH || '/mcp/sse' } : undefined,
       });
 
       // Enhanced graceful shutdown handling
@@ -3195,9 +3479,31 @@ Please provide a comprehensive synthesis using 2025 swarm intelligence patterns.
             transport.close();
             this.logInfo('MCP transport closed');
           }
+
+          // Close SSE transport if it exists
+          if (this.sseTransport) {
+            try {
+              this.sseTransport.close?.();
+              this.logInfo('SSE transport closed');
+            } catch (e) {
+              this.logWarn('Error closing SSE transport', { error: this.getErrorMessage(e) });
+            }
+          }
           
           // Small delay to ensure everything is cleaned up
           await this.delay(100);
+
+          // Stop Prometheus default metrics and cleanup registry
+          try {
+            if (this.stopDefaultMetrics) {
+              this.stopDefaultMetrics();
+              this.logInfo('Prometheus default metrics collector stopped');
+            }
+            this.prometheusRegistry = null;
+            this.prometheusMetrics = null;
+          } catch (e) {
+            this.logWarn('Error cleaning up Prometheus metrics', { error: this.getErrorMessage(e) });
+          }
           
           this.logInfo('AOMA Mesh MCP Server shutdown complete');
           process.exit(0);
