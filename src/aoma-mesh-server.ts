@@ -108,7 +108,7 @@ const EnvSchema = z.object({
   ENABLE_SSE_TRANSPORT: z.coerce.boolean().default(false),
   SSE_ENDPOINT_PATH: z.string().default('/mcp/sse'),
   SSE_CORS_ORIGINS: z.string().optional(),
-  ENABLE_PROMETHEUS_METRICS: z.coerce.boolean().default(false),
+  ENABLE_PROMETHEUS_METRICS: z.coerce.boolean().default(true),
   PROMETHEUS_ENDPOINT_PATH: z.string().default('/metrics/prometheus'),
   PROMETHEUS_METRICS_PREFIX: z.string().default('aoma_mesh_'),
   REQUEST_CORRELATION_HEADER: z.string().default('x-correlation-id'),
@@ -316,8 +316,9 @@ this.env.MCP_SERVER_VERSION = versionWithTimestamp;
       this.httpApp.use(cors());
     }
 
-    // 3) Security headers via helmet (disabled by default)
-    if ((process.env.ENABLE_HELMET || '').toLowerCase() === 'true') {
+    // 3) Security headers via helmet (enabled by default in production)
+    const enableHelmet = process.env.DISABLE_HELMET?.toLowerCase() !== 'true' && this.env.NODE_ENV === 'production';
+    if (enableHelmet) {
       const helmetMod: any = nodeRequire('helmet');
       const helmetFn: any = helmetMod?.default ?? helmetMod;
       this.httpApp.use(helmetFn());
