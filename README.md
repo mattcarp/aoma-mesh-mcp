@@ -1,194 +1,184 @@
 # 🚀 AOMA Mesh MCP Server
 
-**Sony Music's AI-Powered Development Assistant with Business Intelligence**
+**Sony Music's AI-Powered Business Intelligence MCP Server**
 
 [![Deploy to Railway](https://img.shields.io/badge/Railway-Deploy-purple)](https://railway.app/)
 [![MCP Protocol](https://img.shields.io/badge/MCP-2.0-blue)](https://modelcontextprotocol.io/)
+[![LangSmith](https://img.shields.io/badge/LangSmith-Enabled-green)](https://smith.langchain.com/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.3-blue)](https://www.typescriptlang.org/)
 
-A state-of-the-art Model Context Protocol (MCP) server that provides AI-powered development assistance with real Sony Music business intelligence. Features semantic search through JIRA tickets, AOMA knowledge base queries, and comprehensive development tools.
+A production-ready Model Context Protocol (MCP) server providing direct access to Sony Music's business intelligence systems. Features semantic search through 6000+ JIRA tickets, AOMA knowledge base queries, LangSmith observability, and advanced analytics tools.
 
 ## Overview
 
-The MC-TK Agent MCP Server provides access to:
+The AOMA Mesh MCP Server provides direct access to Sony Music's business intelligence:
 
-- **Coordinator Agent**: Orchestrates multiple sub-agents for complex tasks
-- **Jira Agent**: Semantic search and analysis of Jira tickets
-- **Git Agent**: Repository analysis and code search
-- **Test Generation Agent**: Automated test plan and code generation
-- **Diagram Generation**: Create mermaid diagrams from natural language
+- **🧠 AOMA Knowledge Base**: 1000+ documents with AI-powered search
+- **🎫 JIRA Intelligence**: Semantic search through 6000+ tickets
+- **📊 LangSmith Observability**: Complete tracing and performance metrics
+- **🔍 Code & Git Analysis**: Semantic search across repositories
+- **📧 Enterprise Data**: Corporate email and document analysis
+- **🤖 2025 LangGraph Swarm**: Advanced multi-agent workflows
 
-## Features
+## 🛠️ Available Tools
 
-### Tools Available
+### 🧠 **Sony Music Business Intelligence**
+- **`query_aoma_knowledge`**: Query 1000+ AOMA documents with AI assistant
+- **`search_jira_tickets`**: Semantic search through 6000+ Sony Music JIRA tickets
+- **`get_jira_ticket_count`**: Get exact ticket counts across all projects
+- **`search_outlook_emails`**: Corporate email search for zeitgeist analysis
 
-1. **Agent Management**
-   - `create_coordinator_agent`: Create and start a new coordinator agent
-   - `get_agent_status`: Check agent execution status
-   - `get_agent_events`: View agent execution history
-   - `submit_agent_feedback`: Provide human feedback to running agents
-   - `list_active_agents`: List all active agent instances
-   - `terminate_agent`: Stop and cleanup agents
+### 🔍 **Code & Development Analysis**
+- **`search_git_commits`**: Semantic search through Git commit history
+- **`search_code_files`**: Semantic search across all code repositories
+- **`analyze_development_context`**: AI analysis of current development context
 
-2. **Specialized Agent Operations**
-   - `query_jira_tickets`: Semantic search through Jira knowledge base
-   - `analyze_git_repository`: Analyze repository structure and content
-   - `generate_test_plan`: Create comprehensive test plans
-   - `create_diagram`: Generate mermaid diagrams
+### 🤖 **2025 LangGraph Swarm (Advanced Multi-Agent)**
+- **`swarm_analyze_cross_vector`**: Multi-agent cross-vector analysis with dynamic handoffs
+- **`swarm_agent_handoff`**: Manual agent handoff with state transfer
+- **`swarm_context_engineering`**: Advanced context optimization workflows
 
-3. **Enhanced Development Tools**
-   - `analyze_code_quality`: Analyze code quality metrics, complexity, and potential issues
-   - `analyze_architecture`: Analyze project architecture, dependencies, and design patterns
-   - `suggest_refactoring`: Analyze code and suggest refactoring improvements
-   - `search_codebase`: Search for code patterns, functions, or components across the codebase
-   - `generate_documentation`: Generate documentation for code components, APIs, or architecture
-   - `analyze_dependencies`: Analyze project dependencies for security, updates, and optimization
+### 📊 **Analytics & Predictive Intelligence**
+- **`generate_failure_heatmap`**: Generate heat map data for AOMA processing failures
+- **`analyze_performance_metrics`**: Analyze real AOMA performance with predictions
+- **`build_predictive_model`**: Build and train ML models for system failure prediction
 
-4. **IDE-Specific Integration Tools**
-   - `analyze_workspace`: Analyze workspace structure and provide IDE-specific insights
-   - `suggest_ide_improvements`: Suggest IDE-specific improvements and configurations
-   - `generate_ide_snippets`: Generate IDE-specific code snippets and shortcuts
-   - `analyze_development_context`: Analyze current development context and suggest next actions
-   - `optimize_workflow`: Analyze and optimize development workflow based on patterns
-   - `create_development_plan`: Create a structured development plan with milestones and tasks
+### 🔬 **LangSmith Observability & Server Introspection**
+- **`get_langsmith_metrics`**: Get LangSmith observability metrics and performance data
+- **`get_trace_data`**: Retrieve recent LangSmith traces for debugging
+- **`configure_tracing`**: Configure LangSmith tracing settings and metadata
+- **`get_system_health`**: Comprehensive server health status
+- **`get_server_capabilities`**: Server capabilities and version information
+- **`get_server_introspection`**: Complete server introspection data
 
-### Resources Available
+## 🚀 **Production Deployment**
 
-1. **Agent Instances**: Real-time status of all active agents
-2. **Agent Types**: Information about available agent capabilities
-3. **Agent Events**: Detailed execution history for each agent
-4. **Agent Status**: Current state and progress information
+**Live Server**: `https://luminous-dedication-production.up.railway.app`
 
-## Installation
+### 📡 **API Endpoints**
+- **Health Check**: `GET /health`
+- **JSON-RPC**: `POST /rpc` (primary interface)
+- **Metrics**: `GET /metrics`
 
-1. **Prerequisites**
-   - Node.js 18+ with ESM support
-   - Access to the MC-TK project environment
-   - Valid OpenAI API key
+### ⚙️ **Environment Configuration**
 
-2. **Setup**
-   ```bash
-   cd mcp-server
-   npm install
-   npm run build
-   ```
-
-3. **Environment Variables**
-   ```bash
-   # Required
-   OPENAI_API_KEY=sk-your-openai-key
-
-   # Optional
-   OPENAI_MODEL_NAME=gpt-4o
-   NEXT_PUBLIC_SUPABASE_URL=your-supabase-url
-   SUPABASE_SERVICE_ROLE_KEY=your-supabase-key
-   LANGCHAIN_TRACING_V2=false
-   ```
-
-## Usage
-
-### Running the Server
-
+**Required Environment Variables:**
 ```bash
-# Development mode
-npm run dev
+# Core API Keys
+OPENAI_API_KEY=sk-your-openai-key
+AOMA_ASSISTANT_ID=asst_your-assistant-id
 
-# Production mode
-npm run start
+# Supabase Vector Database
+NEXT_PUBLIC_SUPABASE_URL=your-supabase-url
+SUPABASE_SERVICE_ROLE_KEY=your-service-key
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
+
+# LangSmith Observability (ENABLED)
+LANGCHAIN_TRACING_V2=true
+LANGCHAIN_API_KEY=your-langsmith-key
+LANGCHAIN_PROJECT=aoma-mesh-mcp
 ```
 
-### LangSmith Demo (Simulation)
+## 📖 **Usage Examples**
 
-The demo showcases what LangSmith tracing would surface without making any external API calls.
+### 🔍 **JSON-RPC API Usage**
 
+**Base URL**: `https://luminous-dedication-production.up.railway.app/rpc`
+
+#### Query Sony Music AOMA Knowledge Base
 ```bash
-# Run the simulation (recommended)
-pnpm run demo:langsmith
-
-# Optionally include the ROI section
-AOMA_LANGSMITH_DEMO_INCLUDE_ROI=true pnpm run demo:langsmith
-```
-
-Notes:
-- The demo is safe to run offline and does not require credentials.
-- To enable real LangSmith tracing in the server, set:
-  - `LANGCHAIN_TRACING_V2=true`
-  - `LANGCHAIN_API_KEY=your_langsmith_api_key`
-  - `LANGCHAIN_PROJECT=aoma-mesh-mcp`
-
-### MCP Client Configuration
-
-Add to your MCP client configuration:
-
-```json
-{
-  "servers": {
-    "mc-tk-agents": {
-      "command": "node",
-      "args": ["/path/to/mc-tk/mcp-server/dist/index.js"],
-      "env": {
-        "OPENAI_API_KEY": "sk-your-key"
+curl -X POST "https://luminous-dedication-production.up.railway.app/rpc" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "jsonrpc": "2.0",
+    "id": 1,
+    "method": "tools/call",
+    "params": {
+      "name": "query_aoma_knowledge",
+      "arguments": {
+        "query": "Sony Music data pipeline configuration",
+        "strategy": "comprehensive"
       }
     }
-  }
-}
+  }'
 ```
 
-### Example Usage in Claude Desktop
+#### Search JIRA Tickets
+```bash
+curl -X POST "https://luminous-dedication-production.up.railway.app/rpc" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "jsonrpc": "2.0",
+    "id": 2,
+    "method": "tools/call",
+    "params": {
+      "name": "search_jira_tickets",
+      "arguments": {
+        "query": "authentication bug",
+        "limit": 10
+      }
+    }
+  }'
+```
 
-1. **Create a Coordinator Agent**
-   ```
-   Please create a coordinator agent to analyze the repository and generate test plans for the authentication system.
-   ```
+#### Get LangSmith Observability Metrics
+```bash
+curl -X POST "https://luminous-dedication-production.up.railway.app/rpc" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "jsonrpc": "2.0",
+    "id": 3,
+    "method": "tools/call",
+    "params": {
+      "name": "get_langsmith_metrics",
+      "arguments": {}
+    }
+  }'
+```
 
-2. **Query Jira Tickets**
-   ```
-   Search for Jira tickets related to authentication bugs or login issues.
-   ```
+### 🤖 **Agent Integration**
 
-3. **Analyze Repository**
-   ```
-   Analyze the current repository structure and identify all authentication-related files.
-   ```
+For AI agents and MCP clients, use these tools directly:
 
-4. **Generate Test Plan**
-   ```
-   Generate a comprehensive Playwright test plan for the user login workflow.
-   ```
+1. **Business Intelligence Queries**: `query_aoma_knowledge`, `search_jira_tickets`
+2. **Development Context**: `analyze_development_context`, `search_code_files`
+3. **Observability**: `get_langsmith_metrics`, `get_system_health`
+4. **Advanced Workflows**: `swarm_analyze_cross_vector`, `build_predictive_model`
 
-5. **Create Diagram**
-   ```
-   Create a flowchart showing the authentication workflow from login to dashboard.
-   ```
+## 🏗️ **Architecture**
 
-## Architecture
-
-### Agent Coordination Flow
+### System Architecture
 
 ```mermaid
 graph TD
-    A[MCP Client] --> B[MC-TK MCP Server]
-    B --> C[Coordinator Agent]
-    C --> D[Jira Agent]
-    C --> E[Git Agent]
-    C --> F[Test Generation Agent]
-    
-    D --> G[Supabase Vector Store]
-    E --> H[Local Repository]
-    F --> I[Generated Tests]
-    
-    C --> J[Human Feedback Loop]
-    J --> C
+    A[MCP Client/Agent] --> B[AOMA Mesh MCP Server]
+    B --> C[LangSmith Observability]
+    B --> D[OpenAI GPT-4o]
+    B --> E[Supabase Vector DB]
+    B --> F[Sony Music JIRA]
+    B --> G[AOMA Knowledge Base]
+    B --> H[Corporate Email System]
+
+    E --> I[6000+ JIRA Tickets]
+    E --> J[1000+ AOMA Documents]
+    E --> K[Git Commit History]
+    E --> L[Code Repository Data]
+
+    C --> M[Trace Analytics]
+    C --> N[Performance Metrics]
+    C --> O[Tool Usage Stats]
 ```
 
-### Tool Integration
+### 🔧 **Technology Stack**
 
-The MCP server integrates with the existing MC-TK agent infrastructure:
-
-- **Agent Service**: Manages agent lifecycle and state
-- **LangGraph Workflows**: Executes agent decision-making processes
-- **Vector Stores**: Provides semantic search capabilities
-- **OpenAI Integration**: Powers LLM reasoning and tool usage
+- **🚀 Runtime**: Node.js 20 + TypeScript 5.3 (ESM)
+- **🔌 Protocol**: Model Context Protocol (MCP) 2.0
+- **🤖 AI**: OpenAI GPT-4o with structured outputs
+- **📊 Observability**: LangSmith with full tracing
+- **💾 Vector DB**: Supabase with pgvector
+- **🛡️ Security**: Helmet.js security headers
+- **📈 Metrics**: Prometheus metrics + custom analytics
+- **🚂 Deployment**: Railway with Docker containers
 
 ## Development
 
