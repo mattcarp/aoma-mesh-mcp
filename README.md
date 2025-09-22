@@ -255,4 +255,4 @@ LANGCHAIN_TRACING_V2=true npm run dev
 
 ## License
 
-This MCP server is part of the MC-TK project and follows the same licensing terms.
+This MCP server is part of the MC-TK project and follows the same licensing terms.# Trigger Railway redeploy: Mon Sep 22 15:57:00 CEST 2025
