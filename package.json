@@ -1,6 +1,6 @@
 {
   "name": "@mc-tk/mcp-agent-server",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "MCP server exposing MC-TK LangGraph agents to external development tools with LangSmith tracing",
   "type": "module",
   "main": "dist/aoma-mesh-server.js",
