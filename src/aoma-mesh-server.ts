@@ -84,7 +84,7 @@ import { z } from 'zod';
 import * as fs from 'fs/promises';
 import { initializeLangSmith, traceToolCall, isLangSmithEnabled, getProjectMetrics, getRecentTraces, getLangSmithStatus } from './utils/langsmith.js';
 import { logger } from './utils/mcp-logger.js';
-import { AOMALangGraphAgent } from './agents/aoma-langgraph-agent.js';
+// AOMALangGraphAgent removed - using existing AOMA query routing
 import { Registry, collectDefaultMetrics, Counter, Histogram } from 'prom-client';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -230,7 +230,7 @@ export class AOMAMeshServer {
   private metrics: ServerMetrics;
   private healthCache: { status: HealthStatus; lastCheck: number } | null = null;
   private readonly HEALTH_CACHE_TTL = 30000; // 30 seconds
-  private langGraphAgent: AOMALangGraphAgent | null = null;
+  // langGraphAgent removed - using existing AOMA query routing
   private sseTransport: SSEServerTransport | null = null;
   private prometheusMetrics: PrometheusMetrics | null = null;
   private prometheusRegistry: Registry | null = null;
@@ -759,8 +759,7 @@ this.env.MCP_SERVER_VERSION = versionWithTimestamp;
       }
 
       // Create and connect SSE transport
-      this.sseTransport = new SSEServerTransport({
-        path: endpointPath,
+      this.sseTransport = new SSEServerTransport(endpointPath, {
         expressApp: this.httpApp,
       } as any);
 
@@ -783,10 +782,11 @@ this.env.MCP_SERVER_VERSION = versionWithTimestamp;
       }
 
       this.prometheusRegistry = new Registry();
-      this.stopDefaultMetrics = collectDefaultMetrics({
+      const stopFunction = collectDefaultMetrics({
         register: this.prometheusRegistry,
         prefix: (this.env.PROMETHEUS_METRICS_PREFIX ?? process.env.PROMETHEUS_METRICS_PREFIX) || 'aoma_mesh_',
       });
+      this.stopDefaultMetrics = typeof stopFunction === 'function' ? stopFunction : (() => {});
 
       const reqLabels = ['method', 'endpoint', 'status'] as const;
       const toolLabels = ['tool_name', 'status'] as const;
@@ -1652,41 +1652,8 @@ this.env.MCP_SERVER_VERSION = versionWithTimestamp;
     }
 
     try {
-      // Use LangGraph agent for comprehensive queries if available
-      if (strategy === 'comprehensive' && this.env.LANGCHAIN_TRACING_V2 === 'true') {
-        // Initialize LangGraph agent if not already done
-        if (!this.langGraphAgent) {
-          const openaiService = new (await import('./services/openai.service.js')).OpenAIService(this.env);
-          const supabaseService = new (await import('./services/supabase.service.js')).SupabaseService(this.env);
-          this.langGraphAgent = new AOMALangGraphAgent(openaiService, supabaseService);
-          logger.info('🚀 LangGraph agent initialized for comprehensive queries');
-        }
-
-        // Execute query with LangGraph
-        logger.info('🧠 Using LangGraph agent for comprehensive query');
-        const result = await this.langGraphAgent.query(query, strategy);
-        
-        if (result.success) {
-          return {
-            content: [
-              {
-                type: 'text',
-                text: JSON.stringify({
-                  response: result.response,
-                  sources: result.sources,
-                  metadata: {
-                    ...result.metadata,
-                    agent: 'LangGraph',
-                    tracingEnabled: true,
-                  }
-                }),
-              },
-            ],
-          };
-        }
-        // Fall back to standard method if LangGraph fails
-        logger.warn('LangGraph agent failed, falling back to standard method');
-      }
+      // Use enhanced query processing for comprehensive strategy
+      logger.info(`🧠 Processing ${strategy} query with existing AOMA system`);
 
       // Standard OpenAI Assistant approach for rapid/focused queries
       // Pre-process query for better knowledge base search

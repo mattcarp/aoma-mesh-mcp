@@ -18,7 +18,7 @@ import {
 } from '@modelcontextprotocol/sdk/types.js';
 import dotenv from 'dotenv';
 
-import { AgentServer } from './agent-server.js';
+// AgentServer removed - using main AOMA MCP server
 import { setupEnvironment } from './utils/environment.js';
 import { streamingTransport } from './streaming/transport.js';
 
@@ -43,13 +43,12 @@ async function main() {
     }
   );
 
-  // Initialize the agent server
-  const agentServer = new AgentServer();
-  await agentServer.initialize();
+  // Main functionality is now in aoma-mesh-server.ts
+  // This index.ts is primarily for MCP SDK compatibility
 
-  // Register tool handlers
+  // Register tool handlers - using basic tools for now
   server.setRequestHandler(ListToolsRequestSchema, async () => ({
-    tools: agentServer.getToolDefinitions(),
+    tools: [],
   }));
 
   server.setRequestHandler(CallToolRequestSchema, async (request) => {
@@ -62,18 +61,18 @@ async function main() {
       return await streamingTransport.executeStreamingTool(name, args || {});
     }
     
-    // Execute as regular operation
-    return await agentServer.callTool(name, args || {});
+    // Execute as regular operation - redirect to main server
+    throw new Error(`Tool ${name} not available in this interface. Use the main aoma-mesh-server.ts`);
   });
 
   // Register resource handlers
   server.setRequestHandler(ListResourcesRequestSchema, async () => ({
-    resources: agentServer.getResourceDefinitions(),
+    resources: [],
   }));
 
   server.setRequestHandler(ReadResourceRequestSchema, async (request) => {
     const { uri } = request.params;
-    return await agentServer.readResource(uri);
+    throw new Error(`Resource ${uri} not available in this interface. Use the main aoma-mesh-server.ts`);
   });
 
   // Setup stdio transport

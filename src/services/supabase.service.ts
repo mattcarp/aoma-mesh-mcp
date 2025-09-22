@@ -301,14 +301,14 @@ export class SupabaseService {
     const startTime = Date.now();
     
     try {
-      const { error } = await withTimeout(
-        () => this.client.from('aoma_knowledge').select('count').limit(1),
+      const result = await withTimeout(
+        async () => this.client.from('aoma_knowledge').select('count').limit(1).single(),
         5000,
         'Supabase health check'
       );
 
-      if (error) {
-        throw new Error(error.message);
+      if (result.error) {
+        throw new Error(result.error.message);
       }
       
       const latency = Date.now() - startTime;
