@@ -1,6 +1,6 @@
-export default {
-  preset: 'ts-jest/presets/default-esm',
-  extensionsToTreatAsEsm: ['.ts'],
+/** @type {import('jest').Config} */
+const config = {
+  preset: 'ts-jest',
   testEnvironment: 'node',
   testMatch: [
     '<rootDir>/src/**/__tests__/**/*.test.ts',
@@ -14,19 +14,17 @@ export default {
   ],
   coverageDirectory: 'coverage',
   coverageReporters: ['text', 'lcov', 'html'],
-  moduleNameMapper: {
-    '^(\\.{1,2}/.*)\\.js$': '$1'
-  },
-  transformIgnorePatterns: [
-    'node_modules/(?!(.*\\.mjs$))'
-  ],
   transform: {
-    '^.+\\.tsx?$': [
+    '^.+\\.ts$': [
       'ts-jest',
       {
-        useESM: true
+        isolatedModules: true,
+        tsconfig: {
+          module: 'commonjs'
+        }
       }
     ]
-  },
-  setupFilesAfterEnv: ['<rootDir>/src/__tests__/setup.ts']
+  }
 };
+
+export default config;

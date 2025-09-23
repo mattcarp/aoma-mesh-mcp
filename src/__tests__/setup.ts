@@ -13,4 +13,4 @@ global.console = {
   warn: jest.fn(),
   log: jest.fn(),
   info: jest.fn(),
-};
+} as Console;

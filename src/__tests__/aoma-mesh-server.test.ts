@@ -6,8 +6,8 @@
  */
 
 import { jest } from '@jest/globals';
-import { AOMAMeshServer } from '../aoma-mesh-server.js';
-import { McpError, ErrorCode } from '@modelcontextprotocol/sdk/types.js';
+import { AOMAMeshServer } from '../aoma-mesh-server';
+import { McpError, ErrorCode } from '@modelcontextprotocol/sdk/types';
 
 // Mock OpenAI
 const mockOpenAI = {
