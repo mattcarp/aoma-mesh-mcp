@@ -1,6 +1,6 @@
 {
   "name": "AOMA Mesh MCP Server",
-  "description": "Sony Music AOMA Agent Mesh - Multi-Agent Development Assistant",
+  "description": "Enterprise AOMA Agent Mesh - Multi-Agent Development Assistant",
   "version": "2.0.0",
   "mcpSettings": {
     "servers": [
@@ -27,7 +27,7 @@
     ]
   },
   "capabilities": [
-    "Sony Music AOMA Knowledge Base (1000+ documents)",
+    "Enterprise AOMA Knowledge Base (1000+ documents)",
     "Jira Ticket Semantic Search (6000+ tickets)",
     "Development Context Analysis",
     "Real-time Health Monitoring",

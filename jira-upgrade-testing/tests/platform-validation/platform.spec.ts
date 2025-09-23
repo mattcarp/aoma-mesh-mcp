@@ -4,8 +4,8 @@ test.describe('Platform Validation - Jira 9.12 → 10.3 LTS', () => {
   test('should load Jira application successfully on Java 17', async ({ page }) => {
     await page.goto('/');
     
-    // Check for successful page load - Updated to match actual Sony Music JIRA title
-    await expect(page).toHaveTitle(/System Dashboard.*Sony Music/);
+    // Check for successful page load - Updated to match actual Enterprise JIRA title
+    await expect(page).toHaveTitle(/System Dashboard.*Enterprise/);
     
     // Verify no JavaScript errors
     const errors: string[] = [];

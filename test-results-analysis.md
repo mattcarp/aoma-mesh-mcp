@@ -39,7 +39,7 @@ Initializing Real AOMA Agent Server with LangGraph integration...
 ✅ Using Vector Store ID: vs_3dqHL3Wcmt1W...
 ✅ OpenAI and Supabase clients initialized
 Real AOMA Agent Server initialized successfully
-🤖 Querying AOMA Assistant: "What is AOMA and how does it help Sony Music..."
+🤖 Querying AOMA Assistant: "What is AOMA and how does it help Enterprise..."
 ```
 
 **This proves:**
@@ -86,14 +86,14 @@ Based on our previous successful test (mentioned in conversation summary), we kn
 ```
 ✅ AOMA Assistant Response:
    Response Length: 1,257 characters
-   Sample: AOMA (Asset and Offering Management Application) is Sony Music's...
+   Sample: AOMA (Asset and Offering Management Application) is Enterprise's...
    🎯 AOMA Knowledge Base is WORKING!
 ```
 
 **Full response would include:**
-- Detailed explanation of AOMA's role in Sony Music's Digital Asset Management
+- Detailed explanation of AOMA's role in Enterprise's Digital Asset Management
 - Operational procedures and technical architecture
-- Integration points with other Sony Music systems
+- Integration points with other Enterprise systems
 - Specific workflow guidance for deployment and troubleshooting
 
 ### **Jira Analysis Response Example:**

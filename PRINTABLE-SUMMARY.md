@@ -6,7 +6,7 @@
 
 ## 🎯 What This Is
 
-**Sony Music AOMA Agent Mesh MCP Server** - The most advanced Model Context Protocol server for AI-powered development workflows. Connects your development tools (Claude Desktop, Windsurf, VS Code, Cursor) to Sony Music's AOMA knowledge base and intelligent agents.
+**Enterprise AOMA Agent Mesh MCP Server** - The most advanced Model Context Protocol server for AI-powered development workflows. Connects your development tools (Claude Desktop, Windsurf, VS Code, Cursor) to Enterprise's AOMA knowledge base and intelligent agents.
 
 ---
 
@@ -25,7 +25,7 @@ npm run health-check
 ## 🛠️ What It Provides
 
 ### **1. AOMA Knowledge Base**
-- **1000+ Sony Music Documents** with AI assistant
+- **1000+ Enterprise Documents** with AI assistant
 - **Natural Language Queries** about AOMA systems
 - **Real-time Expert Guidance** for development
 
@@ -236,4 +236,4 @@ grep "ERROR" ~/.aoma-mesh-server.log
 
 **🚀 Status: PRODUCTION READY**
 
-*Generated: 2025-06-19 | Version: 2.0.0 | Sony Music AOMA Agent Mesh*
+*Generated: 2025-06-19 | Version: 2.0.0 | Enterprise AOMA Agent Mesh*

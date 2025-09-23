@@ -1,7 +1,7 @@
 {
   "name": "@mc-tk/mcp-agent-server",
-  "version": "2.5.0",
-  "description": "Sony Music's AI-Powered Business Intelligence MCP Server with LangSmith observability",
+  "version": "2.6.0",
+  "description": "Multi-tenant AI-Powered Business Intelligence MCP Server with LangSmith observability",
   "type": "module",
   "main": "dist/aoma-mesh-server.js",
   "bin": {

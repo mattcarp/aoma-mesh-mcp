@@ -4,7 +4,7 @@
 
 ## 🎯 Overview
 
-The AOMA Mesh MCP Server is a hardened, production-ready Model Context Protocol server that provides intelligent development assistance for Sony Music's AOMA (Asset and Offering Management Application) ecosystem.
+The AOMA Mesh MCP Server is a hardened, production-ready Model Context Protocol server that provides intelligent development assistance for Enterprise's AOMA (Asset and Offering Management Application) ecosystem.
 
 ### Key Features
 

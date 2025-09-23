@@ -127,7 +127,7 @@ export class VisualIntelligenceAgent {
             include_brand_compliance: {
               type: 'boolean',
               default: true,
-              description: 'Include Sony Music brand compliance checks'
+              description: 'Include enterprise brand compliance checks'
             }
           },
           required: ['journey_type']
@@ -195,7 +195,7 @@ export class VisualIntelligenceAgent {
       },
       {
         name: 'brand_compliance_audit',
-        description: 'Audit all screenshots for Sony Music brand compliance and visual consistency',
+        description: 'Audit all screenshots for enterprise brand compliance and visual consistency',
         inputSchema: {
           type: 'object',
           properties: {
@@ -526,7 +526,7 @@ export class VisualIntelligenceAgent {
           description: `AI analysis of ${screenshot.category} screenshot`,
           ui_elements: ['header', 'navigation', 'content', 'footer'],
           accessibility_notes: 'Color contrast appears adequate',
-          brand_compliance: 'Sony Music branding visible'
+          brand_compliance: 'Enterprise branding visible'
         };
       } catch (error) {
         console.error(`Error analyzing ${screenshot.filename}:`, error);

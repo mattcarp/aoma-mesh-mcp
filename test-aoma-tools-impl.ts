@@ -265,7 +265,7 @@ async function queryAomaKnowledge(args: any): Promise<CallToolResult> {
     knowledgeItems.push({
       title: 'Security and Compliance Standards',
       type: 'best-practices',
-      content: 'Sony Music security requirements and compliance guidelines',
+      content: 'Enterprise security requirements and compliance guidelines',
       relevance: 0.90,
       source: 'Security Policy Document',
       lastUpdated: '2024-12-12'

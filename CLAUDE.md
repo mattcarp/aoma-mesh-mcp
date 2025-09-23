@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is the AOMA Mesh MCP Server - a Model Context Protocol (MCP) server that provides AI-powered development assistance with Sony Music business intelligence integration. The server exposes tools for querying JIRA tickets, AOMA knowledge base, Git repositories, and development context analysis.
+This is the AOMA Mesh MCP Server - a Model Context Protocol (MCP) server that provides AI-powered development assistance with multi-tenant business intelligence integration. The server exposes tools for querying JIRA tickets, AOMA knowledge base, Git repositories, and development context analysis.
 
 ## Development Commands
 
@@ -89,7 +89,7 @@ NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
 - Proper API key management and rotation support
 - Resource cleanup (OpenAI threads) to prevent quota issues
 
-### Sony Music Integration
+### Enterprise Integration
 - AOMA knowledge base queries via OpenAI Assistant API
 - Semantic search through 6000+ JIRA tickets
 - Git repository analysis with vector embeddings

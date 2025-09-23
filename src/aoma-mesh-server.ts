@@ -50,7 +50,7 @@ if (existsSync(packageEnvPath)) { // Use existsSync directly
 /**
  * AOMA Mesh MCP Server - Production Hardened
  * 
- * Self-contained, production-ready MCP server for Sony Music AOMA Agent Mesh.
+ * Self-contained, production-ready MCP server for multi-tenant AOMA Agent Mesh.
  * Supports multiple hosting environments: Claude Desktop, Windsurf, VS Code, etc.
  * NOW WITH HTTP ENDPOINTS for web applications like tk-ui!
  * 
@@ -847,7 +847,7 @@ this.env.MCP_SERVER_VERSION = versionWithTimestamp;
     return [
       {
         name: 'query_aoma_knowledge',
-        description: 'Query Sony Music AOMA knowledge base using AI assistant with 1000+ documents',
+        description: 'Query enterprise AOMA knowledge base using AI assistant',
         inputSchema: {
           type: 'object',
           properties: {
@@ -882,7 +882,7 @@ this.env.MCP_SERVER_VERSION = versionWithTimestamp;
       },
       {
         name: 'search_jira_tickets',
-        description: 'Search Sony Music Jira tickets using semantic vector search (6000+ tickets)',
+        description: 'Search enterprise Jira tickets using semantic vector search',
         inputSchema: {
           type: 'object',
           properties: {
@@ -1814,7 +1814,7 @@ Remember: You MUST use file_search to find this information in the attached know
     }
 
     // Check if response contains specific AOMA terminology
-    const aomaTerms = ['AOMA', 'Sony Music', 'asset', 'metadata', 'ingestion', 'workflow'];
+    const aomaTerms = ['AOMA', 'enterprise', 'asset', 'metadata', 'ingestion', 'workflow'];
     const hasAOMAContext = aomaTerms.some(term => 
       response.toLowerCase().includes(term.toLowerCase())
     );
@@ -2343,7 +2343,7 @@ Please provide:
         'Any MCP-compatible client',
       ],
       features: [
-        'Sony Music AOMA Knowledge Base (1000+ documents)',
+        'Enterprise AOMA Knowledge Base',
         'Jira Ticket Semantic Search (6000+ tickets)',
         'Development Context Analysis',
         'Real-time Health Monitoring',
@@ -2657,7 +2657,7 @@ RESPONSE STRATEGY: `;
 
 ## Overview
 
-The Sony Music AOMA Mesh MCP Server provides intelligent development assistance through the Model Context Protocol. It connects multiple AI agents and knowledge bases to provide comprehensive support for AOMA (Asset and Offering Management Application) development workflows.
+The AOMA Mesh MCP Server provides intelligent development assistance through the Model Context Protocol. It connects multiple AI agents and knowledge bases to provide comprehensive support for AOMA (Asset and Offering Management Application) development workflows.
 
 ## Version: ${this.env.MCP_SERVER_VERSION}
 
@@ -3702,7 +3702,7 @@ Please provide a comprehensive synthesis using 2025 swarm intelligence patterns.
           timeout: this.env.TIMEOUT_MS,
           logLevel: this.env.LOG_LEVEL,
           features: [
-            'Sony Music AOMA Knowledge Base',
+            'Enterprise AOMA Knowledge Base',
             'Jira Ticket Semantic Search',
             'Development Context Analysis',
             'Real-time Health Monitoring',

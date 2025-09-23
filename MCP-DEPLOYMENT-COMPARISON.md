@@ -185,7 +185,7 @@ Instead of changing IPs, provide a **permanent Function URL:**
 ## 💡 **ADDITIONAL BENEFITS OF LAMBDA APPROACH**
 
 ### **Business Intelligence Compliance**
-- **NO FALLBACK:** Lambda fits Sony Music's "no hallucination" policy perfectly
+- **NO FALLBACK:** Lambda fits Enterprise's "no hallucination" policy perfectly
 - **Real data only:** Function only executes when serving real business data
 - **Cost alignment:** Pay only for actual business intelligence queries
 
@@ -196,7 +196,7 @@ Instead of changing IPs, provide a **permanent Function URL:**
 
 ### **Operational Excellence**
 - **No server management:** Focus on MCP server logic, not infrastructure
-- **Auto-scaling:** Handle Sony Music's variable query loads automatically
+- **Auto-scaling:** Handle Enterprise's variable query loads automatically
 - **Security:** IAM-based access control, no exposed ports or IPs
 
 ---

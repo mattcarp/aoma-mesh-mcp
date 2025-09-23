@@ -55,7 +55,7 @@ cp configs/vscode-settings.json .vscode/settings.json
 
 | Tool | What It Does | Example Query |
 |------|--------------|---------------|
-| **AOMA Knowledge** | Access 1000+ Sony Music docs | "How do I deploy AOMA to production?" |
+| **AOMA Knowledge** | Access 1000+ Enterprise docs | "How do I deploy AOMA to production?" |
 | **Jira Search** | Find tickets with AI | "Show authentication bugs from last month" |
 | **Context Analysis** | Analyze current code issue | "Help debug this API timeout error" |
 | **Health Check** | Server status & metrics | "Is everything working properly?" |

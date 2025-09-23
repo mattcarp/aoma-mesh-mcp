@@ -16,7 +16,7 @@
       "foundProblematic": [
         "Universal Supply Model"
       ],
-      "response": "In the context of Sony Music’s AOMA (Asset and Offering Management Application), **USM** typically stands for **Universal Supply Model**.\n\nThe Universal Supply Model (USM) is a standardized framework ..."
+      "response": "In the context of Enterprise’s AOMA (Asset and Offering Management Application), **USM** typically stands for **Universal Supply Model**.\n\nThe Universal Supply Model (USM) is a standardized framework ..."
     },
     {
       "testCase": "USM Detailed Query",
@@ -36,7 +36,7 @@
       "noHallucination": true,
       "confidence": 1,
       "foundProblematic": [],
-      "response": "After searching the provided documentation, there is no reference to an \"XYZ protocol\" in the context of AOMA (Asset and Offering Management Application) within Sony Music’s systems. The term does not..."
+      "response": "After searching the provided documentation, there is no reference to an \"XYZ protocol\" in the context of AOMA (Asset and Offering Management Application) within Enterprise’s systems. The term does not..."
     },
     {
       "testCase": "AOMA Architecture Test",
@@ -47,7 +47,7 @@
       "foundProblematic": [
         "typically"
       ],
-      "response": "The AOMA (Asset and Offering Management Application) system architecture is designed to support Sony Music’s digital asset management needs, ensuring robust handling, processing, and distribution of d..."
+      "response": "The AOMA (Asset and Offering Management Application) system architecture is designed to support Enterprise’s digital asset management needs, ensuring robust handling, processing, and distribution of d..."
     },
     {
       "testCase": "Cover Hot Swap Test",

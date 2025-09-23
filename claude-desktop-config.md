@@ -1,7 +1,7 @@
 # Claude Desktop Integration Guide for AOMA Agent Mesh
 
 ## Formal Name: **AOMA Agent Mesh (AAM)**
-**Full Name:** Sony Music AOMA Agent Mesh - Intelligent Multi-Agent Development Assistant
+**Full Name:** Enterprise AOMA Agent Mesh - Intelligent Multi-Agent Development Assistant
 
 ## Claude Desktop Configuration
 
@@ -150,7 +150,7 @@ Create `.cursor/mcp-servers.json`:
     "env": {
       "NODE_ENV": "development"
     },
-    "description": "AOMA Agent Mesh for Sony Music Development",
+    "description": "AOMA Agent Mesh for Enterprise Development",
     "tools": [
       "query_aoma_assistant",
       "run_enhanced_jira_agent", 

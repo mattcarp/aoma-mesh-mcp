@@ -1,7 +1,7 @@
 /**
  * AOMA Knowledge Query Tool
  * 
- * Queries the Sony Music AOMA knowledge base using OpenAI assistant
+ * Queries the enterprise AOMA knowledge base using OpenAI assistant
  * with semantic vector search capabilities.
  */
 
@@ -14,7 +14,7 @@ import { AOMAQueryRequest } from '../../types/requests';
 export class AOMAKnowledgeTool extends BaseTool {
   readonly definition: Tool = {
     name: 'query_aoma_knowledge',
-    description: 'Query Sony Music AOMA knowledge base using AI assistant with 1000+ documents',
+    description: 'Query enterprise AOMA knowledge base using AI assistant',
     inputSchema: {
       type: 'object',
       properties: {

@@ -17,7 +17,7 @@ function generateCapabilitiesReport() {
       name: 'query_aoma_knowledge',
       file: 'aoma-knowledge.tool.ts',
       class: 'AOMAKnowledgeTool',
-      description: 'Query Sony Music AOMA knowledge base using AI assistant with 1000+ documents',
+      description: 'Query enterprise AOMA knowledge base using AI assistant',
       category: 'Knowledge Management',
       dependencies: ['OpenAI', 'Supabase'],
       key_features: ['Semantic search', 'AI-powered responses', 'Strategy selection', 'Vector search integration']
@@ -35,7 +35,7 @@ function generateCapabilitiesReport() {
       name: 'search_jira_tickets',
       file: 'jira-search.tool.ts',
       class: 'JiraSearchTool', 
-      description: 'Search Sony Music Jira tickets using semantic vector search (6000+ tickets)',
+      description: 'Search enterprise Jira tickets using semantic vector search',
       category: 'Issue Tracking',
       dependencies: ['Supabase'],
       key_features: ['Semantic ticket search', 'Project filtering', 'Status filtering', 'Priority filtering']

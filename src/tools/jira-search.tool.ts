@@ -1,7 +1,7 @@
 /**
  * Jira Search Tool
  * 
- * Searches Sony Music Jira tickets using semantic vector search
+ * Searches enterprise Jira tickets using semantic vector search
  * with advanced filtering capabilities.
  */
 
@@ -13,7 +13,7 @@ import { JiraSearchRequest } from '../../types/requests';
 export class JiraSearchTool extends BaseTool {
   readonly definition: Tool = {
     name: 'search_jira_tickets',
-    description: 'Search Sony Music Jira tickets using semantic vector search (6000+ tickets)',
+    description: 'Search enterprise Jira tickets using semantic vector search',
     inputSchema: {
       type: 'object',
       properties: {

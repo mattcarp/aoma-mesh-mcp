@@ -101,7 +101,7 @@ async function langChainIntegration() {
     // Create a simple tool wrapper for LangChain
     class AOMAKnowledgeTool {
       name = 'aoma_knowledge';
-      description = 'Query Sony Music AOMA knowledge base for business intelligence';
+      description = 'Query Enterprise AOMA knowledge base for business intelligence';
 
       async call(query: string): Promise<string> {
         return await aoma.queryAOMAKnowledge(query);

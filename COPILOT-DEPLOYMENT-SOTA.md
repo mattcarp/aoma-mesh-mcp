@@ -42,7 +42,7 @@ if (mcpFails) {
 if (mcpFails) {
   return { 
     error: "MCP server unavailable. No fallback allowed.",
-    message: "Please ensure MCP server is running for Sony Music data."
+    message: "Please ensure MCP server is running for Enterprise data."
   }; // Explicit error, no hallucinations!
 }
 ```
@@ -231,7 +231,7 @@ wait
 
 ### **2. Business Intelligence Tests**
 ```bash
-# Test AOMA knowledge (should return Sony Music data)
+# Test AOMA knowledge (should return Enterprise data)
 curl -X POST https://your-endpoint/rpc \
   -H "Content-Type: application/json" \
   -d '{
@@ -244,7 +244,7 @@ curl -X POST https://your-endpoint/rpc \
     "id": 1
   }'
 
-# Expected: Sony Music Asset and Offering Management Application
+# Expected: Enterprise Asset and Offering Management Application
 # NOT: Medical school garbage!
 ```
 
@@ -341,7 +341,7 @@ copilot svc deploy --name orchestrator --env prod \
 - [ ] Test health endpoint: `curl /health`
 - [ ] Test MCP tools: `curl /rpc`
 - [ ] Validate performance: Health check <100ms
-- [ ] Test business intelligence: AOMA returns Sony Music data
+- [ ] Test business intelligence: AOMA returns Enterprise data
 
 ### **Post-Deployment**
 - [ ] Update frontend `MCP_SERVER_URL` environment variable
@@ -362,8 +362,8 @@ copilot svc deploy --name orchestrator --env prod \
 - ✅ **CPU Usage:** <60% under normal load
 
 ### **Business Intelligence Validation**
-- ✅ **AOMA Queries:** Return Sony Music asset management data
-- ✅ **JIRA Search:** Return real Sony Music tickets (ITSM, AOMA, DPSA)
+- ✅ **AOMA Queries:** Return Enterprise asset management data
+- ✅ **JIRA Search:** Return real Enterprise tickets (ITSM, AOMA, DPSA)
 - ✅ **NO FALLBACK:** Explicit errors when MCP unavailable
 - ✅ **Security:** No generic or hallucinated responses
 

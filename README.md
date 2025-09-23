@@ -1,20 +1,20 @@
 # 🚀 AOMA Mesh MCP Server
 
-**Sony Music's AI-Powered Business Intelligence MCP Server**
+**Multi-tenant AI-Powered Business Intelligence MCP Server**
 
 [![Deploy to Railway](https://img.shields.io/badge/Railway-Deploy-purple)](https://railway.app/)
 [![MCP Protocol](https://img.shields.io/badge/MCP-2.0-blue)](https://modelcontextprotocol.io/)
 [![LangSmith](https://img.shields.io/badge/LangSmith-Enabled-green)](https://smith.langchain.com/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.3-blue)](https://www.typescriptlang.org/)
 
-A production-ready Model Context Protocol (MCP) server providing direct access to Sony Music's business intelligence systems. Features semantic search through 6000+ JIRA tickets, AOMA knowledge base queries, LangSmith observability, and advanced analytics tools.
+A production-ready Model Context Protocol (MCP) server providing direct access to enterprise business intelligence systems. Features semantic search through JIRA tickets, knowledge base queries, LangSmith observability, and advanced analytics tools.
 
 ## Overview
 
-The AOMA Mesh MCP Server provides direct access to Sony Music's business intelligence:
+The AOMA Mesh MCP Server provides direct access to enterprise business intelligence:
 
 - **🧠 AOMA Knowledge Base**: 1000+ documents with AI-powered search
-- **🎫 JIRA Intelligence**: Semantic search through 6000+ tickets
+- **🎫 JIRA Intelligence**: Semantic search through enterprise tickets
 - **📊 LangSmith Observability**: Complete tracing and performance metrics
 - **🔍 Code & Git Analysis**: Semantic search across repositories
 - **📧 Enterprise Data**: Corporate email and document analysis
@@ -22,9 +22,9 @@ The AOMA Mesh MCP Server provides direct access to Sony Music's business intelli
 
 ## 🛠️ Available Tools
 
-### 🧠 **Sony Music Business Intelligence**
+### 🧠 **Enterprise Business Intelligence**
 - **`query_aoma_knowledge`**: Query 1000+ AOMA documents with AI assistant
-- **`search_jira_tickets`**: Semantic search through 6000+ Sony Music JIRA tickets
+- **`search_jira_tickets`**: Semantic search through enterprise JIRA tickets
 - **`get_jira_ticket_count`**: Get exact ticket counts across all projects
 - **`search_outlook_emails`**: Corporate email search for zeitgeist analysis
 
@@ -85,7 +85,7 @@ LANGCHAIN_PROJECT=aoma-mesh-mcp
 
 **Base URL**: `https://luminous-dedication-production.up.railway.app/rpc`
 
-#### Query Sony Music AOMA Knowledge Base
+#### Query Enterprise Knowledge Base
 ```bash
 curl -X POST "https://luminous-dedication-production.up.railway.app/rpc" \
   -H "Content-Type: application/json" \
@@ -96,7 +96,7 @@ curl -X POST "https://luminous-dedication-production.up.railway.app/rpc" \
     "params": {
       "name": "query_aoma_knowledge",
       "arguments": {
-        "query": "Sony Music data pipeline configuration",
+        "query": "Enterprise data pipeline configuration",
         "strategy": "comprehensive"
       }
     }
@@ -155,7 +155,7 @@ graph TD
     B --> C[LangSmith Observability]
     B --> D[OpenAI GPT-4o]
     B --> E[Supabase Vector DB]
-    B --> F[Sony Music JIRA]
+    B --> F[Enterprise JIRA]
     B --> G[AOMA Knowledge Base]
     B --> H[Corporate Email System]
 
