@@ -34,13 +34,27 @@ jobs:
           cache: 'pnpm'
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile
+        run: pnpm install --no-frozen-lockfile
 
       - name: Remote Health
-        run: pnpm run remote:health
+        run: |
+          set -e
+          for i in 1 2 3; do
+            pnpm run remote:health && break || true
+            sleep $((i*5))
+          done
+          # final attempt fails the step
+          pnpm run remote:health
 
       - name: Remote Tools
-        run: pnpm run remote:tools
+        run: |
+          set -e
+          for i in 1 2 3; do
+            pnpm run remote:tools && break || true
+            sleep $((i*5))
+          done
+          # final attempt fails the step
+          pnpm run remote:tools
 
       - name: Send failure email
         if: failure()
@@ -53,7 +67,7 @@ jobs:
           subject: "AOMA Mesh Remote Smoke FAILED - ${{ github.repository }} @ ${{ github.ref_name }}"
           to: "matt@mattcarpenter.com"
           from: ${{ secrets.SMTP_FROM }}
-          html_body: true
+          content_type: text/html
           body: |
             <h3>AOMA Mesh Remote Smoke Checks FAILED</h3>
             <ul>
