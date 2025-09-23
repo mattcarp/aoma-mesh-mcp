@@ -1,5 +1,5 @@
 import { Client } from 'langsmith';
-import { RunTreeConfig, RunTree } from 'langsmith/run_trees';
+import { RunTree } from 'langsmith/run_trees';
 import { logger } from './mcp-logger.js';
 
 let langsmithClient: Client | null = null;

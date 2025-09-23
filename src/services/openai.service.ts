@@ -60,7 +60,7 @@ export class OpenAIService {
     }
 
     // Create new GPT-5 assistant with vector store
-    const baseInstructions = `You are an expert AOMA (Automated Operations and Metadata Assistant) system analyst with deep knowledge of enterprise technical infrastructure.
+    const baseInstructions = `You are an expert AOMA (Asset and Offering Management Application) system analyst with deep knowledge of enterprise technical infrastructure.
 
 You have access to a comprehensive AOMA knowledge base through file search. Always search the knowledge base first for enterprise-specific information about:
 - USM (Unified Session Manager)  
@@ -255,7 +255,7 @@ Provide accurate, detailed responses based on the knowledge base content, and cl
    * Build instruction prompt based on strategy
    */
   private buildInstructions(strategy: string, context?: string): string {
-    const baseInstructions = `You are an expert AOMA (Automated Operations and Metadata Assistant) system analyst with deep knowledge of enterprise technical infrastructure.`;
+    const baseInstructions = `You are an expert AOMA (Asset and Offering Management Application) system analyst with deep knowledge of enterprise technical infrastructure.`;
     
     const strategyInstructions = {
       comprehensive: 'Provide a detailed, thorough analysis covering all relevant aspects. Include technical details, context, and actionable recommendations.',

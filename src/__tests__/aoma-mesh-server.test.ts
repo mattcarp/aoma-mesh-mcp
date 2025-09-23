@@ -7,7 +7,7 @@
 
 import { jest } from '@jest/globals';
 import { AOMAMeshServer } from '../aoma-mesh-server';
-import { McpError, ErrorCode } from '@modelcontextprotocol/sdk/types';
+import { McpError } from '@modelcontextprotocol/sdk/types';
 
 // Mock OpenAI
 const mockOpenAI = {
@@ -117,7 +117,7 @@ describe('AOMA Mesh MCP Server', () => {
     });
 
     test('should handle missing required environment variables', () => {
-      const { OPENAI_API_KEY, ...incompleteEnv } = mockEnv;
+      const { OPENAI_API_KEY: _OPENAI_API_KEY, ...incompleteEnv } = mockEnv;
       process.env = { ...originalEnv, ...incompleteEnv };
       
       expect(() => new AOMAMeshServer()).toThrow(/OPENAI_API_KEY/);
@@ -542,7 +542,7 @@ describe('AOMA Mesh MCP Server', () => {
 
       try {
         await server['queryAOMAKnowledge']({ query: 'test' });
-      } catch (error) {
+      } catch {
         // Expected to fail
       }
 

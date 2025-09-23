@@ -1,6 +1,6 @@
 {
   "name": "@mc-tk/mcp-agent-server",
-  "version": "2.6.0",
+  "version": "2.6.1",
   "description": "Multi-tenant AI-Powered Business Intelligence MCP Server with LangSmith observability",
   "type": "module",
   "main": "dist/aoma-mesh-server.js",
@@ -83,7 +83,6 @@
     "@types/express": "^5.0.3",
     "@types/jest": "^30.0.0",
     "@types/node": "^24.5.2",
-    "@types/uuid": "^11.0.0",
     "@typescript-eslint/eslint-plugin": "^8.44.1",
     "@typescript-eslint/parser": "^8.44.1",
     "aws-cdk": "^2.1029.2",
