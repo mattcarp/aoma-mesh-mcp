@@ -22,7 +22,7 @@ export const EnvSchema = z.object({
   JIRA_BASE_URL: z.string().url('Invalid Jira base URL').optional(),
   NODE_ENV: z.enum(['development', 'production', 'test']).default('production'),
   LOG_LEVEL: z.enum(['error', 'warn', 'info', 'debug']).default('info'),
-  MCP_SERVER_VERSION: z.string().default('2.0.0'),
+  MCP_SERVER_VERSION: z.string().default('2.7.0'),
   MAX_RETRIES: z.coerce.number().int().min(1).max(10).default(3),
   TIMEOUT_MS: z.coerce.number().int().min(5000).max(300000).default(30000),
   HTTP_PORT: z.coerce.number().int().min(1024).max(65535).default(3333),

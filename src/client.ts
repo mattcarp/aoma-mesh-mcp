@@ -5,7 +5,7 @@
  * Simple TypeScript client for consuming the AOMA Mesh MCP server
  * from other applications (Eleven Labs, LangChain, etc.)
  * 
- * @version 2.0.0
+ * @version 2.7.0
  * @author MC-TK Development Team
  */
 

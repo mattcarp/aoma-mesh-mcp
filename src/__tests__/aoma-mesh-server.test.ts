@@ -6,8 +6,7 @@
  */
 
 import { jest } from '@jest/globals';
-// Skip server import for now due to ESM compatibility
-// import { AOMAMeshServer } from '../aoma-mesh-server.js';
+import { AOMAMeshServer } from '../aoma-mesh-server.js';
 import { McpError } from '@modelcontextprotocol/sdk/types.js';
 
 // Mock OpenAI
