@@ -1,6 +1,6 @@
 # AOMA Mesh MCP Server - Printable Summary
 
-**Version 2.0.0** | **Production Ready** | **Multi-Platform**
+**Version 2.6.1** | **Multi-Tenant Ready** | **Multi-Platform**
 
 ---
 

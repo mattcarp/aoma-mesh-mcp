@@ -1,6 +1,7 @@
 /** @type {import('jest').Config} */
 const config = {
-  preset: 'ts-jest',
+  preset: 'ts-jest/presets/default-esm',
+  extensionsToTreatAsEsm: ['.ts'],
   testEnvironment: 'node',
   testMatch: [
     '<rootDir>/src/**/__tests__/**/*.test.ts',
@@ -14,17 +15,25 @@ const config = {
   ],
   coverageDirectory: 'coverage',
   coverageReporters: ['text', 'lcov', 'html'],
+  moduleNameMapper: {
+    '^(\\.{1,2}/.*)\\.js$': '$1'
+  },
+  transformIgnorePatterns: [
+    'node_modules/(?!(@modelcontextprotocol|openai|@langchain|langsmith)/)'
+  ],
   transform: {
     '^.+\\.ts$': [
       'ts-jest',
       {
-        isolatedModules: true,
+        useESM: true,
         tsconfig: {
-          module: 'commonjs'
+          module: 'es2022',
+          target: 'es2022'
         }
       }
     ]
-  }
+  },
+  setupFilesAfterEnv: ['<rootDir>/src/__tests__/setup.ts']
 };
 
 export default config;

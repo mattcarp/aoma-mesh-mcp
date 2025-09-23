@@ -1,6 +1,6 @@
 # AOMA Mesh MCP Server - Quick Reference Card
 
-**🎯 Version 2.0.0 | Production Ready | Print & Keep Handy**
+**🎯 Version 2.6.1 | Multi-Tenant Ready | Print & Keep Handy**
 
 ---
 
