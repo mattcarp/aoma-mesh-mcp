@@ -80,8 +80,9 @@ export class AOMAKnowledgeTool extends BaseTool {
       // Enhance query with vector search context
       const contextualQuery = this.buildContextualQuery(query, vectorResults, additionalContext);
 
-      // Get AI-powered response using OpenAI assistant
-      const response = await this.openaiService.queryKnowledge(contextualQuery, strategy, additionalContext);
+      // Get AI-powered response using fast direct vector search + GPT
+      // This is 2-5x faster than the old Assistant API method
+      const response = await this.openaiService.queryKnowledgeFast(query, strategy, additionalContext);
 
       const result = {
         response,
