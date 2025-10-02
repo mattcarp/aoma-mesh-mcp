@@ -188,11 +188,26 @@ Provide accurate, detailed responses based on the knowledge base content, and cl
 
         // 3. Build context from top results
         const resultCount = strategy === 'comprehensive' ? 5 : strategy === 'focused' ? 3 : 2;
+        
+        // CRITICAL FIX: Truncate content to prevent massive contexts that slow down GPT-4o
+        // Without this, large documents (50KB+) cause 90+ second response times
+        const MAX_CONTENT_PER_RESULT = 2000; // 2KB per document (~500 tokens)
+        
         const knowledgeContext = filteredResults
           .slice(0, resultCount)
           .map(r => {
-            const content = r.content?.[0]?.text || '';
-            return `[Source: ${r.filename} (relevance: ${r.score.toFixed(2)})]\n${content}`;
+            const fullContent = r.content?.[0]?.text || '';
+            const truncatedContent = fullContent.slice(0, MAX_CONTENT_PER_RESULT);
+            const wasTruncated = fullContent.length > MAX_CONTENT_PER_RESULT;
+            
+            logger.debug('Vector result content size', {
+              filename: r.filename,
+              originalSize: fullContent.length,
+              truncatedSize: truncatedContent.length,
+              wasTruncated
+            });
+            
+            return `[Source: ${r.filename} (relevance: ${r.score.toFixed(2)})${wasTruncated ? ' [truncated]' : ''}]\n${truncatedContent}`;
           })
           .join('\n\n---\n\n');
 
@@ -229,7 +244,8 @@ Provide accurate, detailed responses based on the knowledge base content, and cl
           vectorResultCount: vectorResults.length,
           filteredResultCount: filteredResults.length,
           scoreThreshold,
-          responseLength: response.length
+          responseLength: response.length,
+          totalContextSize: knowledgeContext.length // Track context size for performance monitoring
         });
 
         return response;
