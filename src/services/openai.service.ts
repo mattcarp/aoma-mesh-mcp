@@ -295,7 +295,7 @@ Provide accurate, detailed responses based on the knowledge base content, and cl
 
         const run = await this.client.beta.threads.runs.create(thread.id, {
           assistant_id: gpt5AssistantId,
-          temperature: strategy === 'rapid' ? 0.1 : strategy === 'focused' ? 0.3 : 0.5,
+          temperature: 1, // GPT-5 only supports temperature=1
           max_completion_tokens: strategy === 'comprehensive' ? 8000 : strategy === 'focused' ? 4000 : 2000,
         });
 
