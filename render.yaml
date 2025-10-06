@@ -1,15 +1,18 @@
 services:
-  # AOMA Mesh MCP Server - Private Service (internal only)
-  - type: pserv
+  # AOMA Mesh MCP Server - Public Web Service
+  - type: web
     name: aoma-mesh-mcp
     runtime: docker
     plan: starter  # $7/month - no cold starts
     region: oregon  # Change to match your client app region
     dockerfilePath: ./Dockerfile
     dockerContext: .
-    
-    # Private service settings
+
+    # Public service settings
     numInstances: 1
+
+    # Health check endpoint
+    healthCheckPath: /health
     
     # Environment variables
     envVars:
