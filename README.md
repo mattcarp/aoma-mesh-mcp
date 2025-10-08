@@ -9,6 +9,8 @@
 
 A production-ready Model Context Protocol (MCP) server providing direct access to enterprise business intelligence systems. Features semantic search through JIRA tickets, knowledge base queries, LangSmith observability, and advanced analytics tools.
 
+> **⚠️ Architecture Note**: This is a **DATA SERVING** layer (read-only MCP server). For **DATA COLLECTION** (scraping, crawling, embeddings), see [siam/betabase](../siam/DATA-COLLECTION-ARCHITECTURE.md). See [ARCHITECTURE.md](./ARCHITECTURE.md) for details.
+
 ## Overview
 
 The AOMA Mesh MCP Server provides direct access to enterprise business intelligence:

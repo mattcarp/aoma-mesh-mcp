@@ -1876,9 +1876,13 @@ Remember: You MUST use file_search to find this information in the attached know
           query_builder = query_builder.in('priority', priority);
         }
 
-        // Text search in title and description
+        // Text search in title, description, and external_id
         if (query.trim()) {
-          query_builder = query_builder.or(`title.ilike.%${query}%,external_id.ilike.%${query}%`);
+          // Use proper Supabase filter syntax with escaped wildcards
+          const searchPattern = `%${query}%`;
+          query_builder = query_builder.or(
+            `title.ilike.${searchPattern},description.ilike.${searchPattern},external_id.ilike.${searchPattern}`
+          );
         }
 
         const { data, error } = await query_builder;
