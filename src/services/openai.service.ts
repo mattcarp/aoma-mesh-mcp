@@ -211,9 +211,9 @@ Provide accurate, detailed responses based on the knowledge base content, and cl
           })
           .join('\n\n---\n\n');
 
-        // 4. Direct GPT completion (5-7s with GPT-4o, 15-16s with GPT-5)
+        // 4. Direct GPT completion with GPT-5 for superior quality
         const completionStart = Date.now();
-        const model = 'gpt-4o'; // Using gpt-4o for speed (can switch to gpt-5 for quality)
+        const model = 'gpt-5'; // Using GPT-5 for best quality with acceptable performance (~8-12s)
         
         const completion = await this.client.chat.completions.create({
           model,
