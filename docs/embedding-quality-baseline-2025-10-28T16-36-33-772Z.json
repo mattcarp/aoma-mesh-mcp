@@ -1,0 +1,102 @@
+{
+  "timestamp": "2025-10-28T16:36:33.773Z",
+  "results": [
+    {
+      "query": "How do I manage QC providers in AOMA?",
+      "openai": {
+        "count": 10,
+        "topSimilarity": 0.9267817315266228,
+        "avgSimilarity": 0.7757354574767775
+      },
+      "supabaseUnified": {
+        "count": 10,
+        "topSimilarity": 0.806597029966208,
+        "avgSimilarity": 0.7955993867503233
+      },
+      "supabaseGit": {
+        "count": 10,
+        "topSimilarity": 0.0851633812365314,
+        "avgSimilarity": 0.06561059418344889
+      }
+    },
+    {
+      "query": "What is the Media Batch Converter used for?",
+      "openai": {
+        "count": 10,
+        "topSimilarity": 0.766525205237885,
+        "avgSimilarity": 0.6282233357076985
+      },
+      "supabaseUnified": {
+        "count": 10,
+        "topSimilarity": 0.723946771739327,
+        "avgSimilarity": 0.7102334227956169
+      },
+      "supabaseGit": {
+        "count": 10,
+        "topSimilarity": 0.0671164737097022,
+        "avgSimilarity": 0.050329858353008614
+      }
+    },
+    {
+      "query": "How can I search for artists in AOMA?",
+      "openai": {
+        "count": 10,
+        "topSimilarity": 0.6657195984948765,
+        "avgSimilarity": 0.609983414093314
+      },
+      "supabaseUnified": {
+        "count": 10,
+        "topSimilarity": 0.864465201294686,
+        "avgSimilarity": 0.8598945999222873
+      },
+      "supabaseGit": {
+        "count": 10,
+        "topSimilarity": 0.0793028970456073,
+        "avgSimilarity": 0.06683918538198458
+      }
+    },
+    {
+      "query": "TypeScript components for Master Details",
+      "openai": {
+        "count": 10,
+        "topSimilarity": 0.5631198140232582,
+        "avgSimilarity": 0.4344667476729634
+      },
+      "supabaseUnified": {
+        "count": 10,
+        "topSimilarity": 0.744482183117438,
+        "avgSimilarity": 0.740945073591872
+      },
+      "supabaseGit": {
+        "count": 10,
+        "topSimilarity": 0.0712701894433243,
+        "avgSimilarity": 0.06299398916357675
+      }
+    },
+    {
+      "query": "Java classes for Archive Master",
+      "openai": {
+        "count": 10,
+        "topSimilarity": 0.49069915636160916,
+        "avgSimilarity": 0.3307936189757208
+      },
+      "supabaseUnified": {
+        "count": 10,
+        "topSimilarity": 0.75129059698312,
+        "avgSimilarity": 0.7402409463722477
+      },
+      "supabaseGit": {
+        "count": 10,
+        "topSimilarity": 0.0660944358620781,
+        "avgSimilarity": 0.0522678447113778
+      }
+    }
+  ],
+  "summary": {
+    "avgOpenaiTop": 0.6825691011288504,
+    "avgUnifiedTop": 0.7781563566201557,
+    "avgGitTop": 0.07378947545944865,
+    "qualityGapUnified": -0.09558725549130531,
+    "qualityGapGit": 0.6087796256694017
+  }
+}
