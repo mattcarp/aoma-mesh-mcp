@@ -91,12 +91,13 @@ export class LangChainOrchestrator {
 
     try {
       // 1. Retrieve from BOTH sources in parallel
+      // LangChain v1.0 uses invoke() not getRelevantDocuments()
       const [supabaseResults, openaiResults] = await Promise.all([
-        this.supabaseRetriever.getRelevantDocuments(query).catch((error) => {
+        this.supabaseRetriever.invoke(query).catch((error) => {
           logger.error('Supabase retrieval failed', { error });
           return [];
         }),
-        this.openaiRetriever.getRelevantDocuments(query).catch((error) => {
+        this.openaiRetriever.invoke(query).catch((error) => {
           logger.error('OpenAI retrieval failed', { error });
           return [];
         }),

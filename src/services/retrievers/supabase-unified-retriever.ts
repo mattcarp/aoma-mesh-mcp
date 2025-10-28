@@ -69,11 +69,12 @@ export class SupabaseUnifiedRetriever extends BaseRetriever {
       });
 
       // Query legacy git_file_embeddings table (if 'git' is in sourceTypes)
+      // NOTE: Function name is match_git_files not search_git_files
       const gitPromise = this.sourceTypes.includes('git')
-        ? this.supabaseClient.rpc('search_git_files', {
+        ? this.supabaseClient.rpc('match_git_files', {
             query_embedding: queryEmbedding,
             match_count: this.k,
-            threshold: this.threshold
+            match_threshold: this.threshold
           })
         : Promise.resolve({ data: [], error: null });
 
