@@ -58,10 +58,10 @@
     "upgrade": "pnpm update && pnpm audit fix"
   },
   "dependencies": {
-    "@langchain/community": "^0.3.56",
-    "@langchain/core": "^0.3.77",
-    "@langchain/langgraph": "^0.4.9",
-    "@langchain/openai": "^0.6.13",
+    "@langchain/community": "^1.0.0",
+    "@langchain/core": "^1.0.2",
+    "@langchain/langgraph": "^1.0.1",
+    "@langchain/openai": "^1.0.0",
     "@modelcontextprotocol/sdk": "^1.18.1",
     "@supabase/supabase-js": "^2.57.4",
     "compression": "^1.8.1",

@@ -144,7 +144,7 @@ export class AOMAMeshServer {
   private setupTools(): void {
     // Register all available tools
     this.toolRegistry.registerAll([
-      new AOMAKnowledgeTool(this.openaiService, this.supabaseService),
+      new AOMAKnowledgeTool(this.openaiService, this.supabaseService, this.config),
       new SystemHealthTool(this.openaiService, this.supabaseService, this.toolRegistry, this.metrics, this.startTime),
       new JiraSearchTool(this.supabaseService),
       new JiraCountTool(this.supabaseService),
@@ -156,7 +156,7 @@ export class AOMAMeshServer {
       new SwarmAnalysisTool(this.openaiService, this.supabaseService),
     ]);
 
-    logger.info('Tools registered', { 
+    logger.info('Tools registered', {
       count: this.toolRegistry.getToolCount(),
       tools: this.toolRegistry.getToolNames()
     });

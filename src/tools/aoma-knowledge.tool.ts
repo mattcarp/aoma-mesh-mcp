@@ -9,12 +9,14 @@ import { Tool, CallToolResult } from '@modelcontextprotocol/sdk/types.js';
 import { BaseTool, ToolExecutionContext } from '../base/tool.interface';
 import { OpenAIService } from '../../services/openai.service';
 import { SupabaseService } from '../../services/supabase.service';
+import { LangChainOrchestrator } from '../../services/langchain-orchestrator.service';
+import { Environment } from '../../types/environment';
 import { AOMAQueryRequest } from '../../types/requests';
 
 export class AOMAKnowledgeTool extends BaseTool {
   readonly definition: Tool = {
     name: 'query_aoma_knowledge',
-    description: 'Query enterprise AOMA knowledge base using AI assistant',
+    description: 'Query enterprise AOMA knowledge base using multi-source AI orchestration (Supabase + OpenAI vector stores)',
     inputSchema: {
       type: 'object',
       properties: {
@@ -37,7 +39,7 @@ export class AOMAKnowledgeTool extends BaseTool {
         },
         maxResults: {
           type: 'number',
-          description: 'Maximum knowledge base results to consider',
+          description: 'Maximum knowledge base results to consider (deprecated - now handled by strategy)',
           minimum: 1,
           maximum: 20,
           default: 10,
@@ -48,68 +50,78 @@ export class AOMAKnowledgeTool extends BaseTool {
     },
   };
 
+  private orchestrator: LangChainOrchestrator;
+
   constructor(
     private readonly openaiService: OpenAIService,
-    private readonly supabaseService: SupabaseService
+    private readonly supabaseService: SupabaseService,
+    private readonly config: Environment
   ) {
     super();
+    // Initialize LangChain v1.0 orchestrator
+    this.orchestrator = LangChainOrchestrator.create(
+      openaiService,
+      supabaseService,
+      config
+    );
   }
 
   async execute(args: Record<string, unknown>, context: ToolExecutionContext): Promise<CallToolResult> {
     const request = args as AOMAQueryRequest;
-    const { query, strategy = 'focused', context: additionalContext, maxResults = 10 } = request;
+    const { query, strategy = 'focused', context: additionalContext } = request;
 
-    context.logger.info('Executing AOMA knowledge query', {
+    context.logger.info('Executing multi-source AOMA knowledge query', {
       query: query.slice(0, 100),
       strategy,
-      maxResults,
       hasContext: !!additionalContext
     });
 
     try {
-      // First, search for relevant knowledge base entries
-      const vectorResults = await this.supabaseService.searchKnowledge(query, maxResults, 0.7);
-      
-      context.logger.debug('Vector search completed', {
-        resultCount: vectorResults.length,
-        avgSimilarity: vectorResults.length > 0 
-          ? (vectorResults.reduce((sum, r) => sum + r.similarity, 0) / vectorResults.length).toFixed(3)
-          : 0
+      // Use LangChain v1.0 orchestrator for multi-source retrieval
+      // This queries BOTH Supabase (knowledge + jira + git) AND OpenAI vector store in parallel
+      const orchestrationResult = await this.orchestrator.query(
+        query,
+        strategy as 'comprehensive' | 'focused' | 'rapid',
+        additionalContext
+      );
+
+      context.logger.debug('Multi-source orchestration completed', {
+        sources: {
+          supabase: orchestrationResult.stats.supabase,
+          openai: orchestrationResult.stats.openai,
+          total: orchestrationResult.stats.total
+        },
+        bySourceType: orchestrationResult.stats.bySourceType
       });
 
-      // Enhance query with vector search context
-      const contextualQuery = this.buildContextualQuery(query, vectorResults, additionalContext);
-
-      // Get AI-powered response using GPT-5 Assistant API with vector store
-      // The Assistant API handles large documents internally - no massive context issues
-      // Using the PROPER tool designed for this use case
-      const response = await this.openaiService.queryKnowledge(query, strategy, additionalContext);
-
       const result = {
-        response,
-        vectorResults: vectorResults.map(r => ({
-          title: r.title,
-          similarity: r.similarity,
-          url: r.url,
-          snippet: r.content.slice(0, 200) + '...'
+        response: orchestrationResult.answer,
+        sources: orchestrationResult.sourceDocuments.map(doc => ({
+          source: doc.metadata.source,
+          sourceType: doc.metadata.sourceType,
+          filename: doc.metadata.filename || doc.metadata.sourceId,
+          similarity: doc.metadata.similarity,
+          snippet: doc.pageContent.slice(0, 200) + '...'
         })),
         strategy,
         queryMetadata: {
           originalQuery: query,
-          vectorResultCount: vectorResults.length,
-          responseLength: response.length,
+          sourceStats: orchestrationResult.stats,
+          responseLength: orchestrationResult.answer.length,
           timestamp: new Date().toISOString()
         }
       };
 
-      context.logger.info('AOMA knowledge query completed successfully', {
-        responseLength: response.length,
-        vectorResultCount: vectorResults.length
+      context.logger.info('Multi-source AOMA knowledge query completed successfully', {
+        responseLength: orchestrationResult.answer.length,
+        sourcesUsed: orchestrationResult.sourceDocuments.length,
+        supabaseSources: orchestrationResult.stats.supabase,
+        openaiSources: orchestrationResult.stats.openai
       });
 
       return this.success(result);
     } catch (error) {
-      context.logger.error('AOMA knowledge query failed', { error });
+      context.logger.error('Multi-source AOMA knowledge query failed', { error });
       return this.error('Failed to query AOMA knowledge base', { error: error instanceof Error ? error.message : error });
     }
   }
@@ -132,30 +144,10 @@ export class AOMAKnowledgeTool extends BaseTool {
 
       return { healthy: true };
     } catch (error) {
-      return { 
-        healthy: false, 
-        error: error instanceof Error ? error.message : 'Unknown health check error' 
+      return {
+        healthy: false,
+        error: error instanceof Error ? error.message : 'Unknown health check error'
       };
     }
-  }
-
-  private buildContextualQuery(originalQuery: string, vectorResults: any[], context?: string): string {
-    if (vectorResults.length === 0) {
-      return originalQuery;
-    }
-
-    const relevantContext = vectorResults
-      .slice(0, 3) // Top 3 most relevant
-      .map(r => `- ${r.title}: ${r.content.slice(0, 300)}...`)
-      .join('\n');
-
-    const contextSection = context ? `\nAdditional Context: ${context}` : '';
-
-    return `Query: ${originalQuery}
-
-Relevant AOMA Knowledge Base Entries:
-${relevantContext}${contextSection}
-
-Please provide a comprehensive response based on the query and the relevant knowledge base entries above.`;
   }
 }
