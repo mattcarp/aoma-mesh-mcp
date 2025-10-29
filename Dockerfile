@@ -31,7 +31,7 @@ COPY package.json ./
 RUN npm cache clean --force && \
     npm install --no-audit --legacy-peer-deps
 
-# Copy source code
+# Copy source code (cache bust: 2025-10-29-v2)
 COPY . .
 
 # Skip build step - we'll use tsx to run directly
