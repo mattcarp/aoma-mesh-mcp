@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+// Version 2.7.1 - Fast Path Performance Fix - Force Docker cache invalidation
 import dotenv from 'dotenv';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -27,25 +28,29 @@ function findProjectRoot(startDir: string): string {
 
 const projectRoot = findProjectRoot(__dirnameFromMeta);
 
-// Load .env.local from the project root
-const envLocalPath = path.join(projectRoot, '.env.local');
-if (existsSync(envLocalPath)) { // Use existsSync directly
-  dotenv.config({ path: envLocalPath });
-  // console.log(`Loaded .env.local from: ${envLocalPath}`);
-} else {
-  // console.warn(`.env.local not found at: ${envLocalPath}`);
+// Helper to suppress stdout AND stderr during dotenv loading (prevents JSON-RPC pollution)
+function loadEnvSilently(envPath: string): void {
+  if (existsSync(envPath)) {
+    const originalStdoutWrite = process.stdout.write.bind(process.stdout);
+    const originalStderrWrite = process.stderr.write.bind(process.stderr);
+    // Suppress both stdout and stderr
+    process.stdout.write = () => true;
+    process.stderr.write = () => true;
+    try {
+      dotenv.config({ path: envPath });
+    } finally {
+      // Restore both
+      process.stdout.write = originalStdoutWrite;
+      process.stderr.write = originalStderrWrite;
+    }
+  }
 }
 
-// Also load .env from the current package directory (e.g., packages/mcp-server/.env) if it exists
-// This allows for package-specific overrides.
-// Adjusted path to look for .env in the parent of src/ or dist/
-const packageEnvPath = path.resolve(__dirnameFromMeta, '../.env'); 
-if (existsSync(packageEnvPath)) { // Use existsSync directly
- dotenv.config({ path: packageEnvPath });
-  // console.log(`Loaded .env from: ${packageEnvPath}`);
-} else {
-  // console.warn(`.env not found in package directory: ${packageEnvPath}`);
-}
+// Load .env.local from the project root
+loadEnvSilently(path.join(projectRoot, '.env.local'));
+
+// Load .env from the current package directory
+loadEnvSilently(path.resolve(__dirnameFromMeta, '../.env'));
 
 /**
  * AOMA Mesh MCP Server - Production Hardened
