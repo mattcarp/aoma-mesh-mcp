@@ -3,9 +3,9 @@
 
 FROM node:20-alpine
 
-# Build argument to force rebuild - Updated with npm 11 and fixed deps
-ARG CACHEBUST=20250922
-ARG BUILD_DATE=2025-09-22-security-fixes
+# Build argument to force rebuild - Performance fix deployment
+ARG CACHEBUST=20251029_fast_path
+ARG BUILD_DATE=2025-10-29-performance-fix
 ENV BUILD_DATE=$BUILD_DATE
 ENV CACHEBUST=$CACHEBUST
 
